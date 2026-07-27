@@ -497,34 +497,54 @@ git push origin main
 ### Task 6: Audit Cell A
 
 **Files:**
-- Create: `research/generated_two_cube_cells.md`
+- Modify: `research/generated_two_cube_cells.md`
+- Modify: `research/generated_two_cube_statement.md`
+- Modify: `research/generated_two_cube_falsifier.py`
+- Create: `tests/test_border_conjugate.py`
+- Modify: `CURRENT_STATUS.md`
 - Modify: `docs/DECISION_LOG.md`
 
-- [ ] **Step 1: Restate Cell A in half-open coordinates**
+**Status:** completed for the natural full-precompletion family
+\(\mathcal J\) and the strict-record application on 2026-07-27. The stronger
+two-window \(\mathcal I\) branch deliberately remains open.
 
-Record \(r=q\), \(b<q/2\), border \(B\), prefix equality
-\(R[0:j]=R[b:b+j]\), and the exact overlap supporting (22.5)–(22.7).
+- [x] **Step 1: Restate Cell A in half-open coordinates**
 
-- [ ] **Step 2: Test the desired short-period extraction**
+The proof records the exact external \(q\)-cube and \(YBT\) intervals,
+Fine--Wilf's equality endpoint, \(s\le q-\gcd(q,b)-1\), the border \(B\),
+\(R[0:j]=R[b:b+j]\), \(j<q-b\), and \(b<q/2\).
 
-Search bounded symbolic words satisfying the static Cell A equations and
-separately those satisfying paired generation. For each survivor, compute all
-periods \(t<b\) of \(UT\). Save the smallest counterexample to any proposed
-universal extraction.
+- [x] **Step 2: Replace a broad survivor search by an exhaustive
+  Border--conjugate oracle**
 
-- [ ] **Step 3: Prove or refute the missing implication**
+Actual chronology directly identifies the missing bridge state
+\(K=S_{t_0+q}=LR^2T\), so a broad search for a static extraction conjecture is
+unnecessary. Instead, independently enumerate every binary root through
+length \(15\) and ternary root through length \(11\), with every
+\((b,j,t)\) satisfying the Border--conjugate hypotheses. The executable
+certificate retains exactly `1776 + 690 = 2466` nonvacuous tuples and finds
+zero failures.
 
-The only acceptable branch outcomes are:
+- [x] **Step 3: Prove the bridge-inclusive implication and preserve the
+  I-only boundary**
 
-- a complete index-audited derivation of \(0<t<b\) on \(UT\);
-- a direct cube in \(R^2T\);
-- a state in \(\mathcal I\) with canonical period at least \(P\);
-- an explicit generated counterexample.
+The proof establishes
+\[
+\max\{\pi(E),\pi(S_{t_0+q})\}\ge P.
+\]
+The second state is strictly between \(G\) and \(F\), hence in the natural
+full proper precompletion set \(\mathcal J\) but not in \(\mathcal I\).
+Accordingly, Cell A is closed for (G2CS-\(\mathcal J\)) and strict-record
+contradiction only. This is an explicit deviation from the original
+\(\mathcal I\)-only acceptable-outcome list, not a silent redefinition of
+that target.
 
-- [ ] **Step 4: Status and commit**
+- [x] **Step 4: Record the split status and verify**
 
-Mark Cell A `PROVED-NL`, `PROVISIONAL-NL`, `COMPUTED`, or `REFUTED`, cite the
-exact evidence, append the decision log, commit, and push.
+Record Cell A as `OPEN` for (G2CS-\(\mathcal I\)) and
+`BRIDGE-PROVED-NL` for (G2CS-\(\mathcal J\)) and the strict-record route.
+The statement keeps both implications and their identical antecedents
+separate.
 
 ### Task 7: Audit Cell B
 
@@ -533,7 +553,9 @@ exact evidence, append the decision log, commit, and push.
 - Modify: `docs/DECISION_LOG.md`
 
 - **Status:** completed out of the original order on 2026-07-27 after a
-  direct closure was found; Cell A remains open.
+  direct closure was found. Cell A is now bridge-closed for
+  (G2CS-\(\mathcal J\)) but remains open for the stronger
+  (G2CS-\(\mathcal I\)).
 
 - [x] **Step 1: Normalize Cell B variables**
 

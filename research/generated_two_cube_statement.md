@@ -160,6 +160,63 @@ P-m=b+j>0,
 which places \(E_m=G\) strictly before \(F_0=F\), and places every member of
 \(\mathcal I\) strictly before \(F_m=H\).
 
+## Bridge states and the full proper pre-completion set
+
+Put
+
+\[
+s=|BT|=b+j.
+\]
+
+The endpoint equalities above and the one-symbol orbit recurrence also fix
+every state in the otherwise omitted bridge from \(G\) to \(F\):
+
+\[
+K_h=S_{t_0+m+h}=LR^2(BT)[0:h]
+\qquad(0\le h\le s).
+\]
+
+Thus
+
+\[
+K_0=G,\qquad K_s=F,
+\]
+
+and \(s>0\). The natural full proper pre-completion set is
+
+\[
+\mathcal J=\{S_t:t_0\le t<t_H\},
+\qquad t_H=t_0+P+m.
+\]
+
+Its decomposition into the three chronological windows is
+
+\[
+\boxed{
+\mathcal J=
+\{E_\ell:0\le\ell\le m\}
+\mathbin{\cup}
+\{K_h:0\le h\le s\}
+\mathbin{\cup}
+\{F_\ell:0\le\ell<m\}.
+}
+\]
+
+The overlapping descriptions at \(G=E_m=K_0\) and
+\(F=K_s=F_0\) denote the same orbit occurrences. Equivalently, a disjoint
+occurrence decomposition uses \(E_0,\ldots,E_m\), then
+\(K_1,\ldots,K_s\), then \(F_1,\ldots,F_{m-1}\). It includes the entire
+proper bridge, includes \(F\), and excludes \(H=F_m=S_{t_H}\). In
+particular,
+
+\[
+\mathcal I\subseteq\mathcal J.
+\]
+
+The executable helper `bridge_inclusive_precompletion_states` mirrors this
+ordered decomposition: it checks both endpoint overlaps, includes each of
+\(G,F\) once, and removes only \(H\).
+
 ### Binary hard-core scope of the sentinel
 
 In the intended binary hard-core application, \(U\in\{2,3\}^m\). The derived
@@ -176,10 +233,10 @@ positive-integer \(U\); even there, the sentinel changes no \(\pi(W)\) for any
 state with \(\kappa(W)\ge2\). Any state with \(\kappa(W)=1\) in such a general
 instance uses the \(|W|\) sentinel by definition.
 
-## Repaired combinatorial synchronization implication
+## Repaired combinatorial synchronization implications
 
-The **Generated Two-Cube Synchronization Lemma** is the following fully
-quantified, presently unproved implication.
+The original, stronger **Generated Two-Cube Synchronization Lemma** is the
+following fully quantified, presently unproved implication.
 
 For every choice of \(L,A,B,T,U,R,q,b,P,j,m,Y\), orbit
 \((S_t)\), and index \(t_0\) satisfying all structural hypotheses and the
@@ -218,7 +275,7 @@ Then
 \boxed{
 \max_{W\in\mathcal I}\pi(W)\ge P.
 }
-\tag{G2CS}
+\tag{G2CS-\mathcal I}
 \]
 
 The standalone no-cube clause is retained in the antecedent rather than
@@ -226,10 +283,29 @@ restated informally as "promotion failure." Although \(R^2T\) visibly ends in
 the square
 \((UT)^2\), that displayed period \(q\) need not be its canonical period.
 
+### Bridge-inclusive target
+
+Keep every structural, actual-generation, and canonical-data antecedent above
+unchanged, but evaluate every proper orbit state rather than only the two
+\(U\)-windows. The separate bridge-inclusive implication is
+
+\[
+\boxed{
+\max_{W\in\mathcal J}\pi(W)\ge P.
+}
+\tag{G2CS-\mathcal J}
+\]
+
+Because \(\mathcal I\subseteq\mathcal J\), this is a weaker implication than
+(G2CS-\(\mathcal I\)): a period-\(P\) witness in the omitted \(G\)-to-\(F\)
+bridge proves only the \(\mathcal J\) version. Introducing \(\mathcal J\)
+does not alter the quantifiers or hypotheses of the stronger target, and
+(G2CS-\(\mathcal I\)) remains open.
+
 ### Strict-record contradiction corollary
 
-The combinatorial implication (G2CS) deliberately does **not** assume record
-minimality. This keeps its antecedent consistent with its conclusion.
+Neither combinatorial implication deliberately assumes record minimality.
+This keeps each antecedent consistent with its conclusion.
 
 For the strict-record application, add the independent orbit hypothesis that
 \(H\) is a completed strict-record square of canonical period \(P\). Precisely,
@@ -245,17 +321,22 @@ require
 \pi(S_t)<P\qquad(0\le t<t_H),
 \]
 
-while \(\pi(H)=P\). Since every \(W\in\mathcal I\) precedes \(H\), strict-record
-availability gives
+while \(\pi(H)=P\). Since every \(W\in\mathcal J\), and hence every
+\(W\in\mathcal I\), precedes \(H\), strict-record availability gives
 
 \[
+\max_{W\in\mathcal J}\pi(W)<P,
+\qquad
 \max_{W\in\mathcal I}\pi(W)<P.
 \]
 
-Once (G2CS) is proved, the two inequalities contradict each other. Therefore
-the stated first-\(3\)-position promotion-failure configuration cannot occur
-at such a strict record. This is a corollary of the open combinatorial lemma,
-not a hypothesis smuggled into its proof.
+Either matching synchronization implication contradicts its corresponding
+strict-record inequality. Therefore a proof of the weaker
+(G2CS-\(\mathcal J\)) is already sufficient to exclude the stated
+first-\(3\)-position promotion-failure configuration at a strict record.
+This is a corollary of a record-free combinatorial statement, not a
+minimality hypothesis smuggled into that statement. It does not prove the
+stronger (G2CS-\(\mathcal I\)).
 
 ### Fully generated strict-record application specialization
 
@@ -292,10 +373,10 @@ the final copy of \(Y\), which already follows from the primitive orbit
 equalities \(G\to H\). In particular, (FG) is a seed-boundary condition, not
 the unqualified inequality \(N\ge2P\).
 
-Candidates counted by the planned bounded extractor must satisfy (FG).
+Candidates counted by the bounded extractor must satisfy (FG).
 Therefore its antecedent count is a subset of the antecedents allowed by the
-general record-free core (G2CS); the extractor does not exhaust arbitrary
-actual occurrences covered by that core.
+general record-free cores; the extractor does not exhaust arbitrary actual
+occurrences covered by either core.
 
 ## Half-open coordinate audit
 
@@ -425,6 +506,12 @@ is what fixes \(\kappa(R^2T)=2\).
   the two cube starts and the \(YBT\), \(U\), and \(UBT\) boundaries.
 - [ ] **Proper pre-completion set:** include \(G=E_m\), include only
   \(F_\ell\) with \(\ell<m\), and exclude \(H=F_m\).
+- [ ] **Target family:** distinguish the stronger two-window family
+  \(\mathcal I\) from the natural full family \(\mathcal J\); a bridge witness
+  proves only (G2CS-\(\mathcal J\)).
+- [ ] **Bridge endpoints:** in \(\mathcal J\), identify
+  \(G=E_m=K_0\) and \(F=K_s=F_0\) once, retain every proper bridge state, and
+  still exclude \(H\).
 - [ ] **Duplicate states:** treat \(\mathcal I\) as a set; multiplicity must
   not affect its maximum.
 - [ ] **Strict-record availability:** use \(\pi(S_t)<P\) for earlier states

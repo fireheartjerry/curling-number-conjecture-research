@@ -389,6 +389,90 @@ Entries are append-only; superseded decisions are marked, not deleted.
   roots through \(q=12\). Its exact `84` retained word-parameter cases all
   satisfy the derived period-\(\delta\) and terminal-square slices. This is a
   bounded index certificate, not the proof.
-- Scope: `PROVED-NL` is a natural-language closure of Cell B only. Cells A
-  and C remain open, so this does not prove G2CS or the Curling Number
+- Scope at this checkpoint: `PROVED-NL` was a natural-language closure of
+  Cell B only; Cells A and C were still open. D-024 later bridge-closes Cell A
+  only for the weaker \(\mathcal J\)/strict-record route. Cell C remains open,
+  so neither checkpoint proves a full G2CS target or the Curling Number
   Conjecture.
+
+## D-023 — Separate the natural full precompletion target from G2CS-I
+
+- Date: 2026-07-27
+- Status: active
+- Decision: preserve the stronger two-window family \(\mathcal I\) and its
+  implication (G2CS-\(\mathcal I\)) unchanged in mathematical content and
+  open in status. Separately define the actual bridge states
+  \[
+  K_h=S_{t_0+m+h}=LR^2(BT)[0:h]\qquad(0\le h\le b+j)
+  \]
+  and the natural full proper precompletion family
+  \[
+  \mathcal J=\{S_t:t_0\le t<t_H\}.
+  \]
+  The new implication (G2CS-\(\mathcal J\)) has exactly the same structural,
+  generation, and canonical-data antecedents and conclusion
+  \(\max_{W\in\mathcal J}\pi(W)\ge P\).
+- Endpoint semantics: \(\mathcal J\) is the union of the early, bridge, and
+  later windows. It identifies \(G=E_m=K_0\) and \(F=K_{b+j}=F_0\), includes
+  every state through \(F_{m-1}\), and excludes \(H=F_m\). The helper
+  `bridge_inclusive_precompletion_states` normalizes supplied states, checks
+  both endpoint overlaps, includes \(G,F\) once, and fails closed on
+  degenerate traces.
+- Quantifier boundary: \(\mathcal I\subseteq\mathcal J\), so the
+  \(\mathcal J\) implication is weaker. A witness in the omitted bridge is
+  not retroactively declared to lie in \(\mathcal I\). This is not quantifier
+  laundering: both targets remain named, their antecedents are identical, and
+  their statuses are tracked independently.
+- Strict-record reason: every state in \(\mathcal J\) still occurs strictly
+  before \(H\). Therefore (G2CS-\(\mathcal J\)) is already sufficient for
+  the intended strict-record contradiction even though it does not prove
+  (G2CS-\(\mathcal I\)).
+
+## D-024 — Close Cell A only through the genuine bridge state
+
+- Date: 2026-07-27
+- Status: `BRIDGE-PROVED-NL`
+- Decision: in external Cell A, the later canonical \(q\)-cube and
+  Fine--Wilf equality endpoint force
+  \[
+  b+j\le q-\gcd(q,b)-1<q.
+  \]
+  Exact \(q\)-periodic coordinates then give
+  \(BT=R[0:b+j]\), make \(B\) a border of \(R\), give
+  \(R[0:j]=R[b:b+j]\), and force \(b<q/2\).
+- Actual-generation step: the first \(q\) labels generated from \(E\) are
+  \(UT\), so
+  \[
+  K=S_{t_0+q}=LR^2T.
+  \]
+  Its next label is \(R[j]=3\). The boundary \(j=0\) contradicts
+  \(\kappa(G)=2\) immediately; otherwise \(t_G<t_0+q<t_F\), so \(K\) is a
+  genuine proper bridge state.
+- Proof result: under the temporary assumptions
+  \(\pi(E),\pi(K)<P\), a canonical-period overlap at \(K\) first forces
+  \(\pi(K)=q\). Writing \(C=UT\), the states then end in \(C^3\) at \(K\)
+  and \(C^2\) at \(E\). Fine--Wilf on \(C^2\) would make
+  \(t=\pi(E)-q\) a period of \(C\) with \(0<t<b\). The audited
+  Border--conjugate lemma would give a square suffix of \(R\), contradicting
+  \((\kappa(G),\pi(G))=(2,q)\). Therefore
+  \[
+  \max\{\pi(E),\pi(S_{t_0+q})\}\ge P.
+  \]
+- Border--conjugate audit: the preserved four-case proof now quantifies the
+  full period-extension range, writes both Case 4 index equalities
+  explicitly, meets the overlap Fine--Wilf threshold at its exact endpoint,
+  glues the two periodic pieces through an overlap of at least one full gcd
+  block, and derives \(2g\le b\) before asserting the terminal square.
+  `tests/test_border_conjugate.py` independently checks every binary root
+  through length `15` and every ternary root through length `11`, with every
+  integer \((b,j,t)\) satisfying the lemma hypotheses. It retains exactly
+  `1776` binary plus `690` ternary tuples (`2466` total) and finds zero
+  failures.
+- Plan deviation: actual chronology supplied the decisive intermediate state,
+  so the planned broad static/paired survivor search was replaced by the
+  exhaustive load-bearing auxiliary-lemma audit. The resulting witness may be
+  \(K\notin\mathcal I\), so Cell A is `OPEN` for
+  (G2CS-\(\mathcal I\)) and `BRIDGE-PROVED-NL` only for
+  (G2CS-\(\mathcal J\)) and the strict-record route. Cell C remains open.
+  This does not prove either full synchronization statement, complete bridge
+  promotion, or the Curling Number Conjecture.

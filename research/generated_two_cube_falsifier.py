@@ -655,6 +655,37 @@ def synchronization_evaluation_states(
     return early + later[:-1]
 
 
+def bridge_inclusive_precompletion_states(
+    early_states: Sequence[Sequence[int]],
+    bridge_states: Sequence[Sequence[int]],
+    later_states: Sequence[Sequence[int]],
+) -> tuple[Word, ...]:
+    """Return the ordered full pre-completion trace from E through before H.
+
+    The supplied traces overlap at G and F. Those endpoint occurrences are
+    included once, every proper G-to-F bridge state is retained, and the
+    terminal H state is excluded.
+    """
+    early = tuple(tuple(state) for state in early_states)
+    bridge = tuple(tuple(state) for state in bridge_states)
+    later = tuple(tuple(state) for state in later_states)
+
+    if len(early) < 2:
+        raise ValueError("early_states must contain E through G")
+    if len(bridge) < 2:
+        raise ValueError("bridge_states must contain G through F")
+    if len(later) < 2:
+        raise ValueError("later_states must contain F through H")
+    if any(not state for trace in (early, bridge, later) for state in trace):
+        raise ValueError("state traces must contain only nonempty states")
+    if early[-1] != bridge[0]:
+        raise ValueError("bridge start must equal the early terminal state G")
+    if bridge[-1] != later[0]:
+        raise ValueError("later start must equal the bridge terminal state F")
+
+    return early + bridge[1:] + later[1:-1]
+
+
 def scan_binary_seeds(max_seed_length: int, step_limit: int) -> ScanSummary:
     """Audit every seed over {2,3} in deterministic length/lexical order."""
     if max_seed_length < 0:

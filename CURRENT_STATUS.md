@@ -4,10 +4,18 @@
 
 There is no complete proof or counterexample.
 
-The newest external work reduces the immediate square-bridge problem to a
-Generated Two-Cube Synchronization statement. That statement is still open
-and, as written in the mega-ledger, needs a quantifier repair before it can be
-load-bearing.
+The Generated Two-Cube statement is now repaired and split into two explicit
+targets with identical antecedents:
+
+- the stronger two-window target (G2CS-\(\mathcal I\));
+- the weaker natural full-precompletion target
+  (G2CS-\(\mathcal J\)), where
+  \(\mathcal J=\{S_t:t_0\le t<t_H\}\).
+
+Cell B is `PROVED-NL` for both. Cell A is `BRIDGE-PROVED-NL` for the
+\(\mathcal J\)/strict-record route but remains open for the stronger
+\(\mathcal I\)-only target. Cell C remains open for both. These are
+natural-language proof statuses, not formal verification.
 
 ## Strongest current local picture
 
@@ -41,24 +49,36 @@ At a first promotion failure, the current ledger derives
 Every `2`-position promotes. Therefore a first failure must be a `3 -> 2`
 configuration with two context-dependent cube witnesses.
 
-## Immediate open cells
+In external Cell A, actual chronology supplies the genuine bridge state
 
-- External later cube with `r=q`.
-- External later cube with `q<r<P`.
-- Internal later cube.
+\[
+K=S_{t_0+q}=LR^2T,\qquad t_G<t_0+q<t_F.
+\]
 
-The generated-block hypothesis is essential: static word equations admit
-explicit impostors.
+The repaired Cell A proof establishes
 
-## Required specification repair
+\[
+\max\{\pi(E),\pi(K)\}\ge P.
+\]
 
-The phrase “an intermediate canonical period at least `P` during one of the
-generated copies of `U`” must exclude the terminal completed state `H`, whose
-canonical period is `P` by hypothesis. Otherwise the synchronization statement
-is tautological.
+This is enough for strict-record contradiction because \(K\) precedes \(H\),
+but \(K\notin\mathcal I\); it therefore does not prove the stronger
+\(\mathcal I\)-only statement. The load-bearing Border--conjugate lemma now
+has a complete four-case natural-language proof and an independent exhaustive
+index certificate with `1776` binary plus `690` ternary retained tuples and
+zero failures.
 
-Any formal statement must explicitly list the proper prefixes included on
-`E -> G` and `F -> H`, and state whether `G` is included and `H` is excluded.
+## Immediate open work
+
+- Internal later cube (Cell C) for both synchronization targets.
+- External later cube with `r=q` (Cell A) only for the stronger
+  \(\mathcal I\)-only target.
+
+The generated-block hypothesis remains essential: static word equations admit
+explicit impostors. The repaired definitions include \(G\), exclude \(H\),
+and distinguish the two-window family \(\mathcal I\) from the full proper
+precompletion family \(\mathcal J\), so the terminal value
+\(\pi(H)=P\) cannot make either target tautological.
 
 ## Global work remaining even after bridge promotion
 
@@ -78,4 +98,3 @@ long prefix ends in a suffix of exponent at least \(\varphi^2\). The project
 still must audit each application against the theorem's exact one-sided-prefix
 hypotheses before using it to eliminate record exponents `K >= 4` or derive
 infinitely many generated `2`s.
-
