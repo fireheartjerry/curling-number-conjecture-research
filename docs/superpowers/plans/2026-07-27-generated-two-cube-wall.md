@@ -107,8 +107,8 @@ If \(R^2T\) has no cube suffix, then
 
 List all hypotheses: \(R=AB=TU\), \(0<b<q\), \(P=q+b\), \(Y=BR=BTU\),
 the primitive full-state orbit equalities, \(\kappa(E)=\kappa(F)=3\),
-\(\kappa(G)=2\) with \(\pi(G)=q\), \(\kappa(R^2T)=2\), and \(H\) a strict
-completed square state with \(\kappa(H)=2\), \(\pi(H)=P\). State the
+\(\kappa(G)=2\) with \(\pi(G)=q\), \(\kappa(R^2T)=2\), and \(H\) a completed
+square state with \(\kappa(H)=2\), \(\pi(H)=P\). State the
 strict-record minimality hypothesis separately as a contradiction corollary;
 do not bake it into the record-free combinatorial core. Also state the fully
 generated specialization using
