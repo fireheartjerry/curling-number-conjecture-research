@@ -637,20 +637,25 @@ boundary \(s=2r,j=r\), derive
 b=j=r,\quad R=BQB,\quad T=B,\quad U=QB,\quad q>2r,
 \]
 then split the early canonical period into exact \(p>q\) and \(p<q\)
-normal forms. In the \(p>q\) branch, prove that every proper later-window
-canonical pair is already determined by the standalone suffix
-\(Z_\ell=X^3UB^2U[0:\ell]\). Preserve the non-boundary cases and the
-\(p<q\) frontier as open; the bounded scan does not prove that the boundary
-is universal.
+normal forms. In the \(p>q\) branch, prove the all-continuation localization
+lemma: every proper state with binary output and canonical period below
+\(P\) has the same canonical pair as
+\(X^3(UB^2U)[0:v]\). Track its scope separately: \(\mathcal I\) localizes
+only its two sampled windows, whereas \(\mathcal J\) localizes the entire
+proper episode. Derive the three-case first-\(2\)/first-mismatch corollary.
+Preserve the non-boundary cases and the \(p<q\) frontier as open; the bounded
+scan does not prove that the boundary is universal.
 
 - [ ] **Step 5: Close the remaining boundary word obstruction**
 
-For \(p>q\), prove or refute that the forced word \(X=B[r-t:r]UB\) cannot
-replay all of \(U\) through the standalone \(Z_\ell\) while every proper
-canonical period remains below \(P\). The period bound is essential: a
-\((q,r,P,p)=(9,3,12,11)\) local model replays \(U\) but reaches period \(P\)
-at the final proper phase. Separately resolve the exact \(p<q\) shifted-border
-and frontier equations.
+For \(p>q\), close the target-specific word residuals. For
+\(\mathcal I\), exclude the forced autonomous early and later sampled
+windows while leaving its bridge interior uncapped. For \(\mathcal J\),
+exclude a fully autonomous \(UB^2U\) episode whose proper canonical periods
+all remain below \(P\) and whose endpoint has pair \((2,P)\). The checked
+\(q=10,r=4,p=13\) near-model shows that replay of both sampled windows alone
+does not force the required \(q,P\) endpoint scales. Separately resolve the
+exact \(p<q\) shifted-border and frontier equations.
 
 - [ ] **Step 6: Prove or refute Cell C**
 

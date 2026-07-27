@@ -1261,165 +1261,309 @@ Since \(E=LW\) ends in \(X^3\), the early left context is not free:
 
 This frontier equation applies to both \(p\)-branches.
 
-### 5. Dynamic localization in the branch \(p>q\)
+### 5. All-continuation localization in the branch \(p>q\)
 
-Write
-
-\[
-E=\mathcal D X^3
-\]
-
-and, for \(0\le\ell\le m=|U|\), define the standalone suffix
+The previous early- and later-window length estimates can be replaced by one
+stronger lemma. Put
 
 \[
-Z_\ell=X^3\,U\,B^2\,U[0:\ell].
+\mathcal C=UB^2U,\qquad |\mathcal C|=2q,
 \tag{C.26}
 \]
 
-Because \(T=B\), the actual later states are exactly
+write \(E=\mathcal D X^3\), and define
 
 \[
-F_\ell=\mathcal D Z_\ell.
-\]
-
-Now use the binary hard-core scope and the negated conclusion. For every
-proper later-window phase \(0\le\ell<m\),
-
-\[
-\kappa(F_\ell)=U[\ell]\in\{2,3\},
-\qquad
-h_\ell:=\pi(F_\ell)<P.
+A_v=X^3\mathcal C[0:v],\qquad
+S_v=\mathcal D A_v
+\qquad(0\le v\le2q).
 \tag{C.27}
 \]
 
-Every label-\(2\) phase is context-free. Indeed,
-\[
-|Z_\ell|=3p+P+\ell>2P,
-\]
-whereas its canonical square at \(F_\ell\) has length
-\(2h_\ell\le2P-2\). That square lies wholly inside \(Z_\ell\), so
-\(\kappa(Z_\ell)\ge2\); the suffix relation
-\(Z_\ell\preceq F_\ell\) gives the reverse bound.
+These are the actual consecutive states from \(S_0=E\) through
+\(S_{2q}=H\).
 
-At a label-\(3\) phase, a canonical cube that genuinely needs letters from
-\(\mathcal D\) must satisfy
+**All-continuation localization lemma.** Let \(0\le v<2q\), and suppose
 
 \[
-3h_\ell>|Z_\ell|.
+\kappa(S_v)=k\in\{2,3\},\qquad h=\pi(S_v)<P.
 \]
 
-Since \(h_\ell\le P-1\), such a left-context rescue requires the strict
-inequality
-
-\[
-\boxed{3p+\ell<2P-3.}
-\tag{C.28}
-\]
-
-In the present branch, (C.11) and \(p>q\) give
-
-\[
-3p>3q>2(q+r)=2P,
-\]
-
-so (C.28) is impossible. Hence every proper \(F\)-window phase is
-context-free:
-
-\[
-\boxed{\kappa(Z_\ell)=U[\ell]\qquad(0\le\ell<m).}
-\tag{C.29}
-\]
-
-The canonical periods agree as well. The global canonical
-\(h_\ell\)-witness has just been shown to lie inside \(Z_\ell\), so
-\(\pi(Z_\ell)\le h_\ell\). Conversely, every maximizing suffix power of
-\(Z_\ell\) is also a suffix power of \(F_\ell\), so
-\(h_\ell\le\pi(Z_\ell)\). Therefore
+Then
 
 \[
 \boxed{
-(\kappa(Z_\ell),\pi(Z_\ell))
+(\kappa(A_v),\pi(A_v))
 =
-(\kappa(F_\ell),\pi(F_\ell)),
-\qquad 0\le\ell<m.
+(\kappa(S_v),\pi(S_v)).
 }
+\tag{C.28}
+\]
+
+For \(k=2\), the canonical square has length
+\[
+2h<2P<3p\le |A_v|,
+\]
+where \(3p>2P\) follows from \(p>q>2r\). It therefore lies wholly in
+\(A_v\). The suffix relation gives
+\(\kappa(A_v)\le\kappa(S_v)=2\), so the exponents agree.
+
+For \(k=3\), suppose instead that the canonical \(h\)-cube crosses the left
+edge of \(A_v\). It then contains all of \(A_v\), in particular \(X^3\),
+and
+
+\[
+3h>|A_v|\ge3p,
+\]
+
+so \(h>p\). On the other hand, \(r<q/2\) and \(p>q\) give
+
+\[
+p<h<P=q+r<2p.
+\tag{C.29}
+\]
+
+The factor \(X^3\) has periods \(p\) and \(h\). Put
+\(g=\gcd(p,h)\). Since \(h<2p\),
+
+\[
+3p\ge p+h-g,
+\]
+
+so Fine--Wilf gives period \(g\) on \(X^3\). Moreover \(g<p\):
+otherwise \(p\mid h\), but there is no multiple of \(p\) strictly between
+\(p\) and \(2p\). Because \(g\mid p\), the length-\(p\) word \(X\) is then
+a proper \(g\)-power, contradicting the already proved primitivity of \(X\).
+Thus the canonical cube cannot cross; it too lies wholly in \(A_v\), and the
+full and local exponents agree.
+
+In either case, the global canonical \(h\)-witness is a local maximizing
+witness, so \(\pi(A_v)\le h\). Conversely, every local maximizing suffix
+power is also a suffix power of \(S_v\), so \(h\le\pi(A_v)\). This proves
+the complete canonical-pair equality (C.28), not only equality of curling
+numbers.
+
+The target scopes must remain separate. Under the negation of
+(G2CS-\(\mathcal I\)), the period cap guarantees the lemma's hypotheses on
+
+\[
+E_\ell=S_\ell\quad(0\le\ell\le m),
+\qquad
+F_\ell=S_{P+\ell}\quad(0\le\ell<m).
 \tag{C.30}
 \]
 
-The same contained-square argument at \(\ell=m\) gives
-\((\kappa(Z_m),\pi(Z_m))=(2,P)\), using the canonical data at \(H\).
-
-There is a parallel, but weaker, early-window localization. Put
+This includes \(G=E_m\) and every proper \(F\)-window state. It does **not**
+cap, and therefore does not guarantee localization of, the omitted interior
+bridge states
 
 \[
-A_\ell=X^3U[0:\ell],
-\qquad E_\ell=\mathcal D A_\ell
-\qquad(0\le\ell\le m).
+S_v\qquad(m<v<P).
 \]
 
-For a proper phase \(0\le\ell<m\), the negation gives
-\(\pi(E_\ell)<P\). Since \(3p>2P\), every label-\(2\) canonical square is
-contained in \(A_\ell\), so its full and local canonical pairs agree. A
-label-\(3\) canonical cube can use letters from \(\mathcal D\) only if
+Under the negation of (G2CS-\(\mathcal J\)), every proper state from \(E\)
+through the state immediately before \(H\) has period below \(P\). Since the
+actually generated continuation \(\mathcal C\) is binary, (C.28) applies at
+every such state:
 
 \[
-3p+\ell<3P-3,
-\]
-
-or, putting \(a_0=P-p=r-t>0\),
-
-\[
-\boxed{\ell<3a_0-3.}
+\boxed{
+(\kappa(A_v),\pi(A_v))
+=
+(\mathcal C[v],\pi(S_v)),
+\qquad
+\pi(A_v)<P
+\quad(0\le v<2q).
+}
 \tag{C.31}
 \]
 
-Whenever (C.31) fails, the same two-direction suffix argument used for
-(C.30) makes the complete canonical pair at \(E_\ell\) context-free. This
-does **not** localize every early phase when \(a_0>1\). It does show that
-\(a_0=1\) forbids every left-context rescue in the early window.
+Thus the entire \(UB^2U\) episode is autonomous under the
+\(\mathcal J\)-negation. Finally, the known period-\(P\) square at \(H\) is
+also contained in \(A_{2q}\), since
+\[
+|A_{2q}|=3p+2q>2P.
+\]
+Every local suffix power persists in \(H\). Hence
 
-### 6. Exact remaining word obstruction
+\[
+\boxed{(\kappa(A_{2q}),\pi(A_{2q}))=(2,P).}
+\tag{C.32}
+\]
 
-The \(p>q\) boundary branch is now reduced to the following unproved,
-word-only statement:
+#### First-mismatch corollary
 
-> **Local replay wall (open).** There is no tuple with
-> \(q>2r>0\), \(P=q+r\), \(R=BQB\), \(|B|=r\),
-> \(B[0]=2\), \(Q[0]=3\), \(U=QB\),
-> \(p=q+t\), \(r/2<t<r\), and
-> \(X=B[r-t:r]UB\), satisfying the inherited canonical endpoint
-> conditions, for which
-> \[
-> \kappa(Z_\ell)=U[\ell],\qquad
-> \pi(Z_\ell)<P\qquad(0\le\ell<m),
-> \]
-> and \((\kappa(Z_m),\pi(Z_m))=(2,P)\).
+The autonomous early window gives a further exact restriction under the
+negation of either target. Put
 
-The period cap is load-bearing. Dropping it admits the explicit local model
+\[
+a=P-p=r-t,
+\]
+
+and let
+
+\[
+z=\min\{\ell:U[\ell]=2\}.
+\]
+
+This index exists and satisfies \(1\le z<m\): \(U[0]=3\), while
+\(U=QB\) contains \(B[0]=2\). Compare \(X[0:m]\) with \(U\). If there is
+no mismatch before \(z\), then \(X[0:z]=U[0:z]\). Writing
+\(X=C_0D_0\) with \(C_0=X[0:z]\), the local state at phase \(z\) would be
+
+\[
+A_z=X^3X[0:z]
+    =(C_0D_0)^3C_0
+    =C_0(D_0C_0)^3.
+\]
+
+It would have curling number at least three. But (C.28) applies to the
+early state \(E_z=S_z\), while actual generation requires
+\(\kappa(E_z)=U[z]=2\), a contradiction. Thus
+there is a first mismatch \(h\), and it satisfies
+
+\[
+h<z,\qquad U[0:h+1]=3^{h+1},\qquad X[h]=2.
+\tag{C.33}
+\]
+
+Let \(d\) be the length of the terminal run of \(3\)'s in \(B\). The
+later state \(F_z\) ends in that run followed by the prefix
+\(U[0:z]=3^z\), so it ends in \(3^{d+z}\). Paired generation gives
+\(\kappa(F_z)=U[z]=2\), and hence
+
+\[
+d+z\le2.
+\tag{C.34}
+\]
+
+Since \(z\ge1\) and \(0\le h<z\), only three cases remain:
+
+\[
+\begin{array}{c|c|c}
+(z,h)&\text{start of }U&\text{forced data}\\
+\hline
+(1,0)&32&B[a]=2,\ d\le1,\\
+(2,0)&332&B[a]=2,\ B\text{ ends in }2,\\
+(2,1)&332&B[a:a+2]=32,\ B\text{ ends in }2.
+\end{array}
+\tag{C.35}
+\]
+
+For the last row, \(h=1\) gives \(X[0]=U[0]=3\) and \(X[1]=2\);
+the initial block \(B[a:r]\) of \(X\) has length
+\(t>r/2\), hence integer \(t\ge2\), so these are exactly the two
+displayed coordinates of \(B\).
+
+### 6. Exact remaining word obstructions
+
+The stronger localization still does not close the \(p>q\) boundary branch.
+It gives different exact word residuals for the two targets.
+
+For the stronger \(\mathcal I\)-only target, the forced tuple
+
+\[
+q>2r>0,\quad P=q+r,\quad |B|=r,\quad
+R=BQB,\quad U=QB,\quad B[0]=2,\quad Q[0]=3,
+\]
+
+\[
+p=q+t,\quad r/2<t<r,\quad X=B[r-t:r]UB,
+\]
+
+with the inherited standalone conditions
+
+\[
+(\kappa(R^2),\pi(R^2))=(2,q),\qquad
+\kappa(R^2B)=2,\qquad
+(\kappa(BRB^2),\pi(BRB^2))=(3,r),
+\]
+
+must realize
+
+\[
+\begin{gathered}
+(\kappa(A_0),\pi(A_0))=(3,p),\qquad
+(\kappa(A_m),\pi(A_m))=(2,q),\\
+(\kappa(A_P),\pi(A_P))=(3,r),\qquad
+(\kappa(A_{2q}),\pi(A_{2q}))=(2,P),\\
+\kappa(A_\ell)=\kappa(A_{P+\ell})=U[\ell],\\
+\pi(A_\ell)<P,\qquad\pi(A_{P+\ell})<P
+\qquad(0\le\ell<m).
+\end{gathered}
+\tag{C.36}
+\]
+
+It remains to prove that no forced boundary word satisfies (C.36), or to
+extract the required period-\(P\) witness. The interior bridge is deliberately
+absent from the period inequalities in (C.36); adding it would silently
+replace the stronger target by \(\mathcal J\).
+
+For the bridge-inclusive target, the exact open word wall is stronger:
+prove that no forced boundary word can satisfy the autonomous episode
+(C.31) together with the endpoint (C.32). This is now a finite-word
+dynamical obstruction with no left-context variable, but it remains
+unproved.
+
+The earlier \(F\)-window-only replay claim required its period cap. The
+sharp local model
 
 \[
 \begin{gathered}
 q=9,\quad r=3,\quad P=12,\quad t=2,\quad p=11,\\
 B=232,\quad U=322232,\quad R=232322232,\\
-X=32322232232.
+X=32322232232
 \end{gathered}
 \]
 
-For \(\ell=0,\ldots,5\), its exact local \(F\)-window canonical pairs are
+has local \(F\)-window pairs
 
 \[
 (3,3),(2,2),(2,2),(2,1),(3,1),(2,12),
 \]
 
-whose exponents replay \(U\), and \(Z_m\) has pair \((2,12)\). The final
-proper phase already has period \(P\), so this is not a survivor of the
-negated conclusion. It is also not a full G2CS antecedent:
-\(\kappa(X^3U[0:1])=3\ne U[1]=2\). The model is a sharpness certificate,
-not a counterexample.
+whose exponents replay \(U\), and its local terminal pair is \((2,12)\).
+It is excluded twice from the exact residual: the final proper
+\(F\)-window period is already \(P\), and
+\(\kappa(A_1)=\kappa(X^3U[0:1])=3\ne U[1]=2\). By (C.28), no omitted left
+context can repair that early mismatch. The model remains a sharpness
+certificate for the older \(F\)-only claim, not a G2CS counterexample.
+Equivalently, its first \(2\) has \(z=1\), but
+\(a=r-t=1\) and \(B[a]=X[0]=3\), contradicting the first row of (C.35).
 
-The local replay wall remains unproved, the \(p<q\) frontier equation
-(C.25) remains unresolved, and the non-boundary regions of (C.5)--(C.6)
-remain open. There is also no transfer of the final Cell A argument: here
+The first-mismatch trichotomy is not itself a contradiction. The
+definition-first near-model
+
+\[
+\begin{gathered}
+q=10,\quad r=4,\quad P=14,\quad t=3,\quad p=13,\\
+B=2232,\quad Q=32,\quad U=322232,\\
+R=2232322232,\quad X=2323222322232
+\end{gathered}
+\]
+
+has \(z=1\), \(a=1\), and \(B[a]=X[0]=2\), as allowed by the first row.
+Its local early-window pairs are
+
+\[
+(3,13),(2,2),(2,2),(2,1),(3,1),(2,6),
+\]
+
+and its local later-window pairs are
+
+\[
+(3,4),(2,2),(2,2),(2,1),(3,1),(2,6).
+\]
+
+Both sampled windows replay \(U\), and all twelve displayed periods are
+below \(P\). However its local \(G\)- and \(H\)-scale pairs are
+\((2,6)\), not \((2,q)\) and \((2,P)\). It is therefore a sharpness warning
+that the endpoint scales in (C.36) remain load-bearing, not a survivor or
+counterexample.
+
+The two word walls above remain unproved, as do the \(p<q\) frontier equation
+(C.25) and the non-boundary regions of (C.5)--(C.6). There is also no
+transfer of the final Cell A argument: here
 \[
 E=LRT=LT(UT)
 \]
@@ -1441,9 +1585,10 @@ Among those `130`, the certificate retains `13` possible \(p\)-periods
 meeting (C.15) and \(p\ne q\): `7` in the \(p>q\) branch and `6` in the
 \(p<q\) branch. It checks (C.16)--(C.25) directly in every retained tuple.
 The same test pins the period-\(P\) sharpness model above and verifies that it
-fails the early replay. These nonzero bounded counts are index and algebra
-checks only; they are **not a proof** of the universal deductions or of the
-open local replay wall.
+fails the early replay. It also pins the \(q=10\) near-model's two exact
+six-state local timelines and its incorrect period-\(6\) endpoint scales.
+These nonzero bounded counts are index and algebra checks only; they are
+**not a proof** of the universal deductions or of either open word wall.
 
 ### 8. Equality-first exhaustive engine
 
@@ -1458,7 +1603,7 @@ z-b,&b\le z<P,\\
 q-b+z-P,&P\le z<P+b,\\
 z-P-b,&P+b\le z<N.
 \end{cases}
-\tag{C.32}
+\tag{C.37}
 \]
 
 The executable search first unions

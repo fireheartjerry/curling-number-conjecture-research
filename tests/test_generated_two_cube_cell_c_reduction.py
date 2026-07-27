@@ -197,3 +197,59 @@ def test_p_greater_q_local_replay_model_needs_the_period_cap():
     # disagrees at ell=1.
     assert _canonical_witness(X * 3 + U[:1]) == (3, p)
     assert U[1] == 2
+
+
+def test_first_mismatch_near_model_needs_the_endpoint_scales():
+    """Both sampled windows can replay while the endpoint periods are wrong."""
+
+    B = tuple(map(int, "2232"))
+    Q = tuple(map(int, "32"))
+    U = Q + B
+    R = B + Q + B
+    q, r, t = 10, 4, 3
+    p = q + t
+    P = q + r
+    a = r - t
+    X = B[a:] + U + B
+    continuation = U + B * 2 + U
+
+    assert U == tuple(map(int, "322232"))
+    assert X == tuple(map(int, "2323222322232"))
+    assert U.index(2) == 1
+    assert X[0] == B[a] == 2
+
+    early_pairs = tuple(
+        _canonical_witness(X * 3 + U[:ell])
+        for ell in range(len(U))
+    )
+    later_pairs = tuple(
+        _canonical_witness(X * 3 + continuation[: P + ell])
+        for ell in range(len(U))
+    )
+
+    assert tuple(exponent for exponent, period in early_pairs) == U
+    assert tuple(exponent for exponent, period in later_pairs) == U
+    assert early_pairs == (
+        (3, p),
+        (2, 2),
+        (2, 2),
+        (2, 1),
+        (3, 1),
+        (2, 6),
+    )
+    assert later_pairs == (
+        (3, r),
+        (2, 2),
+        (2, 2),
+        (2, 1),
+        (3, 1),
+        (2, 6),
+    )
+    assert all(period < P for exponent, period in early_pairs + later_pairs)
+    assert _canonical_witness(R * 2 + B) == (2, r)
+    assert later_pairs[0] == (3, r)
+
+    # It is not a G2CS survivor: the local endpoint scales are 6 rather than
+    # the required q=10 and P=14.
+    assert _canonical_witness(R * 2) == (2, 6)
+    assert _canonical_witness(X * 3 + continuation) == (2, 6)

@@ -682,3 +682,85 @@ Entries are append-only; superseded decisions are marked, not deleted.
   for the Cell C local-start scan and
   `C461FF476D8F274C1203864A06B2C16F0312B398F19A71F01310C4DF4EB2B24F`
   for the fully generated strict-record scan.
+
+## D-029 — Localize the full \(p>q\) continuation
+
+- Date: 2026-07-27
+- Status: `PROVED-NL` localization; Cell C remains `OPEN`
+- Supersession boundary: D-028's separate early and later rescue inequalities
+  remain valid, but they are no longer the strongest available statement.
+  This entry supersedes only that dynamic-localization component; D-028's
+  universal inequalities, boundary form, period branches, computations, and
+  open-status warnings remain active.
+- Decision: on the simultaneous boundary in the \(p>q\) branch, put
+  \[
+  \mathcal C=UB^2U,\qquad
+  A_v=X^3\mathcal C[0:v],\qquad
+  S_v=\mathcal D A_v.
+  \]
+  For any proper phase with binary output
+  \(k=\kappa(S_v)\in\{2,3\}\) and canonical period
+  \(h=\pi(S_v)<P\), the full and local canonical pairs agree.
+- Proof: for \(k=2\), the canonical square has
+  \(2h<2P<3p\le|A_v|\), so it is local. If a canonical \(h\)-cube for
+  \(k=3\) crossed the left edge of \(A_v\), then
+  \(p<h<P<2p\) and \(X^3\) would have periods \(p,h\).
+  Fine--Wilf gives period \(\gcd(p,h)<p\) on \(X^3\); because the gcd
+  divides \(p\), this makes \(X\) a proper power, contradicting its
+  primitivity. Once a global maximizing witness is local, the canonical
+  periods agree in both directions because every local suffix power also
+  persists in the full state.
+- Target scope: under the \(\mathcal I\)-negation, its period cap guarantees
+  localization of every \(E_\ell\), including \(G=E_m\), and every proper
+  \(F_\ell\), but not the omitted bridge interior. Under the
+  \(\mathcal J\)-negation, it localizes every proper state from \(E\)
+  through the state before \(H\); the entire \(UB^2U\) continuation is
+  autonomous. The endpoint also localizes to
+  \[
+  (\kappa(A_{2q}),\pi(A_{2q}))=(2,P).
+  \]
+  These scopes are recorded separately and are not interchangeable.
+- First-mismatch corollary: let
+  \(a=P-p=r-t\), let \(z\) be the first index with \(U[z]=2\), and let
+  \(h\) be the first mismatch between \(X[0:m]\) and \(U\). Autonomous
+  early replay gives
+  \[
+  h<z,\qquad U[0:h+1]=3^{h+1},\qquad X[h]=2.
+  \]
+  If \(d\) is the terminal run length of \(3\)'s in \(B\), then \(F_z\)
+  ends in \(3^{d+z}\) while \(\kappa(F_z)=2\), so \(d+z\le2\).
+  Exactly three cases remain:
+  \[
+  \begin{array}{c|c}
+  (z,h)&\text{forced data}\\
+  \hline
+  (1,0)&U\text{ starts }32,\ B[a]=2,\\
+  (2,0)&U\text{ starts }332,\ B[a]=2,\ B\text{ ends }2,\\
+  (2,1)&U\text{ starts }332,\ B[a:a+2]=32,\ B\text{ ends }2.
+  \end{array}
+  \]
+- Sharpness models: D-028's \(q=9\) local \(F\)-replay model is now also
+  eliminated globally by the first-mismatch corollary: it has \(z=1\) but
+  \(X[0]=B[a]=3\). Conversely, the independently checked
+  \[
+  q=10,\ r=4,\ P=14,\ t=3,\ p=13,\quad
+  B=2232,\ Q=32
+  \]
+  near-model replays both sampled \(U=322232\) windows with every displayed
+  period below \(P\). Its local \(G\)- and \(H\)-scale periods are both
+  \(6\), not \(q=10\) and \(P=14\). It is a warning that the endpoint
+  scales remain essential, not a G2CS survivor.
+- Exact open walls: for \(\mathcal I\), exclude the forced local early and
+  later window pairs while respecting the uncapped bridge interior. For
+  \(\mathcal J\), exclude the fully autonomous \(UB^2U\) episode with all
+  proper periods below \(P\) and endpoint pair \((2,P)\). The \(p<q\)
+  branch and non-boundary Cell C placements also remain open. No
+  synchronization theorem, bridge-promotion theorem, or Curling Number
+  Conjecture conclusion is promoted.
+- Verification: the focused reduction plus Cell C search suites pass `12`
+  tests and the full repository passes `108`. Both authoritative scans remain
+  byte-identical to their preserved outputs, with unchanged SHA-256 hashes
+  `F6597BD5D75455F3E2D354090308C57B310433A601AB0A9C3B7DC6C691166D37`
+  and
+  `C461FF476D8F274C1203864A06B2C16F0312B398F19A71F01310C4DF4EB2B24F`,
+  respectively.
