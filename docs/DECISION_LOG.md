@@ -581,3 +581,104 @@ Entries are append-only; superseded decisions are marked, not deleted.
   tests but must be explicit before the Fine--Wilf reduction and the evidence
   summary can be read without importing hidden premises or overstating
   independent verification.
+
+## D-028 — Sharpen Cell C without promoting the remaining word wall
+
+- Date: 2026-07-27
+- Status: `PROVED-NL` reductions; Cell C remains `OPEN`
+- Universal reduction: the copied \(B\)-block lies inside the internal
+  \(r\)-cube. If \(b\ge2r\), it contains an \(r\)-square suffix ending at
+  \(G\), contradicting \((\kappa(G),\pi(G))=(2,q)\) and \(r<q\).
+  Therefore \(b<2r\). If \(j=0\), the canonical \(r\)-cube and the suffix
+  \(B^2\) of \(F\) overlap in
+  \[
+  M_0=\min(3r,2b)\ge r+b-\gcd(r,b).
+  \]
+  Fine--Wilf gives the proper gcd period on an overlap of at least four gcd
+  blocks, contradicting \(\kappa(F)=3\). Therefore \(j>0\).
+- Simultaneous-boundary reduction: this does not assert that every Cell C
+  instance lies on the boundary. Under the additional equalities
+  \(s=2r,j=r\), one has
+  \[
+  b=j=r,\qquad R=BQB,\qquad T=B,\qquad U=QB,\qquad q>2r,
+  \]
+  with \(B[0]=2\), \(Q[0]=3\), and the later canonical cube exactly
+  \(B^3\).
+- Early-cube reduction: under the selected synchronization negation
+  \(p=\pi(E)<P\), put \(W=RB\). Then \(W\) has periods \(p,q\),
+  \(3p>P\), \(p\ne q\),
+  \[
+  r<p-\gcd(p,q),\qquad p>r+\gcd(p,r).
+  \]
+  The endpoint \(\gcd(p,r)=r\) is not discarded: the contrary
+  Fine--Wilf threshold forces \(p=2r\), so the canonical root is
+  \(X=B^2\) and \(E\) ends in \(B^6\).
+- Exact branches: if \(p=q+t>q\), then
+  \[
+  r/2<t<r,\quad B\text{ has period }t,\quad
+  X=B[r-t:r]UB.
+  \]
+  If \(p=q-d<q\), then
+  \[
+  p>q/2,\quad R=Z\,Z[0:d],\quad
+  R[d:d+r]=B=R[0:r]=R[q-r:q],
+  \]
+  \[
+  X=R[d+r:q]B,\qquad d<r\Longrightarrow d>r/2.
+  \]
+  There is no claim that \(d<r\) always holds. In both branches, with
+  \(\eta=3p-P>0\), the early context obeys the exact frontier equation
+  \(\operatorname{suf}_\eta(L)W=X^3\).
+- Dynamic reduction in the \(p>q\) branch: writing
+  \(E=\mathcal D X^3\) and
+  \(Z_\ell=X^3UB^2U[0:\ell]\), a label-\(3\) witness at
+  \(F_\ell=\mathcal D Z_\ell\) can require left context only if
+  \[
+  3p+\ell<2P-3.
+  \]
+  But \(q>2r\) and \(p>q\) give \(3p>2P\). Every proper \(F\)-window
+  canonical pair is therefore context-free:
+  \[
+  (\kappa(Z_\ell),\pi(Z_\ell))
+  =(\kappa(F_\ell),\pi(F_\ell)),\qquad0\le\ell<m.
+  \]
+  For the early local suffix
+  \(A_\ell=X^3U[0:\ell]\), every label-\(2\) phase is likewise local, while
+  a label-\(3\) left-context rescue requires
+  \[
+  \ell<3(P-p)-3=3(r-t)-3.
+  \]
+  This does not localize every early phase in general; it does localize all
+  of them when \(P-p=1\).
+- Exact open wall: it remains to prove or refute that no forced \(p>q\)
+  boundary word can replay all of \(U\) in the \(Z_\ell\) while every proper
+  local canonical period stays below \(P\). The cap is essential. The local
+  model
+  \[
+  (q,r,P,t,p)=(9,3,12,2,11),\quad
+  B=232,\ U=322232,\ X=32322232232
+  \]
+  replays all six \(F\)-window labels, but its final proper phase already has
+  period \(P\). It also fails the early replay at \(\ell=1\), so it is not a
+  G2CS counterexample; here \(P-p=1\), so no omitted left context can rescue
+  that failure.
+- Executable index audit:
+  `tests/test_generated_two_cube_cell_c_reduction.py` independently checks
+  the coordinate implications through \(q\le10\). It retains `4958`
+  equality assignments, `538` exact \(G\)-canonical cases, and `489` cases
+  after the standalone and local-\(F\) canonical filters. All `489` satisfy
+  \(b<2r,j>0\); `257` are on \(s=2r,j=r\), `130` also have \(B[0]=2\),
+  and their `13` possible early periods split as `7` with \(p>q\) and `6`
+  with \(p<q\). These are bounded nonvacuous index checks, not proofs.
+- Scope and warning: the non-boundary placements, the \(p<q\) frontier, and
+  the local replay wall remain open. Cell A's \(C^2\) conjugate-period step
+  does not transfer: Cell C's early state ends only in \(T(UT)\), not in
+  two full copies of \(UT\). No G2CS target, bridge-promotion theorem, or
+  Curling Number Conjecture conclusion is promoted by this checkpoint.
+- Verification: the focused reduction plus Cell C search suites pass `11`
+  tests and the full repository passes `107`. Fresh reruns of both preserved
+  scans are byte-identical. Their SHA-256 hashes remain
+  `F6597BD5D75455F3E2D354090308C57B310433A601AB0A9C3B7DC6C691166D37`
+  for the Cell C local-start scan and
+  `C461FF476D8F274C1203864A06B2C16F0312B398F19A71F01310C4DF4EB2B24F`
+  for the fully generated strict-record scan.

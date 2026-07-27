@@ -983,10 +983,469 @@ j=2r:&D=\beta,\\
 \tag{C.6}
 \]
 
-These include every equality boundary. In particular, \(j=0\) is allowed in
-the first line and gives the endpoint equality \(D=N\).
+These include every equality boundary. The coordinate table by itself allows
+\(j=0\), with \(D=N\), but the complete canonical data eliminate that
+endpoint below.
 
-### 2. Equality-first exhaustive engine
+### 2. Two universal strict inequalities
+
+The copied block
+
+\[
+B=V[P:P+b]
+\]
+
+lies wholly inside the internal \(r\)-cube: (C.4) gives
+\(\alpha=P+s-3r<P\), while the cube ends at \(N\ge D=P+b\). If \(b\ge2r\),
+the final \(2r\) letters of this occurrence of \(B\) would be an
+\(r\)-square. Since \(B\) is the suffix of \(R\), the same square would end
+at \(G\). But (C.3) gives \(r<q\), so
+\((\kappa(G),\pi(G))=(2,q)\) forbids such a square. Hence
+
+\[
+\boxed{b<2r.}
+\tag{C.7}
+\]
+
+Now suppose \(j=0\). Then \(s=b\), so (C.4) gives \(r<b<2r\).
+Moreover \(F=LR^2B\) ends in \(B^2\), while it also ends in its canonical
+\(r\)-cube. Their common suffix has length
+
+\[
+M_0=\min(3r,2b)
+\]
+
+and periods \(r,b\). Put \(d_0=\gcd(r,b)\). The Fine--Wilf threshold is met.
+Indeed, if \(b\le3r/2\), then
+
+\[
+M_0-(r+b-d_0)=b-r+d_0>0,
+\]
+
+whereas if \(b>3r/2\), then
+
+\[
+M_0-(r+b-d_0)=2r-b+d_0>0.
+\]
+
+Thus the common suffix has period \(d_0\). The equality \(d_0=r\) would
+make \(b\) a multiple of \(r\) strictly between \(r\) and \(2r\), which is
+impossible. Therefore \(d_0<r\). Both \(r\) and \(b\) are then positive
+multiples of \(d_0\), so
+
+\[
+M_0\ge4d_0.
+\]
+
+The common suffix ends in four copies of a length-\(d_0\) block,
+contradicting \(\kappa(F)=3\). Consequently
+
+\[
+\boxed{j>0.}
+\tag{C.8}
+\]
+
+This removes the apparent \(j=0\) endpoint in (C.6); no bounded search is
+used in either argument.
+
+### 3. The simultaneous boundary \(s=2r,\ j=r\)
+
+The bounded scan lands only on this boundary, so it is worth reducing it
+exactly, without claiming that every unbounded Cell C instance lies there.
+The two equalities give
+
+\[
+b=j=r.
+\tag{C.9}
+\]
+
+The final \(3r\) letters of \(V=BRBT\) are then \(BBT\). Since they form
+the canonical \(r\)-cube, \(T=B\). Thus, for a middle word \(Q\),
+
+\[
+\boxed{R=BQB,\qquad T=B,\qquad U=QB.}
+\tag{C.10}
+\]
+
+The word \(B\) is simultaneously a prefix and suffix of \(R\). If
+\(r\ge q/2\), this border would give period \(q-r\le q/2\) on \(R\), and
+the final \(2(q-r)\) letters of \(R\) would be a square ending at \(G\) with
+period below \(q\). Therefore
+
+\[
+\boxed{r<q/2.}
+\tag{C.11}
+\]
+
+In particular \(Q\ne\epsilon\). Actual generation at \(G\) supplies the
+first bridge symbol
+
+\[
+B[0]=\kappa(G)=2,
+\]
+
+whereas paired generation at \(E\) gives
+
+\[
+Q[0]=R[j]=\kappa(E)=3.
+\tag{C.12}
+\]
+
+Finally, the canonical later cube is literally
+
+\[
+\boxed{B^3.}
+\tag{C.13}
+\]
+
+In particular \(B\) is primitive: otherwise \(B^3\) would display an
+exponent greater than three at \(F\).
+
+### 4. The early cube on the simultaneous boundary
+
+Continue to negate either synchronization conclusion, so
+
+\[
+p=\pi(E)<P=q+r.
+\]
+
+Put
+
+\[
+W=RB=BUB,\qquad |W|=P.
+\tag{C.14}
+\]
+
+The state \(E=LW\) ends in its canonical cube \(X^3\), where \(|X|=p\).
+The root \(X\) is primitive: if \(X=K^v\) with \(v\ge2\), then \(E\)
+would end in \(K^{3v}\), contradicting \(\kappa(E)=3\).
+If \(3p\le P\), that cube would lie wholly in \(W\), which is also a suffix
+of the standalone word \(R^2B=R^2T\). This contradicts
+\(\kappa(R^2T)=2\). Hence
+
+\[
+\boxed{3p>P.}
+\tag{C.15}
+\]
+
+The whole word \(W\) is consequently contained in the \(p\)-periodic cube,
+so it has period \(p\). It also has period \(q\), because its length-\(r\)
+prefix and suffix are both \(B\).
+
+The equality \(p=q\) is impossible. In that case the terminal \(q\)-block
+of \(E\) would be \(C=UB\), and \(E\) would end in \(C^3\). Appending the
+actually generated word \(U\) from \(E\) to \(G\) gives
+
+\[
+C^3U=(UB)^3U=U(BU)^3=UR^3,
+\]
+
+contradicting \(\kappa(G)=2\). Thus \(p\ne q\).
+
+Let \(e_0=\gcd(p,q)\). If the length \(P=q+r\) met the Fine--Wilf
+threshold for the periods \(p,q\), then \(W\), and hence its length-\(q\)
+prefix \(R\), would have period \(e_0\). Here \(e_0\mid q\) and
+\(e_0<q\): (C.11) gives \(p<P<3q/2\), so the only multiple of \(q\) in
+the allowed range is the already excluded value \(p=q\). The word \(R\)
+would therefore be a proper \(e_0\)-power, and the suffix \(R^2\) of \(G\)
+would have exponent at least four. This is impossible, so the threshold
+fails:
+
+\[
+\boxed{r<p-\gcd(p,q).}
+\tag{C.16}
+\]
+
+A second Fine--Wilf failure is useful. Put \(g_0=\gcd(p,r)\). If
+
+\[
+2r\ge p+r-g_0,
+\]
+
+then \(p\le r+g_0\le2r\), so the suffix \(B^2\) inherits period \(p\)
+from \(W\); it also has period \(r\). Fine--Wilf therefore gives period
+\(g_0\) on \(B^2\). When \(g_0<r\), the divisor relation
+\(g_0\mid r\) makes \(B\) a proper power, contradicting the canonical
+cube \(B^3\). The endpoint \(g_0=r\) also fails: (C.16) gives \(p>r\),
+while the displayed threshold gives \(p\le2r\), so \(r\mid p\) forces
+\(p=2r\). The terminal \(p\)-block is then \(X=B^2\), and \(X^3=B^6\)
+contradicts both the primitivity of the canonical root \(X\) and
+\(\kappa(E)=3\). Therefore
+
+\[
+\boxed{p>r+\gcd(p,r).}
+\tag{C.17}
+\]
+
+There are now two exact branches.
+
+#### The branch \(p>q\)
+
+Put \(t=p-q\). Since \(p<P=q+r\), one has \(0<t<r\). Comparing the
+length-\((r-t)\) prefix and suffix imposed by period \(p=q+t\) on
+\(W=BUB\) gives
+
+\[
+B[0:r-t]=B[t:r],
+\]
+
+so \(B\) has period \(t\). If \(t\le r/2\), the final \(2t\) letters of
+\(B\) form a square ending at \(G\) with period below \(q\). Hence
+
+\[
+\boxed{r/2<t<r.}
+\tag{C.18}
+\]
+
+The terminal \(p\)-block of \(W\) is forced:
+
+\[
+\boxed{X=B[r-t:r]\,U\,B.}
+\tag{C.19}
+\]
+
+#### The branch \(p<q\)
+
+Put \(d=q-p>0\). The prefix \(R\) of the \(p\)-periodic word \(W\) has
+period \(p\). If \(p\le q/2\), it ends in a \(p\)-square, again
+contradicting \(\pi(G)=q\). Thus
+
+\[
+\boxed{p>q/2.}
+\tag{C.20}
+\]
+
+Writing \(Z=R[0:p]\), the exact \(p\)-periodic form is
+
+\[
+\boxed{R=Z\,Z[0:d].}
+\tag{C.21}
+\]
+
+Both \(d<q/2\) and \(r<q/2\), so \(d+r<q\). Period \(p=q-d\) on \(W\)
+then compares the two length-\(r\) factors at offsets \(d\) and \(q\):
+
+\[
+\boxed{R[d:d+r]=B=R[0:r]=R[q-r:q].}
+\tag{C.22}
+\]
+
+The terminal \(p\)-block is
+
+\[
+\boxed{X=R[d+r:q]\,B.}
+\tag{C.23}
+\]
+
+There is no universal deduction \(d<r\). In the subcase where \(d<r\),
+(C.22) gives period \(d\) on \(B\); if \(d\le r/2\), that again creates a
+shorter square suffix at \(G\). The exact conditional restriction is
+
+\[
+\boxed{d<r\ \Longrightarrow\ d>r/2.}
+\tag{C.24}
+\]
+
+Finally define the positive frontier length
+
+\[
+\eta=3p-P>0.
+\]
+
+Since \(E=LW\) ends in \(X^3\), the early left context is not free:
+
+\[
+\boxed{\operatorname{suf}_{\eta}(L)\,W=X^3.}
+\tag{C.25}
+\]
+
+This frontier equation applies to both \(p\)-branches.
+
+### 5. Dynamic localization in the branch \(p>q\)
+
+Write
+
+\[
+E=\mathcal D X^3
+\]
+
+and, for \(0\le\ell\le m=|U|\), define the standalone suffix
+
+\[
+Z_\ell=X^3\,U\,B^2\,U[0:\ell].
+\tag{C.26}
+\]
+
+Because \(T=B\), the actual later states are exactly
+
+\[
+F_\ell=\mathcal D Z_\ell.
+\]
+
+Now use the binary hard-core scope and the negated conclusion. For every
+proper later-window phase \(0\le\ell<m\),
+
+\[
+\kappa(F_\ell)=U[\ell]\in\{2,3\},
+\qquad
+h_\ell:=\pi(F_\ell)<P.
+\tag{C.27}
+\]
+
+Every label-\(2\) phase is context-free. Indeed,
+\[
+|Z_\ell|=3p+P+\ell>2P,
+\]
+whereas its canonical square at \(F_\ell\) has length
+\(2h_\ell\le2P-2\). That square lies wholly inside \(Z_\ell\), so
+\(\kappa(Z_\ell)\ge2\); the suffix relation
+\(Z_\ell\preceq F_\ell\) gives the reverse bound.
+
+At a label-\(3\) phase, a canonical cube that genuinely needs letters from
+\(\mathcal D\) must satisfy
+
+\[
+3h_\ell>|Z_\ell|.
+\]
+
+Since \(h_\ell\le P-1\), such a left-context rescue requires the strict
+inequality
+
+\[
+\boxed{3p+\ell<2P-3.}
+\tag{C.28}
+\]
+
+In the present branch, (C.11) and \(p>q\) give
+
+\[
+3p>3q>2(q+r)=2P,
+\]
+
+so (C.28) is impossible. Hence every proper \(F\)-window phase is
+context-free:
+
+\[
+\boxed{\kappa(Z_\ell)=U[\ell]\qquad(0\le\ell<m).}
+\tag{C.29}
+\]
+
+The canonical periods agree as well. The global canonical
+\(h_\ell\)-witness has just been shown to lie inside \(Z_\ell\), so
+\(\pi(Z_\ell)\le h_\ell\). Conversely, every maximizing suffix power of
+\(Z_\ell\) is also a suffix power of \(F_\ell\), so
+\(h_\ell\le\pi(Z_\ell)\). Therefore
+
+\[
+\boxed{
+(\kappa(Z_\ell),\pi(Z_\ell))
+=
+(\kappa(F_\ell),\pi(F_\ell)),
+\qquad 0\le\ell<m.
+}
+\tag{C.30}
+\]
+
+The same contained-square argument at \(\ell=m\) gives
+\((\kappa(Z_m),\pi(Z_m))=(2,P)\), using the canonical data at \(H\).
+
+There is a parallel, but weaker, early-window localization. Put
+
+\[
+A_\ell=X^3U[0:\ell],
+\qquad E_\ell=\mathcal D A_\ell
+\qquad(0\le\ell\le m).
+\]
+
+For a proper phase \(0\le\ell<m\), the negation gives
+\(\pi(E_\ell)<P\). Since \(3p>2P\), every label-\(2\) canonical square is
+contained in \(A_\ell\), so its full and local canonical pairs agree. A
+label-\(3\) canonical cube can use letters from \(\mathcal D\) only if
+
+\[
+3p+\ell<3P-3,
+\]
+
+or, putting \(a_0=P-p=r-t>0\),
+
+\[
+\boxed{\ell<3a_0-3.}
+\tag{C.31}
+\]
+
+Whenever (C.31) fails, the same two-direction suffix argument used for
+(C.30) makes the complete canonical pair at \(E_\ell\) context-free. This
+does **not** localize every early phase when \(a_0>1\). It does show that
+\(a_0=1\) forbids every left-context rescue in the early window.
+
+### 6. Exact remaining word obstruction
+
+The \(p>q\) boundary branch is now reduced to the following unproved,
+word-only statement:
+
+> **Local replay wall (open).** There is no tuple with
+> \(q>2r>0\), \(P=q+r\), \(R=BQB\), \(|B|=r\),
+> \(B[0]=2\), \(Q[0]=3\), \(U=QB\),
+> \(p=q+t\), \(r/2<t<r\), and
+> \(X=B[r-t:r]UB\), satisfying the inherited canonical endpoint
+> conditions, for which
+> \[
+> \kappa(Z_\ell)=U[\ell],\qquad
+> \pi(Z_\ell)<P\qquad(0\le\ell<m),
+> \]
+> and \((\kappa(Z_m),\pi(Z_m))=(2,P)\).
+
+The period cap is load-bearing. Dropping it admits the explicit local model
+
+\[
+\begin{gathered}
+q=9,\quad r=3,\quad P=12,\quad t=2,\quad p=11,\\
+B=232,\quad U=322232,\quad R=232322232,\\
+X=32322232232.
+\end{gathered}
+\]
+
+For \(\ell=0,\ldots,5\), its exact local \(F\)-window canonical pairs are
+
+\[
+(3,3),(2,2),(2,2),(2,1),(3,1),(2,12),
+\]
+
+whose exponents replay \(U\), and \(Z_m\) has pair \((2,12)\). The final
+proper phase already has period \(P\), so this is not a survivor of the
+negated conclusion. It is also not a full G2CS antecedent:
+\(\kappa(X^3U[0:1])=3\ne U[1]=2\). The model is a sharpness certificate,
+not a counterexample.
+
+The local replay wall remains unproved, the \(p<q\) frontier equation
+(C.25) remains unresolved, and the non-boundary regions of (C.5)--(C.6)
+remain open. There is also no transfer of the final Cell A argument: here
+\[
+E=LRT=LT(UT)
+\]
+ends only in \(T(UT)\), whereas Cell A obtained two full copies of the
+conjugate \(UT\). Its \(C^2\) period step therefore cannot be imported into
+Cell C.
+
+### 7. Focused executable index certificate
+
+`tests/test_generated_two_cube_cell_c_reduction.py` is independent of the
+production equality-first search. Through \(q\le10\), a definition-first
+enumeration retains `4958` cube-equality assignments, `538` after imposing
+\((\kappa(R^2),\pi(R^2))=(2,q)\), and `489` after imposing both the
+standalone no-cube condition and the exact local later-cube pair. All `489`
+satisfy (C.7)--(C.8). Exactly `257` lie on \(s=2r,j=r\), and `130` of
+those also have the generation-compatible first bridge label \(B[0]=2\).
+
+Among those `130`, the certificate retains `13` possible \(p\)-periods
+meeting (C.15) and \(p\ne q\): `7` in the \(p>q\) branch and `6` in the
+\(p<q\) branch. It checks (C.16)--(C.25) directly in every retained tuple.
+The same test pins the period-\(P\) sharpness model above and verifies that it
+fails the early replay. These nonzero bounded counts are index and algebra
+checks only; they are **not a proof** of the universal deductions or of the
+open local replay wall.
+
+### 8. Equality-first exhaustive engine
 
 For fixed \((q,b,j,r)\), every coordinate \(z\) of \(V=BRBT\) comes from
 the following coordinate of \(R\):
@@ -999,7 +1458,7 @@ z-b,&b\le z<P,\\
 q-b+z-P,&P\le z<P+b,\\
 z-P-b,&P+b\le z<N.
 \end{cases}
-\tag{C.7}
+\tag{C.32}
 \]
 
 The executable search first unions
@@ -1021,7 +1480,7 @@ canonical data at \(E,G,F,H\), and evaluates the original \(\mathcal I\) and
 bridge-inclusive \(\mathcal J\) time sets independently. Structural keys
 \((L,R,b,j,r)\) prevent duplicate trace evidence.
 
-### 3. Bounded result through \(|E|\le18\)
+### 9. Bounded result through \(|E|\le18\)
 
 The deterministic run retained
 

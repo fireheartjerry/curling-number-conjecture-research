@@ -73,7 +73,8 @@ For internal Cell C, exact half-open geometry now reduces every survivor to
 \[
 \alpha=P+b+j-3r\ge0,\qquad
 r<b+j<3r,\qquad
-2r\le P-\gcd(r,P)-1.
+2r\le P-\gcd(r,P)-1,\qquad
+b<2r,\qquad j>0.
 \]
 
 An equality-first record-free scan exhausts every binary local start
@@ -85,6 +86,22 @@ word through length `10`. The `120` complete G2CS antecedents all have
 already have period at least \(P\) in both \(\mathcal I\) and
 \(\mathcal J\). There are zero bounded survivors, but this computation is
 not a proof; Cell C remains open for both targets.
+
+On the simultaneous boundary selected by every bounded antecedent,
+\(b+j=2r,j=r\), the exact symbolic form is
+
+\[
+b=j=r,\qquad R=BQB,\qquad T=B,\qquad U=QB,\qquad q>2r,
+\]
+
+with \(B[0]=2\), \(Q[0]=3\), and later cube \(B^3\). Under
+\(p=\pi(E)<P\), the early cube forces two explicit branches. For \(p>q\),
+writing \(t=p-q\), one has \(r/2<t<r\) and
+\(X=B[r-t:r]UB\). In this branch every proper later-window canonical pair
+is context-free. The remaining word wall is to exclude local replay of all
+of \(U\) while every proper local period stays below \(P\). For \(p<q\), the
+shifted-border and early-frontier equations are exact but still unresolved.
+The non-boundary Cell C placements also remain open.
 
 ## Immediate open work
 

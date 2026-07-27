@@ -629,14 +629,30 @@ Result: 120 antecedents, all from the one family
 \((R,b,j,r)=((2,3,2),1,1,1)\), all lying on \(s=2r,j=r\), and zero bounded
 survivors for either target. This is `COMPUTED`, not a proof.
 
-- [ ] **Step 4: Couple the surviving geometry to the early external cube**
+- [x] **Step 4: Sharpen the universal residual and the computed boundary**
 
-Use the common suffix \(BT\), the conjugate \(UBT\), and paired actual
-generation to force either the synchronization conclusion or a finite
-parameter survivor family. The bounded zero-survivor result does not replace
-this symbolic step.
+Prove the universal restrictions \(b<2r\) and \(j>0\). On the additional
+boundary \(s=2r,j=r\), derive
+\[
+b=j=r,\quad R=BQB,\quad T=B,\quad U=QB,\quad q>2r,
+\]
+then split the early canonical period into exact \(p>q\) and \(p<q\)
+normal forms. In the \(p>q\) branch, prove that every proper later-window
+canonical pair is already determined by the standalone suffix
+\(Z_\ell=X^3UB^2U[0:\ell]\). Preserve the non-boundary cases and the
+\(p<q\) frontier as open; the bounded scan does not prove that the boundary
+is universal.
 
-- [ ] **Step 5: Prove or refute Cell C**
+- [ ] **Step 5: Close the remaining boundary word obstruction**
+
+For \(p>q\), prove or refute that the forced word \(X=B[r-t:r]UB\) cannot
+replay all of \(U\) through the standalone \(Z_\ell\) while every proper
+canonical period remains below \(P\). The period bound is essential: a
+\((q,r,P,p)=(9,3,12,11)\) local model replays \(U\) but reaches period \(P\)
+at the final proper phase. Separately resolve the exact \(p<q\) shifted-border
+and frontier equations.
+
+- [ ] **Step 6: Prove or refute Cell C**
 
 Use the same evidence statuses and checkpoint protocol as Cells A and B.
 Until this step is complete, Cell C remains `OPEN` for both targets.
