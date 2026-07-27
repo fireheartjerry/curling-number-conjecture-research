@@ -914,3 +914,104 @@ Entries are append-only; superseded decisions are marked, not deleted.
   `APPROVED`. The focused reduction suite passes `7` tests, the full
   repository passes `123`, compilation and `git diff --check` are clean,
   and the definition-first test does not import either production search.
+
+## D-032 — Exhaust the necessary \(p>q\) early-replay relaxation by QF_BV
+
+- Date: 2026-07-27
+- Status: `COMPUTED` bounded exclusion plus `PROVED-NL` phase reductions;
+  Cell C remains `OPEN`
+- Scope decision: encode exactly the conjunction
+  \[
+  (\kappa(X^3),\pi(X^3))=(3,p),\qquad
+  X^3\xrightarrow{\ U\ }\text{ autonomously},\qquad
+  (\kappa(R^2),\pi(R^2))=(2,q)
+  \]
+  in the \(p>q\) simultaneous-boundary normal form. This is a necessary
+  early-replay relaxation, not the complete boundary residual: it
+  deliberately omits standalone \(R^2B\), canonical \(F=B^3\), the later
+  replay, the \(\mathcal J\)-only bridge replay, terminal canonical
+  \(H=(2,P)\), and all target-specific proper-period caps. No
+  first-mismatch trichotomy is encoded because that trichotomy uses the
+  omitted later replay.
+- Exact encoding: map `2 -> 0`, `3 -> 1`, store the leftmost symbol as the
+  most significant bit, and express every suffix power by equality of
+  fixed bit-vector slices. For each admissible \((q,r,t)\),
+  \(B\) is generated from \(t\) period coordinates with \(B[0]=2\), while
+  \(Q[0]=3\), \(U=QB\), \(R=BQB\), and \(X=B[r-t:r]UB\).
+  - Canonical \(X^3=(3,p)\) is the displayed \(p\)-cube together with no
+    shorter cube root and no fourth-power suffix.
+  - At every proper output phase, a requested `2` means some square and no
+    cube; a requested `3` means some cube and no fourth power.
+  - Canonical \(R^2=(2,q)\) is the displayed \(q\)-square together with no
+    square suffix of root below \(q\). This also excludes every cube in the
+    length-\(2q\) word.
+- Executed command:
+  `python research/generated_two_cube_cell_c_pgtq_early_replay_smt.py
+  --max-q 40 --oracle-max-q 14 --timeout-ms 3000`.
+  It checks all `1050` admissible parameter triples through \(q\le40\) and
+  returns `0 SAT`, `1050 UNSAT`, and `0 UNKNOWN`. The previously unsearched
+  interval \(26\le q\le40\) contributes `830` of those triples. Every
+  fixed-triple solver call completed within the timeout.
+- Independent oracle: a definition-first engine separately enumerates all
+  `1014` concrete structural assignments in the `26` parameter triples
+  through \(q\le14\). Literal exponent/period loops find no direct model;
+  all `26` existential triple outcomes agree with QF_BV, with zero
+  mismatches or unknowns. The oracle shares neither bit-vector power
+  predicates nor solver models.
+- Positive-path audit: dropping only canonical \(R^2\) preserves exact
+  early replay at
+  \[
+  (q,r,t)=(10,4,3),(17,4,3),(17,7,4),(19,9,8),(27,10,7).
+  \]
+  Their endpoint pairs are respectively
+  \[
+  (2,6),(2,3),(2,4),(2,4),(2,4),
+  \]
+  all strictly below \(q\). The first four are the historical early-only
+  collapse models; the fifth has
+  \(B=2322322232,Q=3222322\). These SAT checks make the encoding's positive
+  path nonvacuous.
+- Endpoint sharpness: the exact structural model
+  \[
+  (q,r,t)=(9,4,3),\quad B=2332,\quad Q=3
+  \]
+  has canonical \(X^3=(3,12)\), and appending one `2` simultaneously changes
+  the pairs on \(R^2[:-1]\to R^2\) from \((2,1)\) to \((2,9)\), and on
+  \(Y^2[:-1]\to Y^2\), \(Y=B^2U\), from \((2,1)\) to \((2,13)\).
+  It fails early replay at phase one, where \(U[1]=2\) but the local pair
+  remains \((3,12)\). Thus the final low-to-\(\{q,P\}\) push is feasible;
+  endpoint geometry alone is not the missing contradiction.
+- Phase reductions: for an early pair \((k,s)\), \(k\in\{2,3\}\),
+  \(s<P\), \(s\ne q\), the suffix
+  \(T_\ell=R\,R[0:r+\ell]\) has period \(q\). With
+  \(g=\gcd(s,q)\),
+  \[
+  \min(ks,q+r+\ell)<s+q-g.
+  \]
+  In the contained branch this gives
+  \((k-1)s<q-g\); in the crossing branch it gives
+  \(s>r+\ell+g\). The divisor endpoint \(g=s\) is discharged by observing
+  that the final length-\(q\) factor is both a proper \(s\)-power and a
+  conjugate of \(R\), contradicting primitivity of \(R\).
+  At the first \(X^\omega/U\) mismatch, the displayed \(p\)-cube cannot
+  survive: the replacement root \(s\) is a strict adjacent pop satisfying
+  \[
+  s<p,\qquad p\ge(k_1-1)s+\gcd(p,s).
+  \]
+  These are `PROVED-NL` restrictions, not a proof of the remaining replay
+  wall.
+- Reproduction: the authoritative Z3 `5.0.0` run took approximately
+  `213` wall-clock seconds. The LF-normalized deterministic artifact
+  `research/outputs/generated_two_cube_cell_c_pgtq_early_replay_smt_2026-07-27.txt`
+  has SHA-256
+  `D3C8FB986F20665777EB3DDD362F3DA1E09E88328716241809AADC1B56A0CF09`.
+- Scope: bounded UNSAT for a necessary relaxation is stronger bounded
+  exclusion evidence than filtering the full residual, but it is still not
+  an unbounded proof. The \(p>q\) word wall, \(p<q\) word wall,
+  non-boundary Cell C placements, both G2CS targets, and the Curling Number
+  Conjecture remain open.
+- Review: independent exact-spec and code-quality reviews both returned
+  `APPROVED`. The focused suite passes `12` tests, the full repository
+  passes `135`, compilation and `git diff --check` are clean, the
+  definition-first oracle is independent of the QF_BV predicates and
+  models, and the pinned artifact hash matches the stored output.

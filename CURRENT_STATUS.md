@@ -117,6 +117,19 @@ Writing \(z\) for the first \(2\) in \(U\) and \(h\) for the first
 terminal run of \(3\)'s at the later copy leaves only
 \((z,h)=(1,0),(2,0),(2,1)\), with explicit coordinates in \(X\), and in
 \(B\) for the \(p>q\) form.
+
+In the \(p>q\) branch, the canonical \(G\)-scale now also gives a
+two-scale phase restriction. If an early canonical pair is \((k,s)\), with
+\(k\in\{2,3\}\), \(s<P\), and \(s\ne q\), then, for
+\(g=\gcd(s,q)\),
+\[
+\min(ks,q+r+\ell)<s+q-g.
+\]
+Thus every such root lies in an exact contained-low or crossing-high
+branch. At the first \(X^\omega/U\) mismatch, the old \(p\)-root cannot
+survive; the replacement is a strict adjacent pop. These reductions do not
+exclude a later root push back to the endpoint scale.
+
 This sharpens but does not close the word wall: a checked \(q=10\) near-model
 replays both sampled windows below \(P\) while failing the required
 \(G,H\) endpoint scales. A \(q=20,p=11\) \(p<q\) model realizes the
@@ -140,6 +153,20 @@ assignments satisfy the complete three-row trichotomy, including the
 terminal-\(3\)-run bound, and all fail exact early replay by \(q=25\). This
 is `COMPUTED` bounded evidence, not a proof. The unbounded \(p>q\) word wall
 therefore remains open alongside the \(p<q\) and non-boundary cases.
+
+A second, independent \(p>q\) checkpoint encodes the weaker necessary
+conjunction "canonical \(X^3\), full autonomous early replay, canonical
+\(R^2\)" directly in QF_BV, without using the paired-replay trichotomy.
+It does not encode standalone \(R^2B\), canonical \(F\), later or
+\(\mathcal J\)-bridge replay, terminal canonical \(H=(2,P)\), or any
+target-specific proper-period cap.
+Every one of the `1050` admissible parameter triples through \(q\le40\) is
+UNSAT, with zero solver unknowns. A definition-first oracle separately
+enumerates all `1014` concrete assignments through \(q\le14\) and agrees on
+all `26` triple outcomes. Dropping canonical \(R^2\) recovers five exact
+positive early replays, all collapsing to roots `3`, `4`, or `6`.
+This is stronger bounded exclusion evidence, still only `COMPUTED`; it does
+not prove the unbounded early-replay collapse lemma or close Cell C.
 
 ## Immediate open work
 

@@ -676,6 +676,25 @@ slots. The \(q=20,p=11\) sharpness model realizes the exceptional shifted
 suffix and every static endpoint scale but fails later replay. The dynamic
 word wall remains open.
 
+- [x] **Step 4c: Audit early replay against the canonical \(R^2\) scale**
+
+Add an exact QF_BV solver for a necessary early-replay relaxation of the
+\(p>q\) simultaneous-boundary residual. It deliberately omits the standalone
+\(R^2B\) condition, canonical \(F=B^3\), the later replay, the
+\(\mathcal J\)-only bridge replay, terminal canonical \(H=(2,P)\), and all
+target-specific proper-period caps.
+For every admissible \((q,r,t)\) through \(q\le40\), encode canonical
+\(X^3=(3,q+t)\), every autonomous output phase in \(U=QB\), and canonical
+\(R^2=(2,q)\). Record `sat`, `unsat`, and `unknown` separately, impose no
+first-mismatch trichotomy, and preserve a deterministic output artifact.
+
+Cross-check the solver existential result for every parameter triple through
+\(q\le14\) against an independent definition-first enumeration of all
+`1014` concrete structural assignments. Preserve the four known early-only
+models, a \(q=27\) extension, and the \(q=9\) simultaneous endpoint-jump
+model as exact sharpness certificates. Label every bounded exclusion
+`COMPUTED`; Cell C and both target-specific word walls remain open.
+
 - [ ] **Step 5: Close the remaining boundary word obstruction**
 
 For \(p>q\), close the target-specific word residuals. For

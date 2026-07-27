@@ -1574,6 +1574,154 @@ displayed \(X\)-coordinates with \(B[a]\) in the first two rows and with
 initial block \(B[a:r]\). In the \(p<q\) branch the same three rows apply
 to the periodic word \(X^\omega\), with \(X\) given by (C.24b).
 
+#### Two-scale phase dichotomy in the \(p>q\) branch
+
+The canonical \(G\)-scale gives a sharper restriction on every early
+replacement root, although it does not close the branch. Retain \(p>q\) and
+put \(a=r-t\). For \(0\le\ell\le m=|U|\), the identities \(W=RB\) and
+\(R=BU\) give the exact suffix
+
+\[
+T_\ell=R\,R[0:r+\ell]
+\tag{C.35a}
+\]
+
+of \(A_\ell=X^3U[0:\ell]\). Thus \(T_\ell\) has period \(q\) and length
+
+\[
+L_\ell=q+r+\ell.
+\]
+
+Let \(A_\ell\) have canonical pair \((k,s)\), where
+\[
+k\in\{2,3\},\qquad s<P,\qquad s\ne q,
+\]
+and put \(g=\gcd(s,q)\). The canonical \(s\)-power and \(T_\ell\) are both
+suffixes, so their common suffix has length
+
+\[
+M=\min(ks,L_\ell)
+\]
+
+and periods \(s,q\). We claim that the Fine--Wilf threshold is missed:
+
+\[
+\boxed{M<s+q-g.}
+\tag{C.35b}
+\]
+
+Phases with \(s=q\) are deliberately outside (C.35b); they already sit at
+the \(G\)-scale rather than in the replacement-root comparison below.
+
+Suppose instead that \(M\ge s+q-g\). Fine--Wilf gives period \(g\) on the
+common suffix. If \(M=ks\), this common suffix is the whole canonical
+\(s\)-power. When \(g<s\), its primitive length-\(s\) root acquires the
+proper period \(g\), a contradiction.
+
+There is one divisor endpoint which must not be skipped. If \(g=s\), then
+\(s\mid q\), and the assumed threshold gives \(ks\ge q\). The final
+length-\(q\) block of the \(s\)-power is therefore a proper power of a
+conjugate of its length-\(s\) root. The same block is the final
+length-\(q\) factor of \(T_\ell\). Since
+\[
+T_\ell=R\,R[0:r+\ell],
+\]
+that factor is a conjugate of \(R\) (or \(R\) itself when
+\(r+\ell=q\)). A conjugate of a proper power is a proper power, so \(R\)
+would be imprimitive. This contradicts
+\((\kappa(R^2),\pi(R^2))=(2,q)\).
+
+If \(M=L_\ell\), then all of \(T_\ell\) has period \(g\), so its prefix
+\(R\) has period \(g\). Here \(g<q\): otherwise \(q\mid s\), while
+\[
+0<s<P=q+r<2q
+\]
+and \(s\ne q\), which is impossible. Because \(g\mid q\), the word \(R\)
+would again be a proper power. This proves (C.35b).
+
+The comparison in the minimum now gives an exact two-branch restriction:
+
+\[
+\boxed{
+\begin{array}{ll}
+ks\le L_\ell:&(k-1)s<q-g,\\[1mm]
+L_\ell<ks:&s>r+\ell+g.
+\end{array}}
+\tag{C.35c}
+\]
+
+The first row is a contained low-root branch; the second is a
+context-crossing high-root branch. This is a phase restriction, not a
+monotone rank: adjacent root pushes can move from the first branch back
+toward the \(q\)-scale.
+
+The first mismatch gives one additional exact pop. Let \(u\) be the
+mismatch index in (C.34), and put \(w=u+1\). The state \(A_u\) still ends
+in a primitive maximizing \(p\)-cube, because
+\(U[0:u]=X[0:u]\). The appended symbol is
+\[
+U[u]=3\ne X[u]=2,
+\]
+so the \(p\)-periodic suffix does not extend. Write the next canonical pair
+as
+\[
+(\kappa(A_w),\pi(A_w))=(k_1,s).
+\]
+Under either target negation, \(s<P\). The adjacent-root separation lemma
+proved in `research/adjacent_root_stack.md` rules out \(s=p\). A push
+\(s>p\) would require
+\[
+s>2p+\gcd(p,s),
+\]
+whereas \(s<P=q+r<2p\). Hence the first replacement is necessarily a pop:
+
+\[
+\boxed{s<p,\qquad p\ge(k_1-1)s+\gcd(p,s).}
+\tag{C.35d}
+\]
+
+In the rows \((z,u)=(1,0),(2,1)\), the new label is \(k_1=2\). In the
+row \((2,0)\), it is \(k_1=3\), so
+\[
+p\ge2s+\gcd(p,s).
+\]
+Both the early and later states at phase \(w\) share the suffix
+\(B^2U[0:w]\) of length \(2r+w\). Thus the replacement power is local to
+that common suffix exactly when
+\[
+k_1s\le2r+w;
+\]
+otherwise it is a context-crossing replacement. Equations (C.35c)--(C.35d)
+classify the latter case but do not eliminate it.
+
+The endpoint jump itself is genuinely feasible. The exact structural model
+
+\[
+\begin{gathered}
+q=9,\quad r=4,\quad t=3,\quad p=12,\quad P=13,\\
+B=2332,\quad Q=3,\quad U=32332,\\
+R=233232332,\quad X=332323322332,\quad Y=B^2U
+\end{gathered}
+\tag{C.35e}
+\]
+
+has
+\[
+(\kappa(X^3),\pi(X^3))=(3,12)
+\]
+and the simultaneous one-symbol transitions
+\[
+\begin{array}{rcl}
+R^2[0:2q-1]:(2,1)&\xrightarrow{\ 2\ }&R^2:(2,9),\\
+Y^2[0:2P-1]:(2,1)&\xrightarrow{\ 2\ }&Y^2:(2,13).
+\end{array}
+\tag{C.35f}
+\]
+It fails the required early replay earlier: at phase \(1\), the requested
+symbol is \(U[1]=2\), while the local pair remains \((3,12)\). Therefore
+endpoint and adjacent-root geometry alone cannot close the word wall; a
+completion must use the whole replay before the final push.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It
@@ -1604,8 +1752,8 @@ Each is combined with the inherited standalone conditions
 \[
 (\kappa(R^2),\pi(R^2))=(2,q),\qquad
 \kappa(R^2B)=2,\qquad
-(\kappa(BRB^2),\pi(BRB^2))=(3,r),
-\].
+(\kappa(BRB^2),\pi(BRB^2))=(3,r).
+\]
 
 The desired two-window replay must then realize
 
