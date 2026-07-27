@@ -192,7 +192,7 @@ Entries are append-only; superseded decisions are marked, not deleted.
 ## D-013 — Fail closed on candidate provenance defects
 
 - Date: 2026-07-27
-- Status: active
+- Status: superseded by D-014
 - Decision: candidate extraction rejects malformed provenance rather than
   inferring generation from static endpoint identities. Required event words
   must be nonempty; every required timestamp must occur exactly once; and
@@ -211,3 +211,29 @@ Entries are append-only; superseded decisions are marked, not deleted.
   provenance. Failing closed prevents incomplete, duplicated, empty, or
   corrupted traces from manufacturing evidence for the fully generated
   strict-record specialization.
+
+## D-014 — Validate the whole chronological orbit before record extraction
+
+- Date: 2026-07-27
+- Status: active
+- Decision: before record accounting or candidate extraction, validate the
+  entire supplied event sequence as one complete chronological orbit prefix.
+  Nonempty input must have times exactly \(0,1,\ldots,n-1\) in supplied order,
+  one shared positive seed length and seed prefix, the corresponding
+  time/length relation, nonempty words, correct canonical witnesses, and every
+  adjacent one-symbol orbit transition. An exponent-\(1\) event may occur only
+  as the final event. Empty input still yields no candidates.
+- Record accounting: only after whole-trace validation succeeds, scan the
+  actual events chronologically and update the prior canonical-period maximum
+  from every exponent. Malformed, omitted, duplicated, reordered, or
+  mixed-seed events invalidate the whole extraction and never alter record
+  state. Candidate-local span checks remain as defense in depth.
+- Correction: D-013's supplied-order record rule and candidate-local
+  provenance checks were too weak. For seed `22322232`, the real orbit has a
+  period-\(7\) square at time \(20\) and another candidate-shaped period-\(7\)
+  square at time \(41\). Deleting only time \(20\) previously made time \(41\)
+  appear to be a strict record, manufacturing a false positive from an
+  incomplete trace.
+- Reason: strict-record status is a property of the complete orbit history,
+  not of whichever subsequence reaches the extractor. Chronology and complete
+  provenance must therefore be established before any record comparison.

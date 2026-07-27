@@ -123,10 +123,43 @@ def _is_generated_span(
     )
 
 
+def _is_complete_orbit_prefix(events: Sequence[OrbitEvent]) -> bool:
+    if not events:
+        return False
+
+    seed_length = events[0].seed_length
+    if seed_length <= 0:
+        return False
+    seed = events[0].word
+
+    for expected_time, event in enumerate(events):
+        if (
+            event.time != expected_time
+            or event.seed_length != seed_length
+            or not event.word
+            or len(event.word) != seed_length + expected_time
+            or event.word[:seed_length] != seed
+            or canonical_witness(event.word) != (event.exponent, event.period)
+            or (event.exponent == 1 and expected_time != len(events) - 1)
+        ):
+            return False
+        if expected_time and (
+            events[expected_time - 1].word
+            + (events[expected_time - 1].exponent,)
+            != event.word
+        ):
+            return False
+
+    return True
+
+
 def extract_record_square_candidates(
     events: Sequence[OrbitEvent],
 ) -> tuple[RecordSquareCandidate, ...]:
     """Extract fully generated strict-record squares with audited trace provenance."""
+    if not events or not _is_complete_orbit_prefix(events):
+        return ()
+
     event_counts: dict[int, int] = {}
     events_by_time: dict[int, OrbitEvent] = {}
     for event in events:
@@ -141,15 +174,11 @@ def extract_record_square_candidates(
     candidates = []
     prior_record_period = 0
     for terminal in events:
-        if not terminal.word:
-            continue
-        actual_witness = canonical_witness(terminal.word)
-        is_strict_record = actual_witness[1] > prior_record_period
-        prior_record_period = max(prior_record_period, actual_witness[1])
+        is_strict_record = terminal.period > prior_record_period
+        prior_record_period = max(prior_record_period, terminal.period)
 
         if (
-            actual_witness != (terminal.exponent, terminal.period)
-            or terminal.exponent != 2
+            terminal.exponent != 2
             or not is_strict_record
             or not terminal.entire_power_generated()
             or terminal.seed_length <= 0

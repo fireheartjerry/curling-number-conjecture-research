@@ -230,27 +230,123 @@ def test_extract_record_square_candidates_returns_empty_for_empty_events():
     assert extract_record_square_candidates(()) == ()
 
 
-def test_extract_record_square_candidates_counts_every_exponent_in_record_accounting():
-    seed = tuple(map(int, "23222323"))
-    events, _ = trace_orbit(seed, 1000)
-    cube_root = tuple(range(1, 8))
-    prior_cube = OrbitEvent(
-        time=-1,
-        word=cube_root * 3,
-        exponent=3,
-        period=7,
-        seed_length=len(cube_root * 3),
+def test_extract_record_square_candidates_counts_real_cubes_in_record_accounting():
+    seed = tuple(map(int, "22323222322"))
+    events, _ = trace_orbit(seed, 500)
+    prior_cube = events[52]
+    terminal = events[68]
+    G = events[terminal.time - terminal.period]
+    R = G.word[-G.period :]
+    b = terminal.period - G.period
+    B = R[-b:]
+    Y = B + R
+
+    assert (prior_cube.exponent, prior_cube.period) == (3, 21)
+    assert (terminal.exponent, terminal.period) == (2, 7)
+    assert prior_cube.time < terminal.time
+    assert prior_cube.period >= terminal.period
+    assert terminal.entire_power_generated()
+    assert (G.exponent, G.period) == (2, 4)
+    assert b > 0
+    assert 2 * G.period - terminal.period > 0
+    assert terminal.word == G.word + Y
+    assert terminal.word[-2 * terminal.period :] == Y + Y
+    assert all(
+        candidate.terminal_time != terminal.time
+        for candidate in extract_record_square_candidates(events)
     )
 
-    # This is a record-accounting unit test, not one combined orbit: the
-    # unique negative timestamp leaves every real candidate span unchanged.
-    assert canonical_witness(prior_cube.word) == (
-        prior_cube.exponent,
-        prior_cube.period,
+
+def test_extract_record_square_candidates_rejects_deleted_prior_record_event():
+    seed = tuple(map(int, "22322232"))
+    events, _ = trace_orbit(seed, 500)
+    prior_record = events[20]
+    terminal = events[41]
+    G = events[terminal.time - terminal.period]
+    R = G.word[-G.period :]
+    b = terminal.period - G.period
+    B = R[-b:]
+    Y = B + R
+
+    assert (prior_record.exponent, prior_record.period) == (2, 7)
+    assert (terminal.exponent, terminal.period) == (2, 7)
+    assert terminal.entire_power_generated()
+    assert (G.exponent, G.period) == (2, 4)
+    assert b > 0
+    assert 2 * G.period - terminal.period > 0
+    assert terminal.word == G.word + Y
+    assert terminal.word[-2 * terminal.period :] == Y + Y
+    assert [
+        candidate.terminal_time
+        for candidate in extract_record_square_candidates(events)
+    ] == [prior_record.time]
+
+    # Deleting t20 used to manufacture t41 as a "strict" record because the
+    # local-span checks never noticed the globally incomplete orbit prefix.
+    incomplete = events[:20] + events[21:]
+    assert extract_record_square_candidates(incomplete) == ()
+
+
+def test_extract_record_square_candidates_rejects_trace_missing_time_zero():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+
+    assert extract_record_square_candidates(events[1:16]) == ()
+
+
+def test_extract_record_square_candidates_rejects_reordered_terminal():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    terminal_first = (events[15], *events[:15], *events[16:])
+
+    assert extract_record_square_candidates(terminal_first) == ()
+
+
+def test_extract_record_square_candidates_rejects_duplicate_after_candidate():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    duplicate_after_terminal = (*events[:17], events[16])
+
+    assert extract_record_square_candidates(duplicate_after_terminal) == ()
+
+
+def test_extract_record_square_candidates_rejects_foreign_event_after_candidate():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    foreign_seed = tuple(map(int, "22322232"))
+    foreign_events, _ = trace_orbit(foreign_seed, 500)
+    mixed_trace = (*events[:16], foreign_events[16])
+
+    assert foreign_events[16].time == 16
+    assert foreign_events[16].seed_length == len(seed)
+    assert foreign_events[16].word[: len(seed)] != seed
+    assert extract_record_square_candidates(mixed_trace) == ()
+
+
+def test_extract_record_square_candidates_rejects_event_after_one():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    hit_one = events[-1]
+    continued_word = hit_one.word + (hit_one.exponent,)
+    exponent, period = canonical_witness(continued_word)
+    continued = OrbitEvent(
+        time=hit_one.time + 1,
+        word=continued_word,
+        exponent=exponent,
+        period=period,
+        seed_length=hit_one.seed_length,
     )
-    assert all(event.time != prior_cube.time for event in events)
-    assert len(extract_record_square_candidates(events)) == 1
-    assert extract_record_square_candidates((prior_cube, *events)) == ()
+
+    assert hit_one.exponent == 1
+    assert continued.time == len(events)
+    assert len(continued.word) == continued.seed_length + continued.time
+    assert continued.word[: continued.seed_length] == seed
+    assert canonical_witness(continued.word) == (
+        continued.exponent,
+        continued.period,
+    )
+    assert hit_one.word + (hit_one.exponent,) == continued.word
+    assert extract_record_square_candidates((*events, continued)) == ()
 
 
 def test_extract_record_square_candidates_rejects_empty_g_without_raising():
