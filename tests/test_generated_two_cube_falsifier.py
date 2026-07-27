@@ -65,6 +65,32 @@ def test_orbit_event_distinguishes_final_copy_from_entire_generated_power():
     assert not event.entire_power_generated()
 
 
+def test_orbit_event_counts_final_copy_starting_at_seed_boundary_as_generated():
+    event = OrbitEvent(
+        time=2,
+        word=(9, 2, 3, 2, 3),
+        exponent=2,
+        period=2,
+        seed_length=3,
+    )
+
+    assert len(event.word) - event.period == event.seed_length
+    assert event.final_copy_generated()
+
+
+def test_orbit_event_rejects_final_copy_starting_before_seed_boundary():
+    event = OrbitEvent(
+        time=1,
+        word=(2, 3, 2, 3),
+        exponent=2,
+        period=2,
+        seed_length=3,
+    )
+
+    assert len(event.word) - event.period == event.seed_length - 1
+    assert not event.final_copy_generated()
+
+
 def test_orbit_event_counts_power_starting_at_seed_boundary_as_entirely_generated():
     event = OrbitEvent(
         time=0,
@@ -202,6 +228,100 @@ def test_record_square_candidate_fields_are_immutable():
 
 def test_extract_record_square_candidates_returns_empty_for_empty_events():
     assert extract_record_square_candidates(()) == ()
+
+
+def test_extract_record_square_candidates_counts_every_exponent_in_record_accounting():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    cube_root = tuple(range(1, 8))
+    prior_cube = OrbitEvent(
+        time=-1,
+        word=cube_root * 3,
+        exponent=3,
+        period=7,
+        seed_length=len(cube_root * 3),
+    )
+
+    # This is a record-accounting unit test, not one combined orbit: the
+    # unique negative timestamp leaves every real candidate span unchanged.
+    assert canonical_witness(prior_cube.word) == (
+        prior_cube.exponent,
+        prior_cube.period,
+    )
+    assert all(event.time != prior_cube.time for event in events)
+    assert len(extract_record_square_candidates(events)) == 1
+    assert extract_record_square_candidates((prior_cube, *events)) == ()
+
+
+def test_extract_record_square_candidates_rejects_empty_g_without_raising():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    malformed = list(events)
+    malformed[8] = OrbitEvent(
+        time=8,
+        word=(),
+        exponent=2,
+        period=4,
+        seed_length=len(seed),
+    )
+
+    assert extract_record_square_candidates(malformed) == ()
+
+
+def test_extract_record_square_candidates_rejects_missing_required_span_event():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    missing_time_six = tuple(event for event in events if event.time != 6)
+
+    assert extract_record_square_candidates(missing_time_six) == ()
+
+
+def test_extract_record_square_candidates_rejects_duplicate_required_span_event():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    duplicate_time_six = (*events[:7], events[6], *events[7:])
+
+    assert extract_record_square_candidates(duplicate_time_six) == ()
+
+
+def test_extract_record_square_candidates_rejects_corrupted_interior_replay():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    candidate = extract_record_square_candidates(events)[0]
+    original = events[6]
+    corrupted_word = original.word[:-1] + (3,)
+    corrupted_exponent, corrupted_period = canonical_witness(corrupted_word)
+    corrupted_event = OrbitEvent(
+        time=original.time,
+        word=corrupted_word,
+        exponent=corrupted_exponent,
+        period=corrupted_period,
+        seed_length=original.seed_length,
+    )
+    corrupted = list(events)
+    corrupted[6] = corrupted_event
+
+    assert len(corrupted_event.word) == len(original.word)
+    assert corrupted_event.word[: len(seed)] == seed
+    assert canonical_witness(corrupted_event.word) == (
+        corrupted_event.exponent,
+        corrupted_event.period,
+    )
+    assert corrupted_event.period < candidate.P
+    assert corrupted[candidate.second_r_start_time] == events[
+        candidate.second_r_start_time
+    ]
+    assert corrupted[candidate.g_time] == events[candidate.g_time]
+    assert corrupted[candidate.terminal_time] == events[candidate.terminal_time]
+    assert (
+        corrupted[candidate.second_r_start_time].word + candidate.R
+        == corrupted[candidate.g_time].word
+    )
+    assert (
+        corrupted[candidate.g_time].word + candidate.Y
+        == corrupted[candidate.terminal_time].word
+    )
+    assert extract_record_square_candidates(corrupted) == ()
 
 
 def test_extract_record_square_candidates_requires_entire_power_to_be_generated():

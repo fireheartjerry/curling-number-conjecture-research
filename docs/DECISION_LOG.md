@@ -188,3 +188,26 @@ Entries are append-only; superseded decisions are marked, not deleted.
   merely the final copy is insufficient. A bounded scan is computational
   evidence for this fully generated specialization only; it is neither a
   proof nor an exhaustive scan of the general record-free (G2CS) core.
+
+## D-013 — Fail closed on candidate provenance defects
+
+- Date: 2026-07-27
+- Status: active
+- Decision: candidate extraction rejects malformed provenance rather than
+  inferring generation from static endpoint identities. Required event words
+  must be nonempty; every required timestamp must occur exactly once; and
+  every stored canonical witness, word length, seed prefix, and one-symbol
+  orbit transition across the generated spans must agree.
+- Adversarial boundary: a missing or duplicate interior event invalidates the
+  candidate. So does an internally self-consistent replacement event whose
+  word has the right length and seed prefix but breaks contiguous replay,
+  even when the second-\(R\), \(G\), and \(H\) endpoints still satisfy all
+  displayed concatenation identities.
+- Record accounting: strictness compares the terminal period with canonical
+  periods of every prior event in supplied trace order. Prior cubes and other
+  nonsquare exponents can therefore suppress a square candidate just as a
+  prior square can.
+- Reason: endpoint algebra establishes word geometry, not actual orbit
+  provenance. Failing closed prevents incomplete, duplicated, empty, or
+  corrupted traces from manufacturing evidence for the fully generated
+  strict-record specialization.

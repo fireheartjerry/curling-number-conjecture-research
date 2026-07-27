@@ -164,6 +164,7 @@ def extract_record_square_candidates(
         if (
             G is None
             or event_counts.get(g_time) != 1
+            or not G.word
             or canonical_witness(G.word) != (G.exponent, G.period)
             or G.exponent != 2
         ):
