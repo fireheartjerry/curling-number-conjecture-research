@@ -716,6 +716,30 @@ candidates, with zero \(F_1\)-label-`3` cases. Preserve the endpoint-correct
 together at phase `13`, as a warning that the remaining obstruction is
 nonlocal. Do not close either word wall or Cell C.
 
+- [x] **Step 4e: Build the surviving-row transition atlas**
+
+At phase one write the sampled pairs as \((2,\alpha)\), \((2,\beta)\).
+Use localization and adjacent-root separation to prove the strict
+\(\alpha\)-pop and the exact low/high \(\beta\)-split. Compare the two
+squares in their common suffix \(B^2\,3\): any root at most \(r\) forces
+\(\alpha=\beta<r\), while the alternative has both roots above \(r\).
+Exclude \(\beta\ge q\), record the exact high-root return and Fine--Wilf
+threshold miss, and expose the two \(p<q\) seam-return coordinates.
+
+For every paired phase, prove that differing roots satisfy
+\(k_\ell\min(a_\ell,b_\ell)>2r+\ell\). Record the exact endpoint
+push/pop table, the independently capped bridge midpoint, and only the
+narrow circular-square consequence
+\(B^2B[0:i]=A(DA)^2\) at bridge positions requesting `2`.
+
+Independently enumerate both binary branches through \(q\le25\):
+`105851` \(p>q\) and `100053` \(p<q\) static rows, with phase-one splits
+`79471` equal/local and `6555` equal/local plus `54645` unequal/high.
+Pin the \(q=8,9,11,16,23,29\) sharpness certificates and the deterministic
+artifact digest. Label the atlas `COMPUTED`; paired roots and failure
+phases need not remain synchronized, and the high branch, both word walls,
+and Cell C remain open.
+
 - [ ] **Step 5: Close the remaining boundary word obstruction**
 
 Only the \((z,h)=(1,0)\) row remains. For \(p>q\), close its

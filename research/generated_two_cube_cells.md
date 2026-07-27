@@ -1932,6 +1932,369 @@ This conclusion is local to the simultaneous boundary. It does not move
 the other Cell C placements onto that boundary and does not eliminate the
 remaining row.
 
+#### Exact transition restrictions in the surviving row
+
+Retain \((z,h)=(1,0)\), and use the shorter paired-state notation
+
+\[
+E_\ell=X^3U[0:\ell],\qquad
+F_\ell=X^3UB^2U[0:\ell]\qquad(0\le\ell\le m).
+\]
+
+Under the negation of either target, phase \(1\) is sampled in both
+windows, so (C.28) gives exact local pairs
+
+\[
+\boxed{
+(\kappa(E_1),\pi(E_1))=(2,\alpha),\qquad
+(\kappa(F_1),\pi(F_1))=(2,\beta),\qquad
+\alpha,\beta<P.
+}
+\tag{C.35m}
+\]
+
+Both old cubes break when the first `3` is appended:
+
+\[
+3\ne X[0]=B[0]=2.
+\]
+
+For the early transition, \(\alpha\ne p\). If \(\alpha>p\), the
+adjacent-root separation lemma would give
+
+\[
+\alpha>2p+\gcd(p,\alpha).
+\]
+
+But (C.28) localizes the canonical square to \(X^3\,3\), while the last
+inequality gives
+
+\[
+2\alpha>4p+2>|X^3\,3|=3p+1.
+\]
+
+Thus the early transition is always a strict pop:
+
+\[
+\boxed{
+\alpha<p,\qquad
+p\ge\alpha+\gcd(p,\alpha).
+}
+\tag{C.35n}
+\]
+
+For the later transition, \(\beta\ne r\), and adjacent-root separation
+gives the exact alternative
+
+\[
+\boxed{
+\begin{array}{ll}
+\beta<r:&r\ge\beta+\gcd(r,\beta),\\[1mm]
+\beta>r:&\beta>2r+\gcd(r,\beta).
+\end{array}}
+\tag{C.35o}
+\]
+
+The two phase-one states have the identical terminal word
+
+\[
+T_1=B^2\,3,\qquad |T_1|=2r+1.
+\]
+
+If either canonical square has root at most \(r\), that square lies in
+\(T_1\) and therefore occurs in both states. Since both exponents are
+exactly two, least-root minimality in each direction forces equality.
+The equality cannot be \(r\), because the appended `3` broke the
+\(r\)-root at \(F_0\). Consequently
+
+\[
+\boxed{
+\min(\alpha,\beta)\le r
+\Longrightarrow
+\alpha=\beta=s<r.
+}
+\tag{C.35p}
+\]
+
+The exact low square and its two pop inequalities are
+
+\[
+\operatorname{suf}_{2s}(B^2\,3)
+  =(B[r-s+1:r]\,3)^2,\qquad B[r-s]=3,
+\]
+
+\[
+r\ge s+\gcd(r,s),\qquad
+p\ge s+\gcd(p,s).
+\]
+
+Otherwise both \(\alpha,\beta\) exceed \(r\). In particular, when \(r=1\),
+the common suffix is \(223\), which has no square, so the low alternative
+is impossible.
+
+The high \(\beta\)-branch first gives
+
+\[
+2r+\gcd(r,\beta)<\beta<P.
+\]
+
+The endpoint \(\beta=q\) is impossible. Its terminal \(q\)-square contains
+the two positions
+
+\[
+R_2[r]=Q[0]=3,\qquad B_4[0]=B[0]=2,
+\]
+
+which are exactly \(q\) apart. Nor can \(\beta=q+w\) for
+\(0<w<r\). Copying \(T_1\) left by \(q+w\) gives
+
+\[
+R[q-w:q]R[0:|T_1|-w]=B^2\,3.
+\]
+
+The first \(w\) positions say \(B[-w:]=B[:w]\), and the next \(r\)
+positions say
+
+\[
+B=B[w:r]B[0:w].
+\]
+
+Thus \(B\) is invariant under a nontrivial rotation and is a proper power.
+Then the terminal \(B^3\) at \(F_0\) has exponent at least six,
+contradicting \(\kappa(F_0)=3\). Since \(\beta<P=q+r\), this proves
+\(\beta<q\) in the high alternative.
+
+That alternative also has an exact return restriction before either period
+branch is used. Put
+
+\[
+g_r=\gcd(r,\beta),\qquad v=P-\beta.
+\]
+
+The push inequality in (C.35o) gives
+
+\[
+1\le v\le m-g_r-1.
+\]
+
+Inside the terminal word \(R^2B^2\,3\), the canonical square is
+
+\[
+\boxed{
+\operatorname{suf}_{2\beta}(R^2B^2\,3)
+  =(R[r+v+1:q]B^2\,3)^2,\qquad R[r+v]=3.
+}
+\tag{C.35q}
+\]
+
+Delete the terminal \(B\,3\). The word
+
+\[
+K=R^2B=B(UB)^2
+\]
+
+inherits a \(\beta\)-periodic suffix of length
+
+\[
+L=2\beta-r-1.
+\]
+
+It also ends in the displayed \(q\)-square \((UB)^2\), whose root is
+primitive because \(\kappa(K)=2\). Put \(d_\beta=\gcd(\beta,q)\).
+There is one divisor endpoint to separate. If \(d_\beta=\beta\), then
+\(\beta\mid q\), and \(\beta<q\) gives \(q\ge2\beta\). Therefore
+
+\[
+L=2\beta-r-1<2\beta\le q
+  =\beta+q-d_\beta,
+\]
+
+so the Fine--Wilf threshold misses automatically.
+
+Now suppose \(d_\beta<\beta\). If the common suffix of length
+\(M=\min(L,2q)\) met the threshold, Fine--Wilf would give it period
+\(d_\beta\). When \(M=L\), the threshold implies \(L>\beta\), and the
+whole first primitive \(\beta\)-root left after deleting \(B\,3\) would
+have the proper period \(d_\beta\). When \(M=2q<L\), the whole displayed
+\(q\)-square would have period \(d_\beta\), so its primitive length-\(q\)
+root \(UB\) would have that proper period. Both cases are impossible.
+Hence
+
+\[
+\boxed{\min(L,2q)<\beta+q-d_\beta.}
+\tag{C.35r}
+\]
+
+Equivalently,
+
+\[
+2v\ge r-1\Longrightarrow v\ge d_\beta,\qquad
+2v<r-1\Longrightarrow v<r-d_\beta.
+\]
+
+Together with the push inequality and the two endpoint eliminations, the
+high alternative is therefore restricted to
+
+\[
+\boxed{2r+\gcd(r,\beta)<\beta<q.}
+\tag{C.35s}
+\]
+
+For \(p<q\), (C.24e) turns the two high-root returns into explicit seam
+coordinates. Recall
+
+\[
+X=AC,\qquad U=CAH_0,\qquad |C|=d,\qquad |CA|=p.
+\]
+
+For \(\beta\), the return of \(T_1\) is
+
+\[
+\boxed{
+\begin{array}{ll}
+\beta\le m:&
+U[m-\beta:m-\beta+|T_1|]=T_1,\\[1mm]
+m<\beta<q:&
+B[r-\delta:r]U[0:|T_1|-\delta]=T_1,\quad
+\delta=\beta-m.
+\end{array}}
+\tag{C.35t}
+\]
+
+In the first row, the return interval has exactly six possible weak orders
+relative to the cuts \(d,p\): wholly in \(C\), across \(C/A\), wholly in
+\(A\), across \(A/H_0\), across both cuts, or wholly in \(H_0\).
+The overlap seam \(A=B[c:r]\) is shorter than \(r\), so an interval of
+length \(2r+1\) cannot lie wholly in \(A\).
+
+The word \(T_1\) has no period \(\Delta\le r\). If \(\Delta<r\), compare
+its positions \(r-\Delta\) and \(2r-\Delta\): period \(\Delta\) would make
+\(B[r-\Delta]\) equal first to \(B[0]=2\) and then to the final `3`.
+For \(\Delta=r\), the first symbol \(B[0]\) is compared directly with that
+final `3`. The remaining endpoint \(\Delta=2r\) is also impossible, since
+it compares \(T_1[0]=B[0]=2\) directly with \(T_1[2r]=3\). Thus every
+proper period has the form \(\Delta=r+a\), \(1\le a<r\).
+
+For the early root, if \(r<\alpha<|T_1|\), writing
+\(\alpha=r+a\) makes the period comparisons on \(T_1\) give
+\(B[i]=B[i+a]\) for \(0\le i<r-a\), together with
+\(B[r-a]=3\). Thus \(B\) has period \(a\). If \(2a\le r\), its final
+\(2a\) symbols form an \(a\)-square at \(G\), forcing
+\(\pi(G)\le a<r<q\), a contradiction. Therefore
+
+\[
+r/2<a<r,\qquad B[r-a]=3,\qquad B\text{ has period }a.
+\]
+
+If \(\alpha\ge|T_1|\), put \(\sigma=p-2r\). Its return is
+
+\[
+\boxed{
+\begin{array}{ll}
+\alpha\le\sigma:&
+X[\sigma-\alpha:\sigma-\alpha+|T_1|]=T_1,\\[1mm]
+\alpha>\sigma:&
+X[p-\delta_\alpha:p]X[0:|T_1|-\delta_\alpha]=T_1,\quad
+\delta_\alpha=\alpha-\sigma.
+\end{array}}
+\tag{C.35u}
+\]
+
+These return equations expose the high-root word wall; they do not
+eliminate it.
+
+There is also a branch-independent restriction at every paired phase.
+For \(0\le\ell\le m\), let the common requested exponent be
+\(k_\ell\), with \(k_\ell=U[\ell]\) for \(\ell<m\) and \(k_m=2\), and
+write the two canonical roots as \(a_\ell,b_\ell\). The states share
+
+\[
+T_\ell=B^2U[0:\ell],\qquad |T_\ell|=2r+\ell.
+\]
+
+If \(a_\ell\ne b_\ell\) and the smaller full maximizing power fit inside
+\(T_\ell\), it would occur in both states. Since their exact exponents are
+the same, canonical minimality would force the other root no larger, a
+contradiction. Therefore
+
+\[
+\boxed{
+a_\ell\ne b_\ell
+\Longrightarrow
+k_\ell\min(a_\ell,b_\ell)>2r+\ell.
+}
+\tag{C.35v}
+\]
+
+This permits context-crossing root divergence before a later failure; it
+does not prove that paired roots or failure phases stay synchronized.
+
+If the paired roots do remain equal through phase \(m-1\), write their
+common predecessor root as \(s<P\) and put \(k=B[-1]\). Adjacent-root
+separation at the two endpoints gives the exhaustive endpoint-only table
+
+\[
+\boxed{
+\begin{array}{c|l}
+k=3&
+s<q,\quad q>2s+\gcd(s,q),\quad
+P>2s+\gcd(s,P),\\[1mm]
+k=2,\ s<q&
+q>s+\gcd(s,q),\quad P>s+\gcd(s,P),\\[1mm]
+k=2,\ s=q&
+\text{the early root extends, while the later root pushes and }
+r>\gcd(q,r),\\[1mm]
+k=2,\ q<s<P&
+s\ge q+\gcd(s,q),\quad P>s+\gcd(s,P).
+\end{array}}
+\tag{C.35w}
+\]
+
+The genuine bridge midpoint has one additional target-scope refinement.
+Although
+
+\[
+M=LR^2B
+\]
+
+is omitted from \(\mathcal I\), its suffix
+
+\[
+K=R^2B=B(UB)^2
+\]
+
+has standalone label two and displays a \(q\)-square. If
+\((2,c)\) is the global pair at \(M\), persistence and canonical
+minimality give
+
+\[
+\boxed{c\le\pi(K)\le q<P.}
+\tag{C.35x}
+\]
+
+Thus (C.28) localizes \(M\) even under the \(\mathcal I\)-negation.
+This does not cap every interior bridge state as the
+\(\mathcal J\)-negation does.
+
+More narrowly, for \(0<i<r\), write \(B=AD\) with \(|A|=i\). At the
+bridge state
+
+\[
+M_i=LR^2B\,B[0:i]
+\]
+
+the visible suffix has the literal circular-square factorization
+
+\[
+\boxed{B^2B[0:i]=ADADA=A(DA)^2.}
+\tag{C.35y}
+\]
+
+When the requested symbol is \(B[i]=2\), the actual exponent is two and
+the displayed root has length \(r<P\), so this otherwise omitted
+\(\mathcal I\)-bridge state localizes. For \(B[i]=3\), the identity alone
+gives no converse, no fixed canonical root, and no fixed bridge profile.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It
@@ -2300,6 +2663,86 @@ Both sampled local traces replay the first `13` requested symbols. At phase
 \((2,3)\). The remaining row is therefore a genuinely later, nonlocal
 replay obstruction: endpoint scales and a long common prefix do not close
 it. This word is not a survivor or counterexample.
+
+`research/generated_two_cube_cell_c_z1_atlas.py` now audits the surviving
+row directly in both exact normal forms. It imports neither production
+Cell C search and recomputes every canonical pair from the suffix-power
+definition. Through \(q\le25\), the \(p>q\) branch enumerates `2388798`
+structures, of which `595896` have the structural \(z=1\) coordinates and
+`105851` pass every exact static canonical filter. At phase one their label
+table is
+
+\[
+\begin{array}{c|r}
+\text{outcome}&\text{count}\\ \hline
+E_1,F_1\text{ both label }2&79471\\
+E_1\text{ only labels }2&9\\
+F_1\text{ only labels }2&0\\
+\text{neither labels }2&26371.
+\end{array}
+\]
+
+All `79471` paired label-two cases obey the low alternative
+\(\alpha=\beta<r<P\); none is unclassified. The first replay failures in
+the two windows are synchronized in `105838` static candidates and differ
+in `13`. The first post-phase-zero root divergence occurs at the first
+failure in `43471` cases and after it in `62380`; none occurs before it.
+All `105851` literal early and late endpoints have the exact pairs
+\((2,q)\), \((2,P)\), but only `29416`, `64641`, and `28724` candidates
+have the early, late, and both predecessor labels required for generation.
+
+The \(p<q\) branch enumerates `1115405` structures, with `418622`
+structural \(z=1\) rows and `100053` exact static candidates. Its phase-one
+label table is
+
+\[
+\begin{array}{c|r}
+E_1,F_1\text{ both label }2&61200\\
+E_1\text{ only labels }2&32800\\
+F_1\text{ only labels }2&507\\
+\text{neither labels }2&5546.
+\end{array}
+\]
+
+Among the `61200` paired cases, `6555` are equal/local and `54645` are
+different/context-crossing; again none violates (C.35p). Exactly `93493`
+static candidates have \(r=1\), including all `54645` paired high cases.
+The generic seam contributes `100050` static candidates, while the overlap
+seam contributes exactly `3`. First failures synchronize in `46364`
+static candidates and differ in `53689`. Root divergence occurs before,
+at, and after the first failure in `54780`, `45268`, and `5` cases.
+Every early endpoint has pair \((2,q)\); `99934` late endpoints have
+\((2,P)\). The predecessor label counts are `91133`, `13138`, and `13128`.
+
+Every static candidate in both branches fails at least one literal replay
+phase within the bound. This is `COMPUTED` evidence only. In particular,
+the atlas also pins why stronger informal statements are false:
+
+- the \(q=8,r=1,p=5\) word has
+  \(E_1:(2,3)\), \(F_1:(2,4)\), and a noncanonical late endpoint
+  \((2,5)\);
+- the endpoint-correct \(q=9,r=1,p=6\) word has the same high phase-one
+  split and replays phases `0` through `3` before both fail at phase `4`;
+- the \(q=11,r=1,p=8\) word fails early at phase `3` and late at phase `5`;
+- the \(q=16,r=2,p=10\) word has the common phase-one pair \((2,1)\), then
+  different valid phase-two pairs \((2,6)\), \((2,8)\), before both fail
+  at phase `3`;
+- the \(q=23\) overlap model above first fails at phase `13`;
+- the exact high static model
+  \[
+  q=29,\ r=4,\ p=20,\ P=33,\quad
+  B=2332,\quad\Theta=3,\quad D=233233223323
+  \]
+  has \(E_1:(2,9)\), \(F_1:(2,20)\), exact endpoint pairs
+  \((2,29),(2,33)\), and fails both windows at phase `2`.
+
+The deterministic artifact
+`research/outputs/generated_two_cube_cell_c_z1_atlas_2026-07-27.txt`
+was generated twice with LF-stable, byte-for-byte identical output in
+`43.451` and `43.523` seconds. Its SHA-256 digest is
+`975E542B6AEF428B39C087095BCB0A77AD68E390D597CC21F1FB43DA72BCEFE9`.
+The artifact and all six certificates are bounded audits, not a proof that
+the remaining row is impossible.
 
 ### 8. Equality-first exhaustive engine
 

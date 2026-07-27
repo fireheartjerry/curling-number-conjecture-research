@@ -144,6 +144,73 @@ the positions \(R_2[r]=Q[0]=3\) and \(B_4[0]=B[0]=2\), which are exactly
 
 remains on the simultaneous boundary.
 
+Write the phase-one pairs as
+
+\[
+E_1:(2,\alpha),\qquad F_1:(2,\beta),\qquad \alpha,\beta<P.
+\]
+
+The surviving row now has an exact transition atlas. The broken early
+\(p\)-cube and adjacent-root separation force the strict pop
+
+\[
+\alpha<p,\qquad p\ge\alpha+\gcd(p,\alpha).
+\]
+
+At the later cube, either
+
+\[
+\beta<r,\quad r\ge\beta+\gcd(r,\beta),
+\]
+
+or
+
+\[
+\beta>2r+\gcd(r,\beta).
+\]
+
+Both phase-one states end in \(T_1=B^2\,3\). If either square fits this
+common suffix, canonical minimality forces the common low root
+\(\alpha=\beta<r\); otherwise both roots exceed \(r\). The high later root
+is further restricted by
+
+\[
+2r+\gcd(r,\beta)<\beta<q,
+\]
+
+an exact copied-\(T_1\) return, and a Fine--Wilf threshold miss against the
+visible \(q\)-square in \(R^2B\). In particular, \(r=1\) has only the
+context-crossing alternative.
+
+At any paired phase \(\ell\), differing roots \(a_\ell,b_\ell\) with
+requested exponent \(k_\ell\) obey
+
+\[
+k_\ell\min(a_\ell,b_\ell)>2r+\ell.
+\]
+
+The endpoint predecessor transitions now have an exact adjacent-root
+push/pop classification. The otherwise omitted \(\mathcal I\)-bridge
+midpoint \(M=LR^2B\) independently has period below \(P\) and localizes.
+More narrowly,
+\(B^2B[0:i]=A(DA)^2\) at the cut \(B=AD\), so bridge positions requesting
+`2` localize under \(\mathcal I\). This does not give a fixed profile at
+positions requesting `3`, and the stronger two-half bridge atlas is
+deferred.
+
+The new definition-first \(z=1\) atlas through \(q\le25\) checks
+`2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`
+and `100053` exact static rows. Phase one is valid in `79471` and `61200`
+cases respectively. Every \(p>q\) valid pair is equal/local; the \(p<q\)
+cases split into `6555` equal/local and `54645` unequal/high cases, with
+all unequal cases occurring at \(r=1\). All bounded static words fail a
+sampled replay, but failure phases need not synchronize. The exact
+\(q=8,9,11,16,23,29\) certificates pin the sharp failures and high-root
+geometry. This is `COMPUTED`, not a closure of the remaining row.
+The LF-stable authoritative artifact was reproduced byte-for-byte in
+`43.451` and `43.523` seconds; its SHA-256 is
+`975E542B6AEF428B39C087095BCB0A77AD68E390D597CC21F1FB43DA72BCEFE9`.
+
 In the \(p>q\) branch, the canonical \(G\)-scale now also gives a
 two-scale phase restriction. If an early canonical pair is \((k,s)\), with
 \(k\in\{2,3\}\), \(s<P\), and \(s\ne q\), then, for

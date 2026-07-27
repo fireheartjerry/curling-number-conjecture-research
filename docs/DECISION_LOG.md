@@ -1122,3 +1122,170 @@ Entries are append-only; superseded decisions are marked, not deleted.
   \(q\)-separated endpoint coordinates, both target scopes, both \(p<q\)
   seams, all pinned counts, the \(q=23\) warning model, and the absence of
   status inflation.
+
+## D-034 — Preserve the surviving-row transition atlas
+
+- Date: 2026-07-27
+- Status: exact transition lemmas `PROVED-NL`; two-branch finite atlas
+  `COMPUTED`; Cell C remains `OPEN`
+- Row decision: after D-033, retain only
+  \[
+  (z,h)=(1,0),\qquad U[0:2]=32,\qquad X[0]=2,\qquad\lambda\le1
+  \]
+  on the simultaneous boundary. Write the sampled phase-one pairs as
+  \[
+  E_1:(2,\alpha),\qquad F_1:(2,\beta),\qquad\alpha,\beta<P.
+  \]
+  No claim is made about non-boundary Cell C instances.
+- Early-root decision: all-continuation localization places the
+  \(\alpha\)-square inside \(X^3\,3\). The appended `3` breaks the old
+  \(p\)-root. A push would require
+  \(\alpha>2p+\gcd(p,\alpha)\), making its square longer than
+  \(3p+1\). Therefore
+  \[
+  \alpha<p,\qquad p\ge\alpha+\gcd(p,\alpha).
+  \]
+- Later-root decision: the same mismatch breaks the \(r\)-root, and
+  adjacent-root separation gives exactly
+  \[
+  \beta<r,\quad r\ge\beta+\gcd(r,\beta),
+  \]
+  or
+  \[
+  \beta>2r+\gcd(r,\beta).
+  \]
+- Common-suffix decision: both states end in \(T_1=B^2\,3\). If either
+  canonical square has root at most \(r\), it occurs in both states and
+  least-root minimality forces
+  \[
+  \alpha=\beta=s<r.
+  \]
+  The exact low square is
+  \(\operatorname{suf}_{2s}(T_1)=(B[r-s+1:r]\,3)^2\), with
+  \(B[r-s]=3\). Otherwise both roots exceed \(r\). Since \(223\) has no
+  square, \(r=1\) is necessarily high/context-crossing.
+- High-\(\beta\) decision: initially
+  \(2r+\gcd(r,\beta)<\beta<P\). The endpoint \(\beta=q\) equates the
+  fixed symbols `3` and `2`. For \(\beta=q+w\), \(0<w<r\), copying
+  \(T_1\) left gives \(B=B[w:]B[:w]\), making \(B\) a proper power and
+  contradicting \(\kappa(F_0)=3\). Thus the high range is exactly
+  restricted to
+  \[
+  2r+\gcd(r,\beta)<\beta<q.
+  \]
+  With \(v=P-\beta\), \(g_r=\gcd(r,\beta)\), the copied square has the
+  exact form
+  \[
+  \operatorname{suf}_{2\beta}(R^2B^2\,3)
+    =(R[r+v+1:q]B^2\,3)^2,\qquad R[r+v]=3,
+  \]
+  and \(1\le v\le m-g_r-1\). On
+  \(K=R^2B=B(UB)^2\), put \(d_\beta=\gcd(\beta,q)\). If
+  \(d_\beta=\beta\), then \(\beta\mid q\), \(\beta<q\), and
+  \(2\beta-r-1<2\beta\le q=\beta+q-d_\beta\), so the threshold misses
+  automatically. If \(d_\beta<\beta\), threshold attainment on the whole
+  shorter common suffix would, on the length-\((2\beta-r-1)\) side,
+  include the complete first primitive \(\beta\)-root and make it
+  imprimitive; on the length-\(2q\) side, the common suffix is the whole
+  displayed \(q\)-square and makes its primitive root \(UB\) imprimitive.
+  Hence Fine--Wilf must miss:
+  \[
+  \min(2\beta-r-1,2q)<\beta+q-d_\beta.
+  \]
+  It is not eliminated.
+- \(p<q\) return decision: retain both exact seams in the common form
+  \(X=AC,\ U=CAH_0\). The high \(\beta\)-return is either wholly in \(U\)
+  at `m-beta`, or crosses from the preceding \(B\) into \(U\).
+  Its internal interval has six weak orders relative to the cuts
+  \(|C|=d\), \(|CA|=p\); the overlap seam cannot place all of \(T_1\)
+  inside \(A\). The high \(\alpha\)-return is recorded relative to
+  \(\sigma=p-2r\). These are word equations, not a closure proof.
+- Proper-period correction: \(T_1\) has no period
+  \(\Delta\le r\). For \(\Delta<r\), its repeated \(B[r-\Delta]\)
+  coordinate would equal both \(B[0]=2\) and the final `3`; the case
+  \(\Delta=r\) compares those fixed symbols directly. The endpoint
+  \(\Delta=2r\) also compares \(T_1[0]=2\) directly with
+  \(T_1[2r]=3\). Every proper period is therefore \(r+a\) with
+  \(1\le a<r\); its comparisons make \(B\) period \(a\) and give
+  \(B[r-a]=3\). If \(2a\le r\), the final \(2a\) symbols of \(B\) form an
+  \(a\)-square at \(G\), forcing \(\pi(G)\le a<r<q\). Hence
+  \(r/2<a<r\).
+- Paired-root decision: if phase \(\ell\) has common requested exponent
+  \(k_\ell\) and different canonical roots \(a_\ell,b_\ell\), their shared
+  suffix has length \(2r+\ell\). A contained smaller maximizing power
+  would occur in both states and contradict least-root minimality. Hence
+  \[
+  k_\ell\min(a_\ell,b_\ell)>2r+\ell.
+  \]
+  This explicitly permits later root divergence.
+- Endpoint decision: if the roots remain equal through phase \(m-1\), the
+  final transition has the exhaustive adjacent-root classification in
+  (C.35w), split by final label `2` versus `3` and by
+  \(s<q,s=q,q<s<P\). Exact endpoints do not by themselves imply that their
+  predecessor labels were generated correctly.
+- Target-scope decision: the bridge midpoint \(M=LR^2B\) is omitted from
+  \(\mathcal I\), but its suffix \(K=B(UB)^2\) directly gives its global
+  root \(c\le\pi(K)\le q<P\), so (C.28) localizes it anyway.
+  \(\mathcal J\) caps every proper bridge state. At a bridge cut
+  \(B=AD\),
+  \[
+  B^2B[0:i]=A(DA)^2.
+  \]
+  This localizes an omitted \(\mathcal I\)-bridge phase when the requested
+  symbol \(B[i]\) is `2`. No converse or fixed canonical profile is claimed
+  at cuts requesting `3`; the stronger two-half bridge atlas is reserved
+  for D-035.
+- Executable decision: add
+  `research/generated_two_cube_cell_c_z1_atlas.py`, independent of both
+  production Cell C searches. Its literal witness engine, exact structural
+  generators, transition classifier, deterministic renderer, and six
+  recomputed certificates are covered by a test-side raw-root reference.
+- \(p>q\) census through \(q\le25\): `2388798` structures, `595896`
+  structural rows, and `105851` exact static candidates. Phase one has
+  `79471` both-label-two, `9` early-only, `0` late-only, and `26371`
+  neither. All `79471` paired cases are equal/local and capped. Failures
+  synchronize in `105838` cases and differ in `13`; root divergence occurs
+  at the first failure in `43471` and after it in `62380`.
+  Both endpoints are exact in all `105851`, while the early, late, and
+  paired predecessor-label counts are `29416`, `64641`, `28724`.
+- \(p<q\) census through \(q\le25\): `1115405` structures, `418622`
+  structural rows, and `100053` exact static candidates. Phase one has
+  `61200` both-label-two, `32800` early-only, `507` late-only, and `5546`
+  neither. The paired cases split into `6555` equal/local and `54645`
+  unequal/high cases; the latter are exactly the bounded \(r=1\) family.
+  The generic/overlap seams contribute `100050/3` static candidates.
+  Failures synchronize in `46364` and differ in `53689`; divergence occurs
+  before/at/after the first failure in `54780/45268/5`.
+  Early endpoints are all exact, late endpoints are exact in `99934`, and
+  predecessor-label counts are `91133`, `13138`, `13128`.
+- Certificate decision: pin six exact words:
+  \(q=8\) unequal high roots plus late-endpoint failure;
+  endpoint-correct \(q=9,r=1\);
+  \(q=11\) desynchronized failures;
+  \(q=16,r=2\) valid phase-two root divergence;
+  the \(q=23\) overlap long replay; and the \(q=29,r=4\) high static model
+  with \(E_1:(2,9)\), \(F_1:(2,20)\).
+  These refute overstrong monotonicity/equality claims and are not
+  survivors or conjecture counterexamples.
+- Artifact decision: the \(q\le25\) artifact is LF-stable and byte-identical
+  across two independent runs (`43.451`, `43.523` seconds), with SHA-256
+  `975E542B6AEF428B39C087095BCB0A77AD68E390D597CC21F1FB43DA72BCEFE9`.
+- Verification: the focused transition-atlas suite passes `5` tests, the
+  full repository suite passes `144` tests, `compileall` is clean, and
+  `git diff --check` reports no whitespace errors. A fresh in-memory
+  \(q\le25\) render matches the stored `12508`-byte LF-only artifact
+  byte-for-byte.
+- Review: independent exact-proof and publication-quality reviews both
+  returned `APPROVED`. They separately checked the ordering of the
+  \(\beta=q\) and \(\beta=q+w\) exclusions before (C.35r), both
+  \(d_\beta=\beta\) and \(d_\beta<\beta\) Fine--Wilf branches, the
+  \(\Delta=2r\) endpoint, the noncircular proof of \(a>r/2\), line-ending
+  stability, all pinned counts and hashes, the nine-file change scope, and
+  the absence of status inflation.
+- Checkpoint decision: publish this nine-file D-034 snapshot on
+  `research/generated-two-cube-wall`; do not start or resume any cloud
+  task. Continue the proof search locally with D-035.
+- Scope: the high phase-one alternative, the \(r=1\) family, both
+  target-specific boundary word walls, every non-boundary Cell C
+  placement, Cell C, both G2CS targets, and the Curling Number Conjecture
+  remain open. Bounded failure counts are not proof.
