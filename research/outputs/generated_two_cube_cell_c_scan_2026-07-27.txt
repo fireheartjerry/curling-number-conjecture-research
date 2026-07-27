@@ -1,0 +1,21 @@
+label=bounded_binary_record_free_cell_C_residual
+max_start_length=18
+alphabet=2,3
+bound=1<=|E=LRT|<=max_start_length
+parameter_tuples=2361
+equality_assignments=714444
+standalone_no_cube_assignments=239350
+bounded_contexts=2866488
+actual_generation_traces=120
+g2cs_antecedents=120
+I_witnesses=120
+I_survivors=0
+J_witnesses=120
+J_survivors=0
+J_only_witnesses=0
+root_parameter_families=1
+root_parameter_family={"R":[2,3,2],"b":1,"j":1,"r":1}
+boundary_s_eq_2r_j_eq_r_antecedents=120
+positive_certificate={"B":[2],"E":[2,3,2,2,2,3,2,2,2,3,2,2],"I_times":[0,1,2,4,5],"I_witness":true,"J_only_times":[3],"J_times":[0,1,2,3,4,5],"J_witness":true,"L":[2,3,2,2,2,3,2,2],"P":4,"R":[2,3,2],"T":[2],"U":[3,2],"alpha":3,"b":1,"cube_start":13,"events":[{"exponent":3,"period":4,"time":0,"word":[2,3,2,2,2,3,2,2,2,3,2,2]},{"exponent":2,"period":3,"time":1,"word":[2,3,2,2,2,3,2,2,2,3,2,2,3]},{"exponent":2,"period":3,"time":2,"word":[2,3,2,2,2,3,2,2,2,3,2,2,3,2]},{"exponent":2,"period":1,"time":3,"word":[2,3,2,2,2,3,2,2,2,3,2,2,3,2,2]},{"exponent":3,"period":1,"time":4,"word":[2,3,2,2,2,3,2,2,2,3,2,2,3,2,2,2]},{"exponent":2,"period":7,"time":5,"word":[2,3,2,2,2,3,2,2,2,3,2,2,3,2,2,2,3]},{"exponent":2,"period":4,"time":6,"word":[2,3,2,2,2,3,2,2,2,3,2,2,3,2,2,2,3,2]}],"j":1,"max_period_over_I":7,"max_period_over_J":7,"q":3,"r":1,"requested":[3,2,2,2,3,2],"s":2,"standalone_witness":[2,1],"ybt_start":10}
+survivor_certificates=0
+NOT_A_PROOF: bounded record-free Cell C residual scan; zero bounded survivors is not a proof.

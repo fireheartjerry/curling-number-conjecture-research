@@ -389,10 +389,8 @@ Entries are append-only; superseded decisions are marked, not deleted.
   roots through \(q=12\). Its exact `84` retained word-parameter cases all
   satisfy the derived period-\(\delta\) and terminal-square slices. This is a
   bounded index certificate, not the proof.
-- Scope at this checkpoint: `PROVED-NL` was a natural-language closure of
-  Cell B only; Cells A and C were still open. D-024 later bridge-closes Cell A
-  only for the weaker \(\mathcal J\)/strict-record route. Cell C remains open,
-  so neither checkpoint proves a full G2CS target or the Curling Number
+- Scope: `PROVED-NL` is a natural-language closure of Cell B only. Cells A
+  and C remain open, so this does not prove G2CS or the Curling Number
   Conjecture.
 
 ## D-023 — Separate the natural full precompletion target from G2CS-I
@@ -476,3 +474,91 @@ Entries are append-only; superseded decisions are marked, not deleted.
   (G2CS-\(\mathcal J\)) and the strict-record route. Cell C remains open.
   This does not prove either full synchronization statement, complete bridge
   promotion, or the Curling Number Conjecture.
+
+## D-025 — Search Cell C by integer geometry and equality classes
+
+- Date: 2026-07-27
+- Status: active
+- Decision: replace the inherited ambiguous Cell C prose split by exact
+  coordinates in \(V=YBT=BRBT\). With \(s=b+j\), \(N=P+s\), define
+  \[
+  \alpha=N-3r,\quad\beta=N-2r,\quad\gamma=N-r,\quad D=N-j.
+  \]
+  The internal cube copies begin at \(\alpha,\beta,\gamma\); the copied cuts
+  are \(Y\mid B=P\) and \(B\mid T=D\). Retain the necessary integer residual
+  \[
+  \alpha\ge0,\qquad r<s<3r,\qquad
+  2r\le P-\gcd(r,P)-1.
+  \]
+  Equality cases \(s=2r\), \(j=r\), \(j=2r\), and the allowed endpoint
+  \(j=0\Rightarrow D=N\) remain explicit.
+- Equality-first engine: map every coordinate of \(V\) back to \(R\) by
+  \[
+  \phi(z)=
+  \begin{cases}
+  q-b+z,&0\le z<b,\\
+  z-b,&b\le z<P,\\
+  q-b+z-P,&P\le z<P+b,\\
+  z-P-b,&P+b\le z<N.
+  \end{cases}
+  \]
+  Union \(\phi(z)\) with \(\phi(z+r)\) for
+  \(\alpha\le z<N-r\), force the class of \(R[j]\) to symbol \(3\), and
+  enumerate only the free binary classes. A definition-first brute-force
+  oracle through \(q=8\) independently reproduces exactly `197` parameter
+  tuples and `1036` root assignments.
+- Local-start scope: enumerate every binary \(L\) with
+  \(|E=LRT|\le M\). This is a record-free bounded local-start cap, not a cap
+  on an original orbit seed and not the fully generated strict-record
+  specialization from D-017. Recompute the standalone canonical witness and
+  every actual label of \(UBTU\) with a separate exact oracle; then recheck
+  the canonical \(E,G,F,H\) data and evaluate \(\mathcal I\) and
+  \(\mathcal J\) separately. Deduplicate only by the complete structural key
+  \((L,R,b,j,r)\).
+- Reason: integer pruning and equality classes remove impossible roots before
+  context enumeration without replacing actual-generation or canonical
+  checks by static word equations. The computation is a residual
+  falsification tool, not a proof step.
+
+## D-026 — Compute the bounded record-free Cell C residual through 18
+
+- Date: 2026-07-27
+- Status: `COMPUTED`
+- Command:
+  ```
+  python research/generated_two_cube_cell_c_search.py --max-start-length 18 > research/outputs/generated_two_cube_cell_c_scan_2026-07-27.txt
+  ```
+- Cap and exact counts: the bound is
+  \(1\le|E=LRT|\le18\) over the binary alphabet. The run found
+  `parameter_tuples=2361`, `equality_assignments=714444`,
+  `standalone_no_cube_assignments=239350`,
+  `bounded_contexts=2866488`, `actual_generation_traces=120`, and
+  `g2cs_antecedents=120`. All antecedents were witnesses for both targets:
+  `I_witnesses=120`, `I_survivors=0`, `J_witnesses=120`,
+  `J_survivors=0`, and `J_only_witnesses=0`.
+- Boundary and family audit: all 120 antecedents belong to the one family
+  \[
+  (R,b,j,r)=((2,3,2),1,1,1)
+  \]
+  and all satisfy both exact boundaries \(s=2r\) and \(j=r\).
+  Accordingly,
+  `boundary_s_eq_2r_j_eq_r_antecedents=120`.
+- Positive certificate: the first retained context is
+  \(L=23222322\), \(E=232223222322\), with requested future
+  \(UBTU=322232\). Its exact \((\kappa,\pi)\) timeline is
+  `(3,4),(2,3),(2,3),(2,1),(3,1),(2,7),(2,4)`.
+  The original \(\mathcal I\) times are `0,1,2,4,5`; the full
+  \(\mathcal J\) family additionally contains bridge time `3`. Both period
+  maxima are `7`, while \(P=4\).
+- Reproduction: the reporting run took `12.213` seconds. A second run took
+  `12.882` seconds and was byte-identical. The deterministic output SHA-256 is
+  `F6597BD5D75455F3E2D354090308C57B310433A601AB0A9C3B7DC6C691166D37`.
+- Verification: the focused Cell C suite passes `9` tests, including the
+  independent binary canonical oracle through length 10, union-find versus
+  brute force through \(q=8\), the exact positive timeline, the
+  \(\mathcal I/\mathcal J\) split, and the exact length-12 integration
+  counters and the preserved length-18 boundary artifact. The full repository
+  suite passes `105` tests.
+- Scope: this is bounded binary `COMPUTED` evidence. Zero bounded survivors
+  is **NOT_A_PROOF** of either G2CS target, bridge promotion, or the Curling
+  Number Conjecture. Cell C remains `OPEN`.

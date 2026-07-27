@@ -854,3 +854,209 @@ certificate cannot pass vacuously.
 This bounded computation is only an index sanity check. It does not supply
 the Fine--Wilf argument, does not enumerate the full G2CS orbit hypotheses,
 and is not the proof of Cell B.
+
+## Cell C — `OPEN`; equality-first residual audit
+
+Cell C is the internal placement of the later canonical \(r\)-cube. The
+following reduction and bounded search sharpen the branch but do not prove
+either synchronization target.
+
+### 1. Exact internal coordinates
+
+Work relative to the suffix
+
+\[
+V=YBT=BRBT
+\]
+
+of \(F\). Put \(s=b+j\) and \(N=|V|=P+s\). The three copies of the
+canonical \(r\)-root occupy
+
+\[
+[\alpha,\beta),\quad[\beta,\gamma),\quad[\gamma,N),
+\]
+
+where
+
+\[
+\alpha=N-3r,\qquad\beta=N-2r,\qquad\gamma=N-r.
+\tag{C.1}
+\]
+
+Cell C is exactly \(\alpha\ge0\). The copied-block cuts are
+
+\[
+Y\mid B=P,\qquad B\mid T=D=P+b=N-j.
+\tag{C.2}
+\]
+
+Thus there is no ambiguous "contained/crossing" prose partition: every case
+is determined by the order of the five half-open coordinates in (C.1)--(C.2).
+
+The word \(V\) has period \(P\), because its length-\(s\) prefix and suffix
+are both \(BT\). Let
+
+\[
+Z=V[\alpha:N]
+\]
+
+be the displayed \(r\)-cube, of length \(3r\), and put
+\(e=\gcd(r,P)\). Suppose
+
+\[
+3r\ge r+P-e,
+\]
+
+so \(P\le2r+e\le3r\). The word \(Z\) has period \(r\) by construction,
+and the coordinate comparisons inherited from the \(P\)-periodic word \(V\)
+make \(P\) a period of \(Z\). Fine--Wilf therefore gives period \(e\) on
+all of \(Z\).
+
+If \(e<r\), then \(e\mid r\) and \(r/e\ge2\). Since \(e\mid3r\), the whole
+word \(Z\) is at least six consecutive copies of an \(e\)-block. It is a
+suffix of \(F\), contradicting the exact maximal value \(\kappa(F)=3\).
+
+If \(e=r\), then \(r\mid P\). The assumed threshold gives \(P\le3r\), so,
+because \(r<P\), one has \(P/r\in\{2,3\}\). The final length-\(P\) factor
+of \(V\) lies inside \(Z\), hence is a proper \(r\)-power. But \(V\) is the
+length-\((P+s)\) prefix of \(Y^2\), so this final length-\(P\) factor is a
+conjugate of \(Y\). A conjugate of a proper power is a power of the conjugate
+root. Thus \(Y\) is a proper power, and the suffix \(Y^2\) of \(H\) has
+exponent at least four, contradicting \(\kappa(H)=2\).
+
+Both cases are impossible. Therefore \(2r<P-e\), which over the integers is
+the strict internal bound
+
+\[
+\boxed{2r\le P-\gcd(r,P)-1}.
+\tag{C.3}
+\]
+
+The standalone no-cube clause forces \(s<3r\): otherwise the internal cube
+lies wholly in the common terminal block \(BT\). Equation (C.3) and
+\(P<2q\) give \(r<q\). If \(s\le r\), deleting the \(s\)-letter \(BT\)
+append from the \(r\)-cube at \(F\) leaves an \(r\)-square at \(G\), forcing
+\(\pi(G)\le r<q\). Consequently every surviving integer residual satisfies
+
+\[
+\boxed{r<s<3r}.
+\tag{C.4}
+\]
+
+Writing \(e=\gcd(r,P)\), (C.3)--(C.4) also give
+
+\[
+\alpha=(P-2r)+(s-r)\ge e+2.
+\]
+
+The exhaustive cut orders are therefore
+
+\[
+\begin{array}{ll}
+r<s<2r:&\alpha<\beta<P<\gamma<N,\\
+s=2r:&\alpha<\beta=P<\gamma<N,\\
+2r<s<3r:&\alpha<P<\beta<\gamma<N,
+\end{array}
+\tag{C.5}
+\]
+
+and
+
+\[
+\begin{array}{ll}
+j<r:&\gamma<D\le N,\\
+j=r:&D=\gamma,\\
+r<j<2r:&\beta<D<\gamma,\\
+j=2r:&D=\beta,\\
+2r<j<3r:&\alpha<D<\beta.
+\end{array}
+\tag{C.6}
+\]
+
+These include every equality boundary. In particular, \(j=0\) is allowed in
+the first line and gives the endpoint equality \(D=N\).
+
+### 2. Equality-first exhaustive engine
+
+For fixed \((q,b,j,r)\), every coordinate \(z\) of \(V=BRBT\) comes from
+the following coordinate of \(R\):
+
+\[
+\phi(z)=
+\begin{cases}
+q-b+z,&0\le z<b,\\
+z-b,&b\le z<P,\\
+q-b+z-P,&P\le z<P+b,\\
+z-P-b,&P+b\le z<N.
+\end{cases}
+\tag{C.7}
+\]
+
+The executable search first unions
+
+\[
+\phi(z)\sim\phi(z+r)\qquad(\alpha\le z<N-r),
+\]
+
+then forces the class containing \(j\) to carry symbol \(3\), as required by
+\(R[j]=\kappa(E)=\kappa(F)=3\). It enumerates only the remaining binary
+equality classes. An independent brute-force oracle through \(q=8\) finds
+exactly the same `197` integer tuples and `1036` root assignments.
+
+Each retained root is then checked for the exact standalone canonical
+condition \(\kappa(R^2T)=2\). For every binary \(L\) with
+\(|E=LRT|\) under the explicit cap, a separate canonical oracle verifies
+every requested label in the full future word \(UBTU\), rechecks the
+canonical data at \(E,G,F,H\), and evaluates the original \(\mathcal I\) and
+bridge-inclusive \(\mathcal J\) time sets independently. Structural keys
+\((L,R,b,j,r)\) prevent duplicate trace evidence.
+
+### 3. Bounded result through \(|E|\le18\)
+
+The deterministic run retained
+
+```text
+parameter_tuples=2361
+equality_assignments=714444
+standalone_no_cube_assignments=239350
+bounded_contexts=2866488
+actual_generation_traces=120
+g2cs_antecedents=120
+I_witnesses=120
+I_survivors=0
+J_witnesses=120
+J_survivors=0
+J_only_witnesses=0
+root_parameter_families=1
+boundary_s_eq_2r_j_eq_r_antecedents=120
+```
+
+All 120 antecedents have
+
+\[
+(R,b,j,r)=((2,3,2),1,1,1).
+\]
+
+Thus every retained antecedent lies simultaneously on the exact cut
+boundaries \(s=2r\) and \(j=r\); none is lost into either adjacent strict
+inequality case in (C.5)--(C.6).
+
+The least positive certificate has
+
+\[
+L=23222322,\quad E=232223222322,\quad UBTU=322232,
+\]
+
+with exact relative-state witnesses
+
+\[
+(3,4),(2,3),(2,3),(2,1),(3,1),(2,7),(2,4).
+\]
+
+Here the entries are \((\kappa,\pi)\) at times \(0,\ldots,6\);
+\(\mathcal I\) uses times \(0,1,2,4,5\), while \(\mathcal J\) additionally
+uses bridge time \(3\). Both maxima are \(7\ge P=4\).
+
+This is a bounded binary local-start computation. Zero \(\mathcal I\)- or
+\(\mathcal J\)-survivors is **not a proof**, and Cell C remains `OPEN` for
+both targets.

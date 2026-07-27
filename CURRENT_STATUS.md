@@ -68,6 +68,23 @@ has a complete four-case natural-language proof and an independent exhaustive
 index certificate with `1776` binary plus `690` ternary retained tuples and
 zero failures.
 
+For internal Cell C, exact half-open geometry now reduces every survivor to
+
+\[
+\alpha=P+b+j-3r\ge0,\qquad
+r<b+j<3r,\qquad
+2r\le P-\gcd(r,P)-1.
+\]
+
+An equality-first record-free scan exhausts every binary local start
+\(|E=LRT|\le18\). It checks `2361` integer tuples, `714444` equality-class
+root assignments, and `2866488` bounded contexts with an independent exact
+canonical/orbit oracle. The `120` complete G2CS antecedents all have
+\((R,b,j,r)=((2,3,2),1,1,1)\), all lie on \(b+j=2r\) and \(j=r\), and all
+already have period at least \(P\) in both \(\mathcal I\) and
+\(\mathcal J\). There are zero bounded survivors, but this computation is
+not a proof; Cell C remains open for both targets.
+
 ## Immediate open work
 
 - Internal later cube (Cell C) for both synchronization targets.

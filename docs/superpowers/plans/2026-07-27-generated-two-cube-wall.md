@@ -598,29 +598,48 @@ not mark G2CS proved.
 
 **Files:**
 - Modify: `research/generated_two_cube_cells.md`
+- Create: `research/generated_two_cube_cell_c_search.py`
+- Create: `tests/test_generated_two_cube_cell_c_search.py`
+- Create: `research/outputs/generated_two_cube_cell_c_scan_2026-07-27.txt`
 - Modify: `docs/DECISION_LOG.md`
+- Modify: `CURRENT_STATUS.md`
 
-- [ ] **Step 1: Replace prose geometry by intervals**
+- [x] **Step 1: Replace prose geometry by intervals**
 
 Let the later \(r\)-cube be the suffix interval
 \([|F|-3r,|F|)\). Express its containment in \(YBT\) and all crossings of
 \(Y|B\) and \(B|T\) using half-open inequalities. Do not use the inherited
 ambiguous three-way prose split.
 
-- [ ] **Step 2: Apply the internal bound**
+- [x] **Step 2: Apply the internal bound**
 
 Record \(2r\le P-\gcd(r,P)-1\), then enumerate all possible placements relative
 to the copied \(B,T,U\) blocks.
 
-- [ ] **Step 3: Couple to the early external cube**
+- [x] **Step 3: Execute an equality-first bounded residual audit**
+
+Use the exact source map from \(V=BRBT\) coordinates to \(R\), union every
+equality forced by the suffix \(r\)-cube, force \(R[j]=3\), and enumerate
+only free binary classes. Independently verify canonical witnesses and the
+complete actual future \(UBTU\) for every binary local start
+\(|E=LRT|\le18\). Preserve deterministic \(\mathcal I\)- and
+\(\mathcal J\)-specific counts and a full positive certificate.
+
+Result: 120 antecedents, all from the one family
+\((R,b,j,r)=((2,3,2),1,1,1)\), all lying on \(s=2r,j=r\), and zero bounded
+survivors for either target. This is `COMPUTED`, not a proof.
+
+- [ ] **Step 4: Couple the surviving geometry to the early external cube**
 
 Use the common suffix \(BT\), the conjugate \(UBT\), and paired actual
 generation to force either the synchronization conclusion or a finite
-parameter survivor family.
+parameter survivor family. The bounded zero-survivor result does not replace
+this symbolic step.
 
-- [ ] **Step 4: Prove, refute, record, and commit**
+- [ ] **Step 5: Prove or refute Cell C**
 
 Use the same evidence statuses and checkpoint protocol as Cells A and B.
+Until this step is complete, Cell C remains `OPEN` for both targets.
 
 ### Task 9: Synthesize and adversarially audit
 
@@ -645,11 +664,16 @@ python research/generated_two_cube_falsifier.py \
 
 Expected: tests pass and output matches the preserved scan file.
 
-- [ ] **Step 3: Update status conservatively**
+- [ ] **Step 3: Update each target status conservatively**
 
-Only call synchronization proved if Tasks 6–8 each have a complete proof and
-the synthesis audit finds no missing case. Otherwise list the exact surviving
-cell and strongest established restrictions.
+Call (G2CS-\(\mathcal J\)) proved only if the \(\mathcal J\) branches of
+Tasks 6--8 each have a complete proof and the synthesis audit finds no
+missing case. Call the stronger (G2CS-\(\mathcal I\)) proved only if Cell C
+and Cell B are closed for \(\mathcal I\) **and** the still-open Cell A
+\(\mathcal I\)-only branch is separately closed. Completion of Tasks 6--8
+under the current Task 6 result can establish at most the
+\(\mathcal J\)/strict-record route. Otherwise list the exact surviving cell
+for each target and the strongest established restrictions.
 
 - [ ] **Step 4: Commit and push**
 
