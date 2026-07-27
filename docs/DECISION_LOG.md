@@ -1,0 +1,76 @@
+# Decision log
+
+This file records research and repository decisions in chronological order.
+Entries are append-only; superseded decisions are marked, not deleted.
+
+## D-001 — GitHub is the canonical durable state
+
+- Date: 2026-07-27
+- Status: active
+- Decision: use the private repository
+  `fireheartjerry/curling-number-conjecture-research` as the source of truth.
+- Reason: local and external ChatGPT work previously lived in disconnected
+  locations with conflicting status labels.
+- Evidence: repository audit and provenance documents; initial commit
+  `e865fd9`.
+
+## D-002 — Preserve imported evidence byte-for-byte
+
+- Date: 2026-07-27
+- Status: active
+- Decision: do not normalize whitespace or line endings inside `external/` or
+  `archive/`.
+- Reason: imported hashes and provenance matter more than cosmetic diffs.
+- Consequence: historical Markdown trailing spaces are accepted.
+
+## D-003 — Exclude vendored runtimes and generated caches
+
+- Date: 2026-07-27
+- Status: active
+- Decision: omit `.vendor`, executable/runtime binaries, Python caches, and
+  test caches from version control.
+- Reason: these are reproducible dependencies, not research artifacts.
+- Replacement: declare Python dependencies in `requirements.txt`.
+
+## D-004 — Stop the cloud continuation
+
+- Date: 2026-07-27
+- Status: active
+- Decision: cancel the newly created ChatGPT Work cloud task and continue
+  locally.
+- Reason: explicit user direction.
+- Verification: the cloud page exposed no `Stop answering` control after
+  cancellation and returned to an idle prompt state.
+
+## D-005 — Attack the repaired synchronization wall first
+
+- Date: 2026-07-27
+- Status: active
+- Decision: prioritize an exact Generated Two-Cube Synchronization statement,
+  a matching bounded falsifier, and separate treatment of Cells A, B, and C.
+- Alternatives considered:
+  1. audit every earlier lemma first;
+  2. expand bounded censuses without repairing the theorem;
+  3. attack downstream replay/monotonicity conditionally.
+- Reason: the repository audit identifies synchronization as the nearest
+  load-bearing open wall, while static geometry already has impostors.
+
+## D-006 — Record failures as durable progress
+
+- Date: 2026-07-27
+- Status: active
+- Decision: document refuted lemmas, failed proof branches, counterexamples,
+  cutoff effects, and assumption changes alongside successful results.
+- Reason: repeated rediscovery of invalid strengthenings is a major research
+  cost in the inherited corpus.
+
+## D-007 — Use theorem-first proof/falsification checkpoints
+
+- Date: 2026-07-27
+- Status: active
+- Decision: a new lemma is not promoted from `CONJECTURED` or
+  `PROVISIONAL-NL` until its exact quantifiers are mirrored in executable
+  bounded checks where finite testing is meaningful and its endpoint algebra
+  is independently audited.
+- Reason: several inherited computations checked weaker generation predicates
+  than the prose claimed.
