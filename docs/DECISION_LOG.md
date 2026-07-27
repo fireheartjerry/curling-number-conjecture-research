@@ -1453,3 +1453,74 @@ Entries are append-only; superseded decisions are marked, not deleted.
   no-fourth consequence, bounded bridge census, both boundary word walls,
   non-boundary Cell C, Cell C, both G2CS targets, and the Curling Number
   Conjecture remain open.
+
+## D-035 item 3 — capped second-half `3` cuts
+
+- Date: 2026-07-27
+- Status: second-half capped-`3` classification `PROVED-NL`; overall D-035
+  remains `IN PROGRESS`; Cell C remains `OPEN`.
+- Exact scope: for \(0\le i<r\), let \(A_i=B[0:i]\) and
+  \(M_i=LR^2B A_i\). Assume the actual bridge cut requests `3` and is
+  capped:
+  \[
+  \kappa(M_i)=B[i]=3,\qquad h=\pi(M_i)<P=q+r.
+  \]
+  The conclusion is \(h\le r\); if \(h<r\), the canonical cube is a
+  proper circular cube of \(B\). Equality \(h=r\) remains an exceptional
+  full-root seam placement.
+- Terminology decision: item 3 records only the placement of an \(r\)-root
+  cube across the boundary \(BQ\mid B^2A_i\). The exact equation
+  \(\operatorname{suf}_{r-i}(BQ)=B[i:r]\), its persistence consequences,
+  and the eventual conclusion \(i=r-1\) remain item 4. This avoids both
+  duplicating the next obligation and suggesting the false converse
+  “seam implies \(h=r\).”
+- Long-delete decision: put \(E_i=BA_i\). When \(h>r\) and
+  \(h\ge r+i=|E_i|\), writing the canonical root as \(V_iE_i\) and
+  deleting \(E_i\) leaves \(V_i(E_iV_i)^2\) at \(G\). Thus \(G\) has an
+  \(h\)-root maximizing square, so \(h\ge\pi(G)=q\).
+- Marker decision: if the transferred root has \(h=q\), then
+  \(E_iV_i=R\). Since a `3` cut has \(i>0\), position \(r\) of that
+  prefix exists; it is simultaneously \(B[0]=2\) in \(E_i=BA_i\) and
+  \(Q[0]=3\) in \(R=BQB\), a contradiction.
+- High-root decision: if \(h=q+u>q\), the cap gives \(0<u<r\).
+  The inherited \(h\)-square contains \(R^2\), whose periods \(q\) and
+  \(q+u\) make \(u\) a period of \(R\). This supplies a maximizing
+  \(u\)-square at \(G\), contradicting \(\pi(G)=q\).
+- Short-crossing decision: the remaining range \(r<h<r+i\) puts all of
+  \(B^2A_i\) inside the canonical cube. Fine--Wilf gives period
+  \(\gcd(h,r)<r\) on \(B\). As that period divides \(r\), \(B\) is a
+  proper power, so the suffix \(B^3\) at \(F\) has exponent at least six,
+  contradicting \(\kappa(F)=3\).
+- Circularity decision: for \(h<r\), a cube crossing the left edge of
+  \(B^2A_i\) would give the same forbidden gcd period on \(B\).
+  Therefore the cube lies wholly in
+  \(B^2B[0:i]\subset B^{\mathbb Z}\), with root strictly shorter than
+  \(B\).
+- Endpoint decision: \(i=0\) cannot request `3` because \(B[0]=2\);
+  \(i=r-1\) is included; \(r=1\) is vacuous. The completed endpoint
+  \(F=M_r\) is not an indexed proper bridge cut.
+- Dependency decision: the cap is used only after deletion, to put
+  \(h-q<r\). The proof also uses the actual bridge chronology,
+  \((\kappa(G),\pi(G))=(2,q)\), the marker mismatch
+  \(B[0]=2\ne3=Q[0]\), and \(\kappa(F)=3\). It does not use (C.28),
+  either \(p\)-branch, or either target negation.
+- Target decision: the G2CS-\(\mathcal J\) negation supplies the cap at
+  every proper second-half bridge cut. The G2CS-\(\mathcal I\) negation
+  omits these interior cuts, so the lemma remains conditional there.
+- Finite-audit decision: an independent definition-first enumeration
+  through \(r,|Q|\le6\) and \(|L|\le8\) inspected `31,641` full actual
+  bridges with capped second-half `3` cuts. It found no \(h>r\) case,
+  no \(h<r\) cube crossing \(B^2B[0:i]\), and no noncircular low-root
+  case. This is corroborating finite evidence only; the symbolic proof
+  above carries the result.
+- Verification: the full repository suite passes `144` tests;
+  `compileall`, unique-tag inspection, and `git diff --check` are clean.
+- Review: independent exact-proof, adversarial definition-first, and
+  publication/scope reviews returned `APPROVED`. The scope review caught
+  and corrected one prose error: the full-root cube begins \(r-i\)
+  symbols before \(Z_i\) and crosses the displayed seam; it does not
+  begin at the seam.
+- Scope: the exact full-root seam equation and phase restriction,
+  no-fourth consequence, bounded bridge census, both boundary word walls,
+  non-boundary Cell C, Cell C, both G2CS targets, and the Curling Number
+  Conjecture remain open.

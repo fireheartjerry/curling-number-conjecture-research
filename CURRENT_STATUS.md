@@ -229,8 +229,25 @@ The actual midpoint label is essential: a pinned \(q=6,r=2\) local word
 has \(h=q\) at the first-half `3` cut but requests `3`, not `2`, at
 \(M\). Under the \(\mathcal J\)-negation all first-half bridge cuts are
 capped. Under the \(\mathcal I\)-negation this result remains conditional
-at omitted interior `3` cuts. The second-half `3` classification and all
-later D-035 items remain open.
+at omitted interior `3` cuts.
+
+The capped second-half `3` classification is now also closed. If
+\(M_i=LR^2B\,B[0:i]\) requests `3` and
+\(h=\pi(M_i)<P\), then \(h\le r\). For \(h\ge r+i\), deleting the
+appended \(B\,B[0:i]\) carries an \(h\)-square back to \(G\), forcing
+\(h\ge q\). The case \(h=q\) contradicts \(B[0]=2\), \(Q[0]=3\);
+the case \(q<h<q+r\) gives \(R\) a forbidden shorter period. For
+\(r<h<r+i\), Fine--Wilf instead makes \(B\) a proper power, contradicting
+the exact terminal label \(\kappa(F)=3\). If \(h<r\), the same
+Fine--Wilf argument prevents the cube from crossing the visible
+\(B^2B[0:i]\), so it is a proper circular cube of \(B\). The only
+retained alternative is the full-root case \(h=r\), whose cube reaches
+the \(BQ\mid B^2B[0:i]\) seam. Its exact suffix equation and cut location
+remain the next D-035 obligation; no converse seam implication is claimed.
+
+Under the \(\mathcal J\)-negation all second-half cuts are capped. Under
+the \(\mathcal I\)-negation the result remains conditional at omitted
+interior `3` cuts. All later D-035 items remain open.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`

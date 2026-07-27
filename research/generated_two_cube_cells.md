@@ -2489,6 +2489,159 @@ the first \(B\), however, gives
 only to the weakened static statement, and confirms why the actual
 midpoint recurrence is essential above.
 
+#### Capped second-half `3` cuts have no root longer than \(B\)
+
+Fix \(0\le i<r\), put
+
+\[
+A_i=B[0:i],\qquad D_i=B[i:r],\qquad
+M_i=LR^2B A_i,
+\]
+
+and suppose the actual second-half cut requests `3` and is capped:
+
+\[
+\kappa(M_i)=B[i]=3,\qquad h=\pi(M_i)<P=q+r.
+\]
+
+Let \(Y_i^3\) be its canonical suffix cube, with \(|Y_i|=h\), and
+write
+
+\[
+Z_i=B^2A_i=A_i(D_iA_i)^2,\qquad |Z_i|=2r+i.
+\]
+
+Thus \(Z_i\) is the visible suffix of \(M_i\) supplied by the final copy
+of \(B\) in \(R\), the first appended \(B\), and the prefix \(A_i\) of
+the second appended \(B\). It has period \(r\).
+
+We first exclude \(h>r\). There are two exhaustive placements.
+Suppose first that
+
+\[
+h\ge r+i.
+\]
+
+Put \(E_i=BA_i\), so \(|E_i|=r+i\) and \(M_i=G E_i\). Since \(E_i\)
+fits in the final canonical root, write \(Y_i=V_iE_i\). Deleting the
+actual output \(E_i\) from the cube gives the suffix
+
+\[
+(V_iE_i)^2V_i=V_i(E_iV_i)^2
+\]
+
+at \(G\). Hence \(G\) ends in an \(h\)-root square. The exact pair
+\((\kappa(G),\pi(G))=(2,q)\) makes this square maximizing, and therefore
+\(h\ge q\). By the cap, write
+
+\[
+h=q+u,\qquad 0\le u<r.
+\]
+
+If \(u>0\), the \(h\)-square at \(G\) contains its suffix \(R^2\), which
+therefore has period \(q+u\). Comparing the two displayed copies of
+\(R\) gives
+
+\[
+R[x]=R[x+u]\qquad(0\le x<q-u).
+\]
+
+Thus \(R\) has period \(u<r<q/2\). Its final \(2u\) symbols form an
+\(u\)-square ending at \(G\), so \(\pi(G)\le u<q\), a contradiction.
+
+It remains in this placement to exclude \(u=0\), or \(h=q\). The
+transferred square at \(G\) has root \(E_iV_i\), so its final
+length-\(q\) block gives
+
+\[
+E_iV_i=R.
+\]
+
+The index \(i\) is positive because \(B[0]=2\), whereas this cut requests
+`3`. Consequently position \(r\) exists in \(E_i=BA_i\), but
+
+\[
+E_i[r]=A_i[0]=B[0]=2,\qquad R[r]=Q[0]=3,
+\]
+
+contradicting the displayed prefix equality.
+
+Now suppose instead that
+
+\[
+r<h<r+i.
+\]
+
+Since \(i<r\),
+
+\[
+3h>3r>2r+i=|Z_i|,
+\]
+
+so all of \(Z_i\) lies in the canonical \(h\)-periodic cube. Put
+\(g=\gcd(h,r)\). The word \(Z_i\) has periods \(h,r\), and
+
+\[
+|Z_i|=2r+i>r+h\ge r+h-g.
+\]
+
+Fine--Wilf gives period \(g\) on \(Z_i\), hence on its prefix \(B\).
+Here \(r<h<2r\), so \(g<r\); moreover \(g\mid r\). Thus \(B\) is a
+proper \(g\)-power. But \(F=LR^2B^2\) ends in \(B^3\), which would then
+have exponent \(3r/g\ge6\), contrary to \(\kappa(F)=3\). Both placements
+are impossible, and therefore
+
+\[
+\boxed{h\le r.}
+\tag{C.35ac}
+\]
+
+Suppose now that \(h<r\). If \(Y_i^3\) crossed the left edge of \(Z_i\),
+then all of \(Z_i\) would again have periods \(h,r\). With
+\(g=\gcd(h,r)\),
+
+\[
+|Z_i|=2r+i\ge2r\ge r+h-g,
+\]
+
+so Fine--Wilf would make \(B\) a proper \(g\)-power and contradict
+\(\kappa(F)=3\) exactly as above. Therefore
+
+\[
+\boxed{
+3h\le2r+i,\qquad
+\operatorname{suf}_{3h}(B^2A_i)=Y_i^3,\qquad h<r.
+}
+\tag{C.35ad}
+\]
+
+The word \(B^2A_i=B^2B[0:i]\) is the factor of the periodic word
+\(B^{\mathbb Z}\) ending at circular phase \(i\). Hence (C.35ad) is a
+proper circular cube of \(B\).
+
+The only remaining alternative is \(h=r\). In that case the final
+length-\(r\) block is \(D_iA_i\), while the cube has length \(3r\) and
+the visible word \(Z_i\) has length \(2r+i\). The full-root cube therefore
+begins exactly \(r-i\) symbols before the left edge of \(Z_i\) and crosses
+the displayed boundary
+
+\[
+\cdots BQ\mid B^2A_i.
+\]
+
+This is the exceptional full-root seam placement retained for the next
+D-035 item. The exact suffix equation forced there, and the subsequent
+restriction on \(i\), are not claimed here. In particular, no converse
+from a seam equality to \(h=r\) is being used.
+
+The endpoint \(i=0\) is vacuous because \(B[0]=2\); \(i=r-1\) is
+included. For \(r=1\) there are no second-half `3` cuts. The cap is
+load-bearing only in the deletion argument, where it gives \(h<q+r\).
+No target negation or use of (C.28) is needed. Under the
+\(\mathcal J\)-negation every proper bridge state is capped, whereas
+under the \(\mathcal I\)-negation this second-half result remains
+conditional at the omitted interior cuts.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It

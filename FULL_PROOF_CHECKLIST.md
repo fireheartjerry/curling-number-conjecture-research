@@ -163,9 +163,12 @@ Completion gate:
   insufficient. The cap is automatic under the negation of
   G2CS-\(\mathcal J\), but remains conditional under the
   G2CS-\(\mathcal I\) negation for an omitted interior cut.
-- [ ] For a capped second-half cut requesting `3`, prove either
-  \(h<r\) and a proper circular cube of \(B\), or \(h=r\) at the terminal
-  seam.
+- [x] **`PROVED-NL`: a capped second-half cut requesting `3` has
+  \(h\le r\).**
+  If \(h<r\), its canonical cube is a proper circular cube of \(B\).
+  The exceptional equality \(h=r\) is retained as the full-root seam
+  placement; its exact seam equation and phase restriction belong to the
+  next item.
 - [ ] Prove that the full-root case \(h=r\) implies
   \(\operatorname{suf}_{r-i}(BQ)=B[i:r]\), and that
   \(\lambda\le1\) forces \(i=r-1\).
