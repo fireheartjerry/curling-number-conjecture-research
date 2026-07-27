@@ -113,6 +113,23 @@ replays both sampled windows below \(P\) while failing the required
 \(G,H\) endpoint scales. The \(p<q\) shifted-border/frontier equations and
 the non-boundary Cell C placements also remain open.
 
+The exact \(p>q\) boundary residual now has a durable structural search
+through \(q\le25\). It reduces `1792552320` theoretical raw
+root--parameter pairs to `2388798` assignments, with `563688` surviving the
+canonical \(R^2\), standalone, and \(X^3\) filters. Exactly one word replays
+the later window with the required initial pair \((3,r)\): the known
+\(q=9,r=3,t=2\) certificate. Its final proper later state already has
+period \(P=12\), and its early replay fails at phase \(1\). Consequently
+there are zero bounded \(\mathcal I\)- or \(\mathcal J\)-survivors in this
+branch. An independent raw-root definition-first oracle reproduces the
+complete stage counts through \(q\le10\).
+
+The first-mismatch diagnostic is also nonvacuous: `197773` canonical
+assignments satisfy the complete three-row trichotomy, including the
+terminal-\(3\)-run bound, and all fail exact early replay by \(q=25\). This
+is `COMPUTED` bounded evidence, not a proof. The unbounded \(p>q\) word wall
+therefore remains open alongside the \(p<q\) and non-boundary cases.
+
 ## Immediate open work
 
 - Internal later cube (Cell C) for both synchronization targets.

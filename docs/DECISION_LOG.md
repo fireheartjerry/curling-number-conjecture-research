@@ -764,3 +764,71 @@ Entries are append-only; superseded decisions are marked, not deleted.
   and
   `C461FF476D8F274C1203864A06B2C16F0312B398F19A71F01310C4DF4EB2B24F`,
   respectively.
+
+## D-030 — Exhaust the \(p>q\) simultaneous-boundary residual structurally
+
+- Date: 2026-07-27
+- Status: `COMPUTED`; Cell C remains `OPEN`
+- Decision: search the exact binary \(p>q\) boundary normal form by structural
+  coordinates rather than raw roots. For each
+  \(q>2r>0,\ r/2<t<r\), generate the length-\(r\) word \(B\) from its first
+  \(t\) coordinates with \(B[0]=2\), generate
+  \(C=U[0:q-2r]\) with \(C[0]=3\), and set
+  \[
+  U=CB,\quad R=BU,\quad X=B[r-t:r]UB.
+  \]
+  The exact key is \((q,r,t,B,U)\); equal words at different \(t\) remain
+  distinct because \(p=q+t\) changes.
+- Command:
+  `python research/generated_two_cube_cell_c_pgtq_search.py --max-q 25
+  --oracle-max-q 10`.
+- Counts: `220` integer triples and `1792552320` theoretical raw
+  root--parameter pairs reduce to `2388798` structural assignments.
+  Exact filtering retains `563708` canonical \(R^2\) words, all `563708`
+  standalone exponent-two words, and `563688` canonical \(X^3\) words.
+  Exactly one word replays the later exponents and also has the required
+  initial later pair \((3,r)\). It has terminal pair \((2,P)\), but its
+  final proper later period is already \(P\). Hence the late-period-cap,
+  complete-\(\mathcal I\), and complete-\(\mathcal J\) survivor counts are
+  all zero.
+- Scope correction: `early_after_exact_late_replays=0` is explicitly a
+  post-late-filter count, not a count over every canonical \(X^3\) word.
+  The \(\mathcal I\) count requires both sampled local replays, their proper
+  period caps, and the \(G,H\) endpoint scales. The \(\mathcal J\) count
+  requires the exact full local continuation, its proper period cap, and
+  terminal pair. Full-continuation checks may short-circuit after the exact
+  later filter because full replay implies later replay.
+- Certificate: the sole later replay is
+  \[
+  (q,r,t,P,p)=(9,3,2,12,11),\quad
+  B=232,\quad U=322232,\quad
+  R=232322232,\quad X=32322232232.
+  \]
+  Its later pairs are
+  `(3,3),(2,2),(2,2),(2,1),(3,1),(2,12)`.
+  Its early phase \(1\) requests `2` while the exact local pair remains
+  `(3,11)`, so all-continuation localization rules out a full G2CS trace.
+- Shadow decision: write \(Y=B^2U\). The final proper local state has a
+  period-\(P\) square exactly when
+  \(C[-1]=Y[-1]=B[-1]\). The certificate realizes this equality and has
+  \(U=\operatorname{rot}_{\rm left}(B)B\). This identity is retained as the
+  next proof lead, not promoted to a universal replay theorem.
+- Trichotomy diagnostic: after the canonical filters, `197773` assignments
+  satisfy all three alternatives in D-029, including the terminal-run
+  inequality. Their row counts are `105851`, `45116`, and `46806`.
+  Every one fails exact early replay: `71487` at phase `1`, `46843` at phase
+  `2`, and `79443` later. There are zero phase-`0`, endpoint-only, or
+  completed cases. These finite counts do not replace an unbounded proof.
+- Independent oracle: a raw-root, definition-first implementation through
+  \(q\le10\) enumerates `3456` raw pairs, retains `42` structural tuples, and
+  reproduces the production stage counts `7,7,7,1,0,1,0`.
+- Reproduction: the corrected authoritative run took `85.161` seconds. A
+  second run took `80.994` seconds and was byte-identical.
+  The deterministic artifact
+  `research/outputs/generated_two_cube_cell_c_pgtq_scan_2026-07-27.txt`
+  has SHA-256
+  `8837CF352EA83B6F2195B17FFD222E42F831C7EA332827EC9C2D7A29F026B06E`.
+- Scope: this is bounded binary evidence for the simultaneous-boundary
+  \(p>q\) branch only. It proves neither the unbounded boundary word
+  obstruction, the \(p<q\) branch, the non-boundary regions, Cell C, either
+  G2CS target, nor the Curling Number Conjecture.

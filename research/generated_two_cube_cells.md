@@ -1561,6 +1561,114 @@ below \(P\). However its local \(G\)- and \(H\)-scale pairs are
 that the endpoint scales in (C.36) remain load-bearing, not a survivor or
 counterexample.
 
+#### Equality-first \(p>q\) boundary checkpoint
+
+`research/generated_two_cube_cell_c_pgtq_search.py` exhausts the exact
+binary normal form above through \(q\le25\). Put
+\[
+C=U[0:q-2r],
+\]
+so \(U=CB\), with \(C[0]=3\). For every integer triple
+\[
+q>2r>0,\qquad r/2<t<r,
+\]
+the executable generates \(B\) from its first \(t\) coordinates, forces
+\(B[0]=2\) and period \(t\), generates \(C\) from its first symbol, and then
+forms
+\[
+U=CB,\qquad R=BU,\qquad X=B[r-t:r]UB.
+\]
+The exact deduplication key is \((q,r,t,B,U)\). A repeated word \(B\) at two
+different values of \(t\) is deliberately retained because the early period
+\(p=q+t\) is different.
+
+The `220` integer triples would contain `1792552320` raw binary
+root--parameter pairs. Structural generation reduces this to `2388798`
+assignments. Exact filtering gives
+
+```text
+canonical R^2=(2,q)                 563708
+kappa(R^2B)=2                       563708
+canonical X^3=(3,p)                 563688
+late exponent replay                    1
+exact late replay with F=(3,r)          1
+all proper late periods below P         0
+terminal H=(2,P)                         1
+early replay after the late filter       0
+full autonomous continuation replay      0
+I-window survivors                        0
+J-window survivors                        0
+```
+
+The \(\mathcal I\)-survivor count requires both exact sampled replays, their
+proper period caps, and the \(G,H\) endpoint scales. The
+\(\mathcal J\)-survivor count independently requires exact replay of the
+whole \(UB^2U\) continuation, all of its proper periods below \(P\), and the
+terminal pair \((2,P)\). Full-continuation candidates may safely be checked
+only after the exact late-window filter because full replay implies late
+replay. There is no obsolete left-context-rescue category: the
+all-continuation localization lemma converts either target's capped states
+to the local words being checked.
+
+The one exact late replay is the \(q=9\) sharpness word above. It has
+\[
+U=\operatorname{rot}_{\rm left}(B)B=322\,232.
+\]
+Its exact late pairs are
+\[
+(3,3),(2,2),(2,2),(2,1),(3,1),(2,12),
+\]
+and its terminal pair is \((2,12)\). Thus its final proper late state already
+has \(\pi=P\). Its early pairs through \(G\) are
+\[
+(3,11),(3,11),(3,11),(2,1),(3,1),(1,38),(2,9),
+\]
+so phase \(1\) requests \(2\) while the displayed local suffix still has
+value \(3\). It is not a full G2CS trace.
+
+There is also an exact coordinate explanation for the final period-\(P\)
+square. Put \(Y=B^2U\). The local terminal word ends in \(Y^2\), and the
+symbol immediately before that shadow is \(C[-1]\). Consequently the final
+proper state's last \(2P\) symbols are
+\[
+C[-1]\,Y^2[0:2P-1].
+\]
+Its two length-\(P\) blocks agree exactly when
+\[
+\boxed{C[-1]=Y[-1]=B[-1].}
+\tag{C.38}
+\]
+For the \(q=9\) word both symbols are \(2\), and the square root is the
+right rotation \(223223232223\) of \(Y\). Equality (C.38) is a coordinate
+identity, not yet a proof that every unbounded survivor must close its
+shadow or that \(P\) must be the shortest maximizing period.
+
+As a separate diagnostic, the executable applies the complete
+first-mismatch trichotomy (C.35), including the terminal-\(3\)-run inequality
+\(d+z\le2\), after the canonical filters. It retains `197773` candidates:
+`105851`, `45116`, and `46806` in the respective
+\((z,h)=(1,0),(2,0),(2,1)\) rows. Every one fails exact early replay:
+`71487` at phase `1`, `46843` at phase `2`, and `79443` at a later phase,
+with no phase-`0`, endpoint-only, or completed cases. This is a bounded
+static contradiction at the tested cap, not an unbounded argument.
+
+An independent definition-first oracle enumerates all `3456` raw binary
+root--parameter pairs through \(q\le10\). It finds the same `42` structural
+tuples and the exact stage counts `7,7,7,1,0,1,0` for canonical \(R^2\),
+standalone exponent two, canonical \(X^3\), exact late replay, late
+period-cap survivors, terminal \(H\), and early replay after the late
+filter. The deterministic \(q\le25\) artifact is
+`research/outputs/generated_two_cube_cell_c_pgtq_scan_2026-07-27.txt`.
+Its SHA-256 is
+`8837CF352EA83B6F2195B17FFD222E42F831C7EA332827EC9C2D7A29F026B06E`.
+
+The \(q=9\) continuation is the same finite-window phase-loss/context-rescue
+shape isolated in `critical_seed_induction.md`: the suffix \(B^3\) begins
+the requested replay, and the outer period-\(P\) shadow rescues the first
+autonomous loss. This is a proof-strategy connection, not a reduction:
+\(B=232\) has proper circular profile \((1,2,1)\), so it does not satisfy
+the fixed-profile hypotheses of that note.
+
 The two word walls above remain unproved, as do the \(p<q\) frontier equation
 (C.25) and the non-boundary regions of (C.5)--(C.6). There is also no
 transfer of the final Cell A argument: here

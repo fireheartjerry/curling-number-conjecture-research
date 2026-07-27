@@ -646,6 +646,21 @@ proper episode. Derive the three-case first-\(2\)/first-mismatch corollary.
 Preserve the non-boundary cases and the \(p<q\) frontier as open; the bounded
 scan does not prove that the boundary is universal.
 
+- [x] **Step 4a: Preserve the bounded \(p>q\) boundary obstruction**
+
+Enumerate the structural \(B,C\) coordinates through \(q\le25\), require the
+exact canonical \(R^2\), standalone, \(X^3\), later-window, and endpoint
+conditions, and evaluate the target-specific period caps. Cross-check the
+complete \(q\le10\) stage counts with a raw-root definition-first oracle.
+
+Result: `2388798` structural assignments from `220` integer triples leave
+one exact later replay and zero late-period-cap, \(\mathcal I\), or
+\(\mathcal J\) survivors. The sole later replay is the known \(q=9\)
+period-\(P\) certificate and fails the early window. All `197773` bounded
+assignments satisfying the full first-mismatch trichotomy fail exact early
+replay. Preserve the deterministic artifact and label the result
+`COMPUTED`, not proved.
+
 - [ ] **Step 5: Close the remaining boundary word obstruction**
 
 For \(p>q\), close the target-specific word residuals. For
