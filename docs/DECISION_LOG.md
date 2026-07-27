@@ -93,3 +93,26 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Consequence: strict-record minimality is applied separately as a
   contradiction corollary, not embedded circularly in the combinatorial
   synchronization implication.
+
+## D-009 — Fix the \(\kappa=1\) sentinel and bound extractor scope
+
+- Date: 2026-07-27
+- Status: active
+- Decision: use the executable convention
+  \[
+  \pi(W)=|W|\quad\text{when }\kappa(W)=1,
+  \]
+  and use the shortest maximizing suffix period when \(\kappa(W)\ge2\).
+  Separately, retain (G2CS) as a general record-free combinatorial core, while
+  restricting the planned bounded extractor to fully generated strict-record
+  applications whose terminal \(Y^2\) starts at or after the seed boundary.
+- Reason: minimizing the displayed \(X^1\) period would give
+  \(\pi((2,3))=1\), contradicting the inherited executable convention and the
+  planned regression value \((\kappa,\pi)=(1,2)\). The full-generation filter
+  is also materially stronger than the general core and must not be hidden in
+  an apparently exhaustive antecedent count.
+- Consequence: the \(\kappa=1\) value is explicitly a sentinel, not a word
+  periodicity claim. It does not affect any state with \(\kappa\ge2\), nor the
+  intended binary \(\{2,3\}\) synchronization set. Future bounded results must
+  be labeled as evidence for the fully generated strict-record specialization,
+  not as a scan of every general-core antecedent.

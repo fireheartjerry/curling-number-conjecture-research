@@ -14,16 +14,24 @@ All words are finite words over the positive integers. For a nonempty word
   \text{ for some word }S\text{ and nonempty word }X\}.
 \]
 
-Define the canonical period
+Define the executable canonical-period convention piecewise:
 
 \[
-\pi(W)=\min\{|X|: W=SX^{\kappa(W)}
-  \text{ for some word }S\text{ and nonempty word }X\}.
+\pi(W)=
+\begin{cases}
+|W|, & \kappa(W)=1,\\[2mm]
+\min\{|X|: W=SX^{\kappa(W)}
+  \text{ for some word }S\text{ and nonempty word }X\},
+  & \kappa(W)\ge2.
+\end{cases}
 \]
 
-Thus \(\pi(W)\) is the least period among suffixes
+When \(\kappa(W)\ge2\), \(\pi(W)\) is the least period among suffixes
 \(X^{\kappa(W)}\): it is the shortest maximizing period, never merely the
-period of a displayed lower power.
+period of a displayed lower power. When \(\kappa(W)=1\), the value \(|W|\) is
+an explicit executable sentinel. It is not a claim that \(|W|\) is the
+literal shortest choice of \(X\) in a decomposition \(W=SX^1\), whose
+unrestricted minimum would be \(1\).
 
 For a word \(V\), the slice \(V[a:b]\) uses zero-based, half-open
 coordinates. A curling-number orbit is a sequence of full states
@@ -38,7 +46,7 @@ symbol.
 
 ## Structural data and actual states
 
-Let \(L,A,B,T,U\) be words such that
+Let \(L,A,B,T,U\) be words, write \(x=|L|\), and suppose
 
 \[
 R=AB=TU,\qquad q=|R|,\qquad b=|B|,\qquad P=q+b,
@@ -108,19 +116,21 @@ the displayed full-state lengths are distinct in orbit order anyway.
 
 ## Actual paired generation
 
-The generation hypothesis is not shorthand for a static word equation.
-There must be a curling-number orbit \((S_t)\) and an index \(n\) such that
+The primitive actual-generation hypothesis is not shorthand for a static word
+equation. There must be a curling-number orbit \((S_t)\) and an index \(t_0\)
+such that the following full-state equalities hold:
 
 \[
-E_\ell=S_{n+\ell}\quad(0\le\ell\le m),
+E_\ell=S_{t_0+\ell}\quad(0\le\ell\le m),
 \]
 
 \[
-F_\ell=S_{n+P+\ell}\quad(0\le\ell\le m).
+F_\ell=S_{t_0+P+\ell}\quad(0\le\ell\le m).
 \]
 
-At every proper prefix of the two copies of \(U\), the next generated symbol
-is the corresponding symbol of \(U\):
+The following are derived audit consequences, not additional generation
+hypotheses. Applying the orbit recurrence to consecutive full-state
+equalities gives, at every proper prefix of the two copies of \(U\),
 
 \[
 \boxed{
@@ -134,13 +144,37 @@ These are curling numbers of the full contexts \(LRTU[0:\ell]\) and
 words, and stronger than any assertion about a standalone continuation from
 \(R^2T\). In this orbit the word generated between the endpoints \(E\) and
 \(F\) is exactly \(UBT\), and every state in \(\mathcal I\) occurs strictly
-before the completion state \(H=S_{n+P+m}\). Also
+before the completion state \(H=S_{t_0+P+m}\). Indeed,
 
 \[
-G=S_{n+m},\qquad H=S_{n+m+P},
+G=S_{t_0+m},\qquad H=S_{t_0+m+P},
 \]
 
 so the full bridge root \(Y=BTU\) is actually generated from \(G\) to \(H\).
+Moreover,
+
+\[
+P-m=b+j>0,
+\]
+
+which places \(E_m=G\) strictly before \(F_0=F\), and places every member of
+\(\mathcal I\) strictly before \(F_m=H\).
+
+### Binary hard-core scope of the sentinel
+
+In the intended binary hard-core application, \(U\in\{2,3\}^m\). The derived
+paired-generation equalities give
+
+\[
+\kappa(E_\ell),\kappa(F_\ell)\in\{2,3\}\quad(0\le\ell<m),
+\]
+
+and the canonical data below require \(\kappa(G)=2\). Thus every state in
+\(\mathcal I\) has curling number two or three, and the \(\kappa=1\) sentinel
+cannot affect (G2CS) in that application. The general core permits arbitrary
+positive-integer \(U\); even there, the sentinel changes no \(\pi(W)\) for any
+state with \(\kappa(W)\ge2\). Any state with \(\kappa(W)=1\) in such a general
+instance uses the \(|W|\) sentinel by definition.
 
 ## Repaired combinatorial synchronization implication
 
@@ -148,10 +182,11 @@ The **Generated Two-Cube Synchronization Lemma** is the following fully
 quantified, presently unproved implication.
 
 For every choice of \(L,A,B,T,U,R,q,b,P,j,m,Y\), orbit
-\((S_t)\), and index \(n\) satisfying all structural and actual-generation
-hypotheses above, assume also:
+\((S_t)\), and index \(t_0\) satisfying all structural hypotheses and the
+primitive full-state orbit equalities above, assume also the following
+canonical data:
 
-1. the two external states have maximal curling number three,
+- the two external states have maximal curling number three,
    \[
    \kappa(E)=\kappa(F)=3;
    \]
@@ -159,21 +194,23 @@ hypotheses above, assume also:
    \[
    R[j]=U[0]=3;
    \]
-2. the first generated copy of \(U\) ends at
+- the first generated copy of \(U\) ends at
    \[
    \kappa(G)=2,\qquad \pi(G)=q;
    \]
-3. the standalone word \(R^2T=T(UT)^2\) has no cube suffix, equivalently in
+- the standalone word \(R^2T=T(UT)^2\) has no cube suffix, equivalently in
    this setting
    \[
    \kappa(R^2T)=2;
    \]
-4. \(H\) is the completed \(Y^2\)-square state and has canonical data
+- \(H\) is the completed \(Y^2\)-square state and has canonical data
    \[
    \kappa(H)=2,\qquad \pi(H)=P;
    \]
-5. every state in \(\mathcal I\) is an actual state strictly preceding that
-   completion.
+
+The actual pre-completion order of \(\mathcal I\) is already a consequence of
+the primitive orbit equalities and \(P-m=b+j>0\); it is not an independent
+antecedent.
 
 Then
 
@@ -184,8 +221,9 @@ Then
 \tag{G2CS}
 \]
 
-Hypothesis 3 is retained in the antecedent rather than restated informally as
-"promotion failure." Although \(R^2T\) visibly ends in the square
+The standalone no-cube clause is retained in the antecedent rather than
+restated informally as "promotion failure." Although \(R^2T\) visibly ends in
+the square
 \((UT)^2\), that displayed period \(q\) need not be its canonical period.
 
 ### Strict-record contradiction corollary
@@ -195,10 +233,16 @@ minimality. This keeps its antecedent consistent with its conclusion.
 
 For the strict-record application, add the independent orbit hypothesis that
 \(H\) is a completed strict-record square of canonical period \(P\). Precisely,
-if \(N=n+P+m\), require
+if
 
 \[
-\pi(S_t)<P\qquad(0\le t<N),
+t_H=t_0+P+m,
+\]
+
+require
+
+\[
+\pi(S_t)<P\qquad(0\le t<t_H),
 \]
 
 while \(\pi(H)=P\). Since every \(W\in\mathcal I\) precedes \(H\), strict-record
@@ -213,9 +257,49 @@ the stated first-\(3\)-position promotion-failure configuration cannot occur
 at such a strict record. This is a corollary of the open combinatorial lemma,
 not a hypothesis smuggled into its proof.
 
+### Fully generated strict-record application specialization
+
+The future bounded extractor tests only the following specialization of the
+strict-record application. Let the orbit seed be \(S_0\), let
+
+\[
+n_{\mathrm{seed}}=|S_0|,
+\qquad
+N=|H|=x+3q+b,
+\]
+
+and retain the strict-record and all core hypotheses above. Since every orbit
+step appends one symbol, \(N=n_{\mathrm{seed}}+t_H\). The terminal
+square suffix \(Y^2\), of length \(2P\), occupies
+
+\[
+[N-2P,N)
+=[x+q-b,x+3q+b).
+\]
+
+The seed occupies \([0,n_{\mathrm{seed}})\), so this entire occurrence of
+\(Y^2\) is generated exactly when
+
+\[
+\boxed{
+N-2P=x+q-b\ge n_{\mathrm{seed}}.
+}
+\tag{FG}
+\]
+
+This is the full-generation condition. It is stronger than merely generating
+the final copy of \(Y\), which already follows from the primitive orbit
+equalities \(G\to H\). In particular, (FG) is a seed-boundary condition, not
+the unqualified inequality \(N\ge2P\).
+
+Candidates counted by the planned bounded extractor must satisfy (FG).
+Therefore its antecedent count is a subset of the antecedents allowed by the
+general record-free core (G2CS); the extractor does not exhaust arbitrary
+actual occurrences covered by that core.
+
 ## Half-open coordinate audit
 
-Let \(x=|L|\), and define
+Recall \(x=|L|\), and define
 
 \[
 e_\ell=x+q+j+\ell,\qquad
@@ -334,9 +418,9 @@ is what fixes \(\kappa(R^2T)=2\).
   standalone \(R^2T\).
 - [ ] **Maximal versus lower-bound power:** each asserted curling number is
   an equality, not merely \(\kappa(W)\ge2\) or \(\kappa(W)\ge3\).
-- [ ] **Shortest maximizing period:** compute \(\pi(W)\) only after finding
-  \(\kappa(W)\), and minimize over all suffix witnesses at that maximal
-  exponent.
+- [ ] **Canonical-period branch:** compute \(\kappa(W)\) first; use the
+  \(|W|\) sentinel when \(\kappa(W)=1\), and minimize over all suffix witnesses
+  at the maximal exponent only when \(\kappa(W)\ge2\).
 - [ ] **Half-open endpoints:** recheck every interval as \([a,b)\), especially
   the two cube starts and the \(YBT\), \(U\), and \(UBT\) boundaries.
 - [ ] **Proper pre-completion set:** include \(G=E_m\), include only
@@ -346,6 +430,10 @@ is what fixes \(\kappa(R^2T)=2\).
 - [ ] **Strict-record availability:** use \(\pi(S_t)<P\) for earlier states
   only in the corollary, after independently establishing that \(H\) is a
   strict record.
+- [ ] **Fully generated specialization:** count an extractor candidate only
+  when the terminal \(Y^2\) start satisfies
+  \(N-2P=x+q-b\ge n_{\mathrm{seed}}\); label such counts as specialization
+  counts, not general-core counts.
 - [ ] **Canonical cube periods:** verify that \(p=\pi(E)\) and \(r=\pi(F)\)
   are the shortest periods of maximizing cube suffixes, not selected cube
   periods.

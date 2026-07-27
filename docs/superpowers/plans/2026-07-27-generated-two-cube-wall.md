@@ -41,10 +41,12 @@ Git, optional Z3 only after a finite model is stated without hidden caps.
 Write:
 
 ```markdown
-For a nonempty word \(W\), let \(\kappa(W)\) be its curling number and let
-\(\pi(W)\) be the least period among suffixes \(X^{\kappa(W)}\). Thus
-\(\pi(W)\) is a shortest maximizing period, not merely the period of a
-displayed power.
+For a nonempty word \(W\), let \(\kappa(W)\) be its curling number. When
+\(\kappa(W)\ge2\), let \(\pi(W)\) be the least period among suffixes
+\(X^{\kappa(W)}\). Thus \(\pi(W)\) is a shortest maximizing period, not merely
+the period of a displayed power. When \(\kappa(W)=1\), set
+\(\pi(W)=|W|\) as the explicit executable sentinel; this is not a claim that
+\(|W|\) is the literal shortest period of an \(X^1\) display.
 ```
 
 - [ ] **Step 2: Enumerate both generated state families**
@@ -68,7 +70,17 @@ It includes \(G\) and excludes \(H\).
 
 - [ ] **Step 3: State actual generation without shorthand**
 
-Write:
+Take the full-state orbit occurrences as primitive:
+
+```markdown
+\[
+E_\ell=S_{t_0+\ell},\qquad
+F_\ell=S_{t_0+P+\ell}
+\qquad(0\le\ell\le m).
+\]
+```
+
+Then derive, rather than separately assume:
 
 ```markdown
 \[
@@ -77,9 +89,10 @@ Write:
 \]
 ```
 
-Explicitly note that this asserts generation in the full contexts \(LRT\) and
-\(LR^2BT\); it is stronger than a static word equation or standalone
-continuation from \(R^2T\).
+Explicitly note that the full-state equalities assert generation in the full
+contexts \(LRT\) and \(LR^2BT\); they are stronger than a static word equation
+or standalone continuation from \(R^2T\). Derive the actual pre-completion
+order from \(P-m=b+j>0\).
 
 - [ ] **Step 4: State the repaired synchronization implication**
 
@@ -93,10 +106,15 @@ If \(R^2T\) has no cube suffix, then
 ```
 
 List all hypotheses: \(R=AB=TU\), \(0<b<q\), \(P=q+b\), \(Y=BR=BTU\),
-the two actual-generation equalities, \(\kappa(E)=\kappa(F)=3\),
+the primitive full-state orbit equalities, \(\kappa(E)=\kappa(F)=3\),
 \(\kappa(G)=2\) with \(\pi(G)=q\), \(\kappa(R^2T)=2\), and \(H\) a strict
-record square with \(\kappa(H)=2\), \(\pi(H)=P\), while every state in
-\(\mathcal I\) precedes completion.
+completed square state with \(\kappa(H)=2\), \(\pi(H)=P\). State the
+strict-record minimality hypothesis separately as a contradiction corollary;
+do not bake it into the record-free combinatorial core. Also state the fully
+generated specialization using
+\[
+|H|-2P=x+q-b\ge n_{\mathrm{seed}}.
+\]
 
 - [ ] **Step 5: Audit endpoint coordinates**
 
@@ -179,8 +197,9 @@ def canonical_witness(sequence: Sequence[int]) -> tuple[int, int]:
         while cursor >= 0 and word[cursor : cursor + period] == block:
             exponent += 1
             cursor -= period
-        if exponent > best_exponent or (
-            exponent == best_exponent and period < best_period
+        if exponent >= 2 and (
+            exponent > best_exponent
+            or (exponent == best_exponent and period < best_period)
         ):
             best_exponent = exponent
             best_period = period
@@ -304,6 +323,10 @@ git push origin main
 
 ### Task 4: Extract fully generated strict-record-square candidates
 
+**Scope:** this extractor covers only the fully generated strict-record
+application specialization of (G2CS), not every antecedent of the general
+record-free combinatorial core.
+
 **Files:**
 - Modify: `research/generated_two_cube_falsifier.py`
 - Modify: `tests/test_generated_two_cube_falsifier.py`
@@ -374,6 +397,11 @@ b = P - q > 0
 2*q - P > 0
 ```
 
+For the terminal exponent-\(2\), period-\(P\) event,
+`entire_power_generated()` is the exact seed-boundary test
+`len(word) - 2*P >= seed_length`. Do not replace it by a seed-free word-length
+inequality.
+
 Store `seed`, `L`, `R`, `A`, `B`, `Y`, `P`, `q`, and the exact trace indices
 used to derive them.
 
@@ -397,6 +425,10 @@ git push origin main
 ```
 
 ### Task 5: Run the repaired bounded falsifier
+
+**Scope:** run and report the falsifier only over Task 4's fully generated
+strict-record specialization. Counts from this scan are not exhaustive counts
+of the general-core antecedent.
 
 **Files:**
 - Modify: `research/generated_two_cube_falsifier.py`
@@ -437,8 +469,8 @@ python research/generated_two_cube_falsifier.py \
 ```
 
 The first lines must print calibration results and the final lines must report
-seed count, candidate count, capped trajectories, theorem antecedent count,
-Cell A/B/C counts, and verified/refuted count.
+seed count, candidate count, capped trajectories, fully generated
+specialization antecedent count, Cell A/B/C counts, and verified/refuted count.
 
 - [ ] **Step 4: Interpret without overclaiming**
 
