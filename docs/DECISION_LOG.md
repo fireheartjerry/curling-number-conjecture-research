@@ -237,3 +237,20 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Reason: strict-record status is a property of the complete orbit history,
   not of whichever subsequence reaches the extractor. Chronology and complete
   provenance must therefore be established before any record comparison.
+
+## D-015 — Isolate all-exponent record accounting by rebasing at a cube
+
+- Date: 2026-07-27
+- Status: active
+- Decision: test nonsquare record accounting on the orbit rebased at time
+  \(52\) of seed `22323222322`. The rebased seed state has canonical data
+  \((\kappa,\pi)=(3,21)\) at time \(0\), while the candidate-shaped,
+  fully-generated square occurs at rebased time \(16\) with canonical data
+  \((2,7)\).
+- Isolation: every square strictly before rebased time \(16\) has canonical
+  period at most \(6\). Thus a square-only record scan would incorrectly treat
+  period \(7\) as a strict record; the time-\(0\) cube's period \(21\) is the
+  causal reason the extractor rejects it.
+- Reason: in the unre-based orbit, earlier period-\(7\) squares also blocked
+  the later square, so that regression did not independently prove that
+  nonsquare exponents participate in strict-record accounting.

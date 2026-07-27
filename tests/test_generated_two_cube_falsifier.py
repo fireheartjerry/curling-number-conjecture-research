@@ -230,21 +230,31 @@ def test_extract_record_square_candidates_returns_empty_for_empty_events():
     assert extract_record_square_candidates(()) == ()
 
 
-def test_extract_record_square_candidates_counts_real_cubes_in_record_accounting():
-    seed = tuple(map(int, "22323222322"))
-    events, _ = trace_orbit(seed, 500)
-    prior_cube = events[52]
-    terminal = events[68]
+def test_extract_record_square_candidates_counts_rebased_cube_in_record_accounting():
+    original_seed = tuple(map(int, "22323222322"))
+    original_events, _ = trace_orbit(original_seed, 500)
+    original_cube = original_events[52]
+    cube_seed = original_cube.word
+    events, _ = trace_orbit(cube_seed, 500)
+    prior_cube = events[0]
+    terminal = events[16]
     G = events[terminal.time - terminal.period]
     R = G.word[-G.period :]
     b = terminal.period - G.period
     B = R[-b:]
     Y = B + R
+    prior_square_periods = [
+        event.period for event in events[: terminal.time] if event.exponent == 2
+    ]
 
+    assert (original_cube.exponent, original_cube.period) == (3, 21)
+    assert prior_cube.word == cube_seed
     assert (prior_cube.exponent, prior_cube.period) == (3, 21)
     assert (terminal.exponent, terminal.period) == (2, 7)
     assert prior_cube.time < terminal.time
     assert prior_cube.period >= terminal.period
+    assert max(prior_square_periods) == 6
+    assert terminal.period > max(prior_square_periods)
     assert terminal.entire_power_generated()
     assert (G.exponent, G.period) == (2, 4)
     assert b > 0
