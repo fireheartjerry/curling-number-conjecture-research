@@ -10,12 +10,14 @@ Conjecture.
 
 ## Start here
 
-1. Read [`CURRENT_STATUS.md`](CURRENT_STATUS.md).
-2. Read the canonical external consolidation:
+1. Read [`FULL_PROOF_CHECKLIST.md`](FULL_PROOF_CHECKLIST.md) for the durable
+   critical path, strengthening track, completion gates, and immediate work.
+2. Read [`CURRENT_STATUS.md`](CURRENT_STATUS.md) for the detailed live state.
+3. Read the canonical external consolidation:
    [`external/chatgpt-mega-ledger-2026-07-27/CURLING_NUMBER_CONJECTURE_MEGA_LEDGER_2026-07-27.md`](external/chatgpt-mega-ledger-2026-07-27/CURLING_NUMBER_CONJECTURE_MEGA_LEDGER_2026-07-27.md).
-3. Read [`docs/REPOSITORY_AUDIT_2026-07-27.md`](docs/REPOSITORY_AUDIT_2026-07-27.md)
+4. Read [`docs/REPOSITORY_AUDIT_2026-07-27.md`](docs/REPOSITORY_AUDIT_2026-07-27.md)
    before treating any computational or packaging claim as load-bearing.
-4. For cloud continuation, use
+5. For cloud continuation, use
    [`cloud/CLOUD_CONTINUATION_PROMPT.md`](cloud/CLOUD_CONTINUATION_PROMPT.md).
 
 ## Repository layout
@@ -51,4 +53,3 @@ The external C++ audits require a C++20 compiler. Z3-based probes require
 - Bounded computation is evidence, never an unbounded theorem.
 - Do not claim the conjecture from bridge promotion alone; autonomous
   exact-power termination remains a separate global wall.
-
