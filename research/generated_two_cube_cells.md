@@ -2263,12 +2263,14 @@ is omitted from \(\mathcal I\), its suffix
 K=R^2B=B(UB)^2
 \]
 
-has standalone label two and displays a \(q\)-square. If
-\((2,c)\) is the global pair at \(M\), persistence and canonical
-minimality give
+has standalone label two. It displays the \(q\)-square \((UB)^2\), and
+it also ends in the \(r\)-square \(B^2\). Actual bridge generation gives
+\(\kappa(M)=B[0]=2\). If \((2,c)\) is the global pair at \(M\),
+persistence and canonical minimality therefore sharpen the earlier
+midpoint bound to
 
 \[
-\boxed{c\le\pi(K)\le q<P.}
+\boxed{c\le\pi(K)\le r<q<P.}
 \tag{C.35x}
 \]
 
@@ -2276,24 +2278,85 @@ Thus (C.28) localizes \(M\) even under the \(\mathcal I\)-negation.
 This does not cap every interior bridge state as the
 \(\mathcal J\)-negation does.
 
-More narrowly, for \(0<i<r\), write \(B=AD\) with \(|A|=i\). At the
-bridge state
+#### Every bridge cut requesting `2` self-caps
+
+On the simultaneous boundary, \(T=B\), so the actual output from \(G\)
+to \(F\) is \(BT=B^2\). For \(0\le i<r\), put
 
 \[
-M_i=LR^2B\,B[0:i]
+A_i=B[0:i],\qquad
+G_i=G\,A_i=LR^2A_i,\qquad
+M_i=M\,A_i=LR^2B A_i.
 \]
 
-the visible suffix has the literal circular-square factorization
+These are the cuts before the two occurrences of the bridge symbol
+\(B[i]\). Actual generation gives
 
 \[
-\boxed{B^2B[0:i]=ADADA=A(DA)^2.}
+\boxed{\kappa(G_i)=B[i]=\kappa(M_i).}
+\]
+
+Because \(A_i\) is a prefix of both \(B\) and \(R\), write
+
+\[
+R=A_iC_i,\qquad B=A_iD_i.
+\]
+
+The two bridge halves then have the literal circular-square
+factorizations
+
+\[
+\boxed{
+\begin{aligned}
+R^2A_i
+  &=A_iC_iA_iC_iA_i
+   =A_i(C_iA_i)^2,\\
+B^2A_i
+  &=A_iD_iA_iD_iA_i
+   =A_i(D_iA_i)^2.
+\end{aligned}}
 \tag{C.35y}
 \]
 
-When the requested symbol is \(B[i]=2\), the actual exponent is two and
-the displayed root has length \(r<P\), so this otherwise omitted
-\(\mathcal I\)-bridge state localizes. For \(B[i]=3\), the identity alone
-gives no converse, no fixed canonical root, and no fixed bridge profile.
+The displayed roots \(C_iA_i\) and \(D_iA_i\) have lengths \(q\) and
+\(r\), respectively. If the requested symbol is \(B[i]=2\), then the
+two global curling numbers in the preceding box are exactly two.
+Consequently each displayed square attains the maximal suffix exponent,
+and least-root minimality gives
+
+\[
+\boxed{
+B[i]=2
+\Longrightarrow
+\pi(G_i)\le q<P,\qquad
+\pi(M_i)\le r<P.
+}
+\tag{C.35z}
+\]
+
+This includes \(i=0\), where \(A_0\) is empty,
+\(G_0=G\), and \(M_0=M\). The identity at \(M_0\) is the \(B^2\)
+square used in (C.35x). If the first family is extended to \(i=r\),
+then \(G_r=M_0\), so the midpoint is one state rather than two.
+The final proper cut \(i=r-1\) is also included. After the second copy of
+\(B\) is complete, the state is \(F\); that cut is outside this indexed
+family because its next requested symbol is \(U[0]=3\), not another
+bridge symbol.
+
+No negation of either G2CS target was used. More precisely,
+\(G_i=S_{m+i}\) and \(M_i=S_{m+r+i}\), where \(m=q-r\).
+For \(i<r\), both continuation coordinates are below \(2q\).
+The direct inequalities in (C.35z) therefore verify the period hypothesis
+of (C.28), which may now localize every such `2`-cut even when the state
+is omitted from \(\mathcal I\). This order is essential: the application
+of (C.28) at these cuts is licensed by the direct cap here; (C.28) is not
+being used to prove that cap.
+
+The result supplies only upper bounds. The displayed rotations need not
+be canonical roots, and no equality with \(q\) or \(r\) is claimed
+except for the separately known \(\pi(G)=q\). At a cut requesting `3`,
+the visible square proves only a lower bound on the exponent; it supplies
+none of the `3`-cut conclusions reserved for the rest of D-035.
 
 ### 6. Exact remaining word obstructions
 

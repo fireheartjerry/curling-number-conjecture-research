@@ -190,13 +190,27 @@ k_\ell\min(a_\ell,b_\ell)>2r+\ell.
 \]
 
 The endpoint predecessor transitions now have an exact adjacent-root
-push/pop classification. The otherwise omitted \(\mathcal I\)-bridge
-midpoint \(M=LR^2B\) independently has period below \(P\) and localizes.
-More narrowly,
-\(B^2B[0:i]=A(DA)^2\) at the cut \(B=AD\), so bridge positions requesting
-`2` localize under \(\mathcal I\). This does not give a fixed profile at
-positions requesting `3`, and the stronger two-half bridge atlas is
-deferred.
+push/pop classification. D-035 now begins the exact two-half bridge atlas.
+For \(0\le i<r\), put \(A_i=B[0:i]\), write
+\(R=A_iC_i\), \(B=A_iD_i\), and let \(G_i,M_i\) be the cuts before the
+two occurrences of the bridge symbol \(B[i]\). Their visible suffixes obey
+
+\[
+R^2A_i=A_i(C_iA_i)^2,\qquad
+B^2A_i=A_i(D_iA_i)^2.
+\]
+
+If \(B[i]=2\), actual generation makes both curling numbers exactly two,
+so the displayed squares are maximizing witnesses and
+
+\[
+\pi(G_i)\le q<P,\qquad \pi(M_i)\le r<P.
+\]
+
+Thus every bridge `2`-cut self-caps and localizes, independently of either
+target negation. This includes the omitted midpoint and strengthens its
+old bound to \(\pi(M)\le r\). The bridge cuts requesting `3`, the rest of
+the two-half atlas, Cell C, and both G2CS targets remain open.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`

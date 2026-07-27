@@ -116,10 +116,12 @@ hypothetical nonterminating orbit
   rotation, generated states
   \(LZ^2\) and \(LZ^3\), separated by the actual output \(Z\), with exact
   labels two and three and \(Z[0]=2\).
-- [ ] **Global changing-origin obstruction.**
-  Prove that an unbounded family of these maturations either stabilizes at
-  one origin, creates a strictly earlier power-tower origin, or is otherwise
-  impossible under the exact orbit labels.
+
+**Open obstruction handed to Phases 2–3:** Phase 1 exposes, but does not
+close, the changing-origin problem. The actual completion checkbox is in
+Phase 3, after generated two-cube synchronization and the required
+recurrence machinery are available. This is one obligation recorded at its
+input and output points, not two separate proof gaps.
 
 Completion gate:
 
@@ -149,9 +151,10 @@ Completion gate:
 
 ### 2B. D-035 two-half bridge atlas — `IN PROGRESS`
 
-- [ ] Prove every bridge cut requesting `2` self-caps via its visible
-  circular square: root at most \(q\) on the first half and at most \(r\)
-  on the second half.
+- [x] **`PROVED-NL`: every bridge cut requesting `2` self-caps.**
+  Its visible circular square gives root at most \(q\) on the first half
+  and at most \(r\) on the second half, without assuming the negation of
+  either target.
 - [ ] For a capped first-half cut requesting `3`, prove the canonical root
   satisfies \(h<q\) and gives a proper circular cube of \(R\).
 - [ ] For a capped second-half cut requesting `3`, prove either

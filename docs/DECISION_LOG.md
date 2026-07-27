@@ -1289,3 +1289,64 @@ Entries are append-only; superseded decisions are marked, not deleted.
   target-specific boundary word walls, every non-boundary Cell C
   placement, Cell C, both G2CS targets, and the Curling Number Conjecture
   remain open. Bounded failure counts are not proof.
+
+## D-035 — Begin the two-half bridge atlas
+
+- Date: 2026-07-27
+- Status: bridge-`2` self-capping lemma `PROVED-NL`; overall D-035
+  `IN PROGRESS`; Cell C remains `OPEN`
+- Boundary decision: work on the simultaneous boundary
+  \(b=j=r,\ R=BQB,\ T=B,\ U=QB,\ P=q+r\), where the actual output from
+  \(G\) to \(F\) is \(BT=B^2\).
+- Bridge-coordinate decision: for \(0\le i<r\), put
+  \(A_i=B[0:i]\) and
+  \[
+  G_i=LR^2A_i,\qquad M_i=LR^2B A_i.
+  \]
+  These are the cuts before the two occurrences of \(B[i]\), so actual
+  generation gives
+  \(\kappa(G_i)=B[i]=\kappa(M_i)\).
+- Circular-square decision: writing
+  \(R=A_iC_i\) and \(B=A_iD_i\) gives the two exact identities
+  \[
+  R^2A_i=A_i(C_iA_i)^2,\qquad
+  B^2A_i=A_i(D_iA_i)^2.
+  \]
+  Their displayed roots have lengths \(q\) and \(r\).
+- Self-cap decision: if \(B[i]=2\), both actual curling numbers are exactly
+  two. The displayed squares therefore attain the maximal suffix exponent,
+  and least-root minimality proves
+  \[
+  \pi(G_i)\le q<P,\qquad \pi(M_i)\le r<P.
+  \]
+  The cap is direct and target-independent. It licenses the subsequent
+  application of (C.28); (C.28) is not used to prove the cap.
+- Endpoint decision: \(i=0\) is included with \(A_0\) empty. Thus
+  \(G_0=G\), \(M_0=M\), and the midpoint bound strengthens from
+  \(\pi(M)\le q\) to \(\pi(M)\le r\). Extending the first family gives
+  \(G_r=M_0\), one state rather than two. The cut \(i=r-1\) is included;
+  after the second \(B\) is complete, the state is \(F\) and the next
+  requested symbol is \(U[0]=3\), outside this indexed bridge family.
+- Target-scope decision: no negation of G2CS-\(\mathcal I\) or
+  G2CS-\(\mathcal J\) is needed. Every such `2`-cut self-caps even when it
+  is omitted from \(\mathcal I\). This is not itself a witness inside
+  \(\mathcal I\), and it proves nothing about bridge cuts requesting `3`.
+- Documentation decision: add root `AGENTS.md` so future chat explanations
+  start from concrete finite sequences and define technical terms before
+  using them. Formal proof files may remain advanced. Also replace the
+  duplicate Phase-1 changing-origin checkbox with a handoff note; its one
+  actual completion gate remains in Phase 3. Neither documentation change
+  advances a mathematical status.
+- Verification: direct enumeration checked each circular-square identity
+  on `18434` binary word/cut pairs through root length `10`. This is a
+  finite index guard, not the proof. The full repository suite passes
+  `144` tests in `21.03` seconds; `compileall` and `git diff --check` are
+  clean.
+- Review: independent exact-proof and scope/status reviews returned
+  `APPROVED`. They checked the exact use of \(\kappa=2\), both rotations,
+  all endpoint conventions, the strengthened midpoint, the continuation
+  coordinates needed for (C.28), target independence, and every stated
+  non-claim.
+- Scope: the capped bridge-`3` classifications, the no-fourth consequence,
+  the bounded bridge census, both boundary word walls, non-boundary Cell C,
+  Cell C, both G2CS targets, and the Curling Number Conjecture remain open.
