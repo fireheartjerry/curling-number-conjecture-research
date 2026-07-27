@@ -280,8 +280,22 @@ squares in (C.35y), via (C.35z), independently cap every actual cut
 requesting `2`. Because \(B[0]=2\), every proper cut requesting `3` is
 interior and its cap remains an explicit hypothesis under the
 \(\mathcal I\)-negation. The localization lemma is used only after a cap
-is established; it cannot prove its own period hypothesis. The remaining
-later D-035 items remain open.
+is established; it cannot prove its own period hypothesis.
+
+Every proper actual binary bridge cut also excludes a fourth-power
+suffix. For \(0\le h<2r\), actual generation gives
+
+\[
+\kappa(K_h)=B[h\bmod r]\in\{2,3\}.
+\]
+
+If \(K_h\) ended in \(Y^4\) for a nonempty word \(Y\), its curling number
+would be at least four, a contradiction. This excludes every proper
+circular fourth power which is visible as a suffix of \(R^2A_i\) or
+\(B^2A_i\) at the corresponding cut. It does not exclude an internal
+fourth-power factor ending somewhere else. No period cap, target
+negation, localization, Fine--Wilf argument, or primitivity hypothesis
+is used. The bounded bridge census and final D-035 review remain open.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`

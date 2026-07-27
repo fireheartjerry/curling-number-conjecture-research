@@ -1676,3 +1676,51 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Scope: the no-fourth consequence, bounded bridge census, both boundary
   word walls, non-boundary Cell C, Cell C, both G2CS targets, and the
   Curling Number Conjecture remain open.
+
+## D-035 item 6 — actual binary cuts exclude fourth-power suffixes
+
+- Date: 2026-07-27
+- Status: no-fourth bridge consequence `PROVED-NL`; overall D-035 remains
+  `IN PROGRESS`; Cell C remains `OPEN`.
+- Terminology decision: the roadmap phrase “visible proper fourth power”
+  was previously undefined and overloaded. In this checkpoint, *visible at
+  the cut* means wholly contained in the displayed finite suffix ending at
+  that cut. A proper circular root has length below the ambient word scale:
+  \(a<q\) in \(R^2A_i\) and \(a<r\) in \(B^2A_i\). The exact containment
+  conditions are \(4a\le2q+i\) and \(4a\le2r+i\), respectively.
+- Strong theorem decision: for every indexed proper bridge cut,
+  \(0\le h<2r\), actual generation gives
+  \[
+  \kappa(K_h)=(B^2)[h]=B[h\bmod r]\in\{2,3\}.
+  \]
+  A suffix \(Y^4\), \(Y\ne\epsilon\), would instead force
+  \(\kappa(K_h)\ge4\). Therefore no fourth-power suffix of any root length
+  ends at any proper actual binary bridge cut. The visible proper circular
+  statement is an immediate special case.
+- Dependency decision: the proof is definition-level. It uses only the
+  actual-orbit recurrence and the binary output alphabet. It uses no period
+  cap, canonical root, target negation, (C.28), Fine--Wilf argument, or
+  primitivity hypothesis.
+- Endpoint decision: \(F=K_{2r}\) is not an indexed proper bridge cut and
+  is excluded from the quantified theorem. It separately has
+  \(\kappa(F)=3\), so it also has no fourth-power suffix.
+- Nonclaims: the theorem does not exclude an internal fourth-power factor
+  which ends before the current cut, a circular occurrence not contained
+  in the displayed suffix, or a static proposed bridge which does not obey
+  the orbit recurrence. It gives no bound on \(\pi(K_h)\) and does not make
+  the whole bridge word fourth-power-free as a factor language.
+- Review: independent derivation and adversarial-semantic audits agreed on
+  the stronger suffix theorem and produced explicit warnings against the
+  internal-factor and static-bridge readings. A fresh exact-proof/spec
+  review returned `APPROVED`; it checked the modulo indexing, both visible
+  suffixes, containment inequalities, endpoint, dependencies, nonclaims,
+  and unique equation tags. The publication review caught and required the
+  item-6 block to be moved after item 5 so the append-only chronology and
+  latest scope remained correct; its fresh re-review then returned
+  `APPROVED`.
+- Verification: the full repository suite passes `144` tests;
+  `compileall`, ordered item-heading inspection, unique-tag inspection, and
+  `git diff --check` are clean.
+- Scope: the definition-first \(q\le25\) two-branch bridge census, final
+  D-035 integrated reviews, both boundary word walls, non-boundary Cell C,
+  Cell C, both G2CS targets, and the Curling Number Conjecture remain open.

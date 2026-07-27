@@ -2849,6 +2849,70 @@ required period hypothesis is already \(\pi(K_h)<P\). At `2`-cuts,
 the cut. At arbitrary omitted `3`-cuts under the
 \(\mathcal I\)-negation, localization remains unlicensed.
 
+#### Actual binary bridge cuts exclude visible fourth powers
+
+Here *visible at the cut* means that the whole powered word is a suffix
+of the displayed finite bridge context ending at that cut. For
+\(0\le i<r\) and a nonempty word \(Y\), a visible proper circular
+fourth power on the first half therefore has the form
+
+\[
+\operatorname{suf}_{4a}(R^2A_i)=Y^4,
+\qquad 0<a=|Y|<q,\qquad 4a\le2q+i,
+\]
+
+and on the second half it has the form
+
+\[
+\operatorname{suf}_{4a}(B^2A_i)=Y^4,
+\qquad 0<a=|Y|<r,\qquad 4a\le2r+i.
+\]
+
+The inequalities \(a<q\) and \(a<r\) are exactly the word-scale
+meaning of *proper circular* here. Visibility is the separate finite
+containment condition.
+
+In fact actual bridge generation excludes more than these proper
+circular occurrences. For \(0\le h<2r\), write \(i=h\bmod r\). The
+next symbol of the generated bridge \(B^2\) is its actual curling
+number, so
+
+\[
+\boxed{
+\kappa(K_h)=(B^2)[h]=B[i]\in\{2,3\}
+\qquad(0\le h<2r).
+}
+\tag{C.35ak}
+\]
+
+If \(K_h\) ended in \(Y^4\) for any nonempty word \(Y\), the definition
+of the curling number would give \(\kappa(K_h)\ge4\), contradicting
+(C.35ak). Hence
+
+\[
+\boxed{
+\forall\,0\le h<2r,\qquad
+\nexists\,D,\ Y\ne\epsilon\ \text{such that}\ K_h=DY^4.
+}
+\tag{C.35al}
+\]
+
+Both displayed contexts above are suffixes of their full states
+\(G_i=K_i\) and \(M_i=K_{r+i}\). Thus (C.35al) excludes every visible
+proper circular fourth power on both bridge halves. Properness is not
+needed for the contradiction: any fourth-power suffix, at any root
+length, is impossible.
+
+The endpoint \(F=K_{2r}\) is not an indexed proper bridge cut. It
+separately has \(\kappa(F)=3\), but is not included in the quantifier in
+(C.35al). An internal fourth-power factor which does not end at the
+current cut is not a suffix and is not excluded by this statement.
+Likewise, a circular occurrence not contained in the displayed finite
+context is not called visible here. No period cap, canonical-root
+claim, target negation, localization, Fine--Wilf argument, or
+primitivity hypothesis is used. The actual recurrence and the binary
+alphabet are the load-bearing hypotheses.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It

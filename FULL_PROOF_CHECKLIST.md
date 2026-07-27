@@ -184,8 +184,13 @@ Completion gate:
   bridge cut; target-independent visible squares nevertheless self-cap all
   actual `2`-cuts. Arbitrary omitted `3`-cuts retain an explicit cap
   hypothesis. Localization is applied only after a cap is known.
-- [ ] Prove that no visible proper fourth power is compatible with an actual
-  binary bridge cut.
+- [x] **`PROVED-NL`: no fourth-power suffix can end at a proper actual
+  binary bridge cut.**
+  Actual generation gives
+  \(\kappa(K_h)=B[h\bmod r]\in\{2,3\}\) for \(0\le h<2r\), whereas a
+  suffix \(Y^4\) would force \(\kappa(K_h)\ge4\). Hence no visible proper
+  circular fourth power can end at either bridge half. Internal factors
+  not ending at the cut and static proposed bridges are not claimed.
 - [ ] Build a definition-first two-branch bridge census through \(q\le25\),
   pin sharp models, and label every finite result `COMPUTED`.
 - [ ] Obtain independent exact-proof and code/publication reviews.
