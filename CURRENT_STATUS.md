@@ -104,6 +104,17 @@ d>2r,\qquad q>4r,\qquad p>2r.
 \]
 With \(\nu=d-2r=|\Theta|>0\), the middle word \(Q\) begins in
 \(\Theta B^2\), ends in \(B\Theta\), and \(X=Q[d:|Q|]B^2\).
+Writing \(D=Q[d:|Q|]\) and \(e=2p-P\), its terminal seam is exactly
+
+\[
+D=JB\Theta\quad(e\ge0),\qquad
+D=B[c:r]\Theta\quad(e<0,\ c=P-2p).
+\]
+
+In the overlap case \(0<c<r/2\) and \(B[0:c]=B[r-c:r]\). With
+\(C=\Theta B^2\), \(H_0=\Theta B\), and
+\(A=JB\) or \(B[c:r]\), both seams have the unified form
+\(X=AC,\ U=CAH_0\).
 
 In either period branch, every proper state whose canonical period is below
 \(P\) has the same canonical pair as the standalone continuation
@@ -114,9 +125,24 @@ autonomous.
 
 Writing \(z\) for the first \(2\) in \(U\) and \(h\) for the first
 \(X^\omega/U\) mismatch, paired early/later replay forces \(h<z\), and the
-terminal run of \(3\)'s at the later copy leaves only
+terminal run of \(3\)'s at the later copy first leaves
 \((z,h)=(1,0),(2,0),(2,1)\), with explicit coordinates in \(X\), and in
 \(B\) for the \(p>q\) form.
+
+A branch-independent full-state lemma now eliminates both \(z=2\) rows.
+If \(z=2\), the sampled state \(F_1=LR^2B^2\,3\) must have a canonical
+pair \((3,\rho)\) with \(\rho<P\). Deleting its last `3`, comparing the
+resulting \(\rho\)-periodic suffix first with the terminal \(B^3\) and then
+with \(R^2\), forces \(\rho=q\). The terminal \(q\)-cube would then equate
+the positions \(R_2[r]=Q[0]=3\) and \(B_4[0]=B[0]=2\), which are exactly
+\(q\) apart. This contradiction applies to both \(\mathcal I\)- and
+\(\mathcal J\)-negations because both include and cap \(F_1\). Thus only
+
+\[
+(z,h)=(1,0),\qquad U[0:2]=32,\qquad X[0]=2,\qquad\lambda\le1
+\]
+
+remains on the simultaneous boundary.
 
 In the \(p>q\) branch, the canonical \(G\)-scale now also gives a
 two-scale phase restriction. If an early canonical pair is \((k,s)\), with
@@ -132,10 +158,26 @@ exclude a later root push back to the endpoint scale.
 
 This sharpens but does not close the word wall: a checked \(q=10\) near-model
 replays both sampled windows below \(P\) while failing the required
-\(G,H\) endpoint scales. A \(q=20,p=11\) \(p<q\) model realizes the
-otherwise exceptional \(2p<P\) shifted suffix and all static endpoint
-scales, but fails the later replay at phase \(1\). The target-specific word
-walls in both branches and the non-boundary Cell C placements remain open.
+\(G,H\) endpoint scales. The older \(q=20,p=11\) \(p<q\) model realizes the
+exceptional \(2p<P\) seam and all static endpoint scales, but lies in the
+now-eliminated \(z=2\) row and fails at \(F_1\), exactly as the theorem
+predicts.
+
+The surviving row has a stronger \(q=23,r=4,p=13,P=27\) warning. It lies on
+the \(c=1\) overlap seam, has \((z,h)=(1,0)\), and has exact static
+\(G,F,H\) pairs \((2,23),(3,4),(2,27)\). Both sampled local traces replay
+the first `13` symbols of \(U=3222322232232322232\), but at phase `13` the
+requested `3` meets pair \((2,3)\) in both. The remaining row is therefore
+a later, nonlocal replay obstruction. The target-specific word walls in
+both branches and the non-boundary Cell C placements remain open.
+
+An independent definition-first regression through \(q\le20\) checks
+`73470` \(p>q\) and `34405` \(p<q\) structural assignments. It retains
+`2841` and `2016` exact \(z=2\) candidates respectively, split
+`1394,1447` and `1343,673` across the two rows. All `4857` have
+\(\kappa(F_1)\in\{1,2\}\); zero has the required value `3`. The \(p<q\)
+counts exercise both exact seams. This is nonvacuous bounded corroboration,
+not the proof.
 
 The exact \(p>q\) boundary residual now has a durable structural search
 through \(q\le25\). It reduces `1792552320` theoretical raw
@@ -148,11 +190,14 @@ there are zero bounded \(\mathcal I\)- or \(\mathcal J\)-survivors in this
 branch. An independent raw-root definition-first oracle reproduces the
 complete stage counts through \(q\le10\).
 
-The first-mismatch diagnostic is also nonvacuous: `197773` canonical
-assignments satisfy the complete three-row trichotomy, including the
-terminal-\(3\)-run bound, and all fail exact early replay by \(q=25\). This
-is `COMPUTED` bounded evidence, not a proof. The unbounded \(p>q\) word wall
-therefore remains open alongside the \(p<q\) and non-boundary cases.
+The earlier first-mismatch diagnostic is also nonvacuous: `197773`
+canonical assignments satisfy the preliminary three-row trichotomy,
+including the terminal-\(3\)-run bound, and all fail exact early replay by
+\(q=25\). The new theorem discards its `45116` and `46806` double-`3`
+rows; the `105851` \((1,0)\) assignments remain a bounded diagnostic. This
+is `COMPUTED` evidence, not a proof of the remaining wall. The unbounded
+\(p>q\) word wall therefore remains open alongside the \(p<q\) and
+non-boundary cases.
 
 A second, independent \(p>q\) checkpoint encodes the weaker necessary
 conjunction "canonical \(X^3\), full autonomous early replay, canonical

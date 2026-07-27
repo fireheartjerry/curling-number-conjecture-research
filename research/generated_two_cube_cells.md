@@ -1302,6 +1302,65 @@ can be written entirely in \(Q\)-coordinates:
 \tag{C.24b}
 \]
 
+The two possible seams in (C.24a) can be exposed exactly. Put
+
+\[
+D=Q[d:|Q|],\qquad \sigma=|D|=p-2r.
+\]
+
+Then
+
+\[
+Q=\Theta B^2D,\qquad \sigma>\nu,
+\]
+
+where the strict inequality is equivalent to \(p>q/2\). Define
+
+\[
+e=\sigma-r-\nu=2p-P.
+\]
+
+If \(e\ge0\), the required suffix \(B\Theta\) lies wholly in \(D\), and
+there is a word \(J\) of length \(e\) such that
+
+\[
+\boxed{D=JB\Theta.}
+\tag{C.24c}
+\]
+
+If \(e<0\), put \(c=-e=P-2p\). The inequality \(\sigma>\nu\) gives
+\(0<c<r\). The length-\((r+\nu)\) suffix of \(Q\) starts in the final
+displayed \(B\), so comparison with \(B\Theta\) gives
+
+\[
+\boxed{
+B[0:c]=B[r-c:r],\qquad D=B[c:r]\Theta.
+}
+\tag{C.24d}
+\]
+
+The localization proof below sharpens this seam to \(0<c<r/2\) in (C.28a).
+Both alternatives have the same useful conjugate-overlap form. Temporarily
+put
+
+\[
+C=\Theta B^2,\qquad H_0=\Theta B,\qquad
+A=
+\begin{cases}
+JB,&e\ge0,\\
+B[c:r],&e<0.
+\end{cases}
+\]
+
+Here \(A\ne\epsilon\) because \(\sigma>\nu\), and \(H_0\) is a local tail
+word, not the global completion state \(H\). In both seams \(D=A\Theta\),
+so
+
+\[
+\boxed{X=AC,\qquad U=CAH_0.}
+\tag{C.24e}
+\]
+
 Finally define the positive frontier length
 
 \[
@@ -1722,6 +1781,157 @@ symbol is \(U[1]=2\), while the local pair remains \((3,12)\). Therefore
 endpoint and adjacent-root geometry alone cannot close the word wall; a
 completion must use the whole replay before the final push.
 
+#### Universal elimination of the double-`3` rows
+
+The two rows with \(z=2\) are in fact impossible without distinguishing
+\(p>q\) from \(p<q\). Suppose \(z=2\). Then
+
+\[
+U[0:3]=332.
+\]
+
+The first appended `3` after \(F\) produces the actual sampled state
+
+\[
+F_1=F\,3=LR^2B^2\,3.
+\]
+
+Paired generation at phase \(1\) gives \(\kappa(F_1)=U[1]=3\). Moreover
+\(F_1\in\mathcal I\) because \(1<m\), and hence \(F_1\in\mathcal J\).
+Under the negation of either target its exact canonical pair is therefore
+
+\[
+\boxed{
+(\kappa(F_1),\pi(F_1))=(3,\rho),\qquad \rho<P=q+r.
+}
+\tag{C.35g}
+\]
+
+Delete the final `3` from the canonical \(\rho\)-cube at \(F_1\). What
+remains is a \(\rho\)-periodic suffix of \(F\) of length
+
+\[
+3\rho-1.
+\tag{C.35h}
+\]
+
+Put \(g=\gcd(r,\rho)\). We first eliminate every \(\rho\le2r+g\).
+
+If \(\rho<r\) and \(2\rho\le r\), the final \(2\rho\) letters in (C.35h)
+form a \(\rho\)-square inside the last \(B\). The identical word \(B\) ends
+\(G\), so this is a square at \(G\) with root below \(q\), contradicting
+\((\kappa(G),\pi(G))=(2,q)\).
+
+If \(\rho<r\) and \(2\rho>r\), the suffix in (C.35h) lies inside the
+terminal \(B^3\), so it has periods \(\rho,r\). The Fine--Wilf threshold is
+met because
+
+\[
+3\rho-1-(r+\rho-g)=2\rho+g-r-1\ge0.
+\]
+
+It therefore has period \(g<r\). The suffix contains a complete terminal
+copy of \(B\); since \(g\mid r\), \(B\) is a proper power. Then the
+terminal \(B^3\) at \(F\) has exponent at least six, contradicting
+\(\kappa(F)=3\).
+
+If \(\rho=r\), periodicity of the canonical cube makes its final `3` equal
+to the symbol \(r\) positions earlier. That symbol is the first letter of
+the final \(B\), namely \(B[0]=2\), a contradiction.
+
+It remains within this range to take \(r<\rho\le2r+g\). Now (C.35h)
+contains the whole terminal \(B^3\). That word has periods \(r,\rho\), and
+
+\[
+3r\ge r+\rho-g.
+\]
+
+Fine--Wilf gives period \(g\) on \(B^3\). If \(g<r\), the same
+proper-power contradiction follows. If \(g=r\), then \(r\mid\rho\), and
+
+\[
+r<\rho\le3r
+\]
+
+leaves only \(\rho=2r\) or \(\rho=3r\). In either case the final `3` in
+the canonical cube copies the first symbol of one of the displayed
+\(B\)'s, again \(B[0]=2\).
+
+Consequently
+
+\[
+\rho>2r+g.
+\tag{C.35i}
+\]
+
+Remove the last \(2r\) symbols, namely the appended \(B^2\), from the
+suffix in (C.35h). The remaining suffix of \(G\) is \(\rho\)-periodic and
+has length
+
+\[
+L_\rho=3\rho-1-2r>2\rho.
+\tag{C.35j}
+\]
+
+Thus \(G\) ends in a \(\rho\)-square, so its exact canonical pair forces
+\(\rho\ge q\). Write
+
+\[
+\rho=q+u,\qquad 0\le u<r,
+\tag{C.35k}
+\]
+
+where the upper bound uses \(\rho<P\). If \(u>0\), then
+
+\[
+L_\rho-2q=q+3u-2r-1>0
+\]
+
+because \(q>2r\). The whole terminal \(R^2\) of \(G\) is therefore
+\((q+u)\)-periodic. Comparing its two displayed copies gives
+
+\[
+R[0:q-u]=R[u:q],
+\]
+
+so \(R\) has period \(u<r<q/2\). Its final \(2u\) letters form a
+\(u\)-square ending at \(G\), again contradicting the canonical root
+\(q\). Hence \(u=0\) and
+
+\[
+\rho=q.
+\]
+
+Finally label the displayed copies in the suffix of \(F_1\):
+
+\[
+S=R_1R_2B_3B_4\,3.
+\]
+
+Its length is \(2q+2r+1\le3q\), since \(q>2r\). Therefore \(S\) lies
+inside the terminal canonical \(q\)-cube at \(F_1\) and inherits period
+\(q\). But the two positions
+
+\[
+R_2[r]=Q[0]=3,\qquad B_4[0]=B[0]=2
+\]
+
+are exactly \(q\) apart inside \(S\), the final contradiction.
+
+Thus \(z=2\) is impossible under the negation of either target. The
+three-row trichotomy (C.35) collapses to
+
+\[
+\boxed{
+(z,h)=(1,0),\qquad U[0:2]=32,\qquad X[0]=2,\qquad\lambda\le1.
+}
+\tag{C.35l}
+\]
+
+This conclusion is local to the simultaneous boundary. It does not move
+the other Cell C placements onto that boundary and does not eliminate the
+remaining row.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It
@@ -1747,7 +1957,10 @@ Q[|Q|-(r+\nu):|Q|]=B\Theta.
 \end{array}
 \]
 
-Each is combined with the inherited standalone conditions
+In the \(p<q\) row, (C.24c)--(C.24e) additionally split the suffix seam as
+\(D=JB\Theta\) or \(D=B[c:r]\Theta\) and put both in the common form
+\(X=AC,\ U=CAH_0\). Each branch is combined with (C.35l) and the inherited
+standalone conditions
 
 \[
 (\kappa(R^2),\pi(R^2))=(2,q),\qquad
@@ -2028,6 +2241,65 @@ rows of (C.35), and all obey the stated coordinate conclusions. The
 \(q=20\) model above pins the nonempty \(2p<P\) case. These are bounded,
 nonvacuous index checks only; the localization lemma and the inequalities
 remain natural-language proofs, and the word walls remain open.
+
+`tests/test_generated_two_cube_cell_c_double_three.py` adds a separate
+definition-first regression for the new elimination. It imports neither
+production Cell C search and recomputes every canonical witness by literal
+suffix-block enumeration. Through \(q\le20\), the \(p>q\) generator checks
+`73470` structural assignments and retains `2841` exact \(z=2\) candidates:
+`1394` in row \((2,0)\) and `1447` in row \((2,1)\). Their \(F_1\)
+exponents split respectively as
+
+\[
+\{1:399,\ 2:995\},\qquad
+\{1:43,\ 2:1404\}.
+\]
+
+The independent \(p<q\) generator checks `34405` assignments and retains
+`2016` exact \(z=2\) candidates: `1343` and `673` in the two rows. Their
+\(F_1\) exponent splits are
+
+\[
+\{1:1090,\ 2:253\},\qquad
+\{1:547,\ 2:126\}.
+\]
+
+The seam counts are `1343,672` for \(D=JB\Theta\) and `0,1` for
+\(D=B[c:r]\Theta\). Thus all `4857` retained candidates are nonvacuous,
+but zero has \(\kappa(F_1)=3\). These bounded counts independently audit
+the theorem's coordinates; they are not its proof.
+
+The surviving row also has an endpoint-correct sharpness model:
+
+\[
+\begin{gathered}
+q=23,\quad r=4,\quad p=13,\quad P=27,\quad \nu=2,\quad c=1,\\
+B=2232,\quad \Theta=32,\quad D=23232,\\
+Q=322232223223232,\quad
+U=3222322232232322232,\\
+R=22323222322232232322232,\quad
+X=2323222322232.
+\end{gathered}
+\]
+
+It lies on the overlap seam \(D=B[c:r]\Theta\), has
+\((z,h)=(1,0)\), and has exact static endpoint pairs
+
+\[
+R^2:(2,23),\quad R^2B:(2,4),\quad
+BRB^2:(3,4),\quad X^3:(3,13),
+\]
+
+\[
+X^3U:(2,23),\quad X^3UB^2:(3,4),\quad
+X^3UB^2U:(2,27).
+\]
+
+Both sampled local traces replay the first `13` requested symbols. At phase
+`13`, however, the request is \(U[13]=3\) while both exact local pairs are
+\((2,3)\). The remaining row is therefore a genuinely later, nonlocal
+replay obstruction: endpoint scales and a long common prefix do not close
+it. This word is not a survivor or counterexample.
 
 ### 8. Equality-first exhaustive engine
 

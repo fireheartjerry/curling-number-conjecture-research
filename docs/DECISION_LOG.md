@@ -1015,3 +1015,110 @@ Entries are append-only; superseded decisions are marked, not deleted.
   passes `135`, compilation and `git diff --check` are clean, the
   definition-first oracle is independent of the QF_BV predicates and
   models, and the pinned artifact hash matches the stored output.
+
+## D-033 — Eliminate the simultaneous-boundary double-`3` rows
+
+- Date: 2026-07-27
+- Status: `PROVED-NL` under the exact simultaneous-boundary and
+  target-negation hypotheses; Cell C remains `OPEN`
+- Scope decision: retain
+  \[
+  q>2r>0,\quad P=q+r,\quad R=BQB,\quad U=QB,\quad
+  B[0]=2,\quad Q[0]=3,
+  \]
+  together with the full-state canonical data
+  \[
+  (\kappa(G),\pi(G))=(2,q),\qquad
+  (\kappa(F),\pi(F))=(3,r).
+  \]
+  No \(p>q\) or \(p<q\) early-root formula is used in the elimination.
+- Target legality: if the first `2` in \(U\) is at \(z=2\), then
+  \(U[0:3]=332\). The actual state
+  \[
+  F_1=F\,3=LR^2B^2\,3
+  \]
+  is a proper sampled later state for \(\mathcal I\), and hence also for
+  \(\mathcal J\). Under either target negation it must have exact pair
+  \((3,\rho)\) with \(\rho<P\). No uncapped bridge state is invoked.
+- Small-root elimination: deleting the final `3` from the canonical
+  \(\rho\)-cube leaves a \(\rho\)-periodic suffix of \(F\) of length
+  \(3\rho-1\). For \(\rho<r\), its terminal square either copies into the
+  final \(B\) of \(G\), or Fine--Wilf makes \(B\) a proper power.
+  The case \(\rho=r\) makes the final `3` copy \(B[0]=2\).
+  For \(r<\rho\le2r+\gcd(r,\rho)\), Fine--Wilf on \(B^3\) gives the same
+  proper-power contradiction; the divisor endpoint leaves only
+  \(\rho=2r,3r\), where the final symbol again copies \(B[0]\).
+- Large-root elimination: after removing the final \(B^2\), the inherited
+  suffix of \(G\) has length
+  \[
+  3\rho-1-2r>2\rho.
+  \]
+  Thus \(\rho\ge q\). Writing \(\rho=q+u<P\), any \(u>0\) makes all of
+  \(R^2\) \((q+u)\)-periodic, hence makes \(R\) \(u\)-periodic and creates
+  a forbidden \(u\)-square at \(G\). Therefore \(\rho=q\).
+- Audited endpoint contradiction: inside
+  \[
+  S=R_1R_2B_3B_4\,3,
+  \]
+  whose length is at most \(3q\), terminal \(q\)-cube periodicity equates
+  the positions
+  \[
+  R_2[r]=Q[0]=3,\qquad B_4[0]=B[0]=2.
+  \]
+  These positions, not the appended final `3` and \(B_4[0]\), are exactly
+  \(q\) apart.
+- Consequence: both \((z,h)=(2,0)\) and \((2,1)\) are impossible under
+  either target negation. The simultaneous-boundary first-mismatch
+  residual is now only
+  \[
+  (z,h)=(1,0),\quad U[0:2]=32,\quad X[0]=2,\quad\lambda\le1.
+  \]
+- Exact \(p<q\) seam decision: with
+  \(d=q-p=2r+\nu\), \(D=Q[d:]\), and \(e=2p-P\), the suffix equation has
+  precisely
+  \[
+  D=JB\Theta\quad(e\ge0),
+  \]
+  or, for \(c=-e=P-2p\),
+  \[
+  B[0:c]=B[-c:],\qquad D=B[c:]\Theta
+  \quad(e<0,\ 0<c<r/2).
+  \]
+  Taking \(C=\Theta B^2\), \(H_0=\Theta B\), and
+  \(A=JB\) or \(B[c:]\) gives the unified form
+  \(X=AC,\ U=CAH_0\). The subscript prevents confusion with the global
+  completion state \(H\).
+- Independent regression: the new definition-first engine imports neither
+  production Cell C search. Through \(q\le20\), it checks `73470`
+  \(p>q\) structures and retains `1394,1447` candidates in the two
+  \(z=2\) rows. Their \(F_1\)-exponent distributions are
+  `{1: 399, 2: 995}` and `{1: 43, 2: 1404}`. The \(p<q\) engine checks
+  `34405` structures and retains `1343,673`, with distributions
+  `{1: 1090, 2: 253}` and `{1: 547, 2: 126}`. Both exact seams occur.
+  Across all `4857` retained candidates, zero has
+  \(\kappa(F_1)=3\). This is a nonvacuous bounded audit, not the proof.
+- Surviving-row warning: the exact overlap-seam model
+  \[
+  q=23,\ r=4,\ p=13,\ P=27,\quad
+  B=2232,\ \Theta=32,\ D=23232
+  \]
+  has \(X=2323222322232\),
+  \(U=3222322232232322232\), and exact static \(G,F,H\) pairs
+  \((2,23),(3,4),(2,27)\). Both sampled local traces replay phases
+  `0` through `12`; at phase `13`, the requested `3` meets pair
+  \((2,3)\) in both. It shows that the remaining \((1,0)\) row is a later,
+  nonlocal replay obstruction, not that it survives either target.
+- Scope: the \(p>q\) and \(p<q\) \((1,0)\) word walls, every non-boundary
+  Cell C placement, Cell C itself, both G2CS targets, and the Curling Number
+  Conjecture remain open.
+- Verification: the new focused suite passes `4` tests in `2.40` seconds;
+  the full repository passes `139` tests in `26.68` seconds.
+  `python -m compileall -q research tests` and `git diff --check` are clean.
+  The definition-first regression imports neither of the production Cell C
+  search modules, and the checkpoint deliberately adds no generated output
+  artifact.
+- Review: independent exact-spec and code-quality reviews both returned
+  `APPROVED`. They separately verified the \(\rho\)-case thresholds, the
+  \(q\)-separated endpoint coordinates, both target scopes, both \(p<q\)
+  seams, all pinned counts, the \(q=23\) warning model, and the absence of
+  status inflation.

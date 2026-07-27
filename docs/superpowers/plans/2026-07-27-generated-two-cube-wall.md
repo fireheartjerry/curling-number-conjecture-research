@@ -695,19 +695,40 @@ models, a \(q=27\) extension, and the \(q=9\) simultaneous endpoint-jump
 model as exact sharpness certificates. Label every bounded exclusion
 `COMPUTED`; Cell C and both target-specific word walls remain open.
 
+- [x] **Step 4d: Eliminate the simultaneous-boundary double-`3` rows**
+
+Use the actual sampled state \(F_1=LR^2B^2\,3\). Under either target
+negation, \(z=2\) forces its canonical pair to be \((3,\rho)\) with
+\(\rho<P\). Delete the final `3`, exhaust the ranges
+\(\rho<r,\rho=r,r<\rho\le2r+\gcd(r,\rho)\), and transfer the remaining
+periodic suffix through \(B^2\) to \(G\). The canonical \(G\)-scale then
+forces \(\rho=q\), whose \(q\)-periodicity equates
+\(R_2[r]=Q[0]=3\) with \(B_4[0]=B[0]=2\). This is a
+branch-independent `PROVED-NL` contradiction, leaving only
+\((z,h)=(1,0)\).
+
+Expose the exact \(p<q\) seam split
+\(D=JB\Theta\) versus \(D=B[c:r]\Theta\), and the unified normal form
+\(X=AC,\ U=CAH_0\). Independently regress both period branches through
+\(q\le20\): `2841` \(p>q\) plus `2016` \(p<q\) nonvacuous \(z=2\)
+candidates, with zero \(F_1\)-label-`3` cases. Preserve the endpoint-correct
+\(q=23,r=4,p=13\) \((1,0)\) model, whose two sampled traces first fail
+together at phase `13`, as a warning that the remaining obstruction is
+nonlocal. Do not close either word wall or Cell C.
+
 - [ ] **Step 5: Close the remaining boundary word obstruction**
 
-For \(p>q\), close the target-specific word residuals. For
+Only the \((z,h)=(1,0)\) row remains. For \(p>q\), close its
+target-specific word residuals. For
 \(\mathcal I\), exclude the forced autonomous early and later sampled
 windows while leaving its bridge interior uncapped. For \(\mathcal J\),
 exclude a fully autonomous \(UB^2U\) episode whose proper canonical periods
 all remain below \(P\) and whose endpoint has pair \((2,P)\). The checked
 \(q=10,r=4,p=13\) near-model shows that replay of both sampled windows alone
 does not force the required \(q,P\) endpoint scales. For \(p<q\), exploit
-the \(\Theta B^2/B\Theta\) seam and the \(q=20\) phase-\(1\) failure to
-exclude the
-same target-specific replays; the static endpoint equations alone are
-insufficient.
+the exact \(X=AC,\ U=CAH_0\) seam and the \(q=23\) synchronized
+phase-`13` failure to exclude the same target-specific replays; the static
+endpoint equations and a long common replay prefix are insufficient.
 
 - [ ] **Step 6: Prove or refute Cell C**
 
