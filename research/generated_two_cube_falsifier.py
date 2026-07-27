@@ -150,6 +150,12 @@ def classify_first_failure_cell(
     *, cube_start: int, ybt_start: int, r: int, q: int, P: int
 ) -> FailureCell:
     """Classify the later canonical cube by half-open start coordinates."""
+    if cube_start < 0 or ybt_start < 0:
+        raise ValueError("cube_start and ybt_start must be nonnegative")
+    if not 0 < q < P:
+        raise ValueError("requires 0 < q < P")
+    if not 0 < r < P:
+        raise ValueError("requires 0 < r < P")
     if cube_start >= ybt_start:
         return "C"
     if r == q:
@@ -162,6 +168,8 @@ def classify_first_failure_cell(
 def check_standalone_promotion(R: Sequence[int]) -> StandalonePromotionAudit:
     """Evaluate every direct standalone state R^2 R[:j]."""
     root: Word = tuple(R)
+    if not root:
+        raise ValueError("check_standalone_promotion requires a nonempty root")
     checks = []
     first_failure_j = None
     for j, expected in enumerate(root):
@@ -485,6 +493,13 @@ def audit_record_square_candidate(
             invalid_reason="missing_bridge_hypothesis",
         )
 
+    return _audit_validated_record_square_candidate(events, validated)
+
+
+def _audit_validated_record_square_candidate(
+    events: Sequence[OrbitEvent], validated: RecordSquareCandidate
+) -> CandidateAudit:
+    """Audit a candidate already returned by extraction for these events."""
     events_by_time = {event.time: event for event in events}
     paired_windows = []
     for j in range(validated.q):
@@ -592,6 +607,17 @@ def audit_record_square_candidate(
     )
 
 
+def _audit_extracted_candidates(
+    events: Sequence[OrbitEvent],
+    candidates: Sequence[RecordSquareCandidate],
+) -> tuple[CandidateAudit, ...]:
+    """Batch-audit candidates from one validated extraction."""
+    return tuple(
+        _audit_validated_record_square_candidate(events, candidate)
+        for candidate in candidates
+    )
+
+
 def generated_states(start: Sequence[int], requested: Sequence[int]) -> tuple[Word, ...]:
     """Return the ordered generated trace, including its start and terminal states."""
     current: Word = tuple(start)
@@ -656,8 +682,7 @@ def scan_binary_seeds(max_seed_length: int, step_limit: int) -> ScanSummary:
 
             candidates = extract_record_square_candidates(events)
             candidates_count += len(candidates)
-            for candidate in candidates:
-                audit = audit_record_square_candidate(events, candidate)
+            for audit in _audit_extracted_candidates(events, candidates):
                 if audit.status == "invalid_provenance":
                     raise RuntimeError(
                         "extractor returned candidate that failed provenance audit: "

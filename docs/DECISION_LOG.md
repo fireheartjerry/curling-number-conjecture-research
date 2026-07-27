@@ -320,3 +320,48 @@ Entries are append-only; superseded decisions are marked, not deleted.
   repaired \(3\to2\) synchronization specialization. Classifying anomalous
   failures before all local antecedent clauses hold would misstate diagnostic
   evidence and inflate Cell counts.
+
+## D-019 — Preserve a positive executable path through the G2CS audit
+
+- Date: 2026-07-27
+- Status: active
+- Decision: retain a regression that takes the reviewed seed `23222323`
+  candidate at cut \(j=3\) and injects the target standalone mismatch
+  \(3\to2\). The audit must mark the complete local antecedent, evaluate its
+  strict-record period maximum as a counterexample, classify the actual
+  \(F\)-cube as Cell C, and aggregate antecedent/counterexample/Cell counts
+  without counting a promotion or verified implication.
+- Scope: the injected standalone witness is a test seam for the otherwise
+  unobserved report branch. It is not the canonical witness of that reviewed
+  word and therefore is not a computed G2CS counterexample.
+- Reason: negative and zero-count tests alone could pass if the antecedent
+  predicate were accidentally made permanently false.
+
+## D-020 — Fail closed outside helper mathematical domains
+
+- Date: 2026-07-27
+- Status: active
+- Decision: `check_standalone_promotion` rejects an empty root. The pure Cell
+  classifier requires nonnegative half-open start coordinates,
+  \(0<q<P\), and \(0<r<P\). It does not constrain the relative start
+  positions, and legitimate external cases with \(r<q\) remain
+  `unclassified`.
+- Reason: empty roots have no promotion positions, while negative coordinates,
+  degenerate bridge periods, and \(r\ge P\) are outside the repaired Cell
+  geometry. Silently assigning such inputs to Cell C would manufacture a
+  mathematical classification.
+
+## D-021 — Reuse validated extraction inside the bounded scanner
+
+- Date: 2026-07-27
+- Status: active
+- Decision: keep public `audit_record_square_candidate(events, candidate)`
+  fail-closed by re-extracting and checking candidate membership. Inside the
+  scanner only, pass the candidates returned by its single validated
+  extraction to a private batch audit core.
+- Verification: the length-eight regression audits `510` binary-seed orbits,
+  finds the same `2` candidates, and records exactly `510` extractor calls
+  rather than `512`.
+- Reason: provenance revalidation is mandatory at the public boundary, but
+  repeating the complete extraction for objects just returned by that same
+  scanner call adds cost without adding evidence.

@@ -531,7 +531,6 @@ def test_synchronization_evaluation_states_normalizes_mutable_inner_states():
         (9, 10, 4, 4, 7, "A"),
         (9, 10, 5, 4, 7, "B"),
         (9, 10, 3, 4, 7, "unclassified"),
-        (9, 10, 7, 4, 7, "unclassified"),
     ],
 )
 def test_classify_first_failure_cell_uses_half_open_geometry(
@@ -547,6 +546,68 @@ def test_classify_first_failure_cell_uses_half_open_geometry(
         )
         == expected
     )
+
+
+@pytest.mark.parametrize(
+    ("cube_start", "ybt_start"),
+    [
+        (-1, 0),
+        (0, -1),
+    ],
+)
+def test_classify_first_failure_cell_rejects_negative_coordinates(
+    cube_start, ybt_start
+):
+    with pytest.raises(
+        ValueError,
+        match="^cube_start and ybt_start must be nonnegative$",
+    ):
+        falsifier.classify_first_failure_cell(
+            cube_start=cube_start,
+            ybt_start=ybt_start,
+            r=1,
+            q=1,
+            P=2,
+        )
+
+
+@pytest.mark.parametrize(
+    ("q", "P"),
+    [
+        (0, 2),
+        (2, 2),
+        (3, 2),
+    ],
+)
+def test_classify_first_failure_cell_requires_strict_bridge_period_domain(q, P):
+    with pytest.raises(ValueError, match=r"^requires 0 < q < P$"):
+        falsifier.classify_first_failure_cell(
+            cube_start=0,
+            ybt_start=1,
+            r=1,
+            q=q,
+            P=P,
+        )
+
+
+@pytest.mark.parametrize("r", [0, 2, 3])
+def test_classify_first_failure_cell_rejects_r_outside_terminal_period(r):
+    with pytest.raises(ValueError, match=r"^requires 0 < r < P$"):
+        falsifier.classify_first_failure_cell(
+            cube_start=0,
+            ybt_start=1,
+            r=r,
+            q=1,
+            P=2,
+        )
+
+
+def test_check_standalone_promotion_rejects_empty_root():
+    with pytest.raises(
+        ValueError,
+        match="^check_standalone_promotion requires a nonempty root$",
+    ):
+        falsifier.check_standalone_promotion(())
 
 
 def test_audit_reviewed_candidate_verifies_promotion_and_exact_paired_windows():
@@ -739,6 +800,52 @@ def test_exponent_four_mismatch_is_outside_g2cs_cells_and_counts(monkeypatch):
     assert summary.unclassified == summary.first_failures
 
 
+def test_exponent_two_mismatch_counts_positive_g2cs_cell_c(monkeypatch):
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    candidate = extract_record_square_candidates(events)[0]
+    natural_checker = falsifier.check_standalone_promotion
+
+    def force_exponent_two(R):
+        natural = natural_checker(R)
+        assert natural.checks[3].expected == 3
+        assert natural.checks[3].exponent == 3
+        return falsifier.StandalonePromotionAudit(
+            status="first_failure",
+            checks=(
+                *natural.checks[:3],
+                replace(natural.checks[3], exponent=2, period=1),
+            ),
+            first_failure_j=3,
+        )
+
+    monkeypatch.setattr(
+        falsifier,
+        "check_standalone_promotion",
+        force_exponent_two,
+    )
+
+    audit = falsifier.audit_record_square_candidate(events, candidate)
+
+    assert audit.status == "first_failure"
+    report = audit.first_failure
+    assert report is not None
+    assert report.g2cs_antecedent
+    assert report.g2cs_counterexample
+    assert report.cube_start == len(report.F_event.word) - 3 * report.r == 19
+    assert report.cell == "C"
+
+    summary = falsifier.scan_binary_seeds(max_seed_length=8, step_limit=100)
+    assert summary.candidates == 2
+    assert summary.promotion_roots == 0
+    assert summary.first_failures == 2
+    assert summary.g2cs_antecedents == 2
+    assert summary.g2cs_counterexamples == 2
+    assert summary.g2cs_verified == 0
+    assert (summary.cell_A, summary.cell_B, summary.cell_C) == (0, 0, 2)
+    assert summary.unclassified == 0
+
+
 def test_missing_strict_record_bridge_impostor_is_rejected_despite_generating_R():
     D = tuple(map(int, "223222"))
     R = tuple(map(int, "322232"))
@@ -821,6 +928,27 @@ def test_bounded_scan_audits_real_extracted_candidates():
     assert summary.promotion_roots == 2
     assert summary.first_failures == 0
     assert summary.first_failure_reports == ()
+
+
+def test_bounded_scan_extracts_candidates_once_per_orbit(monkeypatch):
+    extraction_calls = 0
+    real_extract = falsifier.extract_record_square_candidates
+
+    def counting_extract(events):
+        nonlocal extraction_calls
+        extraction_calls += 1
+        return real_extract(events)
+
+    monkeypatch.setattr(
+        falsifier,
+        "extract_record_square_candidates",
+        counting_extract,
+    )
+
+    summary = falsifier.scan_binary_seeds(max_seed_length=8, step_limit=100)
+
+    assert summary.candidates == 2
+    assert extraction_calls == summary.seeds == 510
 
 
 def test_cli_prints_calibration_parameters_counts_and_no_proof_warning(capsys):
