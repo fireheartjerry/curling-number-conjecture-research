@@ -532,7 +532,10 @@ exact evidence, append the decision log, commit, and push.
 - Modify: `research/generated_two_cube_cells.md`
 - Modify: `docs/DECISION_LOG.md`
 
-- [ ] **Step 1: Normalize Cell B variables**
+- **Status:** completed out of the original order on 2026-07-27 after a
+  direct closure was found; Cell A remains open.
+
+- [x] **Step 1: Normalize Cell B variables**
 
 Use \(c=r-q\), \(\delta=b-c=P-r\), and record:
 
@@ -544,21 +547,30 @@ R[0:j] = R[delta:delta+j]
 delta+j <= q-gcd(r,P)-1
 ```
 
-- [ ] **Step 2: Enumerate equality classes before letters**
+- [x] **Step 2: Replace equality-class enumeration by the direct interval
+  closure**
 
-Build the union-find equality system induced by period \(c\), the definition
-of \(B\), and the \(\delta\)-shift. Determine which parameter tuples force a
-square or cube independently of alphabet labels.
+The external canonical cube and Fine--Wilf threshold first give
+\(b+j\le r-\gcd(r,P)-1<r\). Deleting \(BT\) then exposes an \(r\)-square at
+\(G\). Exact comparison with the terminal \(R^2\) forces period \(c\) on
+\(R\), while the continued \(r\)-periodic copy forces period \(\delta\) on
+\(B\). This direct chain makes the planned union-find search unnecessary.
+A binary exhaustive certificate through \(q=12\) remains as an index sanity
+check only.
 
-- [ ] **Step 3: Inject paired-generation inequalities**
+- [x] **Step 3: Record why paired-generation enumeration is unnecessary**
 
-For surviving equality classes, impose exact canonical-witness conditions at
-every \(E_\ell,F_\ell\). Reject any model using a displayed nonmaximal power.
+Once Cell B is entered, the contradiction uses the canonical data at
+\(F,G,H\), the endpoint word identities, and the negated G2CS bound. It does
+not use the early \(E\)-cube, the standalone failure, or per-letter paired
+generation inequalities. This is a proof simplification, not a relaxation of
+the theorem statement.
 
-- [ ] **Step 4: Prove, refute, record, and commit**
+- [x] **Step 4: Prove, record, verify, commit, and push**
 
-Use the same four acceptable outcomes as Cell A; append exact evidence and
-push the checkpoint.
+Cell B is recorded as `PROVED-NL`, with every half-open interval and
+Fine--Wilf equality endpoint audited. The status is local to Cell B and does
+not mark G2CS proved.
 
 ### Task 8: Audit Cell C
 

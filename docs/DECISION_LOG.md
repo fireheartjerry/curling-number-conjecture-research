@@ -365,3 +365,30 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Reason: provenance revalidation is mandatory at the public boundary, but
   repeating the complete extraction for objects just returned by that same
   scanner call adds cost without adding evidence.
+
+## D-022 — Close Cell B directly before Cell A
+
+- Date: 2026-07-27
+- Status: `PROVED-NL`
+- Decision: audit Cell B before Cell A because a direct contradiction was
+  found from the repaired G2CS statement and
+  \(\max_{W\in\mathcal I}\pi(W)<P\). For the external canonical \(r\)-cube
+  at \(F\), Fine--Wilf forces \(s=b+j\le r-\gcd(r,P)-1<r\). Deleting \(BT\)
+  exposes an \(r\)-square at \(G\); exact suffix comparison gives period
+  \(c=r-q\) on \(R\), no-square data at \(G\) gives \(c>q/2\), and the
+  continued cube gives period \(\delta=b-c=P-r\) on \(B\). Since
+  \(0<\delta<c\), \(B\) ends in a \(\delta\)-square, contradicting
+  \(\pi(G)=q\).
+- Deviation: the planned union-find and paired-generation enumeration are
+  unnecessary for this cell. The proof derives every normalized relation
+  from half-open intervals and does not cite inherited provisional normal
+  forms. It does not need the early cube at \(E\), the standalone
+  promotion-failure clause, or strict-record minimality once Cell B is
+  entered.
+- Executable audit: `tests/test_generated_two_cube_cells.py` exhausts binary
+  roots through \(q=12\). Its exact `84` retained word-parameter cases all
+  satisfy the derived period-\(\delta\) and terminal-square slices. This is a
+  bounded index certificate, not the proof.
+- Scope: `PROVED-NL` is a natural-language closure of Cell B only. Cells A
+  and C remain open, so this does not prove G2CS or the Curling Number
+  Conjecture.
