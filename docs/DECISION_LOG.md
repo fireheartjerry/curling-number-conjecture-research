@@ -832,3 +832,85 @@ Entries are append-only; superseded decisions are marked, not deleted.
   \(p>q\) branch only. It proves neither the unbounded boundary word
   obstruction, the \(p<q\) branch, the non-boundary regions, Cell C, either
   G2CS target, nor the Curling Number Conjecture.
+- Review: independent exact-spec and code-quality reviews both returned
+  `APPROVED`. At commit
+  `337098a3e436a887aed97ddb4d111d39ba0210f6`, the focused suite passed `11`
+  tests, the full repository passed `119`, the worktree and remote branch
+  matched, and the three preserved artifact hashes were unchanged.
+
+## D-031 — Strengthen and localize the \(p<q\) boundary branch
+
+- Date: 2026-07-27
+- Status: `PROVED-NL` reductions; Cell C remains `OPEN`
+- Supersession boundary: this replaces D-028's conditional
+  \(d<r\Rightarrow d>r/2\) by the universal \(d>2r\) theorem and extends
+  D-029's all-continuation localization from \(p>q\) to both period
+  branches. It does not close either boundary word wall, any non-boundary
+  placement, Cell C, or either G2CS target.
+- Separation theorem: put \(d=q-p>0\). Period \(p=q-d\) on \(W\) makes
+  \(R\) have border \(d\), while the middle occurrence remains
+  \(R[d:d+r]=B\).
+  - If \(d<r\), \(B\) has periods \(d\) and \(r-d\); Fine--Wilf makes it a
+    proper power.
+  - If \(d=r\), the middle copy equates \(Q[0]=3\) with \(B[0]=2\).
+  - If \(r<d\le2r\), put \(a=d-r\). The disjoint border equation
+    \(BA=CB\), with \(A=Q[0:a]\) and \(C=\operatorname{suf}_a(Q)\),
+    either creates an \(a\)-square ending at \(G\) when \(a<r\), or again
+    equates \(Q[0]\) with \(B[0]\) when \(a=r\).
+  Therefore
+  \[
+  d>2r,\qquad q>4r,\qquad p>2r.
+  \]
+- Exact normal form: with \(\nu=d-2r=|\Theta|>0\), the same border equation
+  gives
+  \[
+  Q[0:\nu+2r]=\Theta B^2,\qquad
+  Q[|Q|-(r+\nu):|Q|]=B\Theta,\qquad
+  X=Q[d:|Q|]B^2.
+  \]
+  In particular \(p<q-r=|U|\), so comparisons beyond one copy of \(X\)
+  must use \(X^\omega\).
+- Shifted-suffix lemma: if \(2p<P\), put \(c=P-2p\). Since
+  \(W=\operatorname{suf}_c(X)X^2\) begins and ends in \(B\), the word
+  \(B\) has period \(r-c\). The canonical pair at \(G\) forces
+  \(0<c<r/2\).
+- Localization decision: a capped canonical \(k\)-power crossing the left
+  edge of \(A_v=X^3(UB^2U)[0:v]\) has root \(h>p\).
+  - For \(p<h<2p\), Fine--Wilf makes \(X\) imprimitive.
+  - For \(h=2p\), the \(2p\) period-\(p\) equalities inside \(X^3\) cover
+    every residue of the crossing root, making that root a square and the
+    suffix exponent at least four.
+  - For \(h>2p\), write \(\delta=h-2p\). The shifted-suffix lemma gives
+    \(0<\delta<r/2\), while period \(h\) on \(X^3\) gives \(X\) period
+    \(\delta\), hence a short square ending at \(G\).
+  Thus the complete canonical-pair localization (C.28) holds for \(p<q\)
+  as well as \(p>q\), with the same distinct \(\mathcal I\) and
+  \(\mathcal J\) scopes.
+- First-mismatch correction: paired early and later replay first gives
+  \(\lambda+z\le2\), where \(\lambda\) is the terminal \(3\)-run length in
+  \(B\) and \(z\) is the first \(2\) in \(U\). Hence \(z\le2<p\).
+  Compare \(U\) with \(X^\omega\), not the invalid slice \(X[0:|U|]\).
+  Localization then gives the same three rows
+  \((z,h)=(1,0),(2,0),(2,1)\). The terminal-run conclusion is not an
+  early-replay-only fact; it uses the paired later window.
+- Sharpness: the exact static model
+  \[
+  (q,r,p,d,P,c)=(20,3,11,9,23,1),\quad
+  B=232,\quad Q=33223223232332
+  \]
+  realizes \(2p<P\), the \(\Theta B^2/B\Theta\) form, the \(G,F,H\)
+  endpoint scales, and mismatch row \((2,1)\). It fails the later replay at
+  phase \(1\),
+  where the requested symbol is `3` and the local pair is `(2,2)`.
+  Therefore static endpoint geometry and the trichotomy alone are not a
+  contradiction.
+- Bounded verification: an independent definition-first test through
+  \(q\le14\) retains `141` static \(p<q\) tuples and checks every stated
+  normal-form identity. It checks `3753` potential crossing-root slots and
+  finds zero candidates. Its `74` mismatch-qualified tuples split
+  `41,21,12` across the three rows. These finite checks are evidence and
+  index validation only, not proof of an unbounded word obstruction.
+- Review: independent exact-spec and code-quality reviews both returned
+  `APPROVED`. The focused reduction suite passes `7` tests, the full
+  repository passes `123`, compilation and `git diff --check` are clean,
+  and the definition-first test does not import either production search.

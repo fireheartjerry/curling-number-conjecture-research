@@ -145,12 +145,17 @@ def test_cell_c_reduction_coordinate_certificate_through_q_10():
             else:
                 lesser_branch += 1
                 d = q - p
+                nu = d - 2 * r
                 Z = root[:p]
                 assert p > q / 2
                 assert root == Z + Z[:d]
                 assert root[d : d + r] == B == root[:r] == root[-r:]
-                assert X == root[d + r : q] + B
-                assert d >= r or d > r / 2
+                assert d > 2 * r
+                assert q > 4 * r
+                assert p > 2 * r
+                assert middle[: nu + 2 * r] == middle[:nu] + B * 2
+                assert middle[-(r + nu) :] == B + middle[:nu]
+                assert X == middle[d:] + B * 2
 
     assert possible_early_periods == 13
     assert greater_branch == 7

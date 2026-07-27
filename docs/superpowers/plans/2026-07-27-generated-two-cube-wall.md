@@ -637,14 +637,14 @@ boundary \(s=2r,j=r\), derive
 b=j=r,\quad R=BQB,\quad T=B,\quad U=QB,\quad q>2r,
 \]
 then split the early canonical period into exact \(p>q\) and \(p<q\)
-normal forms. In the \(p>q\) branch, prove the all-continuation localization
-lemma: every proper state with binary output and canonical period below
+normal forms. Prove the all-continuation localization lemma in both
+branches: every proper state with binary output and canonical period below
 \(P\) has the same canonical pair as
 \(X^3(UB^2U)[0:v]\). Track its scope separately: \(\mathcal I\) localizes
 only its two sampled windows, whereas \(\mathcal J\) localizes the entire
-proper episode. Derive the three-case first-\(2\)/first-mismatch corollary.
-Preserve the non-boundary cases and the \(p<q\) frontier as open; the bounded
-scan does not prove that the boundary is universal.
+proper episode. Derive the three-case first-\(2\)/first-mismatch corollary,
+using \(X^\omega\) when \(p<q\). Preserve the non-boundary cases as open;
+the bounded scan does not prove that the boundary is universal.
 
 - [x] **Step 4a: Preserve the bounded \(p>q\) boundary obstruction**
 
@@ -661,6 +661,21 @@ assignments satisfying the full first-mismatch trichotomy fail exact early
 replay. Preserve the deterministic artifact and label the result
 `COMPUTED`, not proved.
 
+- [x] **Step 4b: Strengthen the \(p<q\) boundary reduction**
+
+Use the length-\(d\) border of \(R\), the shifted middle copy of \(B\), and
+the canonical \(G,F\) pairs to prove \(d=q-p>2r\). Derive
+\(q>4r,p>2r\), the \(\Theta B^2/B\Theta\) normal form for \(Q\), and
+\(X=Q[d:|Q|]B^2\). In the exceptional range \(2p<P\), prove
+\(0<P-2p<r/2\), then use the \(p<h<2p\), \(h=2p\), and \(h>2p\) split to
+extend all-continuation localization to this branch.
+
+Result: the reductions are `PROVED-NL`, independently checked through
+\(q\le14\) on `141` nonvacuous static tuples and `3753` crossing-root
+slots. The \(q=20,p=11\) sharpness model realizes the exceptional shifted
+suffix and every static endpoint scale but fails later replay. The dynamic
+word wall remains open.
+
 - [ ] **Step 5: Close the remaining boundary word obstruction**
 
 For \(p>q\), close the target-specific word residuals. For
@@ -669,8 +684,11 @@ windows while leaving its bridge interior uncapped. For \(\mathcal J\),
 exclude a fully autonomous \(UB^2U\) episode whose proper canonical periods
 all remain below \(P\) and whose endpoint has pair \((2,P)\). The checked
 \(q=10,r=4,p=13\) near-model shows that replay of both sampled windows alone
-does not force the required \(q,P\) endpoint scales. Separately resolve the
-exact \(p<q\) shifted-border and frontier equations.
+does not force the required \(q,P\) endpoint scales. For \(p<q\), exploit
+the \(\Theta B^2/B\Theta\) seam and the \(q=20\) phase-\(1\) failure to
+exclude the
+same target-specific replays; the static endpoint equations alone are
+insufficient.
 
 - [ ] **Step 6: Prove or refute Cell C**
 

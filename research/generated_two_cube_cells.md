@@ -1237,13 +1237,69 @@ The terminal \(p\)-block is
 \tag{C.23}
 \]
 
-There is no universal deduction \(d<r\). In the subcase where \(d<r\),
-(C.22) gives period \(d\) on \(B\); if \(d\le r/2\), that again creates a
-shorter square suffix at \(G\). The exact conditional restriction is
+In fact the overlap equations force \(d\) beyond two full copies of \(B\).
+Period \(p=q-d\) on \(W\) makes \(R\) have border \(d\).
+
+If \(d<r\), that border gives \(B\) period \(r-d\), while the equality
+\(R[d:d+r]=B=R[0:r]\) gives \(B\) period \(d\). Fine--Wilf on the
+length-\(r\) word \(B\) gives period \(\gcd(d,r-d)\). This proper divisor
+of \(r\) makes \(B\) a proper power, contradicting the canonical pair
+\((\kappa(F),\pi(F))=(3,r)\).
+
+If \(d=r\), the middle occurrence in (C.22) begins immediately after the
+initial \(B\). It therefore requires
+\(Q[0]=R[r]=B[0]\), contradicting \(Q[0]=3\) and \(B[0]=2\).
+
+It remains to exclude \(r<d\le2r\). Put
+\[
+a=d-r.
+\]
+Since \(d<q/2\), one has \(2a<q-2r=|Q|\). Define the disjoint prefix and
+suffix
+\[
+A=Q[0:a],\qquad C=Q[|Q|-a:|Q|].
+\]
+The length-\(d\) border equation on \(R=BQB\) is exactly
+\[
+BA=CB.
+\]
+If \(a<r\), this equality gives \(B\) period \(a\) and
+\(A=\operatorname{suf}_a(B)\). Hence \(BA\) is \(a\)-periodic and has
+length \(r+a>2a\). As \(BA\) is also the length-\(d\) suffix of \(R\),
+it gives an \(a\)-square ending at \(G\), contradicting \(\pi(G)=q\).
+If \(a=r\), the same equation gives \(A=B\), contradicting
+\(A[0]=Q[0]=3\) and \(B[0]=2\). Therefore
 
 \[
-\boxed{d<r\ \Longrightarrow\ d>r/2.}
+\boxed{d>2r,\qquad q>4r,\qquad p>2r.}
 \tag{C.24}
+\]
+
+The surviving coordinates have a useful exact normal form. Put
+\[
+\nu=d-2r>0.
+\]
+The equation \(BA=CB\) now gives
+\[
+A=\Theta B,\qquad C=B\Theta
+\]
+for a word \(\Theta\) of length \(\nu\). The middle occurrence in (C.22)
+supplies the following copy of \(B\), so
+
+\[
+\boxed{
+Q[0:\nu+2r]=\Theta B^2,\qquad
+Q[|Q|-(r+\nu):|Q|]=B\Theta.
+}
+\tag{C.24a}
+\]
+
+In particular \(d>r\), so \(p=q-d<q-r=|U|\). The terminal root in (C.23)
+can be written entirely in \(Q\)-coordinates:
+
+\[
+\boxed{X=Q[d:|Q|]\,B^2.}
+\tag{C.24b}
 \]
 
 Finally define the positive frontier length
@@ -1261,7 +1317,7 @@ Since \(E=LW\) ends in \(X^3\), the early left context is not free:
 
 This frontier equation applies to both \(p\)-branches.
 
-### 5. All-continuation localization in the branch \(p>q\)
+### 5. All-continuation localization on the boundary
 
 The previous early- and later-window length estimates can be replaced by one
 stronger lemma. Put
@@ -1283,7 +1339,8 @@ S_v=\mathcal D A_v
 These are the actual consecutive states from \(S_0=E\) through
 \(S_{2q}=H\).
 
-**All-continuation localization lemma.** Let \(0\le v<2q\), and suppose
+**All-continuation localization lemma.** In either branch \(p>q\) or
+\(p<q\), let \(0\le v<2q\), and suppose
 
 \[
 \kappa(S_v)=k\in\{2,3\},\qquad h=\pi(S_v)<P.
@@ -1300,7 +1357,7 @@ Then
 \tag{C.28}
 \]
 
-For \(k=2\), the canonical square has length
+First suppose \(p>q\). For \(k=2\), the canonical square has length
 \[
 2h<2P<3p\le |A_v|,
 \]
@@ -1334,8 +1391,68 @@ so Fine--Wilf gives period \(g\) on \(X^3\). Moreover \(g<p\):
 otherwise \(p\mid h\), but there is no multiple of \(p\) strictly between
 \(p\) and \(2p\). Because \(g\mid p\), the length-\(p\) word \(X\) is then
 a proper \(g\)-power, contradicting the already proved primitivity of \(X\).
-Thus the canonical cube cannot cross; it too lies wholly in \(A_v\), and the
-full and local exponents agree.
+Thus the canonical cube cannot cross in the \(p>q\) branch.
+
+Now suppose \(p<q\). One extra suffix calculation handles the only range
+not covered directly by Fine--Wilf. If \(2p<P\), put
+\[
+c=P-2p.
+\]
+The inequality \(p>q/2\) gives \(0<c<r\). Since \(W\) is the
+length-\(P\) suffix of \(X^3\),
+\[
+W=\operatorname{suf}_c(X)X^2.
+\]
+The length-\(r\) prefix and suffix of \(W\) are both \(B\), and \(X\) ends
+in \(B\). Hence
+\[
+B[0:c]=B[r-c:r],
+\]
+so \(B\) has period \(r-c\). If \(r-c\le r/2\), the end of \(B\), and
+therefore of \(G\), contains an \((r-c)\)-square with root below \(q\).
+This contradicts \((\kappa(G),\pi(G))=(2,q)\). Thus
+\[
+\boxed{2p<P\ \Longrightarrow\ 0<c=P-2p<r/2.}
+\tag{C.28a}
+\]
+
+Suppose a canonical \(k\)-power of root length \(h<P\) crosses the left
+edge of \(A_v\). It contains \(X^3\), so
+\[
+kh>|A_v|\ge3p.
+\]
+For \(k=2\) this gives \(h>3p/2\), and for \(k=3\) it gives \(h>p\).
+Thus \(h>p\) in either case.
+
+If \(p<h<2p\), then the length-\(3p\) word \(X^3\) has periods \(p,h\).
+Fine--Wilf gives period \(\gcd(p,h)<p\), contradicting the primitivity of
+\(X\).
+
+If \(h=2p\), write the crossing power as \(Y^k\), with \(|Y|=2p\).
+The period-\(p\) equalities in its factor \(X^3\) have \(2p\) consecutive
+starting positions. They therefore meet every residue modulo \(2p\) and
+give \(Y\) period \(p\). Thus \(Y\) is a square, and \(Y^k\) has exponent
+at least four, contradicting \(k\in\{2,3\}\).
+
+Finally suppose \(h>2p\). This case can occur only when \(2p<P\). Put
+\[
+\delta=h-2p.
+\]
+By (C.28a),
+\[
+0<\delta<c<r/2.
+\]
+Period \(h=2p+\delta\) on \(X^3\) gives
+\[
+X[i]=X[i+\delta]\qquad(0\le i<p-\delta),
+\]
+so \(X\) has period \(\delta\). Since \(X\) ends in \(B\), the final
+\(2\delta\) letters of \(B\) form a \(\delta\)-square ending at \(G\),
+again contradicting \(\pi(G)=q\).
+
+All possible crossing roots are excluded in both branches. The canonical
+suffix power therefore lies wholly in \(A_v\), and the full and local
+exponents agree.
 
 In either case, the global canonical \(h\)-witness is a local maximizing
 witness, so \(\pi(A_v)\le h\). Conversely, every local maximizing suffix
@@ -1394,22 +1511,32 @@ Every local suffix power persists in \(H\). Hence
 #### First-mismatch corollary
 
 The autonomous early window gives a further exact restriction under the
-negation of either target. Put
-
-\[
-a=P-p=r-t,
-\]
-
-and let
+negation of either target. Let
 
 \[
 z=\min\{\ell:U[\ell]=2\}.
 \]
 
 This index exists and satisfies \(1\le z<m\): \(U[0]=3\), while
-\(U=QB\) contains \(B[0]=2\). Compare \(X[0:m]\) with \(U\). If there is
-no mismatch before \(z\), then \(X[0:z]=U[0:z]\). Writing
-\(X=C_0D_0\) with \(C_0=X[0:z]\), the local state at phase \(z\) would be
+\(U=QB\) contains \(B[0]=2\). Let \(\lambda\) be the length of the
+terminal run of \(3\)'s in \(B\).
+The later state \(F_z\) ends in that run followed by the prefix
+\(U[0:z]=3^z\), so it ends in \(3^{\lambda+z}\). Paired generation gives
+\(\kappa(F_z)=U[z]=2\), and hence
+
+\[
+\lambda+z\le2.
+\tag{C.33}
+\]
+
+In particular \(z\le2\). Both period branches give \(p>2\):
+for \(p>q\), use \(q>2r\), and for \(p<q\), use (C.24). Thus \(z<p\).
+
+Compare \(U\) with the periodic extension \(X^\omega\). This formulation is
+essential in the \(p<q\) branch, where (C.24) gives
+\(p<q-r=|U|\). If there is no mismatch before \(z\), then
+\(X[0:z]=U[0:z]\). Writing \(X=C_0D_0\) with
+\(C_0=X[0:z]\), the local state at phase \(z\) would be
 
 \[
 A_z=X^3X[0:z]
@@ -1424,16 +1551,6 @@ there is a first mismatch \(h\), and it satisfies
 
 \[
 h<z,\qquad U[0:h+1]=3^{h+1},\qquad X[h]=2.
-\tag{C.33}
-\]
-
-Let \(d\) be the length of the terminal run of \(3\)'s in \(B\). The
-later state \(F_z\) ends in that run followed by the prefix
-\(U[0:z]=3^z\), so it ends in \(3^{d+z}\). Paired generation gives
-\(\kappa(F_z)=U[z]=2\), and hence
-
-\[
-d+z\le2.
 \tag{C.34}
 \]
 
@@ -1443,43 +1560,54 @@ Since \(z\ge1\) and \(0\le h<z\), only three cases remain:
 \begin{array}{c|c|c}
 (z,h)&\text{start of }U&\text{forced data}\\
 \hline
-(1,0)&32&B[a]=2,\ d\le1,\\
-(2,0)&332&B[a]=2,\ B\text{ ends in }2,\\
-(2,1)&332&B[a:a+2]=32,\ B\text{ ends in }2.
+(1,0)&32&X[0]=2,\ \lambda\le1,\\
+(2,0)&332&X[0]=2,\ B\text{ ends in }2,\\
+(2,1)&332&X[0:2]=32,\ B\text{ ends in }2.
 \end{array}
 \tag{C.35}
 \]
 
-For the last row, \(h=1\) gives \(X[0]=U[0]=3\) and \(X[1]=2\);
-the initial block \(B[a:r]\) of \(X\) has length
-\(t>r/2\), hence integer \(t\ge2\), so these are exactly the two
-displayed coordinates of \(B\).
+In the \(p>q\) branch, put \(a=P-p=r-t\). Formula (C.19) identifies the
+displayed \(X\)-coordinates with \(B[a]\) in the first two rows and with
+\(B[a:a+2]\) in the last row. For the last row,
+\(t>r/2\) implies integer \(t\ge2\), so both coordinates lie in the
+initial block \(B[a:r]\). In the \(p<q\) branch the same three rows apply
+to the periodic word \(X^\omega\), with \(X\) given by (C.24b).
 
 ### 6. Exact remaining word obstructions
 
-The stronger localization still does not close the \(p>q\) boundary branch.
-It gives different exact word residuals for the two targets.
+The stronger localization still does not close either period branch. It
+gives different exact word residuals for the two targets.
 
-For the stronger \(\mathcal I\)-only target, the forced tuple
+For the stronger \(\mathcal I\)-only target, both branches share the forced
+tuple
 
 \[
 q>2r>0,\quad P=q+r,\quad |B|=r,\quad
 R=BQB,\quad U=QB,\quad B[0]=2,\quad Q[0]=3,
 \]
 
+and one of the two exact branch forms
+
 \[
-p=q+t,\quad r/2<t<r,\quad X=B[r-t:r]UB,
+\begin{array}{ll}
+p>q:&p=q+t,\quad r/2<t<r,\quad X=B[r-t:r]UB,\\[2mm]
+p<q:&d=q-p>2r,\quad \nu=d-2r=|\Theta|>0,\quad
+      X=Q[d:|Q|]B^2,\\
+&Q[0:\nu+2r]=\Theta B^2,\quad
+Q[|Q|-(r+\nu):|Q|]=B\Theta.
+\end{array}
 \]
 
-with the inherited standalone conditions
+Each is combined with the inherited standalone conditions
 
 \[
 (\kappa(R^2),\pi(R^2))=(2,q),\qquad
 \kappa(R^2B)=2,\qquad
 (\kappa(BRB^2),\pi(BRB^2))=(3,r),
-\]
+\].
 
-must realize
+The desired two-window replay must then realize
 
 \[
 \begin{gathered}
@@ -1494,10 +1622,10 @@ must realize
 \tag{C.36}
 \]
 
-It remains to prove that no forced boundary word satisfies (C.36), or to
-extract the required period-\(P\) witness. The interior bridge is deliberately
-absent from the period inequalities in (C.36); adding it would silently
-replace the stronger target by \(\mathcal J\).
+It remains to prove that no forced boundary word in either branch satisfies
+(C.36), or to extract the required period-\(P\) witness. The interior
+bridge is deliberately absent from the period inequalities in (C.36);
+adding it would silently replace the stronger target by \(\mathcal J\).
 
 For the bridge-inclusive target, the exact open word wall is stronger:
 prove that no forced boundary word can satisfy the autonomous episode
@@ -1560,6 +1688,42 @@ below \(P\). However its local \(G\)- and \(H\)-scale pairs are
 \((2,6)\), not \((2,q)\) and \((2,P)\). It is therefore a sharpness warning
 that the endpoint scales in (C.36) remain load-bearing, not a survivor or
 counterexample.
+
+The new \(p<q\) inequalities also have a nonvacuous sharpness model in the
+exceptional range \(2p<P\):
+
+\[
+\begin{gathered}
+q=20,\quad r=3,\quad p=11,\quad d=9,\quad P=23,\quad c=1,\\
+B=232,\quad Q=33223223232332,\quad U=33223223232332232,\\
+R=23233223223232332232,\quad X=32332232232.
+\end{gathered}
+\]
+
+It has the exact static pairs
+
+\[
+\begin{array}{c|c}
+\text{word}&(\kappa,\pi)\\
+\hline
+R^2&(2,20)\\
+R^2B&(2,3)\\
+BRB^2&(3,3)\\
+X^3&(3,11)\\
+X^3U&(2,20)\\
+X^3UB^2&(3,3)\\
+X^3UB^2U&(2,23).
+\end{array}
+\]
+
+Moreover \(W=\operatorname{suf}_1(X)X^2\), \(B[0]=B[-1]\), and \(B\)
+has period
+\(r-c=2\), exactly as (C.28a) predicts. Its first-mismatch data are
+\((z,h)=(2,1)\), with \(X[0:2]=32\) and \(B\) ending in \(2\).
+Nevertheless it is not a survivor: at phase \(1\) of the later replay the
+requested symbol is \(U[1]=3\), while the exact local pair is \((2,2)\).
+Thus the static endpoint algebra, the shifted suffix, and the mismatch
+trichotomy do not by themselves close the \(p<q\) word wall.
 
 #### Equality-first \(p>q\) boundary checkpoint
 
@@ -1645,7 +1809,8 @@ shadow or that \(P\) must be the shortest maximizing period.
 
 As a separate diagnostic, the executable applies the complete
 first-mismatch trichotomy (C.35), including the terminal-\(3\)-run inequality
-\(d+z\le2\), after the canonical filters. It retains `197773` candidates:
+\(\lambda+z\le2\), after the canonical filters. It retains `197773`
+candidates:
 `105851`, `45116`, and `46806` in the respective
 \((z,h)=(1,0),(2,0),(2,1)\) rows. Every one fails exact early replay:
 `71487` at phase `1`, `46843` at phase `2`, and `79443` at a later phase,
@@ -1669,9 +1834,9 @@ autonomous loss. This is a proof-strategy connection, not a reduction:
 \(B=232\) has proper circular profile \((1,2,1)\), so it does not satisfy
 the fixed-profile hypotheses of that note.
 
-The two word walls above remain unproved, as do the \(p<q\) frontier equation
-(C.25) and the non-boundary regions of (C.5)--(C.6). There is also no
-transfer of the final Cell A argument: here
+The target-specific word walls remain unproved in both period branches, as
+do the non-boundary regions of (C.5)--(C.6). There is also no transfer of
+the final Cell A argument: here
 \[
 E=LRT=LT(UT)
 \]
@@ -1697,6 +1862,24 @@ fails the early replay. It also pins the \(q=10\) near-model's two exact
 six-state local timelines and its incorrect period-\(6\) endpoint scales.
 These nonzero bounded counts are index and algebra checks only; they are
 **not a proof** of the universal deductions or of either open word wall.
+
+`tests/test_generated_two_cube_cell_c_pltq_reduction.py` separately
+enumerates the exact static \(p<q\) boundary tuples through \(q\le14\)
+without importing either production search. It retains `141` tuples. Every
+one satisfies \(d>2r\), the \(\Theta B^2/B\Theta\) normal form, (C.24b),
+and the
+frontier equation. Across both possible exponents and all proper
+continuation phases, it checks `3753` numerical slots in which a root below
+\(P\) would have to cross the local boundary; none supplies the required
+second period on \(X^3\).
+
+The same test uses \(X^\omega\), rather than an out-of-range slice of \(X\),
+for the first-mismatch comparison. There are `74` static tuples satisfying
+the two necessary mismatch inequalities, split `41,21,12` across the three
+rows of (C.35), and all obey the stated coordinate conclusions. The
+\(q=20\) model above pins the nonempty \(2p<P\) case. These are bounded,
+nonvacuous index checks only; the localization lemma and the inequalities
+remain natural-language proofs, and the word walls remain open.
 
 ### 8. Equality-first exhaustive engine
 
