@@ -301,3 +301,22 @@ Entries are append-only; superseded decisions are marked, not deleted.
   Zero bounded failures or counterexamples is **NOT_A_PROOF** of bridge
   promotion, the Generated Two-Cube implication, or the Curling Number
   Conjecture.
+
+## D-018 — Gate synchronization cells on the complete local antecedent
+
+- Date: 2026-07-27
+- Status: active
+- Decision: compute the later canonical cube coordinate and classify Cell
+  A/B/C only for a genuine local G2CS antecedent: the failed position expects
+  \(3\), the standalone state has curling number \(2\), both actual paired
+  states \(E\) and \(F\) have curling number \(3\), and the audited \(G,H\)
+  endpoint data have their required exponents and periods. Every other first
+  failure records `cube_start=None` and Cell `unclassified`.
+- Clarification: standalone curling number \(2\) is the target no-cube clause;
+  the visible square suffix remains. Standalone curling number \(4\) is a
+  higher-power mismatch, not a no-cube state, and is outside the Cell A/B/C
+  partition even when the paired \(E,F\) states are genuine cubes.
+- Reason: Cell geometry describes the canonical cube at \(F\) within the
+  repaired \(3\to2\) synchronization specialization. Classifying anomalous
+  failures before all local antecedent clauses hold would misstate diagnostic
+  evidence and inflate Cell counts.

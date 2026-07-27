@@ -520,17 +520,6 @@ def audit_record_square_candidate(
     H_event = window.F_events[-1]
     p = E_event.period
     r = F_event.period
-    has_cube_premises = E_event.exponent == 3 and F_event.exponent == 3
-    cube_start = len(F_event.word) - 3 * r if has_cube_premises else None
-    ybt_start = len(F_event.word) - (validated.P + validated.b + j)
-    trace_times = CandidateTraceTimes(
-        second_r_start_time=validated.second_r_start_time,
-        g_time=validated.g_time,
-        terminal_time=validated.terminal_time,
-        E_times=tuple(event.time for event in window.E_events),
-        F_times=tuple(event.time for event in window.F_events),
-        I_times=tuple(event.time for event in window.I_events),
-    )
     g2cs_antecedent = (
         standalone.expected == 3
         and standalone.exponent == 2
@@ -540,6 +529,16 @@ def audit_record_square_candidate(
         and G_event.period == validated.q
         and H_event.exponent == 2
         and H_event.period == validated.P
+    )
+    cube_start = len(F_event.word) - 3 * r if g2cs_antecedent else None
+    ybt_start = len(F_event.word) - (validated.P + validated.b + j)
+    trace_times = CandidateTraceTimes(
+        second_r_start_time=validated.second_r_start_time,
+        g_time=validated.g_time,
+        terminal_time=validated.terminal_time,
+        E_times=tuple(event.time for event in window.E_events),
+        F_times=tuple(event.time for event in window.F_events),
+        I_times=tuple(event.time for event in window.I_events),
     )
     first_failure = FirstFailureReport(
         seed=validated.seed,

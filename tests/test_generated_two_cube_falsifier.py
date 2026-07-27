@@ -693,6 +693,52 @@ def test_first_failure_report_preserves_noncube_anomaly_as_unclassified(
     assert serialized["cell"] == "unclassified"
 
 
+def test_exponent_four_mismatch_is_outside_g2cs_cells_and_counts(monkeypatch):
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    candidate = extract_record_square_candidates(events)[0]
+    natural_checker = falsifier.check_standalone_promotion
+
+    def force_exponent_four(R):
+        natural = natural_checker(R)
+        assert natural.checks[3].expected == 3
+        assert natural.checks[3].exponent == 3
+        return falsifier.StandalonePromotionAudit(
+            status="first_failure",
+            checks=(
+                *natural.checks[:3],
+                replace(natural.checks[3], exponent=4, period=1),
+            ),
+            first_failure_j=3,
+        )
+
+    monkeypatch.setattr(
+        falsifier,
+        "check_standalone_promotion",
+        force_exponent_four,
+    )
+
+    audit = falsifier.audit_record_square_candidate(events, candidate)
+
+    assert audit.status == "first_failure"
+    report = audit.first_failure
+    assert report is not None
+    assert report.expected == 3
+    assert report.standalone_exponent == 4
+    assert (report.E_exponent, report.F_exponent) == (3, 3)
+    assert not report.g2cs_antecedent
+    assert report.cube_start is None
+    assert report.cell == "unclassified"
+
+    summary = falsifier.scan_binary_seeds(max_seed_length=8, step_limit=100)
+    assert summary.first_failures == 2
+    assert summary.g2cs_antecedents == 0
+    assert summary.g2cs_verified == 0
+    assert summary.g2cs_counterexamples == 0
+    assert (summary.cell_A, summary.cell_B, summary.cell_C) == (0, 0, 0)
+    assert summary.unclassified == summary.first_failures
+
+
 def test_missing_strict_record_bridge_impostor_is_rejected_despite_generating_R():
     D = tuple(map(int, "223222"))
     R = tuple(map(int, "322232"))
