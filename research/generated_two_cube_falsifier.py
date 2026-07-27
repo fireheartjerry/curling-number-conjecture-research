@@ -1,11 +1,19 @@
 from __future__ import annotations
 
+import argparse
+import json
 from collections.abc import Sequence
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+from itertools import product
 from typing import Literal
 
 Word = tuple[int, ...]
 TraceTermination = Literal["hit_one", "step_limit"]
+FailureCell = Literal["A", "B", "C", "unclassified"]
+PromotionStatus = Literal["promotion_root", "first_failure"]
+CandidateAuditStatus = Literal[
+    "promotion_root", "first_failure", "invalid_provenance"
+]
 
 
 @dataclass(frozen=True)
@@ -37,6 +45,145 @@ class RecordSquareCandidate:
     second_r_start_time: int
     g_time: int
     terminal_time: int
+
+
+@dataclass(frozen=True)
+class StandalonePromotionCheck:
+    j: int
+    expected: int
+    word: Word
+    exponent: int
+    period: int
+
+
+@dataclass(frozen=True)
+class StandalonePromotionAudit:
+    status: PromotionStatus
+    checks: tuple[StandalonePromotionCheck, ...]
+    first_failure_j: int | None
+
+
+@dataclass(frozen=True)
+class PairedGenerationWindow:
+    j: int
+    T: Word
+    U: Word
+    E_events: tuple[OrbitEvent, ...]
+    F_events: tuple[OrbitEvent, ...]
+    I_events: tuple[OrbitEvent, ...]
+    max_period_over_I: int
+
+
+@dataclass(frozen=True)
+class CandidateTraceTimes:
+    second_r_start_time: int
+    g_time: int
+    terminal_time: int
+    E_times: tuple[int, ...]
+    F_times: tuple[int, ...]
+    I_times: tuple[int, ...]
+
+
+@dataclass(frozen=True)
+class FirstFailureReport:
+    seed: Word
+    seed_length: int
+    P: int
+    q: int
+    b: int
+    j: int
+    expected: int
+    standalone_exponent: int
+    standalone_period: int
+    E_exponent: int
+    E_period: int
+    F_exponent: int
+    F_period: int
+    G_exponent: int
+    G_period: int
+    p: int
+    r: int
+    max_period_over_I: int
+    cube_start: int | None
+    ybt_start: int
+    cell: FailureCell
+    trace_times: CandidateTraceTimes
+    E_event: OrbitEvent
+    F_event: OrbitEvent
+    G_event: OrbitEvent
+    I_events: tuple[OrbitEvent, ...]
+    g2cs_antecedent: bool
+    g2cs_counterexample: bool
+
+
+@dataclass(frozen=True)
+class CandidateAudit:
+    status: CandidateAuditStatus
+    candidate: RecordSquareCandidate | None
+    standalone_checks: tuple[StandalonePromotionCheck, ...]
+    paired_windows: tuple[PairedGenerationWindow, ...]
+    first_failure: FirstFailureReport | None
+    invalid_reason: str | None
+
+
+@dataclass(frozen=True)
+class ScanSummary:
+    max_seed_length: int
+    step_limit: int
+    seeds: int
+    hit_one: int
+    capped: int
+    candidates: int
+    promotion_roots: int
+    first_failures: int
+    g2cs_antecedents: int
+    g2cs_verified: int
+    g2cs_counterexamples: int
+    cell_A: int
+    cell_B: int
+    cell_C: int
+    unclassified: int
+    first_failure_reports: tuple[FirstFailureReport, ...]
+
+
+def classify_first_failure_cell(
+    *, cube_start: int, ybt_start: int, r: int, q: int, P: int
+) -> FailureCell:
+    """Classify the later canonical cube by half-open start coordinates."""
+    if cube_start >= ybt_start:
+        return "C"
+    if r == q:
+        return "A"
+    if q < r < P:
+        return "B"
+    return "unclassified"
+
+
+def check_standalone_promotion(R: Sequence[int]) -> StandalonePromotionAudit:
+    """Evaluate every direct standalone state R^2 R[:j]."""
+    root: Word = tuple(R)
+    checks = []
+    first_failure_j = None
+    for j, expected in enumerate(root):
+        word = root + root + root[:j]
+        exponent, period = canonical_witness(word)
+        checks.append(
+            StandalonePromotionCheck(
+                j=j,
+                expected=expected,
+                word=word,
+                exponent=exponent,
+                period=period,
+            )
+        )
+        if first_failure_j is None and exponent != expected:
+            first_failure_j = j
+
+    return StandalonePromotionAudit(
+        status="promotion_root" if first_failure_j is None else "first_failure",
+        checks=tuple(checks),
+        first_failure_j=first_failure_j,
+    )
 
 
 def canonical_witness(sequence: Sequence[int]) -> tuple[int, int]:
@@ -264,6 +411,188 @@ def extract_record_square_candidates(
     return tuple(candidates)
 
 
+def _paired_generation_window(
+    events_by_time: dict[int, OrbitEvent],
+    candidate: RecordSquareCandidate,
+    j: int,
+) -> PairedGenerationWindow | None:
+    T = candidate.R[:j]
+    U = candidate.R[j:]
+    m = candidate.q - j
+    E_times = tuple(
+        candidate.second_r_start_time + j + ell for ell in range(m + 1)
+    )
+    F_times = tuple(
+        candidate.g_time + candidate.b + j + ell for ell in range(m + 1)
+    )
+    try:
+        E_events = tuple(events_by_time[time] for time in E_times)
+        F_events = tuple(events_by_time[time] for time in F_times)
+    except KeyError:
+        return None
+
+    expected_E_words = tuple(
+        candidate.L + candidate.R + T + U[:ell] for ell in range(m + 1)
+    )
+    expected_F_words = tuple(
+        candidate.L
+        + candidate.R
+        + candidate.R
+        + candidate.B
+        + T
+        + U[:ell]
+        for ell in range(m + 1)
+    )
+    if (
+        tuple(event.word for event in E_events) != expected_E_words
+        or tuple(event.word for event in F_events) != expected_F_words
+        or tuple(event.exponent for event in E_events[:-1]) != U
+        or tuple(event.exponent for event in F_events[:-1]) != U
+    ):
+        return None
+
+    I_events = E_events + F_events[:-1]
+    return PairedGenerationWindow(
+        j=j,
+        T=T,
+        U=U,
+        E_events=E_events,
+        F_events=F_events,
+        I_events=I_events,
+        max_period_over_I=max(event.period for event in I_events),
+    )
+
+
+def audit_record_square_candidate(
+    events: Sequence[OrbitEvent], candidate: RecordSquareCandidate
+) -> CandidateAudit:
+    """Re-extract and audit a candidate before treating it as evidence."""
+    validated = next(
+        (
+            extracted
+            for extracted in extract_record_square_candidates(events)
+            if extracted == candidate
+        ),
+        None,
+    )
+    if validated is None:
+        return CandidateAudit(
+            status="invalid_provenance",
+            candidate=None,
+            standalone_checks=(),
+            paired_windows=(),
+            first_failure=None,
+            invalid_reason="missing_bridge_hypothesis",
+        )
+
+    events_by_time = {event.time: event for event in events}
+    paired_windows = []
+    for j in range(validated.q):
+        window = _paired_generation_window(events_by_time, validated, j)
+        if window is None:
+            return CandidateAudit(
+                status="invalid_provenance",
+                candidate=None,
+                standalone_checks=(),
+                paired_windows=(),
+                first_failure=None,
+                invalid_reason="paired_generation_mismatch",
+            )
+        paired_windows.append(window)
+
+    promotion = check_standalone_promotion(validated.R)
+    if promotion.first_failure_j is None:
+        return CandidateAudit(
+            status="promotion_root",
+            candidate=validated,
+            standalone_checks=promotion.checks,
+            paired_windows=tuple(paired_windows),
+            first_failure=None,
+            invalid_reason=None,
+        )
+
+    j = promotion.first_failure_j
+    standalone = promotion.checks[j]
+    window = paired_windows[j]
+    E_event = window.E_events[0]
+    F_event = window.F_events[0]
+    G_event = window.E_events[-1]
+    H_event = window.F_events[-1]
+    p = E_event.period
+    r = F_event.period
+    has_cube_premises = E_event.exponent == 3 and F_event.exponent == 3
+    cube_start = len(F_event.word) - 3 * r if has_cube_premises else None
+    ybt_start = len(F_event.word) - (validated.P + validated.b + j)
+    trace_times = CandidateTraceTimes(
+        second_r_start_time=validated.second_r_start_time,
+        g_time=validated.g_time,
+        terminal_time=validated.terminal_time,
+        E_times=tuple(event.time for event in window.E_events),
+        F_times=tuple(event.time for event in window.F_events),
+        I_times=tuple(event.time for event in window.I_events),
+    )
+    g2cs_antecedent = (
+        standalone.expected == 3
+        and standalone.exponent == 2
+        and E_event.exponent == 3
+        and F_event.exponent == 3
+        and G_event.exponent == 2
+        and G_event.period == validated.q
+        and H_event.exponent == 2
+        and H_event.period == validated.P
+    )
+    first_failure = FirstFailureReport(
+        seed=validated.seed,
+        seed_length=len(validated.seed),
+        P=validated.P,
+        q=validated.q,
+        b=validated.b,
+        j=j,
+        expected=standalone.expected,
+        standalone_exponent=standalone.exponent,
+        standalone_period=standalone.period,
+        E_exponent=E_event.exponent,
+        E_period=E_event.period,
+        F_exponent=F_event.exponent,
+        F_period=F_event.period,
+        G_exponent=G_event.exponent,
+        G_period=G_event.period,
+        p=p,
+        r=r,
+        max_period_over_I=window.max_period_over_I,
+        cube_start=cube_start,
+        ybt_start=ybt_start,
+        cell=(
+            classify_first_failure_cell(
+                cube_start=cube_start,
+                ybt_start=ybt_start,
+                r=r,
+                q=validated.q,
+                P=validated.P,
+            )
+            if cube_start is not None
+            else "unclassified"
+        ),
+        trace_times=trace_times,
+        E_event=E_event,
+        F_event=F_event,
+        G_event=G_event,
+        I_events=window.I_events,
+        g2cs_antecedent=g2cs_antecedent,
+        g2cs_counterexample=(
+            g2cs_antecedent and window.max_period_over_I < validated.P
+        ),
+    )
+    return CandidateAudit(
+        status="first_failure",
+        candidate=validated,
+        standalone_checks=promotion.checks,
+        paired_windows=tuple(paired_windows),
+        first_failure=first_failure,
+        invalid_reason=None,
+    )
+
+
 def generated_states(start: Sequence[int], requested: Sequence[int]) -> tuple[Word, ...]:
     """Return the ordered generated trace, including its start and terminal states."""
     current: Word = tuple(start)
@@ -299,3 +628,157 @@ def synchronization_evaluation_states(
             "synchronization_evaluation_states requires nonempty later_states"
         )
     return early + later[:-1]
+
+
+def scan_binary_seeds(max_seed_length: int, step_limit: int) -> ScanSummary:
+    """Audit every seed over {2,3} in deterministic length/lexical order."""
+    if max_seed_length < 0:
+        raise ValueError("max_seed_length must be nonnegative")
+    if step_limit < 0:
+        raise ValueError("step_limit must be nonnegative")
+
+    seeds = 0
+    hit_one = 0
+    capped = 0
+    candidates_count = 0
+    promotion_roots = 0
+    reports = []
+
+    for length in range(1, max_seed_length + 1):
+        for seed in product((2, 3), repeat=length):
+            seeds += 1
+            events, termination = trace_orbit(seed, step_limit)
+            if termination == "hit_one":
+                hit_one += 1
+            elif termination == "step_limit":
+                capped += 1
+            else:
+                raise AssertionError(f"unexpected termination: {termination}")
+
+            candidates = extract_record_square_candidates(events)
+            candidates_count += len(candidates)
+            for candidate in candidates:
+                audit = audit_record_square_candidate(events, candidate)
+                if audit.status == "invalid_provenance":
+                    raise RuntimeError(
+                        "extractor returned candidate that failed provenance audit: "
+                        f"{audit.invalid_reason}"
+                    )
+                if audit.status == "promotion_root":
+                    promotion_roots += 1
+                elif audit.status == "first_failure":
+                    if audit.first_failure is None:
+                        raise AssertionError("first failure audit lacks report")
+                    reports.append(audit.first_failure)
+                else:
+                    raise AssertionError(f"unexpected audit status: {audit.status}")
+
+    reports.sort(
+        key=lambda report: (
+            report.seed,
+            report.P,
+            report.q,
+            report.b,
+            report.j,
+            report.expected,
+            report.standalone_exponent,
+            report.standalone_period,
+        )
+    )
+    cell_counts = {
+        cell: sum(report.cell == cell for report in reports)
+        for cell in ("A", "B", "C", "unclassified")
+    }
+    g2cs_antecedents = sum(report.g2cs_antecedent for report in reports)
+    g2cs_counterexamples = sum(report.g2cs_counterexample for report in reports)
+    return ScanSummary(
+        max_seed_length=max_seed_length,
+        step_limit=step_limit,
+        seeds=seeds,
+        hit_one=hit_one,
+        capped=capped,
+        candidates=candidates_count,
+        promotion_roots=promotion_roots,
+        first_failures=len(reports),
+        g2cs_antecedents=g2cs_antecedents,
+        g2cs_verified=g2cs_antecedents - g2cs_counterexamples,
+        g2cs_counterexamples=g2cs_counterexamples,
+        cell_A=cell_counts["A"],
+        cell_B=cell_counts["B"],
+        cell_C=cell_counts["C"],
+        unclassified=cell_counts["unclassified"],
+        first_failure_reports=tuple(reports),
+    )
+
+
+def _calibration_terminal_lengths() -> tuple[int, ...]:
+    cases = (
+        ("322", 5),
+        ("23222323", 66),
+        ("2322322323222323223223", 142),
+    )
+    actual_lengths = []
+    for digits, expected_length in cases:
+        events, termination = trace_orbit(tuple(map(int, digits)), 1000)
+        actual_length = len(events[-1].word)
+        if termination != "hit_one" or actual_length != expected_length:
+            raise RuntimeError(
+                "calibration failed for "
+                f"seed={digits}: termination={termination}, "
+                f"terminal_length={actual_length}, expected={expected_length}"
+            )
+        actual_lengths.append(actual_length)
+    return tuple(actual_lengths)
+
+
+def serialize_first_failure(report: FirstFailureReport) -> str:
+    """Serialize a complete first-failure record deterministically."""
+    return json.dumps(asdict(report), sort_keys=True, separators=(",", ":"))
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Bounded falsifier for the Generated Two-Cube wall."
+    )
+    parser.add_argument("--max-seed-length", type=int, default=18)
+    parser.add_argument("--step-limit", type=int, default=500)
+    args = parser.parse_args(argv)
+
+    calibration_lengths = _calibration_terminal_lengths()
+    print(
+        "calibration_terminal_lengths="
+        + ",".join(map(str, calibration_lengths))
+        + " status=PASS"
+    )
+    print("label=fully_generated_specialization")
+    summary = scan_binary_seeds(args.max_seed_length, args.step_limit)
+    for field in (
+        "max_seed_length",
+        "step_limit",
+        "seeds",
+        "hit_one",
+        "capped",
+        "candidates",
+        "promotion_roots",
+        "first_failures",
+        "g2cs_antecedents",
+        "g2cs_verified",
+        "g2cs_counterexamples",
+        "cell_A",
+        "cell_B",
+        "cell_C",
+        "unclassified",
+    ):
+        print(f"{field}={getattr(summary, field)}")
+    print(f"first_failure_records={len(summary.first_failure_reports)}")
+    for report in summary.first_failure_reports:
+        print(f"first_failure_record={serialize_first_failure(report)}")
+    print(
+        "NOT_A_PROOF: bounded fully_generated_specialization scan; "
+        "zero bounded counterexamples is not a proof."
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

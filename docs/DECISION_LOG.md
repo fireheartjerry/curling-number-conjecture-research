@@ -254,3 +254,50 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Reason: in the unre-based orbit, earlier period-\(7\) squares also blocked
   the later square, so that regression did not independently prove that
   nonsquare exponents participate in strict-record accounting.
+
+## D-016 — Audit Generated Two-Cube candidates before classification
+
+- Date: 2026-07-27
+- Status: active
+- Decision: a `RecordSquareCandidate` is admissible evidence only after it is
+  found again by `extract_record_square_candidates(events)`. An arbitrary or
+  mutated dataclass is `invalid_provenance` with the missing bridge hypothesis
+  and is not audited as a promotion root or first failure. Static word
+  identities never substitute for actual orbit generation: for every cut
+  \(j\), both formula families \(E_\ell\) and \(F_\ell\) are checked against
+  the stored full-state words, times, curling numbers, and shortest maximizing
+  periods.
+- Interval convention: a first-failure report computes \(\mathcal I\) from
+  every \(E_\ell\) through \(G=E_m\) and every \(F_\ell\) with \(\ell<m\), so
+  \(G\) is included and \(H=F_m\) is excluded. At \(F\), coordinates are
+  zero-based and half-open. When the G2CS cube premises hold, a later
+  canonical \(r\)-cube with `cube_start >= ybt_start`, including equality, is
+  internal Cell C. Only an external cube may be Cell A (`r=q`) or Cell B
+  (`q<r<P`); every other or non-cube failure is unclassified.
+- Reason: endpoint algebra and standalone continuation are not provenance for
+  the two actual generated \(U\)-windows, and the Cell partition is meaningful
+  only for a genuine canonical cube at \(F\).
+
+## D-017 — Scan the bounded fully generated specialization through length 18
+
+- Date: 2026-07-27
+- Status: `COMPUTED`
+- Command:
+  ```
+  python research/generated_two_cube_falsifier.py --max-seed-length 18 --step-limit 500 > research/outputs/generated_two_cube_scan_2026-07-27.txt
+  ```
+- Calibration: terminal lengths `5,66,142` reproduced exactly.
+- Caps and results: all `524286` binary seeds of lengths `1..18` were
+  enumerated. All `524286` trajectories hit curling number one within the
+  explicit `500`-append cap, so `capped=0`. The repaired whole-power boundary
+  \(n-2p\ge n_{\mathrm{seed}}\) yielded `5016` fully generated strict-record
+  candidates. All `5016` had promotion bridge roots; first failures, G2CS
+  antecedents, verified antecedents, counterexamples, and Cell
+  A/B/C/unclassified counts were all zero.
+- Reproduction: an independent rerun took `20.326` seconds on the reporting
+  machine and was byte-identical to the preserved output; both SHA-256 digests
+  were `C461FF476D8F274C1203864A06B2C16F0312B398F19A71F01310C4DF4EB2B24F`.
+- Scope: these are bounded `fully_generated_specialization` results only.
+  Zero bounded failures or counterexamples is **NOT_A_PROOF** of bridge
+  promotion, the Generated Two-Cube implication, or the Curling Number
+  Conjecture.

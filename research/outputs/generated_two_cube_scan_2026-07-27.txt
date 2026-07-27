@@ -1,0 +1,19 @@
+calibration_terminal_lengths=5,66,142 status=PASS
+label=fully_generated_specialization
+max_seed_length=18
+step_limit=500
+seeds=524286
+hit_one=524286
+capped=0
+candidates=5016
+promotion_roots=5016
+first_failures=0
+g2cs_antecedents=0
+g2cs_verified=0
+g2cs_counterexamples=0
+cell_A=0
+cell_B=0
+cell_C=0
+unclassified=0
+first_failure_records=0
+NOT_A_PROOF: bounded fully_generated_specialization scan; zero bounded counterexamples is not a proof.
