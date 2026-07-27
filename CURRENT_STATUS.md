@@ -78,8 +78,9 @@ r<b+j<3r,\qquad
 
 An equality-first record-free scan exhausts every binary local start
 \(|E=LRT|\le18\). It checks `2361` integer tuples, `714444` equality-class
-root assignments, and `2866488` bounded contexts with an independent exact
-canonical/orbit oracle. The `120` complete G2CS antecedents all have
+root assignments, and `2866488` bounded contexts with an exact canonical
+witness implementation that is independently cross-checked on every binary
+word through length `10`. The `120` complete G2CS antecedents all have
 \((R,b,j,r)=((2,3,2),1,1,1)\), all lie on \(b+j=2r\) and \(j=r\), and all
 already have period at least \(P\) in both \(\mathcal I\) and
 \(\mathcal J\). There are zero bounded survivors, but this computation is

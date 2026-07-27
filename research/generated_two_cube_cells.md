@@ -861,6 +861,16 @@ Cell C is the internal placement of the later canonical \(r\)-cube. The
 following reduction and bounded search sharpen the branch but do not prove
 either synchronization target.
 
+Fix either target and negate its conclusion. Since
+\(F=F_0\in\mathcal I\subseteq\mathcal J\), the corresponding negation gives
+
+\[
+\boxed{r=\pi(F)<P.}
+\]
+
+If \(r\ge P\), then \(F\) itself already witnesses both conclusions, so that
+case is outside the survivor residual considered below.
+
 ### 1. Exact internal coordinates
 
 Work relative to the suffix

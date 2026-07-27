@@ -562,3 +562,22 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Scope: this is bounded binary `COMPUTED` evidence. Zero bounded survivors
   is **NOT_A_PROOF** of either G2CS target, bridge promotion, or the Curling
   Number Conjecture. Cell C remains `OPEN`.
+
+## D-027 — State the Cell C survivor and oracle boundaries explicitly
+
+- Date: 2026-07-27
+- Status: active
+- Decision: the Cell C reduction is made only after negating the selected
+  synchronization conclusion. Since
+  \(F\in\mathcal I\subseteq\mathcal J\), either negation supplies
+  \(r=\pi(F)<P\); when \(r\ge P\), \(F\) already witnesses both conclusions
+  and no residual analysis is needed.
+- Verification boundary: the bounded traversal uses one exact canonical
+  witness implementation. A definition-first implementation independently
+  cross-checks that canonical function on every binary word through length
+  `10`; it is not described as an independent implementation of the entire
+  orbit traversal.
+- Reason: both qualifications were implicit in the executable filter and
+  tests but must be explicit before the Fine--Wilf reduction and the evidence
+  summary can be read without importing hidden premises or overstating
+  independent verification.
