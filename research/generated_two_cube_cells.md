@@ -2779,6 +2779,76 @@ fact (C.33) already gives \(\lambda\le1\), because \(z\ge1\) and
 row. As before, \(i=0\) is impossible because \(B[0]=2\), and \(r=1\)
 is vacuous.
 
+#### Exact target scope of the two-half bridge atlas
+
+On the simultaneous boundary, the general bridge length is
+\(s=|BT|=2r\). Thus
+
+\[
+K_0=G,\qquad K_r=M,\qquad K_{2r}=F.
+\]
+
+The definitions of the two target families give the exact bridge
+membership
+
+\[
+\boxed{
+\mathcal I\cap\{K_h:0\le h\le2r\}=\{K_0,K_{2r}\},
+\qquad
+\{K_h:0\le h\le2r\}\subseteq\mathcal J.
+}
+\tag{C.35ai}
+\]
+
+Here \(G=K_0=E_m\) and \(F=K_{2r}=F_0\) are the shared endpoint
+descriptions. Every strict interior state \(K_h\), \(0<h<2r\), is omitted
+from \(\mathcal I\) and included in \(\mathcal J\). The proper
+bridge-generation cuts are \(0\le h<2r\); the completed endpoint
+\(K_{2r}=F\) is not another such cut.
+
+Negating the bridge-inclusive target gives
+
+\[
+\max_{W\in\mathcal J}\pi(W)<P,
+\]
+
+so every proper bridge cut is automatically capped:
+
+\[
+\boxed{
+\text{\(\mathcal J\)-negation}
+\quad\Longrightarrow\quad
+\pi(K_h)<P\qquad(0\le h<2r).
+}
+\tag{C.35aj}
+\]
+
+The \(\mathcal I\)-negation directly caps its two bridge endpoints, but
+not the omitted interior. For cuts requesting `2`, that omission is
+repaired without either target: (C.35z) directly proves
+
+\[
+\pi(K_i)\le q<P,\qquad
+\pi(K_{r+i})\le r<P
+\]
+
+whenever \(B[i]=2\). Hence every proper actual `2`-cut self-caps even
+under the \(\mathcal I\)-negation.
+
+There is no parallel automatic conclusion for a proper `3`-cut. Since
+\(B[0]=2\), every such cut has \(i>0\) and lies strictly inside the
+omitted bridge. The \(\mathcal I\)-negation therefore supplies no period
+bound there; the cap in the two conditional `3`-cut lemmas above must
+remain an explicit hypothesis. This is an absence of a target-derived
+bound, not an assertion that any particular `3`-cut has period at least
+\(P\).
+
+Finally, (C.28) cannot be used to manufacture the missing cap: its
+required period hypothesis is already \(\pi(K_h)<P\). At `2`-cuts,
+(C.35z) establishes that hypothesis first and (C.28) may then localize
+the cut. At arbitrary omitted `3`-cuts under the
+\(\mathcal I\)-negation, localization remains unlicensed.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It

@@ -1624,3 +1624,55 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Scope: the no-fourth consequence, bounded bridge census, both boundary
   word walls, non-boundary Cell C, Cell C, both G2CS targets, and the
   Curling Number Conjecture remain open.
+
+## D-035 item 5 — exact target-scope ledger
+
+- Date: 2026-07-27
+- Status: target distinction `PROVED-NL`; overall D-035 remains
+  `IN PROGRESS`; Cell C remains `OPEN`.
+- Membership decision: on the simultaneous boundary \(s=2r\),
+  \[
+  K_0=G,\qquad K_r=M,\qquad K_{2r}=F,
+  \]
+  and the family definitions give
+  \[
+  \mathcal I\cap\{K_h:0\le h\le2r\}=\{G,F\},\qquad
+  \{K_h:0\le h\le2r\}\subseteq\mathcal J.
+  \]
+  Thus every strict interior bridge state is omitted from \(\mathcal I\)
+  and included in \(\mathcal J\). The completed endpoint \(F=K_{2r}\)
+  is not an indexed proper bridge-generation cut.
+- \(\mathcal J\)-decision: negating G2CS-\(\mathcal J\) gives
+  \(\pi(W)<P\) for every \(W\in\mathcal J\), hence directly caps every
+  proper \(K_h\), \(0\le h<2r\).
+- \(\mathcal I\)-decision: negating G2CS-\(\mathcal I\) directly caps
+  \(G,F\), but supplies no inequality for \(0<h<2r\). Since \(B[0]=2\),
+  every proper bridge cut requesting `3` has \(i>0\) and is one of these
+  omitted interior states. Its cap is not automatic.
+- Self-cap decision: independently of either target, (C.35z) gives
+  \[
+  B[i]=2\Longrightarrow
+  \pi(K_i)\le q<P,\qquad \pi(K_{r+i})\le r<P.
+  \]
+  Therefore every proper actual `2`-cut is capped even in the stronger
+  \(\mathcal I\) analysis.
+- Localization-order decision: (C.28) assumes the period is below \(P\).
+  It may localize a `2`-cut only after (C.35z) supplies that cap. It cannot
+  be invoked circularly to cap an arbitrary omitted `3`-cut.
+- Non-claim: saying that the \(\mathcal I\)-negation supplies no automatic
+  cap at omitted `3`-cuts does not assert that a particular cut has
+  \(\pi\ge P\). The two `3`-cut theorems remain valid conditional on an
+  independently supplied cap.
+- Verification: the closed bridge membership was re-derived from the
+  authoritative definitions of \(\mathcal I,\mathcal J,K_h\), with both
+  endpoint overlaps and the proper-cut range checked separately. The full
+  repository suite passes `144` tests; `compileall`, unique-tag inspection,
+  and `git diff --check` are clean.
+- Review: independent exact-scope and adversarial/publication reviews
+  returned `APPROVED`. They checked \(G,M,F\), every proper-cut quantifier,
+  the label-`3` endpoint exception, the C.35y--C.35z self-cap dependency,
+  the C.28 ordering, repository-standard evidence labels, and all
+  non-claims.
+- Scope: the no-fourth consequence, bounded bridge census, both boundary
+  word walls, non-boundary Cell C, Cell C, both G2CS targets, and the
+  Curling Number Conjecture remain open.

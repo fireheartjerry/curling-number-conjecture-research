@@ -265,9 +265,23 @@ static word has the full-root pair \((3,3)\), the seam, and \(\lambda=0\)
 at \(i=1<r-1\), but the rotated cube generates `3` where its proposed
 future bridge asks for `2`. No converse seam implication is claimed.
 
-Under the \(\mathcal J\)-negation all second-half cuts are capped. Under
-the \(\mathcal I\)-negation the result remains conditional at omitted
-interior `3` cuts. The remaining later D-035 items remain open.
+The D-035 target split is now explicit. On the boundary,
+\(K_0=G,\ K_r=M,\ K_{2r}=F\), and
+
+\[
+\mathcal I\cap\{K_h:0\le h\le2r\}=\{G,F\},
+\qquad
+\{K_h:0\le h\le2r\}\subseteq\mathcal J.
+\]
+
+Thus a \(\mathcal J\)-negation caps every proper bridge cut. The
+\(\mathcal I\)-negation omits every strict interior cut, but the visible
+squares in (C.35y), via (C.35z), independently cap every actual cut
+requesting `2`. Because \(B[0]=2\), every proper cut requesting `3` is
+interior and its cap remains an explicit hypothesis under the
+\(\mathcal I\)-negation. The localization lemma is used only after a cap
+is established; it cannot prove its own period hypothesis. The remaining
+later D-035 items remain open.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`

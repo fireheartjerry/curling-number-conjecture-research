@@ -178,9 +178,12 @@ Completion gate:
   \(B[i:r]=3^{r-i}\), so \(\lambda\le1\) gives \(i=r-1\).
   No cap or target negation is used after \(h=r\) is assumed; the converse
   seam \(\Rightarrow h=r\) remains false.
-- [ ] Record the target distinction: \(\mathcal J\) caps every proper bridge
-  state; \(\mathcal I\) automatically caps `2` cuts but not arbitrary `3`
-  cuts.
+- [x] **`PROVED-NL`: exact target distinction recorded.**
+  Under the \(\mathcal J\)-negation every proper bridge cut belongs to the
+  capped target family. The \(\mathcal I\)-negation omits every interior
+  bridge cut; target-independent visible squares nevertheless self-cap all
+  actual `2`-cuts. Arbitrary omitted `3`-cuts retain an explicit cap
+  hypothesis. Localization is applied only after a cap is known.
 - [ ] Prove that no visible proper fourth power is compatible with an actual
   binary bridge cut.
 - [ ] Build a definition-first two-branch bridge census through \(q\le25\),
