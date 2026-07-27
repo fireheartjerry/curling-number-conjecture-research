@@ -36,13 +36,8 @@ def test_canonical_witness_matches_reference_implementations_on_small_ternary_wo
                 continue
 
             periods = []
-            for candidate in range(1, len(word) + 1):
+            for candidate in range(1, len(word) // exponent + 1):
                 block = word[-candidate:]
-                copies = 1
-                cursor = len(word) - 2 * candidate
-                while cursor >= 0 and word[cursor : cursor + candidate] == block:
-                    copies += 1
-                    cursor -= candidate
-                if copies == exponent:
+                if block * exponent == word[-candidate * exponent :]:
                     periods.append(candidate)
             assert period == min(periods)
