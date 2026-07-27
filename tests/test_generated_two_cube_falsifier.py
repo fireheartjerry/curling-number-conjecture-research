@@ -1,12 +1,17 @@
+from dataclasses import FrozenInstanceError
 from itertools import product
 
 import pytest
 
 from curling import curling_number, curling_number_reference
 from research.generated_two_cube_falsifier import (
+    OrbitEvent,
+    RecordSquareCandidate,
     canonical_witness,
+    extract_record_square_candidates,
     generated_states,
     synchronization_evaluation_states,
+    trace_orbit,
 )
 
 
@@ -45,6 +50,170 @@ def test_canonical_witness_matches_reference_implementations_on_small_ternary_wo
                 if block * exponent == word[-candidate * exponent :]:
                     periods.append(candidate)
             assert period == min(periods)
+
+
+def test_orbit_event_distinguishes_final_copy_from_entire_generated_power():
+    event = OrbitEvent(
+        time=0,
+        word=(2, 3, 2, 3, 2, 3),
+        exponent=2,
+        period=2,
+        seed_length=3,
+    )
+
+    assert event.final_copy_generated()
+    assert not event.entire_power_generated()
+
+
+def test_orbit_event_counts_power_starting_at_seed_boundary_as_entirely_generated():
+    event = OrbitEvent(
+        time=0,
+        word=(2, 3, 2, 3, 2, 3, 2),
+        exponent=2,
+        period=2,
+        seed_length=3,
+    )
+
+    assert event.entire_power_generated()
+
+
+def test_orbit_event_fields_are_immutable():
+    event = OrbitEvent(
+        time=0,
+        word=(2, 2),
+        exponent=2,
+        period=1,
+        seed_length=2,
+    )
+
+    with pytest.raises(FrozenInstanceError):
+        event.time = 1
+
+
+def test_trace_orbit_rejects_empty_seed():
+    with pytest.raises(ValueError, match="^trace_orbit requires a nonempty seed$"):
+        trace_orbit((), 0)
+
+
+def test_trace_orbit_rejects_negative_step_limit():
+    with pytest.raises(ValueError, match="^step_limit must be nonnegative$"):
+        trace_orbit((2, 2), -1)
+
+
+def test_trace_orbit_zero_cap_keeps_seed_evaluation_and_reports_cutoff():
+    events, termination = trace_orbit((2, 2), 0)
+
+    assert [(event.time, event.word, event.exponent, event.period) for event in events] == [
+        (0, (2, 2), 2, 1)
+    ]
+    assert termination == "step_limit"
+
+
+def test_trace_orbit_one_step_cap_keeps_state_after_exactly_one_append():
+    events, termination = trace_orbit((2, 2), 1)
+
+    assert [(event.time, event.word, event.exponent, event.period) for event in events] == [
+        (0, (2, 2), 2, 1),
+        (1, (2, 2, 2), 3, 1),
+    ]
+    assert termination == "step_limit"
+
+
+def test_trace_orbit_continues_through_exponent_four_until_one():
+    events, termination = trace_orbit((2, 2, 2, 2), 1)
+
+    assert [event.exponent for event in events] == [4, 1]
+    assert termination == "hit_one"
+
+
+@pytest.mark.parametrize(
+    ("digits", "terminal_length"),
+    [
+        ("322", 5),
+        ("23222323", 66),
+        ("2322322323222323223223", 142),
+    ],
+)
+def test_trace_orbit_calibration_hits_one_at_reviewed_total_length(
+    digits, terminal_length
+):
+    seed = tuple(map(int, digits))
+
+    events, termination = trace_orbit(seed, 1000)
+
+    assert termination == "hit_one"
+    assert len(events[-1].word) == terminal_length
+    assert events[-1].exponent == 1
+
+
+def test_extract_record_square_candidates_finds_reviewed_unique_candidate():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+
+    candidates = extract_record_square_candidates(events)
+
+    assert len(candidates) == 1
+    candidate = candidates[0]
+    assert candidate == RecordSquareCandidate(
+        seed=seed,
+        L=seed,
+        A=(2,),
+        B=(2, 2, 3),
+        R=(2, 2, 2, 3),
+        Y=(2, 2, 3, 2, 2, 2, 3),
+        P=7,
+        q=4,
+        b=3,
+        second_r_start_time=4,
+        g_time=8,
+        terminal_time=15,
+    )
+    assert candidate.R == candidate.A + candidate.B
+    assert candidate.Y == candidate.B + candidate.R
+    assert (
+        events[candidate.g_time].word
+        == candidate.L + candidate.R + candidate.R
+    )
+    assert (
+        events[candidate.terminal_time].word
+        == candidate.L
+        + candidate.R
+        + candidate.R
+        + candidate.B
+        + candidate.R
+    )
+    assert events[candidate.terminal_time].word[-2 * candidate.P :] == (
+        candidate.Y + candidate.Y
+    )
+    assert (
+        events[candidate.second_r_start_time].word + candidate.R
+        == events[candidate.g_time].word
+    )
+
+
+def test_record_square_candidate_fields_are_immutable():
+    seed = tuple(map(int, "23222323"))
+    events, _ = trace_orbit(seed, 1000)
+    candidate = extract_record_square_candidates(events)[0]
+
+    with pytest.raises(FrozenInstanceError):
+        candidate.P = 8
+
+
+def test_extract_record_square_candidates_returns_empty_for_empty_events():
+    assert extract_record_square_candidates(()) == ()
+
+
+def test_extract_record_square_candidates_requires_entire_power_to_be_generated():
+    seed = tuple(map(int, "2322232322"))
+    events, _ = trace_orbit(seed, 1000)
+    terminal = events[13]
+
+    assert terminal.exponent == 2
+    assert terminal.period == 7
+    assert terminal.final_copy_generated()
+    assert not terminal.entire_power_generated()
+    assert extract_record_square_candidates(events[:14]) == ()
 
 
 def test_generated_states_include_start_and_terminal():

@@ -143,3 +143,48 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Consequence: the exact generated-symbol mismatch text remains
   `expected {expected} but generated {actual}` until candidate extraction
   establishes a need for structured diagnostic errors.
+
+## D-012 — Trace capped orbits and extract only fully generated record squares
+
+- Date: 2026-07-27
+- Status: active
+- Decision: interpret `step_limit` as the maximum number of symbols appended.
+  A capped trace evaluates and records both the seed state at time \(0\) and
+  the state after exactly `step_limit` appends. It terminates as `hit_one`
+  when that evaluation has exponent \(1\), including at the cap; otherwise it
+  terminates explicitly as `step_limit`. Every exponent other than \(1\),
+  including \(4\) and above, is appended and traced.
+- Generation predicates: for an event with state \(W\), exponent \(k\),
+  canonical period \(p\), and seed length \(n\), the final displayed copy is
+  generated exactly when
+  \[
+  |W|-p\ge n,
+  \]
+  while the entire displayed maximal power is generated exactly when
+  \[
+  |W|-kp\ge n.
+  \]
+  Equality counts as generated in both cases.
+- Strict-record convention: a terminal event is a strict canonical-period
+  record only when its period exceeds every prior event's canonical period.
+  Prior events of every exponent participate, not only squares.
+- Candidate identities: a counted terminal square has period \(P\), with a
+  prior square \(G\) at time \(t_H-P\) and canonical period \(q\), where
+  \[
+  b=P-q>0,\qquad a=2q-P>0.
+  \]
+  Writing \(R\) for the length-\(q\) suffix of \(G\),
+  \(B\) for the length-\(b\) suffix of \(R\), \(A=R[0:q-b]\), and \(Y=BR\),
+  extraction requires
+  \[
+  R=AB,\quad G=LR^2,\quad
+  H=G\,Y=LR^2BR,\quad H\text{ ends in }Y^2.
+  \]
+  The event at time \(t_G-q\) must be present, and the stored trace must replay
+  the generated \(R\) from that event to \(G\) and the generated \(Y\) from
+  \(G\) to \(H\), one append at a time.
+- Scope: the bounded extractor counts only strict-record candidates for which
+  the entire terminal \(Y^2\) is generated from the seed boundary. Generating
+  merely the final copy is insufficient. A bounded scan is computational
+  evidence for this fully generated specialization only; it is neither a
+  proof nor an exhaustive scan of the general record-free (G2CS) core.
