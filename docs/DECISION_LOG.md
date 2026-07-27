@@ -116,3 +116,16 @@ Entries are append-only; superseded decisions are marked, not deleted.
   intended binary \(\{2,3\}\) synchronization set. Future bounded results must
   be labeled as evidence for the fully generated strict-record specialization,
   not as a scan of every general-core antecedent.
+
+## D-010 — Preserve generated trace semantics in synchronization evaluation
+
+- Date: 2026-07-27
+- Status: active
+- Decision: generated-state traces include both their starting and terminal
+  states. The synchronization evaluation family includes \(G\) and excludes
+  \(H\).
+- Reason: these endpoints directly encode the canonical theorem's evaluation
+  boundary without making terminal-period conclusions tautological.
+- Consequence: evaluation order and duplicate states are preserved for trace
+  provenance. They are irrelevant to a maximum \(\pi\) calculation, but remain
+  useful when auditing how a state was reached.

@@ -28,3 +28,35 @@ def canonical_witness(sequence: Sequence[int]) -> tuple[int, int]:
             best_period = period
 
     return best_exponent, best_period
+
+
+def generated_states(start: Sequence[int], requested: Sequence[int]) -> tuple[Word, ...]:
+    """Return the ordered generated trace, including its start and terminal states."""
+    current: Word = tuple(start)
+    if not current:
+        raise ValueError("generated_states requires a nonempty start word")
+
+    states = [current]
+    for expected in requested:
+        actual, _ = canonical_witness(current)
+        if actual != expected:
+            raise ValueError(f"expected {expected} but generated {actual}")
+        current += (actual,)
+        states.append(current)
+    return tuple(states)
+
+
+def synchronization_state_set(
+    early_states: Sequence[Word], later_states: Sequence[Word]
+) -> tuple[Word, ...]:
+    """Return the ordered evaluation family: G included; H excluded.
+
+    Sequence order and duplicate states are preserved for trace provenance.
+    """
+    early = tuple(early_states)
+    later = tuple(later_states)
+    if not early:
+        raise ValueError("synchronization_state_set requires nonempty early_states")
+    if not later:
+        raise ValueError("synchronization_state_set requires nonempty later_states")
+    return early + later[:-1]
