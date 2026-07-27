@@ -1,0 +1,20 @@
+CALIBRATION PASSED: 5, 66, 142
+
+GENERATED-R^2 IMPOSTOR
+D= 223222 R= 322232
+from DR generated symbols/periods: [(3, 4), (2, 2), (2, 2), (2, 1), (3, 1), (2, 6)]
+generated symbols: 322232
+completed DR^2: word=223222322232322232 cn/period=(2, 6)
+from standalone R^2 symbols/periods: [(2, 6), (2, 1), (3, 1), (2, 4), (2, 4), (3, 4)]
+standalone symbols: 223223
+
+STATIC TWO-CUBE IMPOSTOR
+L=23332322333232 R=233323 B=23 j=1 T=2 P=8
+E=LRT: word=233323223332322333232 cn/period=(3, 7)
+G=LR^2: word=23332322333232233323233323 cn/period=(2, 6)
+F=LR^2BT: word=23332322333232233323233323232 cn/period=(3, 2)
+H=LR^2BR: word=2333232233323223332323332323233323 cn/period=(2, 8)
+R^2T: word=2333232333232 cn/period=(2, 2)
+actual symbols/periods from LR: [(2, 7), (3, 7), (2, 2), (3, 2), (3, 2), (2, 1)]
+actual generated block: 232332
+desired second R: 233323

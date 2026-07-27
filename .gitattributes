@@ -1,0 +1,7 @@
+* text=auto eol=lf
+
+# Preserve imported and archived artifacts byte-for-byte.
+external/** -text
+archive/** -text
+*.pdf binary
+*.zip binary

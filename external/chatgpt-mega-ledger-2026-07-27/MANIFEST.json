@@ -1,0 +1,102 @@
+[
+  {
+    "path": "sources/Curling_Number_Conjecture_Full_Handoff_Ledger_2026-07-26.md",
+    "bytes": 33177,
+    "sha256": "77dd9d1f73ddd7445abaac6f41ddfd863ee6a53bd86ce14f4e73de6194386ee8"
+  },
+  {
+    "path": "sources/Curling_Number_Frontier_Descent_Memo.md",
+    "bytes": 5965,
+    "sha256": "91f32d35f4257b63b3e53ca13022462f3b8317f02d5e317ef25f9cecf9b17091"
+  },
+  {
+    "path": "sources/Curling_Number_Proof_Ledger.md",
+    "bytes": 4647,
+    "sha256": "37ba885c795b76505fb15cc33bedd59629d151645cc7c2554add88d29417f441"
+  },
+  {
+    "path": "sources/Curling_Number_Research_Ledger(1)(1).md",
+    "bytes": 2349,
+    "sha256": "634866c7503ae1a2c610925160b07a26790597ed15008b8bfc30e76a6e58c1c7"
+  },
+  {
+    "path": "sources/Curling_q_monotonicity_checkpoint_2026-07-25.md",
+    "bytes": 6980,
+    "sha256": "c7eb2010f09202001ec8eb517a4c62e2042c0ee276d1dd45e8f71c9e21c30a89"
+  },
+  {
+    "path": "sources/_tmp_autonomous_square_report.txt",
+    "bytes": 49178,
+    "sha256": "2741260f50093052b5671f1fb41f983ebb1863a6fe95d8312d8998a3c8e45a94"
+  },
+  {
+    "path": "sources/audit_all_square_replay.cpp",
+    "bytes": 4571,
+    "sha256": "f7fcb7b75529491b6214dbfc6b5aa96e8c6e513c80d3ac0f9bc5224ef9667f02"
+  },
+  {
+    "path": "sources/audit_all_square_replay.err",
+    "bytes": 828,
+    "sha256": "02755c1e62261f40e658d8cd9ce4288cc5e903f3203747e21163ce38445b9fbe"
+  },
+  {
+    "path": "sources/audit_all_square_replay.out",
+    "bytes": 88,
+    "sha256": "b4a18ffc268fc96d8e4c3af93bfd8705647c69938f6635be25ba0768a7504fbf"
+  },
+  {
+    "path": "sources/audit_bridge_promotion.cpp",
+    "bytes": 1930,
+    "sha256": "88c3d72ac6973e6a8961e64c1ed8a342aec12466c299cef2764b27603986a132"
+  },
+  {
+    "path": "sources/audit_bridge_promotion.out",
+    "bytes": 42,
+    "sha256": "baa211d2bd591926eefd17c6de080d708ba02ed46a5fa44e1aa7f89cea99e209"
+  },
+  {
+    "path": "sources/curling_number_prompt (1).pdf",
+    "bytes": 91933,
+    "sha256": "b9edf21083fe618315220b93988a36aaa12742d2f552fe26078ad7fd708352f1"
+  },
+  {
+    "path": "sources/curling_number_proof_ledger.md",
+    "bytes": 13844,
+    "sha256": "ba59c2496dbf92eefd6887c9af75ef4746301f88b976cebc996bad19eab419c8"
+  },
+  {
+    "path": "sources/curling_number_research_ledger.md",
+    "bytes": 7648,
+    "sha256": "b0bad5c7e07c4c6445b08e1ba4ffe95631bb79f2fa2581b606eb3ce15147c209"
+  },
+  {
+    "path": "sources/curling_q_monotonicity_audit.cpp",
+    "bytes": 11246,
+    "sha256": "14ff308e5bd82a3a0bfed4983b7d2d5c369e94eaefeed5d5dbbfea8f87147428"
+  },
+  {
+    "path": "sources/curling_research_tools.py",
+    "bytes": 2802,
+    "sha256": "2c3612dac67935b5cbdf1970565643ecca8ff0b6c0077c95084e028c0a66c751"
+  },
+  {
+    "path": "sources/replay_local_promo2.cpp",
+    "bytes": 2127,
+    "sha256": "291cf25c91eeb2c5758589ff65dd9c4c210770382d277d3b791ee3e2f89874bf"
+  },
+  {
+    "path": "sources/replay_local_promo2.out",
+    "bytes": 51,
+    "sha256": "1c8c7641b44deb9758e404741bb1422c4406e41a8635db68b7401cf01a58d3d5"
+  },
+  {
+    "path": "sources/verify_part3_examples.out",
+    "bytes": 840,
+    "sha256": "296a797b0b4e0dabd6a72cfcf7a4a38f5ed5012deb5f2e2ca1c9798885c94513"
+  },
+  {
+    "path": "sources/verify_part3_examples.py",
+    "bytes": 3005,
+    "sha256": "2831257e4737728e92f8d8e810351b594999bbca60e6ccbeb749e52d8d46551d"
+  }
+]

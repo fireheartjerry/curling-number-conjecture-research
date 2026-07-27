@@ -1,0 +1,67 @@
+{
+  "project": "Curling Number Conjecture",
+  "owner": "Jerry (Yuze) Li / ChatGPT collaborative attack",
+  "consolidated_at": "2026-07-27",
+  "complete_proof": false,
+  "counterexample": false,
+  "immediate_wall": "Generated Two-Cube Synchronization Lemma, then full bridge-promotion lemma",
+  "final_global_wall": "Autonomous exact-power termination",
+  "canonical_notation": {
+    "R": "AB = TU",
+    "q": "|R|",
+    "b": "|B| = P-q",
+    "P": "|Y| = q+b",
+    "Y": "BAB = BR = BTU",
+    "T": "R[0:j]",
+    "U": "R[j:q]",
+    "early_state": "E=LRT",
+    "bridge_state": "G=LR^2",
+    "later_state": "F=LR^2BT",
+    "completed_square": "H=LR^2BR"
+  },
+  "proved_natural_language": [
+    "new-symbol reset",
+    "finite recycled alphabet",
+    "no ultimately periodic counterexample tail",
+    "unbounded canonical periods",
+    "record-square root curling number 1 and robustness",
+    "exact bridge form Y=BAB with q>P/2",
+    "every 2-position promotes",
+    "first promotion failure must be 3->2",
+    "p != q at the early external cube",
+    "j < p-gcd(p,q)",
+    "later cube internal/external dichotomy"
+  ],
+  "conditional": [
+    "infinitely many generated 2s",
+    "elimination of strict record exponents K>=4"
+  ],
+  "provisional": [
+    "Border-conjugate short-period lemma",
+    "external later-cube normal forms",
+    "replay stability under promotion"
+  ],
+  "open": [
+    "Generated Two-Cube Synchronization",
+    "bridge-promotion lemma",
+    "old-bridge first return",
+    "q2 <= q1 for consecutive generated record squares",
+    "record-cube recurrence",
+    "autonomous exact-power termination",
+    "full Curling Number Conjecture"
+  ],
+  "refuted": [
+    "total-gcd equality-graph theorem",
+    "universal bridge crossing",
+    "unconditional pairwise cube-edge descent",
+    "generated R^2 alone implies promotion",
+    "static bridge geometry suffices",
+    "promotion-necklace lengths bounded by 21",
+    "restricted-map predecessor isolation"
+  ],
+  "calibration": {
+    "322": 5,
+    "23222323": 66,
+    "2322322323222323223223": 142
+  }
+}
