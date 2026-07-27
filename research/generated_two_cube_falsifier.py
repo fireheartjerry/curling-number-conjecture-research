@@ -46,17 +46,22 @@ def generated_states(start: Sequence[int], requested: Sequence[int]) -> tuple[Wo
     return tuple(states)
 
 
-def synchronization_state_set(
-    early_states: Sequence[Word], later_states: Sequence[Word]
+def synchronization_evaluation_states(
+    early_states: Sequence[Sequence[int]], later_states: Sequence[Sequence[int]]
 ) -> tuple[Word, ...]:
     """Return the ordered evaluation family: G included; H excluded.
 
-    Sequence order and duplicate states are preserved for trace provenance.
+    Sequence order and duplicate states are preserved for trace provenance;
+    each state is normalized to an immutable word.
     """
-    early = tuple(early_states)
-    later = tuple(later_states)
+    early = tuple(tuple(state) for state in early_states)
+    later = tuple(tuple(state) for state in later_states)
     if not early:
-        raise ValueError("synchronization_state_set requires nonempty early_states")
+        raise ValueError(
+            "synchronization_evaluation_states requires nonempty early_states"
+        )
     if not later:
-        raise ValueError("synchronization_state_set requires nonempty later_states")
+        raise ValueError(
+            "synchronization_evaluation_states requires nonempty later_states"
+        )
     return early + later[:-1]

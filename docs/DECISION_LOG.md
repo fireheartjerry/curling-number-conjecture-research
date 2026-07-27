@@ -129,3 +129,17 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Consequence: evaluation order and duplicate states are preserved for trace
   provenance. They are irrelevant to a maximum \(\pi\) calculation, but remain
   useful when auditing how a state was reached.
+
+## D-011 — Name and freeze the synchronization evaluation family
+
+- Date: 2026-07-27
+- Status: active
+- Decision: rename the ordered trace API to
+  `synchronization_evaluation_states` and normalize every supplied inner state
+  to an immutable tuple.
+- Reason: the old name implied a mathematical set despite preserved order and
+  duplicates, while immutable recorded words prevent later mutation of caller
+  lists from rewriting trace provenance.
+- Consequence: the exact generated-symbol mismatch text remains
+  `expected {expected} but generated {actual}` until candidate extraction
+  establishes a need for structured diagnostic errors.

@@ -6,7 +6,7 @@ from curling import curling_number, curling_number_reference
 from research.generated_two_cube_falsifier import (
     canonical_witness,
     generated_states,
-    synchronization_state_set,
+    synchronization_evaluation_states,
 )
 
 
@@ -61,6 +61,14 @@ def test_generated_states_accept_empty_requested_block():
     assert generated_states((2, 3), ()) == ((2, 3),)
 
 
+def test_generated_states_recomputes_witness_after_each_append():
+    assert generated_states((2, 2), (2, 3)) == (
+        (2, 2),
+        (2, 2, 2),
+        (2, 2, 2, 3),
+    )
+
+
 def test_generated_states_rejects_empty_start_word():
     with pytest.raises(
         ValueError, match=r"^generated_states requires a nonempty start word$"
@@ -68,26 +76,51 @@ def test_generated_states_rejects_empty_start_word():
         generated_states((), ())
 
 
-def test_synchronization_state_set_includes_g_and_excludes_h():
+def test_synchronization_evaluation_states_includes_g_and_excludes_h():
     early = ((1,), (1, 2))
     later = ((3,), (3, 2))
-    assert synchronization_state_set(early, later) == ((1,), (1, 2), (3,))
+    assert synchronization_evaluation_states(early, later) == ((1,), (1, 2), (3,))
 
 
 @pytest.mark.parametrize(
     ("early", "later", "message"),
     [
-        ((), ((3,),), "synchronization_state_set requires nonempty early_states"),
-        (((1,),), (), "synchronization_state_set requires nonempty later_states"),
+        (
+            (),
+            ((3,),),
+            "synchronization_evaluation_states requires nonempty early_states",
+        ),
+        (
+            ((1,),),
+            (),
+            "synchronization_evaluation_states requires nonempty later_states",
+        ),
     ],
 )
-def test_synchronization_state_set_rejects_empty_state_traces(early, later, message):
+def test_synchronization_evaluation_states_rejects_empty_state_traces(
+    early, later, message
+):
     with pytest.raises(ValueError, match=f"^{message}$"):
-        synchronization_state_set(early, later)
+        synchronization_evaluation_states(early, later)
 
 
-def test_synchronization_state_set_preserves_order_and_duplicate_states():
+def test_synchronization_evaluation_states_preserves_order_and_duplicate_states():
     repeated = (1,)
     early = (repeated, repeated)
     later = (repeated, repeated)
-    assert synchronization_state_set(early, later) == (repeated, repeated, repeated)
+    assert synchronization_evaluation_states(early, later) == (
+        repeated,
+        repeated,
+        repeated,
+    )
+
+
+def test_synchronization_evaluation_states_normalizes_mutable_inner_states():
+    early = [[1], [1, 2]]
+    later = [[3], [3, 2]]
+
+    states = synchronization_evaluation_states(early, later)
+    early[0].append(99)
+    later[0].append(99)
+
+    assert states == ((1,), (1, 2), (3,))

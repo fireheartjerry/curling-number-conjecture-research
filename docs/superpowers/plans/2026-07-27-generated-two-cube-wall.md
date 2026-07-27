@@ -291,14 +291,14 @@ def generated_states(start: Sequence[int], requested: Sequence[int]) -> tuple[Wo
 
 - [ ] **Step 3: Test \(G\)-included/\(H\)-excluded semantics**
 
-Add a `synchronization_state_set(early_states, later_states)` function that
+Add a `synchronization_evaluation_states(early_states, later_states)` function that
 returns `early_states + later_states[:-1]`, and test:
 
 ```python
-def test_state_set_includes_g_and_excludes_h():
+def test_evaluation_states_includes_g_and_excludes_h():
     early = ((1,), (1, 2))
     later = ((3,), (3, 2))
-    assert synchronization_state_set(early, later) == ((1,), (1, 2), (3,))
+    assert synchronization_evaluation_states(early, later) == ((1,), (1, 2), (3,))
 ```
 
 - [ ] **Step 4: Run tests and record the semantic decision**
