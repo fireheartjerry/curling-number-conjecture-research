@@ -1350,3 +1350,38 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Scope: the capped bridge-`3` classifications, the no-fourth consequence,
   the bounded bridge census, both boundary word walls, non-boundary Cell C,
   Cell C, both G2CS targets, and the Curling Number Conjecture remain open.
+
+## D-035 item 1 — adversarial completion audit
+
+- Date: 2026-07-27
+- Status: the first D-035 checklist item remains `PROVED-NL`; its
+  quantifier and load-bearing hypothesis are now stated explicitly.
+- Exhaustion decision: on the simultaneous boundary the generated bridge is
+  \(BT=B^2\), so its proper generation cuts are exactly
+  \(K_h\) for \(0\le h<2r\). They split disjointly as
+  \[
+  G_i=K_i,\qquad M_i=K_{r+i}\qquad(0\le i<r).
+  \]
+  Thus the two families in (C.35y)--(C.35z) cover every cut named by the
+  checklist item.
+- Exact-label decision: “requesting `2`” means
+  \(\kappa(K_h)=2\) in the actual full orbit. A static occurrence of the
+  symbol `2` inside a proposed word is not enough. Actual generation gives
+  \(\kappa(G_i)=B[i]=\kappa(M_i)\), which supplies the needed equality.
+- Definition-first decision: if a full state \(W\) has
+  \(\kappa(W)=2\) and ends in \(X^2\), then \(X\) belongs to the set over
+  which the defining minimum for \(\pi(W)\) is taken. Therefore
+  \(\pi(W)\le |X|\). Applied to the two full-state suffixes in (C.35y),
+  this gives \(\pi(G_i)\le q\) and \(\pi(M_i)\le r\). No primitivity,
+  persistence, localization, target negation, or restriction on the left
+  context is used.
+- Endpoint decision: \(K_0=G\), \(K_r=M\), and both final cuts of the two
+  halves are included. The completed bridge state \(K_{2r}=F\) is not a
+  proper bridge-generation cut and satisfies
+  \(\kappa(F)=U[0]=Q[0]=3\), so it is not an omitted `2`-cut.
+- Review decision: three independent adversarial reviews separately audited
+  the bridge quantifier, the raw definitions, and attempted counterexamples.
+  All returned `APPROVED`; no missing cut or mathematical hypothesis was
+  found. The wording was tightened to say “proper actual-orbit bridge cut”
+  and “canonical-root length” so the proved scope cannot be mistaken for a
+  merely static word claim.

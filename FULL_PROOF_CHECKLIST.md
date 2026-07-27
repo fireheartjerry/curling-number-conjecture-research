@@ -151,10 +151,11 @@ Completion gate:
 
 ### 2B. D-035 two-half bridge atlas — `IN PROGRESS`
 
-- [x] **`PROVED-NL`: every bridge cut requesting `2` self-caps.**
-  Its visible circular square gives root at most \(q\) on the first half
-  and at most \(r\) on the second half, without assuming the negation of
-  either target.
+- [x] **`PROVED-NL`: every proper actual-orbit bridge cut requesting `2`
+  self-caps.**
+  The two indexed halves exhaust all such cuts. Its visible circular square
+  gives canonical-root length at most \(q\) on the first half and at most
+  \(r\) on the second half, without assuming the negation of either target.
 - [ ] For a capped first-half cut requesting `3`, prove the canonical root
   satisfies \(h<q\) and gives a proper circular cube of \(R\).
 - [ ] For a capped second-half cut requesting `3`, prove either

@@ -207,10 +207,13 @@ so the displayed squares are maximizing witnesses and
 \pi(G_i)\le q<P,\qquad \pi(M_i)\le r<P.
 \]
 
-Thus every bridge `2`-cut self-caps and localizes, independently of either
-target negation. This includes the omitted midpoint and strengthens its
-old bound to \(\pi(M)\le r\). The bridge cuts requesting `3`, the rest of
-the two-half atlas, Cell C, and both G2CS targets remain open.
+The two families are exactly the proper actual-orbit bridge cuts:
+\(G_i=K_i\) and \(M_i=K_{r+i}\) for \(0\le i<r\). Thus every bridge cut
+whose actual next curling number is `2` self-caps and localizes,
+independently of either target negation. This includes the omitted midpoint
+and strengthens its old bound to \(\pi(M)\le r\). The bridge cuts requesting
+`3`, the rest of the two-half atlas, Cell C, and both G2CS targets remain
+open.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`

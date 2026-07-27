@@ -2278,7 +2278,7 @@ Thus (C.28) localizes \(M\) even under the \(\mathcal I\)-negation.
 This does not cap every interior bridge state as the
 \(\mathcal J\)-negation does.
 
-#### Every bridge cut requesting `2` self-caps
+#### Every proper actual-orbit bridge cut requesting `2` self-caps
 
 On the simultaneous boundary, \(T=B\), so the actual output from \(G\)
 to \(F\) is \(BT=B^2\). For \(0\le i<r\), put
@@ -2289,8 +2289,13 @@ G_i=G\,A_i=LR^2A_i,\qquad
 M_i=M\,A_i=LR^2B A_i.
 \]
 
+In the general bridge notation, \(G_i=K_i\) and
+\(M_i=K_{r+i}\). Hence the two indexed families form the exact disjoint
+list of all proper bridge-generation cuts \(K_h\), \(0\le h<2r\):
+the first half has \(h=i\), and the second has \(h=r+i\).
 These are the cuts before the two occurrences of the bridge symbol
-\(B[i]\). Actual generation gives
+\(B[i]\). The actual-orbit recurrence, rather than the static occurrence
+of that symbol in \(B\), gives
 
 \[
 \boxed{\kappa(G_i)=B[i]=\kappa(M_i).}
@@ -2319,10 +2324,10 @@ B^2A_i
 \]
 
 The displayed roots \(C_iA_i\) and \(D_iA_i\) have lengths \(q\) and
-\(r\), respectively. If the requested symbol is \(B[i]=2\), then the
-two global curling numbers in the preceding box are exactly two.
+\(r\), respectively. If the actual cut requests \(B[i]=2\), then the
+two full-state curling numbers in the preceding box are exactly two.
 Consequently each displayed square attains the maximal suffix exponent,
-and least-root minimality gives
+and the definition of the least maximizing root length gives
 
 \[
 \boxed{
@@ -2339,9 +2344,9 @@ This includes \(i=0\), where \(A_0\) is empty,
 square used in (C.35x). If the first family is extended to \(i=r\),
 then \(G_r=M_0\), so the midpoint is one state rather than two.
 The final proper cut \(i=r-1\) is also included. After the second copy of
-\(B\) is complete, the state is \(F\); that cut is outside this indexed
-family because its next requested symbol is \(U[0]=3\), not another
-bridge symbol.
+\(B\) is complete, \(K_{2r}=F\). It is not a proper bridge-generation
+cut, and paired generation gives
+\(\kappa(F)=U[0]=Q[0]=3\), so it is not an omitted `2`-cut.
 
 No negation of either G2CS target was used. More precisely,
 \(G_i=S_{m+i}\) and \(M_i=S_{m+r+i}\), where \(m=q-r\).
