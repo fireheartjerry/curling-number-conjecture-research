@@ -74,3 +74,22 @@ Entries are append-only; superseded decisions are marked, not deleted.
   is independently audited.
 - Reason: several inherited computations checked weaker generation predicates
   than the prose claimed.
+
+## D-008 — Include \(G\) and exclude \(H\) from synchronization
+
+- Date: 2026-07-27
+- Status: active
+- Decision: define the proper pre-completion synchronization set as
+  \[
+  \mathcal I=\{E_\ell:0\le\ell\le m\}
+  \cup\{F_\ell:0\le\ell<m\}.
+  \]
+  Thus \(G=E_m\) is included and \(H=F_m\) is excluded.
+- Reason: \(G\) is the completed first generated copy of \(U\) and still
+  precedes record-square completion, so its canonical data are legitimately
+  available to synchronization. By contrast, \(H\) is the terminal completed
+  state with \(\pi(H)=P\); including it would make the desired conclusion
+  \(\max_{W\in\mathcal I}\pi(W)\ge P\) tautological.
+- Consequence: strict-record minimality is applied separately as a
+  contradiction corollary, not embedded circularly in the combinatorial
+  synchronization implication.
