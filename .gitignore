@@ -20,7 +20,7 @@ build/
 dist/
 tmp/
 work/
+.worktrees/
 
 .DS_Store
 Thumbs.db
-
