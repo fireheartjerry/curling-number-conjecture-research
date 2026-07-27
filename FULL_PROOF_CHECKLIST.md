@@ -156,8 +156,13 @@ Completion gate:
   The two indexed halves exhaust all such cuts. Its visible circular square
   gives canonical-root length at most \(q\) on the first half and at most
   \(r\) on the second half, without assuming the negation of either target.
-- [ ] For a capped first-half cut requesting `3`, prove the canonical root
-  satisfies \(h<q\) and gives a proper circular cube of \(R\).
+- [x] **`PROVED-NL`: a capped first-half cut requesting `3` has
+  \(h<q\) and gives a proper circular cube of \(R\).**
+  The equality case uses the actual midpoint request
+  \(\kappa(M)=B[0]=2\); a static current-cut condition alone is
+  insufficient. The cap is automatic under the negation of
+  G2CS-\(\mathcal J\), but remains conditional under the
+  G2CS-\(\mathcal I\) negation for an omitted interior cut.
 - [ ] For a capped second-half cut requesting `3`, prove either
   \(h<r\) and a proper circular cube of \(B\), or \(h=r\) at the terminal
   seam.

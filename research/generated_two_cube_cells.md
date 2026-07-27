@@ -2363,6 +2363,132 @@ except for the separately known \(\pi(G)=q\). At a cut requesting `3`,
 the visible square proves only a lower bound on the exponent; it supplies
 none of the `3`-cut conclusions reserved for the rest of D-035.
 
+#### Capped first-half `3` cuts give proper circular cubes of \(R\)
+
+Fix \(0\le i<r\), retain
+
+\[
+A_i=B[0:i],\qquad R=A_iC_i,\qquad B=A_iD_i,
+\]
+
+and suppose the actual first-half cut requests `3` and is capped:
+
+\[
+\kappa(G_i)=B[i]=3,\qquad h=\pi(G_i)<P=q+r.
+\]
+
+Let \(Y_i^3\) be its canonical suffix cube, with \(|Y_i|=h\), and put
+
+\[
+Z_i=R^2A_i.
+\]
+
+Thus \(Z_i\) is the visible length-\((2q+i)\) suffix of \(G_i\), and it
+has period \(q\).
+
+First suppose \(h>q\), and write \(h=q+u\). The cap gives
+\(0<u<r\). Since \(i<r<q/2\),
+
+\[
+3h>3q>2q+i=|Z_i|.
+\]
+
+Hence all of \(Z_i\) lies in the terminal \(h\)-periodic cube. For
+\(0\le x<q-u\), period \(q+u\) on its first two displayed copies of
+\(R\) gives
+
+\[
+R[x]=Z_i[x]=Z_i[x+q+u]=R[x+u].
+\]
+
+Thus \(R\) has period \(u<r<q/2\). Its final \(2u\) letters form a
+\(u\)-square ending at \(G\). Because \(\kappa(G)=2\), this is a
+maximizing square witness and forces
+\(\pi(G)\le u<q\), contrary to \(\pi(G)=q\). Therefore \(h\le q\).
+
+Equality also fails, but here the actual bridge chronology is
+load-bearing. If \(h=q\), the final length-\(q\) block of \(G_i\) is
+
+\[
+Y_i=C_iA_i.
+\]
+
+The identity \(R=BQB=A_iD_iQB\) lets us write
+\(Y_i=D_iV_i\), where \(V_i=QBA_i\). The word \(D_i\) is nonempty
+because \(i<r\), and it is exactly the remaining output that carries
+\(G_i\) to the midpoint \(M=G_iD_i\). But then
+
+\[
+Y_i^3D_i=(D_iV_i)^3D_i=D_i(V_iD_i)^3,
+\]
+
+so \(M\) ends in a cube and \(\kappa(M)\ge3\). Actual generation of the
+second copy of \(B\) instead gives
+\(\kappa(M)=B[0]=2\), a contradiction. Consequently
+
+\[
+\boxed{h<q.}
+\tag{C.35aa}
+\]
+
+It remains to show that the cube is genuinely circular rather than
+rescued by the unknown left context. Suppose \(Y_i^3\) crossed the left
+edge of \(Z_i\). Since both words end at the same cut, this would mean
+\(3h>2q+i\), so all of \(Z_i\) would inherit period \(h\). Put
+\(g=\gcd(h,q)\). The word \(Z_i\) would then have periods \(h,q\), and
+
+\[
+|Z_i|=2q+i\ge2q\ge q+h-g.
+\]
+
+Fine--Wilf would give period \(g\) on \(Z_i\), hence on its prefix \(R\).
+But \(g\mid q\) and \(g<q\), so \(R\) would be a proper \(g\)-power.
+The suffix \(R^2\) of \(G\) would then have exponent
+\(2q/g\ge4\), contradicting \(\kappa(G)=2\). Therefore
+
+\[
+\boxed{
+3h\le2q+i,\qquad
+\operatorname{suf}_{3h}(R^2A_i)=Y_i^3,\qquad h<q.
+}
+\tag{C.35ab}
+\]
+
+The word \(R^2A_i=R^2R[0:i]\) is the factor of the periodic word
+\(R^{\mathbb Z}\) ending at circular phase \(i\). Thus the canonical
+cube in (C.35ab) is a proper circular cube of \(R\): it lies wholly in
+that periodic word and its root is strictly shorter than \(R\).
+
+The endpoint \(i=0\) is vacuous because \(B[0]=2\); \(i=r-1\) is
+included, with \(D_i\) a single symbol. For \(r=1\) there are no
+first-half `3` cuts. No target negation or application of (C.28) was
+used. Under the \(\mathcal J\)-negation every proper bridge state is
+capped, so the conclusion applies at all first-half `3` cuts. Under the
+\(\mathcal I\)-negation an interior first-half `3` cut is omitted and
+the cap remains an explicit conditional hypothesis.
+
+The midpoint label cannot be replaced by a merely local word condition.
+For example,
+
+\[
+r=2,\quad B=23,\quad Q=32,\quad R=233223,\quad
+i=1,\quad L=33223
+\]
+
+gives
+
+\[
+(\kappa(G),\pi(G))=(2,6),\qquad
+G_1=(332232)^3,\qquad
+(\kappa(G_1),\pi(G_1))=(3,6).
+\]
+
+Thus \(h=q=6<P=8\) satisfies the weakened local premises. Completing
+the first \(B\), however, gives
+\(\kappa(M)=3\), not the required \(B[0]=2\). This is a countermodel
+only to the weakened static statement, and confirms why the actual
+midpoint recurrence is essential above.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It

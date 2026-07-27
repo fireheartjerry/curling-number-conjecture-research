@@ -211,9 +211,26 @@ The two families are exactly the proper actual-orbit bridge cuts:
 \(G_i=K_i\) and \(M_i=K_{r+i}\) for \(0\le i<r\). Thus every bridge cut
 whose actual next curling number is `2` self-caps and localizes,
 independently of either target negation. This includes the omitted midpoint
-and strengthens its old bound to \(\pi(M)\le r\). The bridge cuts requesting
-`3`, the rest of the two-half atlas, Cell C, and both G2CS targets remain
-open.
+and strengthens its old bound to \(\pi(M)\le r\). That visible-square
+argument alone supplies no conclusion at cuts requesting `3`.
+
+D-035 now also closes the capped first-half `3` classification. If
+\(G_i=LR^2B[0:i]\) requests `3` and
+\(h=\pi(G_i)<P\), then \(h>q\) would make
+\(u=h-q<r\) a period of \(R\), contradicting
+\((\kappa(G),\pi(G))=(2,q)\). If \(h=q\), finishing the remaining
+symbols \(B[i:r]\) rotates the canonical cube into a cube at the midpoint
+\(M\), contradicting its actual request `2`. Hence \(h<q\). Fine--Wilf
+then prevents that cube from crossing the left edge of
+\(R^2B[0:i]\), so the canonical cube lies wholly in the periodic word
+\(R^{\mathbb Z}\) and is a proper circular cube of \(R\).
+
+The actual midpoint label is essential: a pinned \(q=6,r=2\) local word
+has \(h=q\) at the first-half `3` cut but requests `3`, not `2`, at
+\(M\). Under the \(\mathcal J\)-negation all first-half bridge cuts are
+capped. Under the \(\mathcal I\)-negation this result remains conditional
+at omitted interior `3` cuts. The second-half `3` classification and all
+later D-035 items remain open.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`

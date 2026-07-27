@@ -1385,3 +1385,71 @@ Entries are append-only; superseded decisions are marked, not deleted.
   found. The wording was tightened to say “proper actual-orbit bridge cut”
   and “canonical-root length” so the proved scope cannot be mistaken for a
   merely static word claim.
+
+## D-035 item 2 — capped first-half `3` cuts
+
+- Date: 2026-07-27
+- Status: first-half capped-`3` lemma `PROVED-NL`; overall D-035 remains
+  `IN PROGRESS`; Cell C remains `OPEN`
+- Exact scope: for \(0\le i<r\), let
+  \(G_i=LR^2A_i\), where \(A_i=B[0:i]\). Assume the actual bridge cut
+  requests `3` and is capped:
+  \[
+  \kappa(G_i)=B[i]=3,\qquad h=\pi(G_i)<P=q+r.
+  \]
+  The conclusion is conditional on this cap; no target negation is part of
+  the lemma.
+- High-root decision: if \(h=q+u>q\), the cap gives \(0<u<r\). The visible
+  suffix \(R^2A_i\) lies wholly in the canonical \(h\)-cube. Comparing its
+  first two \(R\)-copies at distance \(q+u\) makes \(u\) a period of \(R\).
+  Since \(u<r<q/2\), this gives a maximizing \(u\)-square at \(G\), contrary
+  to \(\pi(G)=q\).
+- Equality decision: if \(h=q\), the canonical root is the phase-\(i\)
+  rotation \(C_iA_i\). Writing it as \(D_iV_i\), where
+  \(D_i=B[i:r]\), and appending the actual remaining first-half output gives
+  \[
+  (D_iV_i)^3D_i=D_i(V_iD_i)^3
+  \]
+  at \(M\). This contradicts the actual midpoint equality
+  \(\kappa(M)=B[0]=2\). Thus \(h<q\).
+- Circularity decision: if the \(h\)-cube crossed the left edge of
+  \(R^2A_i\), that entire visible suffix would have periods \(h,q\).
+  Fine--Wilf gives period \(\gcd(h,q)<q\) on a complete copy of \(R\).
+  Since that gcd divides \(q\), \(R\) would be a proper power and \(R^2\)
+  would give exponent at least four at \(G\), contradicting
+  \(\kappa(G)=2\). Hence the canonical cube lies wholly in
+  \(R^2R[0:i]\subset R^{\mathbb Z}\) and is a proper circular cube of \(R\).
+- Endpoint decision: \(i=0\) cannot request `3` because \(B[0]=2\);
+  \(i=r-1\) is included, with nonempty one-symbol \(D_i\); \(r=1\) is
+  vacuous.
+- Target decision: the G2CS-\(\mathcal J\) negation caps every proper
+  bridge state, so the lemma covers all its first-half `3` cuts. The
+  G2CS-\(\mathcal I\) negation does not cap omitted interior bridge cuts;
+  the lemma makes no unconditional \(\mathcal I\)-scope claim. The proof
+  does not use (C.28), persistence, either early-period branch, or
+  primitivity of \(B\).
+- Sharpness decision: the midpoint recurrence is load-bearing. The exact
+  local word
+  \[
+  r=2,\ B=23,\ Q=32,\ R=233223,\ i=1,\ L=33223
+  \]
+  has \((\kappa(G),\pi(G))=(2,6)\) and
+  \(G_i=(332232)^3\), so its capped first-half pair is \((3,6)\) with
+  \(h=q<P=8\). But its midpoint has pair \((3,6)\), violating the required
+  \(\kappa(M)=2\). It refutes the weakened static/current-cut-only claim,
+  not the actual-orbit lemma.
+- Verification: the definition-first canonical oracle and both independent
+  curling-number implementations recompute the sharpness pairs
+  \(G:(2,6)\), \(G_i:(3,6)\), and \(M:(3,6)\), together with both displayed
+  cube factorizations. The full repository suite passes `144` tests;
+  `compileall` and `git diff --check` are clean.
+- Review: independent exact-proof, adversarial-countermodel, and
+  publication/scope reviews all returned `APPROVED`. They checked both
+  root-size exclusions, the Fine--Wilf threshold, the circular
+  interpretation, the midpoint dependency, all endpoints, the
+  \(\mathcal I/\mathcal J\) distinction, unique equation tags, and every
+  stated non-claim.
+- Scope: the second-half capped-`3` classification, terminal seam,
+  no-fourth consequence, bounded bridge census, both boundary word walls,
+  non-boundary Cell C, Cell C, both G2CS targets, and the Curling Number
+  Conjecture remain open.
