@@ -169,9 +169,15 @@ Completion gate:
   The exceptional equality \(h=r\) is retained as the full-root seam
   placement; its exact seam equation and phase restriction belong to the
   next item.
-- [ ] Prove that the full-root case \(h=r\) implies
-  \(\operatorname{suf}_{r-i}(BQ)=B[i:r]\), and that
-  \(\lambda\le1\) forces \(i=r-1\).
+- [x] **`PROVED-NL`: on an actual binary second-half bridge, the full-root
+  case \(h=r\) forces the one-way seam equation**
+  \[
+  \operatorname{suf}_{r-i}(BQ)=B[i:r].
+  \]
+  Persistence through the remaining actual bridge forces
+  \(B[i:r]=3^{r-i}\), so \(\lambda\le1\) gives \(i=r-1\).
+  No cap or target negation is used after \(h=r\) is assumed; the converse
+  seam \(\Rightarrow h=r\) remains false.
 - [ ] Record the target distinction: \(\mathcal J\) caps every proper bridge
   state; \(\mathcal I\) automatically caps `2` cuts but not arbitrary `3`
   cuts.

@@ -2642,6 +2642,143 @@ No target negation or use of (C.28) is needed. Under the
 under the \(\mathcal I\)-negation this second-half result remains
 conditional at the omitted interior cuts.
 
+#### The full-root seam forces the terminal bridge phase
+
+Retain the actual binary second-half bridge and suppose that the exceptional
+case above occurs:
+
+\[
+\kappa(M_i)=B[i]=3,\qquad \pi(M_i)=r,\qquad 0\le i<r.
+\]
+
+Put
+
+\[
+A_i=B[0:i],\qquad D_i=B[i:r],\qquad d=|D_i|=r-i.
+\]
+
+The canonical cube root is the final length-\(r\) block
+
+\[
+Y_i=D_iA_i.
+\]
+
+Because \(R=BQB\),
+
+\[
+M_i=LR^2BA_i=LR\,BQ\,B^2A_i.
+\]
+
+Moreover \(|BQ|=q-r>r\ge d\), while
+\(d+|B^2A_i|=3r\). Hence the structural and canonical descriptions of
+the final \(3r\) symbols are
+
+\[
+\operatorname{suf}_{3r}(M_i)
+  =\operatorname{suf}_{d}(BQ)\,B^2A_i,
+\qquad
+Y_i^3=(D_iA_i)^3=D_iB^2A_i.
+\]
+
+Right cancellation of the common word \(B^2A_i\) gives the one-way seam
+equation
+
+\[
+\boxed{
+\operatorname{suf}_{r-i}(BQ)=D_i=B[i:r].
+}
+\tag{C.35ae}
+\]
+
+This establishes only \(h=r\Rightarrow\) seam. The equation alone does
+not say that the displayed \(r\)-root is canonical.
+
+The restriction on the phase uses the future actual bridge, not merely
+the seam. For \(0\le t<d\), put
+
+\[
+C_t=D_i[0:t],\qquad V_t=D_i[t:d]A_i.
+\]
+
+Thus \(Y_i=C_tV_t\), and the actual remaining output gives
+\(M_{i+t}=M_iC_t\). Rotating the existing cube yields
+
+\[
+Y_i^3C_t=(C_tV_t)^3C_t=C_t(V_tC_t)^3.
+\tag{C.35af}
+\]
+
+Therefore every remaining proper cut \(M_{i+t}\) ends in a cube and has
+curling number at least three. Actual bridge generation and the binary
+alphabet give
+
+\[
+3\le\kappa(M_{i+t})=B[i+t]\le3
+\qquad(0\le t<d).
+\]
+
+Consequently
+
+\[
+\boxed{
+B[i:r]=3^{r-i},\qquad r-i\le\lambda.
+}
+\tag{C.35ag}
+\]
+
+Since \(i<r\), one has \(r-i\ge1\). In the surviving row (C.35l),
+\(\lambda\le1\), so
+
+\[
+\boxed{
+1\le r-i\le\lambda\le1
+\quad\Longrightarrow\quad
+i=r-1\ \text{ and }\ \lambda=1.
+}
+\tag{C.35ah}
+\]
+
+At this terminal proper cut, (C.35ae) reduces to
+\(Q[-1]=B[-1]=3\). The completed state after appending that last `3` is
+\(F=M_r\); it is not another indexed proper cut.
+
+The future actual-orbit hypothesis is load-bearing. For a static
+current-cut warning, take
+
+\[
+r=3,\qquad B=232,\qquad Q=332,\qquad
+R=232332232,\qquad L=\epsilon,\qquad i=1.
+\]
+
+Definition-first calculation gives
+
+\[
+G=R^2:(2,9),\qquad M_i:(3,3),\qquad
+F=R^2B^2:(3,3),
+\]
+
+and
+
+\[
+\operatorname{suf}_2(BQ)=32=B[1:3],\qquad
+\lambda=0,\qquad i=1\ne r-1.
+\]
+
+This does not contradict (C.35ah): after the current `3` is appended,
+the rotated cube still forces curling number three, whereas the proposed
+next bridge symbol \(B[2]\) is `2`. The labels at the six static cuts
+obtained from the proposed prefixes are `222233`, not the proposed output
+\(B^2=\texttt{232232}\), so the word is not an actual bridge.
+
+No cap, target negation, localization theorem, endpoint canonical data,
+or \(p\)-branch is used once \(h=r\) and the numerical hypothesis
+\(\lambda\le1\) are supplied. The binary alphabet and the actual
+recurrence through every remaining proper bridge cut are essential. In
+fact (C.33) already gives \(\lambda\le1\), because \(z\ge1\) and
+\(\lambda+z\le2\); (C.35l) packages that bound in the surviving Cell C
+row. As before, \(i=0\) is impossible because \(B[0]=2\), and \(r=1\)
+is vacuous.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It

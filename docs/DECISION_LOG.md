@@ -1524,3 +1524,103 @@ Entries are append-only; superseded decisions are marked, not deleted.
   no-fourth consequence, bounded bridge census, both boundary word walls,
   non-boundary Cell C, Cell C, both G2CS targets, and the Curling Number
   Conjecture remain open.
+
+## D-035 item 4 — full-root seam and terminal phase
+
+- Date: 2026-07-27
+- Status: full-root seam equation and terminal-phase implication
+  `PROVED-NL`; overall D-035 remains `IN PROGRESS`; Cell C remains `OPEN`.
+- Exact scope: retain an actual binary second-half bridge cut
+  \(M_i=LR^2B A_i\), \(0\le i<r\), with
+  \[
+  \kappa(M_i)=B[i]=3,\qquad \pi(M_i)=r.
+  \]
+  Item 4 does not assume the cap \(h<P\); it starts after the equality
+  case \(h=r\) is already known.
+- Seam decision: with \(D_i=B[i:r]\) and \(d=r-i\), the canonical root is
+  \(D_iA_i\). The two exact descriptions
+  \[
+  \operatorname{suf}_{3r}(M_i)
+    =\operatorname{suf}_{d}(BQ)B^2A_i,\qquad
+  (D_iA_i)^3=D_iB^2A_i
+  \]
+  give \(\operatorname{suf}_{r-i}(BQ)=B[i:r]\) by right cancellation.
+  This proves only \(h=r\Rightarrow\) seam.
+- Rotation decision: for \(C_t=D_i[0:t]\) and
+  \(V_t=D_i[t:d]A_i\),
+  \[
+  (C_tV_t)^3C_t=C_t(V_tC_t)^3.
+  \]
+  Since \(M_{i+t}=M_iC_t\), an \(r\)-root cube persists at every remaining
+  proper bridge cut.
+- Chronology decision: the persistent cube gives
+  \(\kappa(M_{i+t})\ge3\), while actual binary generation gives
+  \(\kappa(M_{i+t})=B[i+t]\in\{2,3\}\). Therefore
+  \(B[i:r]=3^{r-i}\).
+- Terminal-run decision: \(\lambda\) is the number of trailing `3`
+  symbols in \(B\), allowing \(\lambda=0\). The preceding all-`3`
+  conclusion gives
+  \[
+  1\le r-i\le\lambda.
+  \]
+  Hence \(\lambda\le1\) forces \(r-i=\lambda=1\) and \(i=r-1\).
+  The seam then reduces to \(Q[-1]=B[-1]=3\).
+- Dependency decision: the binary alphabet and the full future actual
+  recurrence through the remaining bridge are load-bearing. No cap,
+  target negation, (C.28), \(p\)-branch, \(G/F\) canonical pair, or
+  primitivity argument is used by item 4 itself. The bound
+  \(\lambda\le1\) already follows from (C.33), since \(z\ge1\) and
+  \(\lambda+z\le2\); (C.35l) packages it in the surviving row.
+- Static sharpness decision: for
+  \[
+  r=3,\quad B=232,\quad Q=332,\quad R=232332232,\quad
+  L=\epsilon,\quad i=1,
+  \]
+  the exact pairs are \(G:(2,9)\), \(M_i:(3,3)\), and \(F:(3,3)\);
+  the seam is \(\operatorname{suf}_2(BQ)=32=B[1:3]\), and
+  \(\lambda=0\), yet \(i\ne r-1\). It is not an actual bridge:
+  after the current `3`, persistence forces another `3` instead of the
+  proposed \(B[2]=2\). This pins why a static/current-cut argument is
+  insufficient.
+- Converse decision: the seam equation does not make the \(r\)-root
+  canonical. The frozen
+  \(q=13,r=4,B=2232,Q=32332,L=\epsilon,i=2\) model has the prescribed
+  \(B^2\) recurrence through cut six, with pairs
+  \[
+  (2,13),(2,1),(3,1),(2,4),(2,4),(2,1),(3,1).
+  \]
+  It satisfies the seam, but its canonical pair at \(M_i\) is \((3,1)\).
+  Cut seven has pair \((3,4)\) instead of the proposed final `2`, so future
+  generation fails. The implication remains one-way.
+- Finite-audit decision: independently enumerate all binary \(B,Q\) with
+  \(B[0]=2,\ Q[0]=3,\ R=BQB,\ L=\epsilon\),
+  \(1\le r,|Q|\le7\), and every \(i\) with \(B[i]=3\), cross-checking each
+  pair with two exact suffix-power oracles. Exactly `5,314` static cuts
+  have pair \((3,r)\), with zero seam failures; `1,113` further static
+  seam cuts have pair \((3,h)\) with \(h<r\). After additionally requiring
+  \(G:(2,q)\) and the prescribed recurrence at all \(2r\) proper bridge
+  cuts, `29` seam cuts remain, all also with endpoint pair \(F:(3,r)\).
+  Every one has \(B[i:r]\) all `3`, and none with \(\lambda\le1\) has
+  \(i\ne r-1\). These counts are finite corroboration only, not the later
+  \(q\le25\) D-035 census.
+- Endpoint decision: \(i=0\) cannot request `3` because \(B[0]=2\);
+  \(r=1\) is vacuous; the induction uses only \(0\le t<r-i\), so the
+  completed state \(F=M_r\) is not treated as another proper indexed cut.
+- Target decision: the implication from \(h=r\) is target-independent.
+  The \(\mathcal J\)-negation is only how item 3 supplies the cap at every
+  proper bridge cut. The \(\mathcal I\)-negation does not cap arbitrary
+  omitted second-half `3` cuts, so items 3--4 do not give an exhaustive
+  \(\mathcal I\)-classification.
+- Verification: both independent curling-number implementations recompute
+  the \(q=9\) chronology warning and the \(q=13\) failed-converse model.
+  An independent reproduction gives the exact finite counts
+  `5,314 / 1,113 / 29`. The full repository suite passes `144` tests;
+  `compileall`, unique-tag inspection, and `git diff --check` are clean.
+- Review: independent exact-proof, adversarial countermodel/evidence, and
+  publication/scope reviews returned `APPROVED`. They checked the seam
+  cancellation, every rotation index, the binary and future-recurrence
+  dependencies, the C.33/C.35l distinction, endpoints, both warnings,
+  finite count units, target scope, and every stated non-claim.
+- Scope: the no-fourth consequence, bounded bridge census, both boundary
+  word walls, non-boundary Cell C, Cell C, both G2CS targets, and the
+  Curling Number Conjecture remain open.

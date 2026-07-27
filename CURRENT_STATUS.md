@@ -243,11 +243,31 @@ Fine--Wilf argument prevents the cube from crossing the visible
 \(B^2B[0:i]\), so it is a proper circular cube of \(B\). The only
 retained alternative is the full-root case \(h=r\), whose cube reaches
 the \(BQ\mid B^2B[0:i]\) seam. Its exact suffix equation and cut location
-remain the next D-035 obligation; no converse seam implication is claimed.
+are now closed by the next bridge step. Writing \(D_i=B[i:r]\), the
+canonical root is \(D_iB[0:i]\), so comparison of its cube with the
+structural suffix gives
+
+\[
+\operatorname{suf}_{r-i}(BQ)=D_i.
+\]
+
+As the actual remaining word \(D_i\) is appended, that cube persists at
+every intermediate cut with a cyclically shifted root. Hence every
+remaining curling number is at least three. Because the bridge is binary
+and actual generation gives \(\kappa(M_j)=B[j]\), it follows that
+\(B[i:r]=3^{r-i}\). Thus \(r-i\le\lambda\), and the run bound
+\(\lambda\le1\) from (C.33), also packaged in (C.35l), forces
+\(i=r-1\) and \(\lambda=1\). At that cut the seam reduces to
+\(Q[-1]=B[-1]=3\).
+
+The actual future chronology is essential: a checked \(r=3,B=232,Q=332\)
+static word has the full-root pair \((3,3)\), the seam, and \(\lambda=0\)
+at \(i=1<r-1\), but the rotated cube generates `3` where its proposed
+future bridge asks for `2`. No converse seam implication is claimed.
 
 Under the \(\mathcal J\)-negation all second-half cuts are capped. Under
 the \(\mathcal I\)-negation the result remains conditional at omitted
-interior `3` cuts. All later D-035 items remain open.
+interior `3` cuts. The remaining later D-035 items remain open.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`
