@@ -2913,6 +2913,87 @@ claim, target negation, localization, Fine--Wilf argument, or
 primitivity hypothesis is used. The actual recurrence and the binary
 alphabet are the load-bearing hypotheses.
 
+#### Bounded standalone-local bridge census (`COMPUTED`)
+
+The definition-first D-035 census starts each retained static model at the
+finite word
+\[
+G_{\rm loc}=X^3U
+\]
+and requests the continuation \(B^2\). A *complete local replay* is a model
+for which the suffix-power definition recomputes the requested symbol at
+all \(2r\) proper cuts. The scan checks the literal visible suffix
+\(R^2B[0:i]\) on the first half and \(B^2B[0:i]\) on the second half at
+every reached cut. It enumerates neither an arbitrary left context \(L\)
+nor a full-context orbit.
+
+The scope metadata is therefore
+`orbit_scope=standalone_G_loc_seed`, `target_assumption=none`, and
+`full_context_not_enumerated=true`. The exact bridge membership ledger is
+recorded as
+\[
+\mathcal I\cap\{K_s:0\le s\le2r\}=\{K_0,K_{2r}\},
+\qquad
+\{K_s:0\le s\le2r\}\subseteq\mathcal J,
+\]
+but no target negation or target-derived cap is assumed by the census.
+The target-independent `2`-cut cap, the nonautomatic interior
+\(\mathcal I\) `3`-cut cap, and the proper-cut cap under a
+\(\mathcal J\)-negation remain distinct hypotheses.
+
+Through \(q\le25\), the exact stage counts are:
+
+| branch | structures | \(z=1\) | exact static | complete local replays | proper cuts |
+|---|---:|---:|---:|---:|---:|
+| \(p>q\) | 2,388,798 | 595,896 | 105,851 | 15,881 | 127,048 |
+| \(p<q\) | 1,115,405 | 418,622 | 100,053 | 93,497 | 187,018 |
+
+Every \(p>q\) replay has \(r=4,\ B=\texttt{2232}\). The \(p<q\)
+distribution consists of `93,493` replays with
+\(r=1,\ B=\texttt{2}\) and four with
+\(r=4,\ B=\texttt{2223}\). Every complete replay has every proper
+canonical period below \(P\) and has endpoint pair \((3,r)\). The
+period-\(P\) cut counts, all in the `<P` cell, are respectively
+`47,643 / 15,881 / 47,643 / 15,881` for
+first-`2`, first-`3`, second-`2`, second-`3` in the \(p>q\) branch, and
+`93,505 / 4 / 93,505 / 4` in the \(p<q\) branch; every `=P` and `>P`
+cell is zero.
+
+The independent second-half `3` seam cross-tab has `15,881`
+\((\pi<r,\text{seam false})\) rows in the \(p>q\) branch. Its only
+nonzero \(p<q\) cell is four
+\((\pi<r,\text{seam true})\) rows. Thus the bounded data explicitly
+protect the nonconverse: a seam does not imply \(\pi=r\).
+
+The theorem-audit opportunity units are once per eligible complete replay
+or proper cut, never per root occurrence. In the \(p>q\) branch they are
+`15,881` endpoint opportunities, `47,643` opportunities for each `2` cap,
+`15,881` for each first/second low-root `3` bound and visibility
+conclusion, and `127,048` for each full-state and visible fourth-power
+check. The \(p<q\) counts are `93,497`, `93,505`, `4`, and `187,018` in
+the corresponding categories. Every violation count is zero. Both
+branches have zero full-state and zero visible fourth-power root
+occurrences and affected cuts. The full-root seam, suffix, and terminal
+conclusions have zero opportunities because no second-half `3` cut has
+\(\pi=r\); their zero violations therefore supply no bounded
+corroboration.
+
+Six literal certificates pin the least \(p>q\) replay
+\((q,r,B)=(12,4,\texttt{2232})\), the least \(p<q,r=1\) replay at
+\(q=8\), and all four nontrivial \(p<q,r=4\) replays at
+\(q=23,24,25,25\) with \(B=\texttt{2223}\). A separate test oracle imports
+no production generator, witness, tracer, or certificate selector: it
+reconstructs both normal forms, enumerates \(q\le12\) with literal
+exponent/period loops, and independently audits all six certificates.
+
+The LF-stable artifact
+`research/outputs/generated_two_cube_d035_bridge_census_2026-07-27.txt`
+is reproduced end to end through the deterministic CLI and has SHA-256
+`60A3D2F846AC34D081A5321AC24BB7114C8C6B1A5DBF7E846756331CA6454DF7`.
+These are finite `COMPUTED` results. They supply no unbounded bridge proof,
+no arbitrary-\(L\) orbit, and no closure of either boundary wall, Cell C,
+either G2CS target, or the Curling Number Conjecture.
+
 ### 6. Exact remaining word obstructions
 
 The stronger localization still does not close either period branch. It

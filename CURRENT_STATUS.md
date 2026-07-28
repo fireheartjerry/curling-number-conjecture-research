@@ -295,7 +295,46 @@ circular fourth power which is visible as a suffix of \(R^2A_i\) or
 \(B^2A_i\) at the corresponding cut. It does not exclude an internal
 fourth-power factor ending somewhere else. No period cap, target
 negation, localization, Fine--Wilf argument, or primitivity hypothesis
-is used. The bounded bridge census and final D-035 review remain open.
+is used. That proof does not depend on the approved bounded audit recorded
+next.
+
+The approved D-035 bridge census through \(q\le25\) is now `COMPUTED` in
+the standalone-local scope. It starts from
+\(G_{\rm loc}=X^3U\) and directly replays the requested continuation
+\(B^2\); it does not enumerate an arbitrary left context \(L\), so it does
+not classify the actual full bridge states
+\(K_h=LR^2(B^2)[0:h]\). In the \(p>q\) branch the scan
+has `2,388,798` structural assignments, `595,896` surviving \(z=1\)
+assignments, `105,851` exact static candidates, `15,881` complete local
+replays, and `127,048` proper cuts. Every complete replay has
+\(r=4,\ B=\texttt{2232}\). In the \(p<q\) branch the corresponding counts
+are `1,115,405 / 418,622 / 100,053 / 93,497 / 187,018`; the complete
+replays split into `93,493` cases with \(r=1,\ B=\texttt{2}\) and four
+with \(r=4,\ B=\texttt{2223}\).
+
+Every complete local replay has all proper canonical periods below \(P\)
+and the exact endpoint pair \((3,r)\). Across those replays there are zero
+fourth-power suffix roots in either the full standalone-local state or the
+visible proper-circular context. Every recorded theorem violation count is
+zero, but the canonical second-half `3` period never equals \(r\), so the
+full-root seam, suffix, and terminal conclusions have zero opportunities
+and receive no bounded corroboration. The \(p>q\) seam cross-tab has
+`15,881` low-root second-half `3` cuts with false seam; the four nontrivial
+\(p<q\) cuts have low roots with true seam, directly protecting the
+one-way nature of the seam implication.
+
+Six literal certificates pin the \(q=12\) \(p>q\) replay, the \(q=8\)
+\(p<q,r=1\) replay, and all four \(p<q,r=4\) replays at
+\(q=23,24,25,25\). A production-independent oracle reconstructs both
+normal forms and the complete \(q\le12\) census from literal
+exponent/period loops, and independently checks all six certificates.
+The deterministic artifact has SHA-256
+`60A3D2F846AC34D081A5321AC24BB7114C8C6B1A5DBF7E846756331CA6454DF7`;
+independent mathematical and code/publication reviews returned
+`APPROVED`. This is finite `COMPUTED` evidence, not an unbounded proof or
+an arbitrary-\(L\) orbit census. Only publication remains for D-035; both
+boundary word walls, non-boundary Cell C, Cell C, both G2CS targets, and
+the Curling Number Conjecture remain open.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`

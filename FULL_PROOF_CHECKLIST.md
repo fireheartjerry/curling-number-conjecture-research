@@ -191,9 +191,10 @@ Completion gate:
   suffix \(Y^4\) would force \(\kappa(K_h)\ge4\). Hence no visible proper
   circular fourth power can end at either bridge half. Internal factors
   not ending at the cut and static proposed bridges are not claimed.
-- [ ] Build a definition-first two-branch bridge census through \(q\le25\),
-  pin sharp models, and label every finite result `COMPUTED`.
-- [ ] Obtain independent exact-proof and code/publication reviews.
+- [x] Build a definition-first two-branch bridge census through \(q\le25\)
+  from the standalone seed \(G_{\rm loc}=X^3U\), pin sharp local replays,
+  and label the bounded, nonproof result `COMPUTED`.
+- [x] Obtain independent exact-proof and code/publication reviews.
 - [ ] Commit and push the reviewed D-035 checkpoint.
 
 Frozen D-035 correction:
@@ -283,12 +284,12 @@ Frozen D-035 correction:
 
 ## Immediate next actions
 
-1. Finish and independently review D-035 with the corrected one-way seam
-   implication.
-2. Use its bridge root ceilings against the \(p>q\) and \(p<q\) boundary
-   word walls.
-3. Decide whether the critical route needs only \(\mathcal J\) or whether a
-   later global lemma unexpectedly requires the stronger \(\mathcal I\).
+1. Publish the reviewed D-035 checkpoint.
+2. Then attack the unbounded \(p>q\) and \(p<q\) boundary word walls
+   synthetically.
+3. Keep deciding whether the critical route needs only \(\mathcal J\) or
+   whether a later global lemma unexpectedly requires the stronger
+   \(\mathcal I\).
 4. Update this file and `docs/DECISION_LOG.md` at every proof checkpoint,
    rejected inference, or dependency change.
 

@@ -1724,3 +1724,102 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Scope: the definition-first \(q\le25\) two-branch bridge census, final
   D-035 integrated reviews, both boundary word walls, non-boundary Cell C,
   Cell C, both G2CS targets, and the Curling Number Conjecture remain open.
+
+## D-035 item 7 — bounded standalone-local bridge census
+
+- Date: 2026-07-27
+- Status: the census is `COMPUTED`, and the mathematical and
+  code/publication reviews are `APPROVED`. Overall D-035 remains
+  `IN PROGRESS` pending commit and push; Cell C remains `OPEN`.
+- Scope decision: the scan begins at the finite standalone seed
+  \(G_{\rm loc}=X^3U\) and directly requests \(B^2\). A complete local
+  replay matches all \(2r\) requested labels. No arbitrary left context
+  \(L\) or full-context orbit is enumerated. The executable records
+  `orbit_scope=standalone_G_loc_seed`, `target_assumption=none`, and
+  `full_context_not_enumerated=true`. It preserves the exact
+  \(\mathcal I/\mathcal J\) bridge ledger without assuming either target
+  negation.
+- Enumeration decision: through \(q\le25\), the \(p>q\) branch has
+  `2,388,798` structures, `595,896` \(z=1\) assignments, `105,851` exact
+  static candidates, `15,881` complete local replays, and `127,048`
+  proper cuts; every replay has \(r=4,\ B=\texttt{2232}\). The \(p<q\)
+  branch has `1,115,405 / 418,622 / 100,053 / 93,497 / 187,018` in the
+  same stages. Its replays split into `93,493` with
+  \(r=1,\ B=\texttt{2}\) and four with
+  \(r=4,\ B=\texttt{2223}\). Every complete replay has all proper periods
+  below \(P\) and the exact endpoint pair \((3,r)\). These counts are
+  finite `COMPUTED` evidence.
+- Fourth-power decision: every proper cut separately enumerates all
+  fourth-power suffix roots of the full standalone-local state and the
+  visible proper-circular subset. Both root-occurrence and affected-cut
+  counts are zero in both branches.
+- Theorem-audit unit decision: an opportunity is counted once per eligible
+  completed replay or proper cut, not once per root. The \(p>q\)
+  opportunity counts are `15,881` endpoints, `47,643` for each `2` cap,
+  `15,881` for each first/second low-root `3` bound and visibility
+  conclusion, and `127,048` for each full and visible fourth-power check.
+  The corresponding \(p<q\) counts are
+  `93,497 / 93,505 / 4 / 187,018`. Every violation count is zero.
+  Full-root seam, suffix, and terminal opportunities are zero in both
+  branches, so their zero violations provide no bounded corroboration.
+- One-way seam decision: the second-half `3` cross-tab contains `15,881`
+  \(p>q\) rows in \((\pi<r,\text{seam false})\) and four \(p<q\) rows in
+  \((\pi<r,\text{seam true})\), with every \(\pi=r\) cell zero. The audit
+  checks only \(\pi=r\Rightarrow\) seam; the four true-seam low-root rows
+  permanently protect the nonconverse.
+- Certificate decision: six literal certificates pin the \(p>q\)
+  \(q=12,r=4,B=\texttt{2232}\) replay, the \(p<q\)
+  \(q=8,r=1,B=\texttt{2}\) replay, and all four nontrivial
+  \(p<q,r=4,B=\texttt{2223}\) replays at \(q=23,24,25,25\). Each pins the
+  full words, every cut pair, period-cap result, second-half `3` seam rows,
+  endpoint, and both full and visible fourth-power counts.
+- Independent-oracle decision: the test-side oracle imports no production
+  D-034 generator, static predicate, witness, bridge tracer, or
+  certificate selector. It reconstructs both normal forms, raw-enumerates
+  \(q\le12\) with literal exponent/period loops, and independently audits
+  all six certificates, including the four \(q\ge23\) rows.
+- Artifact/CLI decision: the LF-stable artifact
+  `research/outputs/generated_two_cube_d035_bridge_census_2026-07-27.txt`
+  is reproduced end to end through
+  `python -m research.generated_two_cube_d035_bridge_census --max-q 25`.
+  Default stdout contains only deterministic artifact text; file-output
+  mode leaves stdout empty; runtime timing is confined to stderr. The
+  pinned SHA-256 is
+  `60A3D2F846AC34D081A5321AC24BB7114C8C6B1A5DBF7E846756331CA6454DF7`.
+- TDD and review history: initial red/green work established the local
+  replay, counter, certificate, render, and artifact contracts. The
+  code/publication review then required four repairs: coherent renderer
+  metadata validation; exact-type, shape-safe, fail-closed certificate and
+  public-atlas audits; a positive fourth-power detector probe; and a
+  deterministic stdout/stderr CLI contract with subprocess reproduction.
+  Each repair received its own red/green regression, including the
+  requested detector mutation test. Mathematical review remained
+  `APPROVED`, and the repaired code/publication review returned
+  `APPROVED`.
+- Integrated-review correction: the final publication audit caught a
+  notation collision in `CURRENT_STATUS.md` between the structural prefix
+  \(L\) and a hypothetical context before \(X^3U\). The status now names
+  the actual full bridge states \(K_h=LR^2(B^2)[0:h]\); focused re-review
+  returned `APPROVED`.
+- Fresh verification: `11` focused D-035 tests and `5` inherited D-034
+  atlas tests pass. `compileall`, Ruff, stale-name/scope inspection,
+  whitespace inspection, and `git diff --check` are clean.
+- Nonclaims: this bounded standalone-local `COMPUTED` census proves no
+  unbounded bridge theorem, supplies no arbitrary-\(L\) orbit, and closes
+  neither period branch, non-boundary Cell C, Cell C, either G2CS target,
+  nor the Curling Number Conjecture. Publication by commit and push remains
+  the final unchecked D-035 checkpoint item.
+
+## Workflow decision — proof-first research policy
+
+- Date: 2026-07-27
+- Decision: prioritize synthetic, unbounded mathematics. Defer
+  nonessential infrastructure, renderers, dashboards, and large
+  computational frameworks, and do not raise brute-force bounds merely
+  for reassurance. Nontrivial auxiliary coding requires a clear
+  mathematical necessity or explicit user approval.
+- Explicit exception: short brute-force scripts and direct lemma-specific
+  helpers used to test, falsify, discover, or verify a precise
+  mathematical claim are not forbidden auxiliary coding.
+- Freeze rule: once a bounded audit has served its mathematical role,
+  freeze it and return to proof.

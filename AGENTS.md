@@ -17,3 +17,16 @@
 - Formal research notes and proofs may remain compact and technically
   advanced. Preserve their exact hypotheses, evidence labels, and
   non-claims; translate them for the user rather than weakening them.
+
+## Proof-first research policy
+
+- Prioritize synthetic, unbounded mathematics.
+- Defer nonessential infrastructure, renderers, dashboards, and large
+  computational frameworks.
+- Do not increase brute-force bounds merely for reassurance.
+- Nontrivial auxiliary coding requires a clear mathematical necessity or
+  explicit user approval.
+- Short brute-force scripts and direct lemma-specific helpers used to test,
+  falsify, discover, or verify a precise mathematical claim are not
+  forbidden auxiliary coding.
+- Once a bounded audit has served its role, freeze it and return to proof.

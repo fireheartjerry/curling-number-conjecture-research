@@ -287,6 +287,88 @@ def _is_static_candidate(model: Z1Model) -> bool:
     return witness(F) == (3, model.r)
 
 
+def iter_z1_branch_models(
+    *,
+    branch: str,
+    max_q: int,
+) -> Iterator[Z1Model]:
+    """Yield every exact structural model in one D-034 period branch."""
+
+    if type(max_q) is not int or max_q <= 0:
+        raise ValueError("max_q must be a positive integer")
+    if branch == "p>q":
+        return _iter_pgtq_models(max_q)
+    if branch == "p<q":
+        return _iter_pltq_models(max_q)
+    raise ValueError("branch must be 'p>q' or 'p<q'")
+
+
+def _has_public_model_shape(model: object) -> bool:
+    """Fail-closed shape guard for public downstream predicates."""
+
+    if type(model) is not Z1Model:
+        return False
+    words = (
+        model.B,
+        model.Theta,
+        model.D,
+        model.Q,
+        model.U,
+        model.R,
+        model.X,
+    )
+    return (
+        type(model.branch) is str
+        and model.branch in ("p>q", "p<q")
+        and type(model.seam) is str
+        and all(
+            type(value) is int and value > 0
+            for value in (model.q, model.r, model.p, model.P)
+        )
+        and model.q > 2 * model.r
+        and model.P == model.q + model.r
+        and all(
+            type(word) is tuple
+            and all(
+                type(symbol) is int and symbol in (2, 3)
+                for symbol in word
+            )
+            for word in words
+        )
+        and len(model.B) == model.r
+        and len(model.Q) == model.q - 2 * model.r
+        and len(model.U) == model.q - model.r
+        and len(model.R) == model.q
+        and len(model.X) == model.p
+        and model.B[0] == 2
+        and model.Q[0] == 3
+        and model.U == model.Q + model.B
+        and model.R == model.B + model.Q + model.B
+    )
+
+
+def is_z1_structural(model: object) -> bool:
+    """Public exact-row predicate for downstream definition-first audits."""
+
+    if not _has_public_model_shape(model):
+        return False
+    try:
+        return _is_z1_structural(model)
+    except (IndexError, TypeError, ValueError, ZeroDivisionError):
+        return False
+
+
+def is_z1_static_candidate(model: object) -> bool:
+    """Public D-034 static predicate for downstream bridge enumeration."""
+
+    if not _has_public_model_shape(model):
+        return False
+    try:
+        return _is_static_candidate(model)
+    except (IndexError, TypeError, ValueError, ZeroDivisionError):
+        return False
+
+
 def _counter_tuple(counter: Counter[str]) -> StringCounter:
     return tuple(sorted(counter.items()))
 
