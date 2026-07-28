@@ -149,7 +149,7 @@ Completion gate:
   The strict \(\alpha\)-pop, low/high \(\beta\) split, high-\(\beta<q\)
   restriction, return atlas, and bounded \(q\le25\) census are recorded.
 
-### 2B. D-035 two-half bridge atlas — `IN PROGRESS`
+### 2B. D-035 two-half bridge atlas — `CLOSED`
 
 - [x] **`PROVED-NL`: every proper actual-orbit bridge cut requesting `2`
   self-caps.**
@@ -195,7 +195,8 @@ Completion gate:
   from the standalone seed \(G_{\rm loc}=X^3U\), pin sharp local replays,
   and label the bounded, nonproof result `COMPUTED`.
 - [x] Obtain independent exact-proof and code/publication reviews.
-- [ ] Commit and push the reviewed D-035 checkpoint.
+- [x] Commit and push the reviewed D-035 checkpoint
+  (`65eaea25d3617e5cd81efa959782b82e3f5532ef` on `main`).
 
 Frozen D-035 correction:
 
@@ -284,9 +285,9 @@ Frozen D-035 correction:
 
 ## Immediate next actions
 
-1. Publish the reviewed D-035 checkpoint.
-2. Then attack the unbounded \(p>q\) and \(p<q\) boundary word walls
-   synthetically.
+1. Attack the unbounded \(p>q\) boundary word wall synthetically.
+2. Then attack the unbounded \(p<q\) boundary word wall, including the
+   \(r=1\) family and the four sharp \(r=4\) model shapes.
 3. Keep deciding whether the critical route needs only \(\mathcal J\) or
    whether a later global lemma unexpectedly requires the stronger
    \(\mathcal I\).

@@ -332,9 +332,16 @@ The deterministic artifact has SHA-256
 `60A3D2F846AC34D081A5321AC24BB7114C8C6B1A5DBF7E846756331CA6454DF7`;
 independent mathematical and code/publication reviews returned
 `APPROVED`. This is finite `COMPUTED` evidence, not an unbounded proof or
-an arbitrary-\(L\) orbit census. Only publication remains for D-035; both
-boundary word walls, non-boundary Cell C, Cell C, both G2CS targets, and
-the Curling Number Conjecture remain open.
+an arbitrary-\(L\) orbit census. The reviewed checkpoint was published on
+`main` at `65eaea25d3617e5cd81efa959782b82e3f5532ef`, so D-035 is now
+`CLOSED`. Both boundary word walls, non-boundary Cell C, Cell C, both G2CS
+targets, and the Curling Number Conjecture remain open.
+
+The D-035 census code is now frozen under the proof-first research policy.
+The next work is synthetic and unbounded: first the \(p>q\) boundary word
+wall, then the \(p<q\) wall. Short brute-force scripts or direct
+lemma-specific helpers remain allowed only when they test, falsify,
+discover, or verify a precise mathematical claim.
 
 The new definition-first \(z=1\) atlas through \(q\le25\) checks
 `2388798` \(p>q\) and `1115405` \(p<q\) structures, retaining `105851`

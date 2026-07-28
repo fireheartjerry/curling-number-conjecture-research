@@ -1823,3 +1823,27 @@ Entries are append-only; superseded decisions are marked, not deleted.
   mathematical claim are not forbidden auxiliary coding.
 - Freeze rule: once a bounded audit has served its mathematical role,
   freeze it and return to proof.
+
+## D-035 closure and publication
+
+- Date: 2026-07-27
+- Status: D-035 / Phase 2B is `CLOSED`; Cell C remains `OPEN`.
+- Publication: the independently reviewed eleven-file checkpoint was
+  committed and pushed directly to private `main` as
+  `65eaea25d3617e5cd81efa959782b82e3f5532ef`. Local `HEAD` and
+  `origin/main` matched after the push.
+- Final review: the integrated mathematical audit returned `APPROVED`.
+  The integrated publication audit caught one notation collision in
+  `CURRENT_STATUS.md`; after the actual full bridge state was written as
+  \(K_h=LR^2(B^2)[0:h]\), focused re-review returned `APPROVED`.
+- Final verification: the full repository suite passes `155` tests.
+  `compileall`, Ruff on every touched Python file, the pinned artifact
+  SHA-256, whitespace inspection, and `git diff --check` are clean.
+- Scope: closing D-035 records the bridge lemmas and the bounded
+  standalone-local audit. It does not close either unbounded boundary wall,
+  non-boundary Cell C, Cell C, either G2CS target, or the Curling Number
+  Conjecture.
+- Handoff decision: freeze the D-035 census and move to the synthetic
+  \(p>q\) boundary proof, followed by the synthetic \(p<q\) proof. The only
+  coding exception is a short brute-force script or direct lemma helper
+  tied to a precise mathematical claim.
