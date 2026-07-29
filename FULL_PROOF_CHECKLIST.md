@@ -244,8 +244,11 @@ Frozen D-035 correction:
       52,880 small-q exit configurations); the exit-root
       disposition was corrected, reopening the period-21 exit
       family at generic q.
-      Remaining for \(r=4\): the period-21 exit family
-      (\(\ell^*\in\{52,54\}\), \(s=21\), \(q>2\ell^*+30\)).
+      Progress 2026-07-29 (`research/pgtq_r4_phase51_wall.md`): the
+      phase-51 wall (the later window's visible cube
+      \(B^3U_f[0{:}51]\)) caps every exit at \(\ell^*\le51\),
+      kills the period-21 family for every \(q\), and closes the
+      \(r=4\) branch (C.1), pending adversarial audit.
       Remaining for the branch: \(r\ge5\).
 - [ ] **Boundary \(p<q\) wall for \(\mathcal J\).**
       Handle both exact seams, the large \(r=1\) family, and the nontrivial

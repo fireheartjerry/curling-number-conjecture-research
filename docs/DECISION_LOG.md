@@ -2091,3 +2091,31 @@ Entries are append-only; superseded decisions are marked, not deleted.
   the period-21 exit family and the r >= 5 catalogue.
 - Scope: nothing here closes the p>q wall, Cell C, either G2CS
   target, or the conjecture.
+
+
+## p>q r=4 phase-51 wall and branch closure
+
+- Date: 2026-07-29
+- Result: `research/pgtq_r4_phase51_wall.md` (`PROVED-NL`). The
+  forced word contains the bridge word at position nine
+  (U_f[9:13] = 2232 = B), so T_ell[17:21] = B. Under tameness through
+  phase 50, the later window's known suffix at phase 51 is
+  B^3 U_f[0:51], exactly 63 letters and 21-periodic: a fully visible
+  suffix cube. Hence kappa(F_51) >= 3 > 2, generation forces
+  U[51] = 3, and every r=4 counterorbit exits at l* <= 51 (W.1).
+  This eliminates exit phases 52, 54, 56, 57, 58, 60, kills the
+  period-21 exit family ((52,21), (54,21)) for every q, and -- with
+  the corrected disposition, Theorem R, the band closure, Lemma F,
+  and the empty shallow zoo -- closes the r=4 branch: no r=4
+  counterorbit exists (C.1), both targets, every q.
+- Mechanical check: the forced-deviation scan over the later
+  window's known suffix B^3 U_f[0:l] for l <= 59 returns deviations
+  exactly at l = 51, 52, 54, all with the root-21 cube; the
+  63-letter periodicity was verified directly. The prior notes
+  remain correct: the forced-replay table tabulates shared-tail
+  local pairs as defined, and E.5's ceiling min(m-1,60) is true,
+  now sharpened.
+- The p>q boundary wall at r=4 is CLOSED pending adversarial audit;
+  the branch now rests solely on the r>=5 catalogue.
+- Scope: nothing here closes r>=5, the p<q wall, non-boundary
+  Cell C, either G2CS target, or the conjecture.

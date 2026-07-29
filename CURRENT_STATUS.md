@@ -539,6 +539,19 @@ generic \(q\). The \(r=4\) branch of the \(p>q\) wall now rests on
 exactly two items: the period-21 exit family
 (\(\ell^*\in\{52,54\}\), \(s=21\), \(q>2\ell^*+30\)) and \(r\ge5\).
 
+The period-21 exit family is dead, and with it the whole
+\(r=4\) branch (`research/pgtq_r4_phase51_wall.md`). The forced word
+contains the bridge word at position nine (\(U_f[9{:}13]=B\)), so
+under tameness the later window's known suffix at phase \(51\) is the
+fully visible cube \(B^3U_f[0{:}51]=Y^3\) (\(63\) letters, period
+\(21\)): \(\kappa(F_{51})\ge3\) forces \(U[51]=3\), a wall that caps
+every exit at \(\ell^*\le51\) and makes the \((52,21)\) and
+\((54,21)\) configurations unreachable for every \(q\). Combining the
+wall with the corrected exit-root disposition, Theorem R, the band
+closure, Lemma F, and the empty shallow zoo: no \(r=4\) counterorbit
+exists (C.1). The \(p>q\) boundary wall now rests solely on the
+\(r\ge5\) catalogue.
+
 ## Immediate open work
 
 - Internal later cube (Cell C) for both synchronization targets.
