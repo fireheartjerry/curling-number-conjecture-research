@@ -5,9 +5,9 @@ Status: `PROVED-NL` (Theorem R, Lemma M's forcing step, Lemma F);
 arithmetic). Scope: Cell C simultaneous boundary, \(p>q\), row
 \((z,h)=(1,0)\), \(r=4\), \(B=\texttt{2232}\); both targets, every
 \(q\). Builds on the forced-replay theorem
-(`pgtq_r4_forced_replay.md`): at the exit phase \(\ell^**\) the tail
-\(T=B^*2U_f[0:\ell^**]\) is the known forced word, \(n=|T|=8+\ell^**\),
-and the early window \(E=X^*3U_f[0:\ell^**]\) ends in a window-crossing
+(`pgtq_r4_forced_replay.md`): at the exit phase \(\ell^*\) the tail
+\(T=B^2U_f[0:\ell^*]\) is the known forced word, \(n=|T|=8+\ell^*\),
+and the early window \(E=X^3U_f[0:\ell^*]\) ends in a window-crossing
 canonical cube of root \(s\) (\(3s>n\)), \(s<P\). Letters of the state
 from the right are \(t_1,t_2,\ldots\); \(t_p\) for \(p\le n\) is the
 reversed tail, and \(t_{n+d}=Q[-d]\) for \(1\le d\le q-8\).
@@ -17,11 +17,11 @@ reversed tail, and \(t_{n+d}=Q[-d]\) for \(1\le d\le q-8\).
 If the early exit cube has root \(s\) with
 
 \[
-\ell^**+4\ \le\ s\ \le\ \frac{q-4}{2},
+\ell^*+4\ \le\ s\ \le\ \frac{q-4}{2},
 \]
 
-then \(R\) ends in a root-\(s\) square, so \(\pi(R^*2)\le s<q\),
-contradicting \((\kappa(R^*2),\pi(R^*2))=(2,q)\). **No such exit root
+then \(R\) ends in a root-\(s\) square, so \(\pi(R^2)\le s<q\),
+contradicting \((\kappa(R^2),\pi(R^2))=(2,q)\). **No such exit root
 exists.**
 
 **Proof.** Write \(R=BQB\) with letters from the right \(r_j\): for
@@ -41,17 +41,17 @@ letters of \(R\) form a square.
 _Case \(5\le j\le s\)._ Both sides are \(Q\)-letters:
 \(r_j=t_{n+j-4}\) and \(r_{j+s}=t_{n+j-4+s}\). Apply (R.1) at
 \(p=n+j-4\); admissible because
-\(n+j-4\le n+s-4\le2s\iff s\ge n-4=\ell^**+4\), which is the
+\(n+j-4\le n+s-4\le2s\iff s\ge n-4=\ell^*+4\), which is the
 hypothesis. The deepest letter touched is \(Q[-(j+s-4)]\) with
 \(j+s-4\le2s-4\le q-8\), inside \(Q\).
 
 _Case \(1\le j\le4\)._ Here \(r_{j+s}=t_{n+j-4+s}\). Apply (R.1)
 at \(p=n+j-4\le n\); this is admissible because
-\(s\ge\ell^**+4=n-4\) gives \(2s\ge2n-8\ge n\ge n+j-4\) (using
+\(s\ge\ell^*+4=n-4\) gives \(2s\ge2n-8\ge n\ge n+j-4\) (using
 \(n\ge9\) and \(j\le4\)). Hence \(r_{j+s}=t_{n+j-4}\). But
 \(t_{n-3},t_{n-2},t_{n-1},t_n\) are the four leftmost tail letters
 read right-to-left, and the tail begins with
-\(B^*2=\texttt{2232}\ldots\), so
+\(B^2=\texttt{2232}\ldots\), so
 \((t_{n-3},t_{n-2},t_{n-1},t_n)=(2,3,2,2)\) — exactly reversed
 \(B=(r_1,r_2,r_3,r_4)\). Hence \(r_{j+s}=r_j\). \(\square\)
 
@@ -61,46 +61,59 @@ argument needs only \(q\ge2s+4\), which is the upper hypothesis.
 
 ## Lemma M — short roots force a tail period, and all die
 
-If \(s\le\ell^**+7=n-1\), then the pairs \((p,p+s)\) with
+If \(s\le\ell^*+7=n-1\), then the pairs \((p,p+s)\) with
 \(p+s\le n\) are all admissible in (R.1) — the crossing condition
 \(3s>n\) gives \(n-s<2s\) — so **the known tail \(T\) must have
 period \(s\)**, and by chaining (R.1), the letters
 \(Q[-d]\) for \(1\le d\le3s-n\) are pinned to the \(s\)-periodic
-extension of \(T\) (valid inside \(Q\), i.e. when \(q\ge3s-\ell^**\);
+extension of \(T\) (valid inside \(Q\), i.e. when \(q\ge3s-\ell^*\);
 smaller \(q\) is the shallow regime, deferred).
 
 The periods of the \(43\) forced exit tails in the crossing range
 \(((n)/3,\ n-1]\) form a finite list: exactly \(118\) pairs
-\((\ell^**,s)\), reflecting the near-period-\(21\) self-similarity of
+\((\ell^*,s)\), reflecting the near-period-\(21\) self-similarity of
 the forced word (\(s\in\{9,10,13,14,17,20,21,24,25,30,31,34,35,38,
 41,42,45,46,51,52,55,56,59,64,65\}\)). Their complete disposition
 (`COMPUTED`, exact letter arithmetic on pinned values):
 
 - \(45\) pairs force \((Q[-2],Q[-1])=(2,3)\) — dead by the sieve
   (P2.1a);
-- \(53\) pairs force \(Q\) to end in \(B=\texttt{2232}\) — dead by
+- \(51\) pairs force \(Q\) to end in \(B=\texttt{2232}\) — dead by
   the sieve (P2.1b);
-- \(11\) pairs have \(s\ge\ell^**+4\) — dead by Theorem R (its
+- \(11\) pairs have \(s\ge\ell^*+4\) — dead by Theorem R (its
   \(q\)-condition \(q\ge2s+4\) is implied by the deep condition
-  \(q\ge3s-\ell^**\));
+  \(q\ge3s-\ell^*\));
 - the remaining \(9\) pairs,
-  \((\ell^**,s)\in\{(7,10),(9,10),(10,10),(28,31),(30,31),(31,31),
+  \((\ell^*,s)\in\{(7,10),(9,10),(10,10),(28,31),(30,31),(31,31),
   (49,52),(51,52),(52,52)\}\), pin \(R\)'s tail to an explicit word
   ending in a terminal square of root \(6\) (root \(21\) also appears
-  at \(s=52\)), so \(\pi(R^*2)\le6<q\) — dead.
+  at \(s=52\)), so \(\pi(R^2)\le6<q\) — dead.
 
-Hence **every short exit root is impossible in the deep regime.**
+**Correction (2026-07-29).** Two of the pairs originally counted
+under the second bullet, \((\ell^*,s)=(52,21)\) and \((54,21)\),
+have valid pin depth \(3s-n\) equal to \(3\) and \(1\)
+respectively, which is below the depth \(4\) needed for the
+\(B\)-tail sieve; their original kills were invalid. They are the
+only such rows (re-audited mechanically over the full table with
+the corrected validity bound). These two pairs — the exit cube
+riding the quasi-period \(21\) of the forced word at the last two
+\(21\)-periodic exit phases — are **open at this stage for every**
+\(q\) and are carried forward as the *period-21 exit family*;
+the shallow-zoo closure eliminates them for \(q\le150\).
+
+Hence every short exit root except the period-21 family is
+impossible in the deep regime.
 
 ## Lemma F — huge roots die by Fine--Wilf and primitivity
 
 Let \(g=\gcd(s,p)\).
 
 1. \(s=p\) is impossible: the cube would give
-   \(t_{\ell^**}=t_{\ell^**+p}\), i.e. \(U_f[0]=3\) equal to
+   \(t_{\ell^*}=t_{\ell^*+p}\), i.e. \(U_f[0]=3\) equal to
    \(X[0]=2\).
-2. If \(2s\ge p+\ell^**-g\) and \(s<p\): the window portion inside
-   \(X^*3\) (positions \(\ell^**+1\) to \(3s\)) has length
-   \(3s-\ell^**\ge s+p-g\) and periods \(s\) and \(p\), so Fine--Wilf
+2. If \(2s\ge p+\ell^*-g\) and \(s<p\): the window portion inside
+   \(X^3\) (positions \(\ell^*+1\) to \(3s\)) has length
+   \(3s-\ell^*\ge s+p-g\) and periods \(s\) and \(p\), so Fine--Wilf
    gives it period \(g\); it contains \(p\) consecutive letters, a
    reversed conjugate of \(X\), which then has period \(g\mid p\)
    with \(g\le s<p\) — a proper power. Conjugacy and reversal
@@ -109,20 +122,20 @@ Let \(g=\gcd(s,p)\).
 
 ## Corollary — the exit residue
 
-At every exit phase \(\ell^**\), the early exit-cube root is confined
+At every exit phase \(\ell^*\), the early exit-cube root is confined
 to
 
 \[
 \boxed{
-\frac{q-4}{2}\ <\ s\ <\ \frac{p+\ell^**-\gcd(s,p)}{2}
+\frac{q-4}{2}\ <\ s\ <\ \frac{p+\ell^*-\gcd(s,p)}{2}
 }
 \tag{X.1}
 \]
 
-— a band of width less than \((\ell^**+7)/2\) just above \(q/2\) —
+— a band of width less than \((\ell^*+7)/2\) just above \(q/2\) —
 apart from the **shallow leftovers**: short-root pairs from Lemma M's
-list in the finitely many cases \(q<3s-\ell^**\) (all with
-\(q\le2\ell^**+20\le140\)), where the pinned window collides with the
+list in the finitely many cases \(q<3s-\ell^*\) (all with
+\(q\le2\ell^*+20\le140\)), where the pinned window collides with the
 left end of \(Q\). Every deep exit configuration is dead. Since an
 exit requires crossing cubes in **both** windows and the kills above
 use the early window alone, each exit phase dies entirely once its

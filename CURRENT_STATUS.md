@@ -526,6 +526,19 @@ exit phase for every \(q\ge2\ell^*+31\): item (1) of the exit residue
 is closed, and the \(r=4\) branch rests on the bounded shallow zoo
 (\(q\le150\)) and \(r\ge5\).
 
+The shallow zoo is closed
+(`research/pgtq_r4_shallow_zoo.md`): all \(52{,}880\) small-\(q\) exit
+configurations are exhaustively refuted — union-find consistency over
+the full three-copy state model with the tame prefix pins, then a
+complete branch-on-demand replay through both windows, the bridge, and
+both endpoints; \(1{,}372\) consistent cases all die, none survive.
+The accompanying re-audit found and corrected an invalid pair of rows
+in the exit-root disposition (\((52,21)\) and \((54,21)\), pin depth
+below the sieve requirement), reopening the period-21 exit family at
+generic \(q\). The \(r=4\) branch of the \(p>q\) wall now rests on
+exactly two items: the period-21 exit family
+(\(\ell^*\in\{52,54\}\), \(s=21\), \(q>2\ell^*+30\)) and \(r\ge5\).
+
 ## Immediate open work
 
 - Internal later cube (Cell C) for both synchronization targets.

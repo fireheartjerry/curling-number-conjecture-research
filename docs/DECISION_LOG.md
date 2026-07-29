@@ -2058,3 +2058,36 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Next: the shallow zoo.
 - Scope: nothing here closes the p>q wall, Cell C, either G2CS
   target, or the conjecture.
+
+
+## p>q r=4 shallow zoo closure and disposition correction
+
+- Date: 2026-07-29
+- Result: `research/pgtq_r4_shallow_zoo.md`. The shallow zoo (all
+  exit configurations with q <= 2l*+30 <= 150, every admissible exit
+  root) is EMPTY: 52,880 triples; union-find consistency over the
+  full three-copy state model with tame prefix pins kills all but
+  1,372; a complete branch-on-demand replay (early window, endpoint
+  (2,q), the four bridge cuts via the unconditional PB.6 pins, later
+  window, endpoint (2,P)) kills every survivor. No capacity aborts.
+  This is a complete finite verification, hence a proof of the
+  finite statement (Z.1).
+- Correction: the Lemma M disposition in
+  `research/pgtq_r4_exit_root_kill.md` killed (52,21) and (54,21)
+  with the B-tail sieve at pin depth 4, but their valid pin depth
+  3s-n is 3 and 1; the note is corrected (53 -> 51 sieve-B rows,
+  correction paragraph added). A mechanical re-audit of the whole
+  table with the corrected bound confirms these are the only
+  affected rows. The period-21 exit family (l* in {52,54}, s=21,
+  q > 2l*+30) is therefore open again at generic q; inside the zoo
+  it is dead by (Z.1). Simulation cannot reach it generically (the
+  free middle of Q grows with q); it needs a synthetic argument.
+- Method note: an initial all-Q depth-first search was abandoned
+  after a wildcard-comparison bug (distinct occurrences of the same
+  unknown letter treated as ambiguous) caused exponential blowup;
+  the corrected token-based engine and the targeted enumeration
+  agree on every case they share.
+- The r=4 branch of the p>q wall now rests on exactly two items:
+  the period-21 exit family and the r >= 5 catalogue.
+- Scope: nothing here closes the p>q wall, Cell C, either G2CS
+  target, or the conjecture.
