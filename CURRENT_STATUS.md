@@ -1,4 +1,4 @@
-# Current status — 2026-07-27
+# Current status — 2026-07-28
 
 ## Bottom line
 
@@ -52,7 +52,7 @@ configuration with two context-dependent cube witnesses.
 In external Cell A, actual chronology supplies the genuine bridge state
 
 \[
-K=S_{t_0+q}=LR^2T,\qquad t_G<t_0+q<t_F.
+K=S\_{t_0+q}=LR^2T,\qquad t_G<t_0+q<t_F.
 \]
 
 The repaired Cell A proof establishes
@@ -182,11 +182,11 @@ an exact copied-\(T_1\) return, and a Fine--Wilf threshold miss against the
 visible \(q\)-square in \(R^2B\). In particular, \(r=1\) has only the
 context-crossing alternative.
 
-At any paired phase \(\ell\), differing roots \(a_\ell,b_\ell\) with
-requested exponent \(k_\ell\) obey
+At any paired phase \(\ell\), differing roots \(a*\ell,b*\ell\) with
+requested exponent \(k\_\ell\) obey
 
 \[
-k_\ell\min(a_\ell,b_\ell)>2r+\ell.
+k*\ell\min(a*\ell,b\_\ell)>2r+\ell.
 \]
 
 The endpoint predecessor transitions now have an exact adjacent-root
@@ -208,7 +208,7 @@ so the displayed squares are maximizing witnesses and
 \]
 
 The two families are exactly the proper actual-orbit bridge cuts:
-\(G_i=K_i\) and \(M_i=K_{r+i}\) for \(0\le i<r\). Thus every bridge cut
+\(G*i=K_i\) and \(M_i=K*{r+i}\) for \(0\le i<r\). Thus every bridge cut
 whose actual next curling number is `2` self-caps and localizes,
 independently of either target negation. This includes the omitted midpoint
 and strengthens its old bound to \(\pi(M)\le r\). That visible-square
@@ -248,7 +248,7 @@ canonical root is \(D_iB[0:i]\), so comparison of its cube with the
 structural suffix gives
 
 \[
-\operatorname{suf}_{r-i}(BQ)=D_i.
+\operatorname{suf}\_{r-i}(BQ)=D_i.
 \]
 
 As the actual remaining word \(D_i\) is appended, that cube persists at
@@ -266,7 +266,7 @@ at \(i=1<r-1\), but the rotated cube generates `3` where its proposed
 future bridge asks for `2`. No converse seam implication is claimed.
 
 The D-035 target split is now explicit. On the boundary,
-\(K_0=G,\ K_r=M,\ K_{2r}=F\), and
+\(K*0=G,\ K_r=M,\ K*{2r}=F\), and
 
 \[
 \mathcal I\cap\{K_h:0\le h\le2r\}=\{G,F\},
@@ -300,7 +300,7 @@ next.
 
 The approved D-035 bridge census through \(q\le25\) is now `COMPUTED` in
 the standalone-local scope. It starts from
-\(G_{\rm loc}=X^3U\) and directly replays the requested continuation
+\(G\_{\rm loc}=X^3U\) and directly replays the requested continuation
 \(B^2\); it does not enumerate an arbitrary left context \(L\), so it does
 not classify the actual full bridge states
 \(K_h=LR^2(B^2)[0:h]\). In the \(p>q\) branch the scan
@@ -424,6 +424,25 @@ all `26` triple outcomes. Dropping canonical \(R^2\) recovers five exact
 positive early replays, all collapsing to roots `3`, `4`, or `6`.
 This is stronger bounded exclusion evidence, still only `COMPUTED`; it does
 not prove the unbounded early-replay collapse lemma or close Cell C.
+
+The synthetic \(p>q\) attack has begun with a complete small-\(r\)
+classification of the bridge word
+(`research/pgtq_boundary_small_r.md`). The six inherited necessary
+conditions on \(B\) — normal form, period \(t\) with \(r/2<t<r\),
+\(B[a]=X[0]=2\) at \(a=r-t\), primitivity, no period \(\le r/2\), and
+\(\lambda\le1\) — force \(r\ge3\); eliminate \(r=3\) outright; force
+\((t,B)=(3,\texttt{2232})\) uniquely at \(r=4\); and reduce \(r=5\) to
+exactly four words. The terminal-run transfer \(B[r-1]=B[a-1]\) shows
+\(\lambda=1\) requires \(a\ge2\) and \(r\ge5\), so the D-035 full-root
+seam cannot occur in this branch below \(r=5\). At \(r=4\) all interior
+bridge cuts have exact \(q\)-independent canonical pairs
+(\((2,1),(3,1),(2,4)\) patterns, with only \(\pi(G_3)\) still
+\(q\)-dependent), phase one collapses to \(\alpha=\beta=2\) or a doubly
+high pair with \(\alpha\ge9\), and every high root must return onto an
+explicit `3` coordinate of \(Q\) or \(B\). These are proved for every
+\(q\) and both targets; they concentrate the wall on
+\(B=\texttt{2232}\) but do not close it. The remaining obstruction is
+still the unbounded two-window replay.
 
 ## Immediate open work
 

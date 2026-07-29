@@ -1847,3 +1847,36 @@ Entries are append-only; superseded decisions are marked, not deleted.
   \(p>q\) boundary proof, followed by the synthetic \(p<q\) proof. The only
   coding exception is a short brute-force script or direct lemma helper
   tied to a precise mathematical claim.
+
+## Synthetic p>q small-r bridge classification
+
+- Date: 2026-07-28
+- Result: `research/pgtq_boundary_small_r.md` proves, from the six
+  inherited necessary conditions (S1)-(S6) of the surviving row
+  \((z,h)=(1,0)\), valid for every \(q\) and both targets: \(r\ge3\)
+  (PB.1); the terminal-run transfer \(B[r-1]=B[a-1]\) with
+  \(\lambda=1\Rightarrow a\ge2\Rightarrow r\ge5\) (PB.2); \(r=3\)
+  impossible (PB.3); \(r=4\Rightarrow(t,B)=(3,\texttt{2232})\) uniquely
+  (PB.4); the complete four-word \(r=5\) catalogue (PB.5); the exact
+  \(r=4\) interior bridge-cut atlas with \(q\)-independent canonical
+  pairs (PB.6); the mid-range early-root exclusion \(\alpha\ne r+t\)
+  plus the large-period Fine--Wilf gap, collapsing the \(r=4\)
+  phase-one trichotomy (PB.7); and explicit `3`-placement coordinates
+  for both high-root returns (PB.8).
+- Method note: PB.6 exponents are exact only with the actual-generation
+  labels \(\kappa(K_h)=B[h\bmod r]\); a first test draft asserted raw
+  curling numbers on artificial words and was corrected to assert the
+  context-free suffix-square content instead.
+- Evidence: `research/enumerate_pgtq_small_r_catalogue.py` and the
+  artifact `research/outputs/pgtq_small_r_catalogue_2026-07-28.txt`
+  (per-r complete catalogues through \(r\le12\), counts
+  0,0,0,1,4,9,23,47,105,211,447,899); independent re-derivation in
+  `tests/test_pgtq_small_r_catalogue.py`. Full suite: `164` passed.
+- Scope: PB.4 converts the bounded census observation (every complete
+  \(p>q\) replay has \(r=4,B=\texttt{2232}\)) into a synthetic
+  necessity at \(r=4\). Nothing here closes the unbounded \(p>q\)
+  replay wall, the \(p<q\) wall, Cell C, either G2CS target, or the
+  conjecture.
+- Next: attack the \(r=4\) two-window replay itself, where the low
+  phase-one case forces tail \((23)^2\) in both windows and the shared
+  suffix begins to determine \(Q\) letter by letter.
