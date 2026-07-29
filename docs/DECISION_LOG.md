@@ -1971,3 +1971,32 @@ Entries are append-only; superseded decisions are marked, not deleted.
   machinery, starting from the shallow-Q edge collision.
 - Scope: nothing here closes the p>q wall, Cell C, either G2CS
   target, or the conjecture.
+
+## p>q r=4 exit-root kill
+
+- Date: 2026-07-28
+- Result: `research/pgtq_r4_exit_root_kill.md`. Theorem R: an early
+  exit cube of root s with l*+4 <= s <= (q-4)/2 forces R to end in a
+  root-s square via the copied leading B^2 letters, contradicting
+  (kappa(R^2), pi(R^2)) = (2, q); no deep-window hypothesis. Lemma M:
+  crossing roots s <= l*+7 force a full tail period; all 118 such
+  (l*, s) pairs die in the deep regime (45 sieve-23, 53 sieve-B, 11 by
+  Theorem R, 9 by pinned terminal squares of root 6 or 21). Lemma F:
+  huge roots die by Fine-Wilf against X^3 and X-primitivity; s = p
+  dies on the (1,0)-row mismatch. Corollary: every deep exit is dead;
+  the early exit root lives in (q-4)/2 < s < (p+l*-gcd(s,p))/2 or the
+  bounded shallow zoo q <= 2l*+20 <= 140. Supersedes the deep-Q band
+  geography of G.4.
+- Repository hygiene: a local formatter hook had corrupted LaTeX
+  subscripts (underscore-to-asterisk swaps) in the four r=4 notes,
+  CURRENT_STATUS.md, and the checklist as committed earlier today; all
+  34 corrupted sites were repaired in this commit and pre-existing
+  regions of CURRENT_STATUS.md were restored byte-exactly. Future
+  markdown edits in this workflow bypass the formatter.
+- Verification: Theorem R's implication was machine-checked on six
+  synthetic deep configurations (cube present, R-square present,
+  canonical root of R^2 <= s); the 118-row disposition and the pinned
+  square scans are exact finite arithmetic, run twice.
+- Next: the band and the shallow zoo, then r >= 5.
+- Scope: nothing here closes the p>q wall, Cell C, either G2CS
+  target, or the conjecture.

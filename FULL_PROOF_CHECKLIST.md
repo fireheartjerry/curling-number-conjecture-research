@@ -225,7 +225,12 @@ Frozen D-035 correction:
       at some phase \(\ell^\*\le\min(m-1,60)\), with double crossing
       cubes at the exit; the phase-\(2\) exit is restricted to four
       root bands with \(q\ge66\) or a shallow-\(Q\) edge collision.
-      Remaining for \(r=4\): eliminate the finitely many exit events.
+      Progress 2026-07-28 (`research/pgtq_r4_exit_root_kill.md`): the
+      R-square theorem plus the short-root and Fine--Wilf kills
+      eliminate every deep exit configuration; the early exit root is
+      confined to a width-\((\ell^*+7)/2\) band above \((q-4)/2\)
+      or the bounded shallow zoo \(q\le140\).
+      Remaining for \(r=4\): the band, the shallow zoo.
       Remaining for the branch: \(r\ge5\).
 - [ ] **Boundary \(p<q\) wall for \(\mathcal J\).**
       Handle both exact seams, the large \(r=1\) family, and the nontrivial

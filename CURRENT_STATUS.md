@@ -52,7 +52,7 @@ configuration with two context-dependent cube witnesses.
 In external Cell A, actual chronology supplies the genuine bridge state
 
 \[
-K=S\_{t_0+q}=LR^2T,\qquad t_G<t_0+q<t_F.
+K=S_{t_0+q}=LR^2T,\qquad t_G<t_0+q<t_F.
 \]
 
 The repaired Cell A proof establishes
@@ -182,11 +182,11 @@ an exact copied-\(T_1\) return, and a Fine--Wilf threshold miss against the
 visible \(q\)-square in \(R^2B\). In particular, \(r=1\) has only the
 context-crossing alternative.
 
-At any paired phase \(\ell\), differing roots \(a*\ell,b*\ell\) with
-requested exponent \(k\_\ell\) obey
+At any paired phase \(\ell\), differing roots \(a_\ell,b_\ell\) with
+requested exponent \(k_\ell\) obey
 
 \[
-k*\ell\min(a*\ell,b\_\ell)>2r+\ell.
+k_\ell\min(a_\ell,b_\ell)>2r+\ell.
 \]
 
 The endpoint predecessor transitions now have an exact adjacent-root
@@ -208,7 +208,7 @@ so the displayed squares are maximizing witnesses and
 \]
 
 The two families are exactly the proper actual-orbit bridge cuts:
-\(G*i=K_i\) and \(M_i=K*{r+i}\) for \(0\le i<r\). Thus every bridge cut
+\(G_i=K_i\) and \(M_i=K_{r+i}\) for \(0\le i<r\). Thus every bridge cut
 whose actual next curling number is `2` self-caps and localizes,
 independently of either target negation. This includes the omitted midpoint
 and strengthens its old bound to \(\pi(M)\le r\). That visible-square
@@ -248,7 +248,7 @@ canonical root is \(D_iB[0:i]\), so comparison of its cube with the
 structural suffix gives
 
 \[
-\operatorname{suf}\_{r-i}(BQ)=D_i.
+\operatorname{suf}_{r-i}(BQ)=D_i.
 \]
 
 As the actual remaining word \(D_i\) is appended, that cube persists at
@@ -266,7 +266,7 @@ at \(i=1<r-1\), but the rotated cube generates `3` where its proposed
 future bridge asks for `2`. No converse seam implication is claimed.
 
 The D-035 target split is now explicit. On the boundary,
-\(K*0=G,\ K_r=M,\ K*{2r}=F\), and
+\(K_0=G,\ K_r=M,\ K_{2r}=F\), and
 
 \[
 \mathcal I\cap\{K_h:0\le h\le2r\}=\{G,F\},
@@ -300,7 +300,7 @@ next.
 
 The approved D-035 bridge census through \(q\le25\) is now `COMPUTED` in
 the standalone-local scope. It starts from
-\(G\_{\rm loc}=X^3U\) and directly replays the requested continuation
+\(G_{\rm loc}=X^3U\) and directly replays the requested continuation
 \(B^2\); it does not enumerate an arbitrary left context \(L\), so it does
 not classify the actual full bridge states
 \(K_h=LR^2(B^2)[0:h]\). In the \(p>q\) branch the scan
@@ -481,6 +481,23 @@ finitely many concrete exit events over explicitly known tails; the
 phase-\(2\) event is already restricted by the dichotomy and band
 geography above. Next: run the correlation machinery on the remaining
 exit phases.
+
+The exit events themselves are now gutted
+(`research/pgtq_r4_exit_root_kill.md`). The R-square theorem: an early
+exit cube of root \(s\) with \(\ell^*+4\le s\le(q-4)/2\) copies the
+tail's leading \(B^2\) letters into \(Q\) at exactly the offsets that
+make \(R\) end in a root-\(s\) square, contradicting
+\((\kappa(R^2),\pi(R^2))=(2,q)\) — no deep-window hypothesis needed.
+Short roots \(s\le\ell^*+7\) force a full period of the known tail;
+the finite disposition of all \(118\) such pairs kills every one in
+the deep regime (sieve, R-square, or a pinned root-\(6\) or
+root-\(21\) terminal square). Huge roots die by Fine--Wilf against
+the \(p\)-periodicity of \(X^3\) and the primitivity of \(X\).
+Every deep exit configuration is dead; the early exit root is confined
+to the band \((q-4)/2<s<(p+\ell^*-\gcd(s,p))/2\) or to the bounded
+shallow zoo \(q\le2\ell^*+20\le140\). The \(r=4\) branch now rests
+on that band at the \(43\) exit phases, the shallow zoo, and
+\(r\ge5\).
 
 ## Immediate open work
 

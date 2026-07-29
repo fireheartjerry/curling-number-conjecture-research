@@ -15,7 +15,7 @@ Notation: for a state \(S\), write its letters from the right as
 with root length \(\ell\) forces the copy-back system
 
 \[
-t*i=t*{i+\ell}\qquad(1\le i\le 2\ell).
+t_i=t_{i+\ell}\qquad(1\le i\le 2\ell).
 \tag{P2.0}
 \]
 
@@ -68,15 +68,15 @@ and paired generation requires \(\kappa(E_2)=\kappa(F_2)=U[2]\).
 Their shared right end is \(B^2\,32\); in \(t\)-coordinates
 
 \[
-(t*1,\ldots,t*{10})=(2,3,2,3,2,2,2,3,2,2),
+(t_1,\ldots,t_{10})=(2,3,2,3,2,2,2,3,2,2),
 \]
 
 after which \(E_2\) continues into \(Q[-1],Q[-2],\ldots\) while
 \(F_2\) continues into the final \(B\) of \(R^2\) and then \(Q\):
 
 \[
-E*2:\ t*{10+k}=Q[-k];\qquad
-F*2:\ (t*{11},\ldots,t*{14})=(2,3,2,2),\quad t*{14+k}=Q[-k].
+E_2:\ t_{10+k}=Q[-k];\qquad
+F_2:\ (t_{11},\ldots,t_{14})=(2,3,2,2),\quad t_{14+k}=Q[-k].
 \]
 
 **Horn 1 (\(U[2]=2\)).** Root \(1\) is not a square
@@ -97,10 +97,10 @@ Applying (P2.0) to the displayed tails:
 
 - \(\ell\le8\) is impossible: the system already fails on the known
   letters, at \((i,\ell)\) mismatch pairs
-  \(t*1\ne t_2\), \(t_4\ne t_6\), \(t_1\ne t_4\), \(t_2\ne t_6\),
-  \(t_2\ne t_7\), \(t_4\ne t*{10}\), \(t*2\ne t_9\),
-  \(t_2\ne t*{10}\) for \(\ell=1,\ldots,8\).
-- \(\ell=9\) forces \(t*2=t*{11}\), \(t*3=t*{12}\), i.e.
+  \(t_1\ne t_2\), \(t_4\ne t_6\), \(t_1\ne t_4\), \(t_2\ne t_6\),
+  \(t_2\ne t_7\), \(t_4\ne t_{10}\), \(t_2\ne t_9\),
+  \(t_2\ne t_{10}\) for \(\ell=1,\ldots,8\).
+- \(\ell=9\) forces \(t_2=t_{11}\), \(t_3=t_{12}\), i.e.
   \((Q[-2],Q[-1])=(2,3)\), which (P2.1a) forbids.
 - \(\ell=10\) forces, through the full system (P2.0), the twenty
   letters
@@ -114,8 +114,8 @@ Applying (P2.0) to the displayed tails:
 
 - On the later side, \(\ell'\le8\) fails exactly as above (the shared
   ten letters), and \(\ell'=9,10,11,12\) fail against the final
-  \(B\) of \(R^2\): \(t*2\ne t*{11}\), \(t*4\ne t*{14}\),
-  \(t*2\ne t*{13}\), \(t*2\ne t*{14}\).
+  \(B\) of \(R^2\): \(t_2\ne t_{11}\), \(t_4\ne t_{14}\),
+  \(t_2\ne t_{13}\), \(t_2\ne t_{14}\).
 - \(\ell'=13\) forces \((Q[-2],Q[-1])=(2,3)\), forbidden by (P2.1a).
 - \(\ell'=14\) forces the twenty-eight letters
 

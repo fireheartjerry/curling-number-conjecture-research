@@ -35,8 +35,8 @@ slice.
 
 Let \(\tau=(2,3,2,3,2,2,2,3,2,2)\) and
 \(\tau'=(2,3,2,3,2,2,2,3,2,2,2,3,2,2)\) be the reversed known tails of
-\(E*2\) and \(F_2\) (\(t_1..t*{10}\), resp. \(t*1..t*{14}\)). A cube
-of root \(\ell\) gives \(t*i=t*{i+\ell}=t\_{i+2\ell}\) for
+\(E_2\) and \(F_2\) (\(t_1..t_{10}\), resp. \(t_1..t_{14}\)). A cube
+of root \(\ell\) gives \(t_i=t_{i+\ell}=t\_{i+2\ell}\) for
 \(1\le i\le\ell\). Since \(\ell\ge10\) and \(\ell'\ge14\), the known
 letters copy into \(Q\):
 
@@ -158,7 +158,7 @@ collision (shallow-}Q\text{ regime).}}
 
 The band theorem is complete for its toolset: a mechanical
 constraint-propagation check of the full copy-back systems of both
-cubes (union-find over all \(t*i=t*{i+\ell}\) relations, \(Q\)
+cubes (union-find over all \(t_i=t_{i+\ell}\) relations, \(Q\)
 unbounded to the left) over \(10\le\ell\le160\), \(14\le\ell'\le160\)
 returns exactly \(8204\) consistent Fine--Wilf-missing pairs, all of
 them in (G.4) and covering it. No further pair can be eliminated by

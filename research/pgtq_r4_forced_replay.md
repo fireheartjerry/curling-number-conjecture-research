@@ -29,9 +29,9 @@ unconditionally at \(r=4\).
 
 ## E.2 — local pairs and the tame regime
 
-For a state with shared tail \(T*\ell=B^2U[0:\ell]\), call a suffix
-power **local** when its full window fits inside \(T*\ell\), and let
-\(\kappa*{\rm loc}(T*\ell)\) be the greatest local exponent — this is
+For a state with shared tail \(T_\ell=B^2U[0:\ell]\), call a suffix
+power **local** when its full window fits inside \(T_\ell\), and let
+\(\kappa_{\rm loc}(T_\ell)\) be the greatest local exponent — this is
 exactly the curling number of the word \(T\_\ell\). Basic facts:
 
 1. \(\kappa(\text{state})\ge\kappa\_{\rm loc}\), because local powers
@@ -40,10 +40,10 @@ exactly the curling number of the word \(T\_\ell\). Basic facts:
    the state **equals** the local canonical pair: the least local
    achiever bounds the canonical root, and any root smaller than the
    least local achiever would itself be local.
-3. A **downward deviation** \(U[\ell]<\kappa*{\rm loc}(T*\ell)\) is
+3. A **downward deviation** \(U[\ell]<\kappa_{\rm loc}(T_\ell)\) is
    impossible: generation would give
    \(\kappa(\text{state})=U[\ell]<\kappa\_{\rm loc}\), contradicting 1.
-4. An **upward deviation** \(U[\ell]>\kappa*{\rm loc}(T*\ell)\) forces
+4. An **upward deviation** \(U[\ell]>\kappa_{\rm loc}(T_\ell)\) forces
    a window-crossing canonical power: exponent \(U[\ell]\), window
    \(U[\ell]\cdot\pi>8+\ell\). Both windows deviate together, since
    they share \(T\_\ell\) and the requested symbol.
@@ -97,7 +97,7 @@ every other phase it is exact unconditionally. All local roots are at
 most \(21<P\), so tameness never violates the sampled period caps.
 
 **The wall.** At phase \(60\) the tame tail has **no square at all**:
-\(\kappa*{\rm loc}(T*{60})=1\). The counterorbit must generate
+\(\kappa_{\rm loc}(T_{60})=1\). The counterorbit must generate
 \(U[60]\in\{2,3\}\), which then requires a crossing power. In other
 words, the inner curling orbit of the seed \(\texttt{223222323}\)
 reaches curling number \(1\) after \(59\) steps — exactly the
@@ -123,8 +123,8 @@ and for each of these the tame local pair at the endpoint phase
 (2,4),(3,21)
 \]
 
-respectively — never the required \((\kappa,\pi)(E*m)=(2,q)\): the
-\(\kappa*{\rm loc}=3\) cases contradict \(\kappa=2\) outright, and in
+respectively — never the required \((\kappa,\pi)(E_m)=(2,q)\): the
+\(\kappa_{\rm loc}=3\) cases contradict \(\kappa=2\) outright, and in
 the \(\kappa\_{\rm loc}=2\) cases the canonical root equals the local
 root \(\le6<q\). For every other \(q\le64\), the \(B\)-suffix of \(U\)
 clashes with the forced word before phase \(m\); a clash where the
@@ -151,10 +151,10 @@ Every \(r=4\) counterorbit (either target, every \(q\)) has a first
 
 at which both windows end in window-crossing canonical powers with
 common exponent \(U[\ell^*]\): crossing **cubes** when
-\(\kappa*{\rm loc}(T*{\ell^_})=2\) (all exit phases except \(60\)),
+\(\kappa_{\rm loc}(T_{\ell^*})=2\) (all exit phases except \(60\)),
 and a crossing square or cube at phase \(60\). Exits are impossible at
 \(\kappa\_{\rm loc}=3\) phases. The prior phase-two dichotomy and the
-horn-2 band geography describe the case \(\ell^_=2\); every other exit
+horn-2 band geography describe the case \(\ell^*=2\); every other exit
 phase carries a concrete known tail from (E.3), so the same
 correlation machinery applies to each.
 
