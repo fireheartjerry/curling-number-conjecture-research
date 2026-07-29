@@ -1880,3 +1880,30 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Next: attack the \(r=4\) two-window replay itself, where the low
   phase-one case forces tail \((23)^2\) in both windows and the shared
   suffix begins to determine \(Q\) letter by letter.
+
+## p>q r=4 phase-two slice
+
+- Date: 2026-07-28
+- Result: `research/pgtq_r4_phase_two.md` (`PROVED-NL`, one replay
+  step only, per the thin-slice policy). Terminal-square sieve from
+  \((\kappa(R^2),\pi(R^2))=(2,q)\): the letters before the final
+  \(B\) of \(R\) cannot be \(23\) (a \((232)^2\) square) and \(Q\)
+  cannot end in \(B\) (a \(B^2\) square); hence \(|Q|\ge2\) and
+  \(q\ge10\). Low-case phase-two dichotomy: \(U[2]=2\) with exact
+  pairs \((2,2)\) in both windows, or \(U[2]=3\) with canonical cube
+  roots \(\ell\ge10\) (early; \(\ell=9\) dies on the sieve,
+  \(\ell\le8\) on letter arithmetic) and \(\ell'\ge14\) (later;
+  \(\ell'\le12\) on letter arithmetic against the final \(B\) of
+  \(R^2\), \(\ell'=13\) on the sieve). \(\ell=10\) forces
+  \(Q[-20:]=(B^232)^2\) (so \(q\ge28\)); \(\ell'=14\) forces
+  \(Q[-28:]=(B^332)^2\) (so \(q\ge36\)); the minimal pair
+  \((10,14)\) is inconsistent at \(Q[-16]\).
+- Verification: the copy-back tables were mechanically cross-checked
+  with a throwaway scratchpad script during drafting; per the user's
+  instruction and the proof-first policy, no census script or test
+  was added to the repository for this slice.
+- Next slice: Fine--Wilf compatibility of the two forced periodic
+  suffixes of \(Q\) in horn 2, aiming to eliminate every pair
+  \((\ell,\ell')\) and force \(U[2]=2\) outright.
+- Scope: nothing here closes the \(p>q\) wall, Cell C, either G2CS
+  target, or the conjecture.

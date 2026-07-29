@@ -444,6 +444,17 @@ explicit `3` coordinate of \(Q\) or \(B\). These are proved for every
 \(B=\texttt{2232}\) but do not close it. The remaining obstruction is
 still the unbounded two-window replay.
 
+The first replay slice is now proved
+(`research/pgtq_r4_phase_two.md`). A terminal-square sieve from
+\(\pi(R^2)=q\) shows \(q\ge10\) and that \(Q\) never ends in \(23\) or
+in \(B\). In the low phase-one case, phase two is an exact dichotomy:
+either \(U[2]=2\) with both pairs exactly \((2,2)\), or \(U[2]=3\) and
+both windows end in context-crossing cubes with roots
+\(\ell\ge10,\ \ell'\ge14\); the minimal pair \((10,14)\) is
+inconsistent at \(Q[-16]\), and each surviving pair forces long
+periodic suffixes of \(Q\) — the next slice is the Fine--Wilf
+compatibility of those two forced periodicities.
+
 ## Immediate open work
 
 - Internal later cube (Cell C) for both synchronization targets.
