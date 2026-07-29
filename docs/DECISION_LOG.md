@@ -1934,3 +1934,40 @@ Entries are append-only; superseded decisions are marked, not deleted.
   \(U[2]=2\) a theorem there, then attack the four deep bands.
 - Scope: nothing here closes the \(p>q\) wall, Cell C, either G2CS
   target, or the conjecture.
+
+## p>q r=4 forced replay and mandatory exit
+
+- Date: 2026-07-28
+- Result: `research/pgtq_r4_forced_replay.md` (`PROVED-NL`).
+  (E.1) The phase-one high branch is vacuous at r=4: the (23)^2
+  square plus exact generation force both phase-one pairs to (2,2);
+  the low-case hypothesis of the two earlier r=4 notes is discharged.
+  (E.2) Local pairs equal state pairs while no window-crossing power
+  occurs; downward deviations from the local curling value are
+  impossible; upward deviations force simultaneous crossing powers in
+  both windows.
+  (E.3) The tame replay is the curling orbit of the seed 223222323:
+  symbols and local pairs are forced through phase 59 (table in the
+  note; two independent engines agree), and at phase 60 the tail has
+  curling number 1, which the counterorbit cannot emit.
+  (E.4) Tameness through the endpoint is impossible: the thirteen
+  tame-consistent values q = 10, 14, 17, 21, 25, 31, 35, 38, 42, 46,
+  52, 56, 59 all fail the required endpoint pair (2,q); all other q
+  clash with the B-suffix of U or hit the phase-60 wall. The q=10
+  near-model is exactly the tame trajectory; the q=23 warning model
+  deviates upward first at phase 13, matching its recorded failure.
+  (E.5) Every r=4 counterorbit has a first exit phase
+  l* <= min(m-1, 60) with double window-crossing canonical cubes
+  (square possible only at phase 60); exits are impossible at local
+  curling-number-3 phases.
+- Consequence: the r=4 p>q wall is reduced from an unbounded
+  phase-by-phase obstruction to finitely many concrete exit events
+  over explicitly known tails; phase 2 is already band-restricted.
+- Verification: exact finite letter arithmetic; the orbit and table
+  were recomputed with `curling.curling_number` and
+  `curling.curling_number_reference` in a throwaway script; no
+  repository script or test added, per the math-only instruction.
+- Next: eliminate the exit events phase by phase with the correlation
+  machinery, starting from the shallow-Q edge collision.
+- Scope: nothing here closes the p>q wall, Cell C, either G2CS
+  target, or the conjecture.

@@ -216,6 +216,17 @@ Frozen D-035 correction:
       four words, \(\lambda=1\) forces \(r\ge5\); at \(r=4\) the interior
       bridge cuts and the phase-one trichotomy are exact. The unbounded
       replay obstruction itself remains open.
+      Progress 2026-07-28 (`research/pgtq_r4_phase_two.md`,
+      `research/pgtq_r4_horn2_geography.md`,
+      `research/pgtq_r4_forced_replay.md`): at \(r=4\) the phase-one
+      high branch is vacuous; the tame replay equals the curling orbit
+      of \(\texttt{223222323}\) and is fully forced through phase
+      \(59\); every counterorbit must exhibit a window-crossing exit
+      at some phase \(\ell^\*\le\min(m-1,60)\), with double crossing
+      cubes at the exit; the phase-\(2\) exit is restricted to four
+      root bands with \(q\ge66\) or a shallow-\(Q\) edge collision.
+      Remaining for \(r=4\): eliminate the finitely many exit events.
+      Remaining for the branch: \(r\ge5\).
 - [ ] **Boundary \(p<q\) wall for \(\mathcal J\).**
       Handle both exact seams, the large \(r=1\) family, and the nontrivial
       \(r=4\) bridge models.

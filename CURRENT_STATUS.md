@@ -462,9 +462,25 @@ pairs to four exact bands: \(\ell'=2\ell+4\), \(\ell'\ge2\ell+13\),
 \(\ell=2\ell'-4\), \(\ell\ge2\ell'+9\); equal or comparable roots are
 impossible, and the regime needs \(q\ge66\). Hence for every
 \(q\le65\), horn 2 forces a window--edge collision with the known
-letters at \(Q\)'s left end — the shallow-\(Q\) edge analysis is the
-next slice, after which \(U[2]=2\) would follow outright for
-\(q\le65\).
+letters at \(Q\)'s left end.
+
+The forced-replay theorem is now proved
+(`research/pgtq_r4_forced_replay.md`). At \(r=4\) the phase-one high
+branch is vacuous, so the low case is unconditional. While no
+context-crossing power occurs, the replay is exactly the curling orbit
+of the seed \(\texttt{223222323}\); its symbols and local pairs are
+forced through phase \(59\), and at phase \(60\) the tail has no
+square, while the endpoint scale \((2,q)\) kills every
+tame-consistent completion (the thirteen values
+\(q=10,14,17,21,25,31,35,38,42,46,52,56,59\) die explicitly; the
+\(q=10\) near-model is the tame trajectory). Hence every \(r=4\)
+counterorbit has a first exit phase \(\ell^\*\le\min(m-1,60)\) at which
+both windows carry window-crossing canonical cubes (a square is
+possible only at phase \(60\)). The \(r=4\) wall is thereby reduced to
+finitely many concrete exit events over explicitly known tails; the
+phase-\(2\) event is already restricted by the dichotomy and band
+geography above. Next: run the correlation machinery on the remaining
+exit phases.
 
 ## Immediate open work
 
