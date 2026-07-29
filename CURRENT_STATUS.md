@@ -499,6 +499,19 @@ shallow zoo \(q\le2\ell^*+20\le140\). The \(r=4\) branch now rests
 on that band at the \(43\) exit phases, the shallow zoo, and
 \(r\ge5\).
 
+The exit band is now also gutted
+(`research/pgtq_r4_band_kill.md`). A band cube's window reaches the
+eleven known separator letters at the \(X_3/X_2\) boundary; two-hop
+copy-back forces the reversed tail to match the separator at offset
+\(d=\ell^*+q+1-2s\). The bottom of the band dies by fixed letter
+clashes, the survivor offsets are exactly \(d\equiv\ell^*-12\pmod{21}\)
+(the forced word contains the separator), and the mirrored root-\(w\)
+\(R\)-square (\(w=p-s\)) kills all of them except the single
+alignment \(2s=q+13\) at the \(28\) exit phases \(\ell^*\ge22\) —
+which needs \(q\) odd. For even \(q\) the band is empty everywhere.
+The \(r=4\) branch now rests on the \(2s=q+13\) family (odd \(q\),
+late exits), the bounded shallow zoo (\(q\le150\)), and \(r\ge5\).
+
 ## Immediate open work
 
 - Internal later cube (Cell C) for both synchronization targets.

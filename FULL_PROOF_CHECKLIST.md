@@ -230,7 +230,13 @@ Frozen D-035 correction:
       eliminate every deep exit configuration; the early exit root is
       confined to a width-\((\ell^*+7)/2\) band above \((q-4)/2\)
       or the bounded shallow zoo \(q\le140\).
-      Remaining for \(r=4\): the band, the shallow zoo.
+      Progress 2026-07-28 (`research/pgtq_r4_band_kill.md`): the
+      separator equations, the bottom-band letter clashes, and the
+      mirrored root-\(w\) square empty the band at every exit phase
+      except the single alignment \(2s=q+13\) (odd \(q\), exit
+      phases \(\ell^*\ge22\)).
+      Remaining for \(r=4\): the \(2s=q+13\) family, the shallow
+      zoo (\(q\le150\)).
       Remaining for the branch: \(r\ge5\).
 - [ ] **Boundary \(p<q\) wall for \(\mathcal J\).**
       Handle both exact seams, the large \(r=1\) family, and the nontrivial

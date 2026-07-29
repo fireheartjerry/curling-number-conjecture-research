@@ -2000,3 +2000,33 @@ Entries are append-only; superseded decisions are marked, not deleted.
 - Next: the band and the shallow zoo, then r >= 5.
 - Scope: nothing here closes the p>q wall, Cell C, either G2CS
   target, or the conjecture.
+
+
+## p>q r=4 band kill
+
+- Date: 2026-07-28
+- Result: `research/pgtq_r4_band_kill.md`. Lemma S: a band exit cube
+  forces the reversed tail to equal the eleven-letter separator
+  (rev 232 + rev B^2 at the X3/X2 boundary) at offset
+  d = l*+q+1-2s, via two hops of the cube relation. Proposition B:
+  the bottom of the band (d >= l*-1) dies by phase-independent letter
+  clashes within k <= 4. Computed geography over all 43 exit-phase
+  tails: survivors are exactly d = l*-12-21j (the forced word contains
+  the separator at U_f[2:13] and quasi-period 21 repeats it); the
+  eight exit phases 1,2,3,5,6,7,9,10 have none. Lemma W: survivors
+  with d <= l*-9 and 2d <= l*-4 force Q-period w = p-s plus a
+  reversed-B match pinned to Sep[7..10], so R ends in a root-w square,
+  contradicting pi(R^2) = q; this kills every survivor except
+  d = l*-12 at exit phases l* >= 22. Band theorem: the entire band is
+  impossible in the generic regime (q >= 2l*+31) except 2s = q+13 at
+  the 28 late exit phases -- requiring q odd; for even q the band is
+  empty everywhere.
+- Verification: the survivor geography and the clash table are exact
+  finite arithmetic, run twice; a synthetic consistency attempt shows
+  a valid (B.1) instance must solve the two-occurrence fixed point of
+  Q inside the cube window, flagged as the next weapon. No repository
+  script, per the math-only policy.
+- Next: the 2s = q+13 family (two-occurrence fixed point and/or the
+  F-window band), then the shallow zoo, then r >= 5.
+- Scope: nothing here closes the p>q wall, Cell C, either G2CS
+  target, or the conjecture.
