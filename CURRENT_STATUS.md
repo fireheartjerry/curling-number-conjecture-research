@@ -552,6 +552,21 @@ closure, Lemma F, and the empty shallow zoo: no \(r=4\) counterorbit
 exists (C.1). The \(p>q\) boundary wall now rests solely on the
 \(r\ge5\) catalogue.
 
+The \(r\ge5\) catalogue has collapsed
+(`research/pgtq_r5_cut_filters.md`). Six new pure-\(B\) filters from
+the inherited exact pairs and the D-035 bridge atlas — no terminal
+squares in \(B\) (record canonicity), no suffix cubes of \(B^3\),
+\(B^2 3\), \(B^3 3\), no visible cubes at bridge `2`-cuts, mandatory
+circular cubes at second-half `3`-cuts, and no visible fourth powers
+(all runs \(\le3\)) — kill every one of the \(384{,}135\) catalogue
+words for \(5\le r\le20\) except two words at \(r=13\), both
+quasi-\((2223)\)-periodic with a single \(33\) defect. \(B_1\) is
+reduced to at most four exit events (its seed orbit dies at phase
+five); \(B_2\) is reduced to a phase-one double-crossing-square event
+with early root \(\alpha>2r\). Remaining for the \(p>q\) wall: these
+two words, and a uniform tile-classification argument for
+\(r\ge21\).
+
 ## Immediate open work
 
 - Internal later cube (Cell C) for both synchronization targets.

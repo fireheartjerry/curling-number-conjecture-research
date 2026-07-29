@@ -2119,3 +2119,27 @@ Entries are append-only; superseded decisions are marked, not deleted.
   the branch now rests solely on the r>=5 catalogue.
 - Scope: nothing here closes r>=5, the p<q wall, non-boundary
   Cell C, either G2CS target, or the conjecture.
+
+
+## p>q r>=5 cut-filter collapse
+
+- Date: 2026-07-29
+- Result: `research/pgtq_r5_cut_filters.md`. Six pure-B filters from
+  the inherited exact pairs and D-035 (S7, S8, S11, S12, S16,
+  S20/S21) kill every catalogue word for 5 <= r <= 20 -- 384,135
+  words -- except B1 = 2232223322232 and B2 = 2232223222332 at r=13,
+  both quasi-(2223)-periodic with one 33 defect fed by the circular
+  cube (2223)^3. The S12 filter uses the J-caps through D-035, which
+  matches the checklist target. Run twice; counts recorded.
+- Reductions: B1's seed orbit (3,2,2,2,3) dies at phase 5, so its
+  counterorbits exit at l* <= 5; B2's seed B^2 3 has no square at
+  all, so both windows need context-crossing squares at phase one,
+  and a new second-large-period restriction forces its early root
+  above 2r.
+- Residual for the p>q wall: the two r=13 words (small named exit
+  analyses; B2 needs an exponent-two analogue of the exit machinery)
+  and a uniform r >= 21 argument, for which the tile route
+  (runs <= 3, grounded 3-feeds, bounded exotic segments) is laid
+  out.
+- Scope: nothing here closes the p>q wall, Cell C, either G2CS
+  target, or the conjecture.

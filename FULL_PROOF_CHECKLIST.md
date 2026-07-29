@@ -249,7 +249,12 @@ Frozen D-035 correction:
       \(B^3U_f[0{:}51]\)) caps every exit at \(\ell^*\le51\),
       kills the period-21 family for every \(q\), and closes the
       \(r=4\) branch (C.1), pending adversarial audit.
-      Remaining for the branch: \(r\ge5\).
+      Progress 2026-07-29 (`research/pgtq_r5_cut_filters.md`): six
+      new pure-\(B\) cut filters kill the entire \(r\ge5\)
+      catalogue for \(5\le r\le20\) except two \(r=13\) words,
+      each reduced to a small named exit analysis.
+      Remaining for the branch: the two \(r=13\) words and the
+      uniform \(r\ge21\) tile argument.
 - [ ] **Boundary \(p<q\) wall for \(\mathcal J\).**
       Handle both exact seams, the large \(r=1\) family, and the nontrivial
       \(r=4\) bridge models.
