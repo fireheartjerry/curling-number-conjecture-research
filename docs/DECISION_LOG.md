@@ -2143,3 +2143,23 @@ Entries are append-only; superseded decisions are marked, not deleted.
   out.
 - Scope: nothing here closes the p>q wall, Cell C, either G2CS
   target, or the conjecture.
+
+
+## Pause and VPS handoff packaging
+
+- Date: 2026-07-29
+- The session pauses mid-campaign at user request. Everything proved
+  through the r>=5 catalogue collapse is committed and pushed
+  (through `Collapse the r>=5 catalogue with cut filters`). This
+  commit adds: the verification engines used for the campaign
+  (research/engines/, preserved at user request as evidence tools,
+  not proof dependencies) and the continuation brief
+  cloud/VPS_CONTINUATION_2026-07-29.md recording the exact state of
+  the three open items of the p>q wall (the two r=13 words and the
+  uniform r>=21 tile argument), including the in-flight findings not
+  yet in any note: B1's seed orbit dies at phase 5 with no F-side
+  forced deviation before it; B2's seed and F-side both have curling
+  number 1 at phase 1, so the z-row forces double context-crossing
+  squares there; the square-exit machinery (single-copy relations)
+  is specified as the missing tool.
+- Scope: no new mathematical claims in this entry.
