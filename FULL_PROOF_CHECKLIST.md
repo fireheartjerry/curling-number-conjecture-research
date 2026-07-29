@@ -235,8 +235,11 @@ Frozen D-035 correction:
       mirrored root-\(w\) square empty the band at every exit phase
       except the single alignment \(2s=q+13\) (odd \(q\), exit
       phases \(\ell^*\ge22\)).
-      Remaining for \(r=4\): the \(2s=q+13\) family, the shallow
-      zoo (\(q\le150\)).
+      Progress 2026-07-29 (`research/pgtq_r4_band_closure.md`): the
+      two-occurrence period-ten collapse and the root-ten square
+      close the \(2s=q+13\) family; the exit band is empty at
+      every exit phase for every generic \(q\).
+      Remaining for \(r=4\): the shallow zoo (\(q\le150\)).
       Remaining for the branch: \(r\ge5\).
 - [ ] **Boundary \(p<q\) wall for \(\mathcal J\).**
       Handle both exact seams, the large \(r=1\) family, and the nontrivial

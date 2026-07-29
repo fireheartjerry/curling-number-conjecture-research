@@ -2030,3 +2030,31 @@ Entries are append-only; superseded decisions are marked, not deleted.
   F-window band), then the shallow zoo, then r >= 5.
 - Scope: nothing here closes the p>q wall, Cell C, either G2CS
   target, or the conjecture.
+
+
+## p>q r=4 band closure
+
+- Date: 2026-07-29
+- Result: `research/pgtq_r4_band_closure.md`. For the last band
+  family 2s = q+13 (odd q, exit phases l* >= 22): the cube window
+  contains Q twice, offset exactly ten, so Q has period ten from
+  depth one (V.1); the one-hop pins determine the whole shallow tail
+  of Q as a rotation of the reversed last ten tail letters (V.2). The
+  computed alignment disposition (union-find over the explicit
+  window, all 28 late exit phases, all odd residues of q mod 20,
+  sixty-two consecutive odd q per phase confirming residue-only
+  dependence) is a strict dichotomy: chain conflict (impossible
+  outright; all classes at phases 33-39 and 54-60, and all but one
+  residue class elsewhere), or forced reversed B at depths 7-10 with
+  the uniform shallow word (2,3,2,3,2,2,2,3,2,2) -- and then R ends
+  in a root-ten square, so pi(R^2) <= 10 < q, contradiction. The
+  exit band is therefore empty at every exit phase for every
+  q >= 2l*+31 (V.3): item (1) of the exit residue is closed.
+- The r=4 branch of the p>q wall now rests on exactly two items: the
+  bounded shallow zoo (q <= 2l*+30 <= 150) and the r >= 5 catalogue.
+- Verification: exact finite letter arithmetic, run twice with
+  independent extraction of the forced shallow letters; no repository
+  script, per the math-only policy.
+- Next: the shallow zoo.
+- Scope: nothing here closes the p>q wall, Cell C, either G2CS
+  target, or the conjecture.

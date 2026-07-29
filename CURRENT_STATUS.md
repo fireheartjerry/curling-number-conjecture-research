@@ -512,6 +512,20 @@ which needs \(q\) odd. For even \(q\) the band is empty everywhere.
 The \(r=4\) branch now rests on the \(2s=q+13\) family (odd \(q\),
 late exits), the bounded shallow zoo (\(q\le150\)), and \(r\ge5\).
 
+The band is now fully closed
+(`research/pgtq_r4_band_closure.md`). For the last family
+\(2s=q+13\), the cube window contains \(Q\) twice, and the offset of
+the two occurrences is exactly ten, forcing \(Q\) to have period ten
+from depth one; the one-hop pins then determine the whole shallow
+tail of \(Q\) as a rotation of the known last ten tail letters. The
+computed alignment disposition shows every phase--residue class
+either collides on known letters or forces reversed \(B\) at depths
+seven to ten — and then \(R\) ends in a root-ten square,
+contradicting \(\pi(R^2)=q\). Hence the exit band is empty at every
+exit phase for every \(q\ge2\ell^*+31\): item (1) of the exit residue
+is closed, and the \(r=4\) branch rests on the bounded shallow zoo
+(\(q\le150\)) and \(r\ge5\).
+
 ## Immediate open work
 
 - Internal later cube (Cell C) for both synchronization targets.
