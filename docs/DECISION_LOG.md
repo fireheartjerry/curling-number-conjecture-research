@@ -1907,3 +1907,30 @@ Entries are append-only; superseded decisions are marked, not deleted.
   \((\ell,\ell')\) and force \(U[2]=2\) outright.
 - Scope: nothing here closes the \(p>q\) wall, Cell C, either G2CS
   target, or the conjecture.
+
+## p>q r=4 horn-2 root geography
+
+- Date: 2026-07-28
+- Result: `research/pgtq_r4_horn2_geography.md` (`PROVED-NL`). In horn
+  2 of the phase-two dichotomy, each cube pins reversed tail blocks
+  \(\tau\) (10 letters) and \(\tau''\) (14 letters) into \(Q\) at
+  depths \(\ell-9,2\ell-9\) and \(\ell''-13,2\ell''-13\); the complete
+  correlation tables of \(\tau,\tau''\) plus a Fine--Wilf/primitivity
+  kill prove the band theorem (G.4): in the deep-\(Q\) regime the only
+  admissible pairs satisfy \(\ell''=2\ell+4\), \(\ell''\ge2\ell+13\),
+  \(\ell=2\ell''-4\), or \(\ell\ge2\ell''+9\); equal roots and all
+  comparable pairs are impossible, and the regime forces \(q\ge66\)
+  (G.5). For every \(q\le65\), horn 2 therefore collides with the
+  left edge of \(Q\).
+- Sharpness: a mechanical union-find propagation of both full
+  copy-back systems over \(\ell\le160,\ \ell''\le160\) returned
+  exactly `8204` consistent Fine--Wilf-missing pairs, all inside and
+  covering the four bands; the correlation+Fine--Wilf toolset is
+  exhausted. Drafting aid only; no repository script or test added,
+  per the proof-first policy and the user's math-only instruction.
+- Next slice: shallow-\(Q\) edge analysis — the copy-back window
+  meets the known letters of \(232\), the leading \(B\), and the
+  second \(R\); goal: kill horn 2 for \(q\le65\) outright, making
+  \(U[2]=2\) a theorem there, then attack the four deep bands.
+- Scope: nothing here closes the \(p>q\) wall, Cell C, either G2CS
+  target, or the conjecture.

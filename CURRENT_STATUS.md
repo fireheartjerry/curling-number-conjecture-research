@@ -452,8 +452,19 @@ either \(U[2]=2\) with both pairs exactly \((2,2)\), or \(U[2]=3\) and
 both windows end in context-crossing cubes with roots
 \(\ell\ge10,\ \ell'\ge14\); the minimal pair \((10,14)\) is
 inconsistent at \(Q[-16]\), and each surviving pair forces long
-periodic suffixes of \(Q\) — the next slice is the Fine--Wilf
-compatibility of those two forced periodicities.
+periodic suffixes of \(Q\).
+
+The Fine--Wilf compatibility slice is now also proved
+(`research/pgtq_r4_horn2_geography.md`). In the deep-\(Q\) regime
+(both copy-back windows inside \(Q\)), the pinned-block correlation
+tables plus a Fine--Wilf/primitivity kill reduce the admissible cube
+pairs to four exact bands: \(\ell'=2\ell+4\), \(\ell'\ge2\ell+13\),
+\(\ell=2\ell'-4\), \(\ell\ge2\ell'+9\); equal or comparable roots are
+impossible, and the regime needs \(q\ge66\). Hence for every
+\(q\le65\), horn 2 forces a window--edge collision with the known
+letters at \(Q\)'s left end — the shallow-\(Q\) edge analysis is the
+next slice, after which \(U[2]=2\) would follow outright for
+\(q\le65\).
 
 ## Immediate open work
 
