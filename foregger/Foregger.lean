@@ -1,5 +1,6 @@
 import Foregger.Basic
 import Foregger.Contraction
+import Foregger.Variance
 import Foregger.Blocks
 import Foregger.BlockStochastic
 import Foregger.BlockAlgebra
