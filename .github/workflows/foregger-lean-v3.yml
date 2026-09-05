@@ -1,4 +1,4 @@
-name: Foregger Lean Kernel Check v3
+name: Foregger Lean Kernel Check
 
 on:
   push:
@@ -32,10 +32,10 @@ jobs:
         run: |
           export PATH="$HOME/.elan/bin:$PATH"
           lake build
-      - name: Reject admissions
+      - name: Reject local proof admissions
         working-directory: foregger
         run: |
-          if grep -RInE '(^|[^A-Za-z])(sorry|admit|axiom)([^A-Za-z]|$)' --include='*.lean' .; then
-            echo 'Forbidden proof admission found.'
+          if grep -RInE '(^|[^A-Za-z])(sorry|admit|axiom)([^A-Za-z]|$)' --include='*.lean' --exclude-dir='.lake' --exclude-dir='.git' .; then
+            echo 'Forbidden local proof admission found.'
             exit 1
           fi
