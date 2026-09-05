@@ -1,6 +1,6 @@
 import Mathlib.Analysis.Convex.Birkhoff
 import Mathlib.Analysis.CStarAlgebra.Matrix
-import Foregger
+import Foregger.Basic
 
 open scoped Matrix.Norms.L2Operator
 
