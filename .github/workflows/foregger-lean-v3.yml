@@ -8,6 +8,10 @@ on:
       - '.github/workflows/foregger-lean-v3.yml'
   workflow_dispatch:
 
+concurrency:
+  group: foregger-lean-kernel
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
