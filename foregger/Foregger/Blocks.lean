@@ -1,4 +1,4 @@
-import Foregger
+import Foregger.Basic
 
 open scoped BigOperators Matrix
 open Matrix Finset
