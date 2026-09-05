@@ -5,7 +5,12 @@ import Foregger.DSEquality
 import Foregger.SupportRelation
 import Foregger.StableSpace
 import Foregger.Stabilization
+import Foregger.RelationRecovery
+import Foregger.PlateauRouting
+import Foregger.StableQuotient
+import Foregger.StablePermutation
 import Foregger.Blocks
+import Foregger.StableBlockSystem
 import Foregger.BlockStochastic
 import Foregger.BlockAlgebra
 import Foregger.BlockPowers
