@@ -14,6 +14,9 @@ import Foregger.StableBlockSystem
 import Foregger.BlockStochastic
 import Foregger.BlockAlgebra
 import Foregger.BlockPowers
+import Foregger.BlockProjection
+import Foregger.StableProjection
+import Foregger.TransientPowers
 import Foregger.LeakageBasic
 
 /-!
