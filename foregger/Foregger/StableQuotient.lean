@@ -1,6 +1,9 @@
 import Foregger.PlateauRouting
 import Mathlib.Data.Fintype.Basic
 
+open scoped BigOperators
+open Finset
+
 namespace Foregger
 
 /-- The generated support relation as an actual setoid. -/
@@ -45,5 +48,27 @@ theorem supportClassSize_pos {n : ℕ} (A : RMat n) (c : SupportClass A) :
   obtain ⟨i, rfl⟩ := supportClassMk_surjective A c
   unfold supportClassSize
   exact Finset.card_pos.mpr ⟨i, by simp⟩
+
+/-- Indicator of one support class. -/
+def supportClassIndicator {n : ℕ} (A : RMat n) (c : SupportClass A) : Fin n → ℝ :=
+  fun i => if supportClassMk A i = c then 1 else 0
+
+/-- A class indicator is constant on support classes, hence belongs to the exact equality
+subspace. -/
+theorem supportClassIndicator_mem {n : ℕ} (A : RMat n) (c : SupportClass A) :
+    supportClassIndicator A c ∈ supportConstSubmodule A := by
+  rw [mem_supportConstSubmodule]
+  intro i j hij
+  have hclass : supportClassMk A i = supportClassMk A j :=
+    (supportClassMk_eq_iff A i j).2 hij
+  simp [supportClassIndicator, hclass]
+
+/-- Squared Euclidean mass of a class indicator is exactly the class cardinality. -/
+theorem sqMass_supportClassIndicator {n : ℕ} (A : RMat n) (c : SupportClass A) :
+    sqMass (supportClassIndicator A c) = (supportClassSize A c : ℝ) := by
+  classical
+  unfold sqMass supportClassIndicator supportClassSize
+  rw [← Finset.sum_filter]
+  simp
 
 end Foregger
