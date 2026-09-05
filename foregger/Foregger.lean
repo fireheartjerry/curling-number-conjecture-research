@@ -4,6 +4,7 @@ import Foregger.Variance
 import Foregger.DSEquality
 import Foregger.SupportRelation
 import Foregger.StableSpace
+import Foregger.Stabilization
 import Foregger.Blocks
 import Foregger.BlockStochastic
 import Foregger.BlockAlgebra
