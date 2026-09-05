@@ -44,10 +44,11 @@ theorem averaging_col_sum (B : BlockSystem n β) (j : Fin n) :
         ∑ i : Fin n, if B.block i = B.block j then (B.size (B.block j) : ℝ)⁻¹ else 0 := by
       apply Finset.sum_congr rfl
       intro i hi
+      rw [averaging]
       by_cases h : B.block i = B.block j
-      · simp [averaging, h, h.symm]
-      · have h' : B.block j ≠ B.block i := fun e => h e.symm
-        simp [averaging, h, h']
+      · simp only [if_pos h]
+        rw [h]
+      · simp only [if_neg h]
     _ = 1 := by
       simpa [size] using
         (sum_indicator_inv_card (p := fun i : Fin n => B.block i = B.block j) hpos)
@@ -59,13 +60,17 @@ theorem averaging_isDS (B : BlockSystem n β) : IsDS B.averaging := by
 theorem uniformTransition_row_sum (B : BlockSystem n β) (i : Fin n) :
     ∑ j : Fin n, B.uniformTransition i j = 1 := by
   classical
-  have hs : B.size (B.perm (B.block i)) = B.size (B.block i) := B.size_perm _
   have hpos :
       0 < (Finset.univ.filter fun j : Fin n => B.block j = B.perm (B.block i)).card := by
     simpa [size] using B.size_pos (B.perm (B.block i))
-  simpa [uniformTransition, size, hs] using
-    (sum_indicator_inv_card
-      (p := fun j : Fin n => B.block j = B.perm (B.block i)) hpos)
+  have hcard :
+      (Finset.univ.filter fun j : Fin n => B.block j = B.perm (B.block i)).card =
+        B.size (B.block i) := by
+    simpa [size] using B.size_perm (B.block i)
+  have h := sum_indicator_inv_card
+    (p := fun j : Fin n => B.block j = B.perm (B.block i)) hpos
+  rw [hcard] at h
+  simpa only [uniformTransition] using h
 
 theorem uniformTransition_col_sum (B : BlockSystem n β) (j : Fin n) :
     ∑ i : Fin n, B.uniformTransition i j = 1 := by
@@ -79,15 +84,17 @@ theorem uniformTransition_col_sum (B : BlockSystem n β) (j : Fin n) :
         ∑ i : Fin n, if B.block i = a then (B.size a : ℝ)⁻¹ else 0 := by
       apply Finset.sum_congr rfl
       intro i hi
+      rw [uniformTransition]
       by_cases h : B.block i = a
       · have ht : B.block j = B.perm (B.block i) := by simpa [h, ha]
-        simp [uniformTransition, h, ht]
+        simp only [if_pos ht, if_pos h]
+        rw [h]
       · have ht : B.block j ≠ B.perm (B.block i) := by
           intro e
           apply h
           apply B.perm.injective
           simpa [ha] using e.symm
-        simp [uniformTransition, h, ht]
+        simp only [if_neg ht, if_neg h]
     _ = 1 := by
       simpa [size] using
         (sum_indicator_inv_card (p := fun i : Fin n => B.block i = a) hpos)
