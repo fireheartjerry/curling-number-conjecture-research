@@ -3,6 +3,7 @@ import Foregger.Contraction
 import Foregger.Blocks
 import Foregger.BlockStochastic
 import Foregger.BlockAlgebra
+import Foregger.BlockPowers
 import Foregger.LeakageBasic
 
 /-!
