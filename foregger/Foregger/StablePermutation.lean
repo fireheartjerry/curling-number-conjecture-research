@@ -1,6 +1,9 @@
 import Foregger.StableQuotient
 import Mathlib.Data.Fintype.Card
 
+open scoped BigOperators Matrix
+open Matrix Finset
+
 namespace Foregger
 
 /-- A deterministic positive target chosen in each row. -/
@@ -65,5 +68,63 @@ noncomputable def stableClassPerm {n : ℕ} {A : RMat n} (hA : IsDS A) {k : ℕ}
     (c : SupportClass (A ^ k)) :
     stableClassPerm hA hplateau c = stableClassMap hA hplateau c :=
   rfl
+
+/-- The indicator of the target class is sent exactly to the indicator of its predecessor class. -/
+theorem mulVec_target_indicator {n : ℕ} {A : RMat n} (hA : IsDS A) {k : ℕ}
+    (hplateau : supportConstSubmodule (A ^ (k + 1)) = supportConstSubmodule (A ^ k))
+    (c : SupportClass (A ^ k)) :
+    A *ᵥ supportClassIndicator (A ^ k) (stableClassPerm hA hplateau c) =
+      supportClassIndicator (A ^ k) c := by
+  funext r
+  let x := supportClassIndicator (A ^ k) (stableClassPerm hA hplateau c)
+  have hxk : x ∈ supportConstSubmodule (A ^ k) :=
+    supportClassIndicator_mem (A ^ k) (stableClassPerm hA hplateau c)
+  have hxk1 : x ∈ supportConstSubmodule (A ^ (k + 1)) := by
+    rw [hplateau]
+    exact hxk
+  have hfirst : sqMass (A *ᵥ x) = sqMass x :=
+    first_step_sqMass_eq_of_mem_pow_succ hA k hxk1
+  have hxA : x ∈ supportConstSubmodule A :=
+    (sqMass_mulVec_eq_iff_mem_supportConst hA x).mp hfirst
+  have hrow : (A *ᵥ x) r = x (rowTargetIndex hA r) := by
+    simpa only [Matrix.mulVec_apply_eq_sum] using
+      row_mean_eq_of_mem_supportConst hA hxA r (rowTargetIndex_pos hA r)
+  have hroute :
+      supportClassMk (A ^ k) (rowTargetIndex hA r) =
+        stableClassPerm hA hplateau (supportClassMk (A ^ k) r) := by
+    rw [stableClassPerm_apply, stableClassMap_mk]
+  rw [hrow]
+  simp only [x, supportClassIndicator]
+  rw [hroute]
+  simp
+
+/-- Norm preservation of class indicators proves that the stable permutation preserves the exact
+cardinality of every block. -/
+theorem stableClassPerm_size {n : ℕ} {A : RMat n} (hA : IsDS A) {k : ℕ}
+    (hplateau : supportConstSubmodule (A ^ (k + 1)) = supportConstSubmodule (A ^ k))
+    (c : SupportClass (A ^ k)) :
+    supportClassSize (A ^ k) (stableClassPerm hA hplateau c) =
+      supportClassSize (A ^ k) c := by
+  let x := supportClassIndicator (A ^ k) (stableClassPerm hA hplateau c)
+  have hxk : x ∈ supportConstSubmodule (A ^ k) :=
+    supportClassIndicator_mem (A ^ k) (stableClassPerm hA hplateau c)
+  have hxk1 : x ∈ supportConstSubmodule (A ^ (k + 1)) := by
+    rw [hplateau]
+    exact hxk
+  have hfirst : sqMass (A *ᵥ x) = sqMass x :=
+    first_step_sqMass_eq_of_mem_pow_succ hA k hxk1
+  have hmap := mulVec_target_indicator hA hplateau c
+  have hreal :
+      (supportClassSize (A ^ k) c : ℝ) =
+        supportClassSize (A ^ k) (stableClassPerm hA hplateau c) := by
+    calc
+      (supportClassSize (A ^ k) c : ℝ) =
+          sqMass (supportClassIndicator (A ^ k) c) :=
+        (sqMass_supportClassIndicator (A ^ k) c).symm
+      _ = sqMass (A *ᵥ x) := by simpa [x, hmap]
+      _ = sqMass x := hfirst
+      _ = (supportClassSize (A ^ k) (stableClassPerm hA hplateau c) : ℝ) :=
+        sqMass_supportClassIndicator (A ^ k) (stableClassPerm hA hplateau c)
+  exact_mod_cast hreal.symm
 
 end Foregger
