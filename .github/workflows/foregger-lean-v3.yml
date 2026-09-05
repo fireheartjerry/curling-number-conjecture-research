@@ -1,0 +1,41 @@
+name: Foregger Lean Kernel Check v3
+
+on:
+  push:
+    branches: [foregger-lean-proof]
+    paths:
+      - 'foregger/**'
+      - '.github/workflows/foregger-lean-v3.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and pinned Lean
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        working-directory: foregger
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+      - name: Fetch mathlib cache
+        working-directory: foregger
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+      - name: Build
+        working-directory: foregger
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build
+      - name: Reject admissions
+        working-directory: foregger
+        run: |
+          if grep -RInE '(^|[^A-Za-z])(sorry|admit|axiom)([^A-Za-z]|$)' --include='*.lean' .; then
+            echo 'Forbidden proof admission found.'
+            exit 1
+          fi
