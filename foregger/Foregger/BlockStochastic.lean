@@ -7,6 +7,13 @@ namespace Foregger.BlockSystem
 
 variable {n : ℕ} {β : Type*} [Fintype β] [DecidableEq β]
 
+private theorem sum_indicator_inv_card {α : Type*} [Fintype α]
+    (p : α → Prop) [DecidablePred p]
+    (hpos : 0 < (Finset.univ.filter p).card) :
+    (∑ x : α, if p x then (((Finset.univ.filter p).card : ℝ)⁻¹) else 0) = 1 := by
+  rw [← Finset.sum_filter]
+  simp [hpos.ne']
+
 theorem averaging_nonneg (B : BlockSystem n β) (i j : Fin n) :
     0 ≤ B.averaging i j := by
   classical
@@ -22,45 +29,71 @@ theorem uniformTransition_nonneg (B : BlockSystem n β) (i j : Fin n) :
 theorem averaging_row_sum (B : BlockSystem n β) (i : Fin n) :
     ∑ j : Fin n, B.averaging i j = 1 := by
   classical
-  simp [averaging, size, B.size_ne_zero]
+  have hpos : 0 < (Finset.univ.filter fun j : Fin n => B.block j = B.block i).card := by
+    simpa [size] using B.size_pos (B.block i)
+  simpa [averaging, size] using
+    (sum_indicator_inv_card (p := fun j : Fin n => B.block j = B.block i) hpos)
 
 theorem averaging_col_sum (B : BlockSystem n β) (j : Fin n) :
     ∑ i : Fin n, B.averaging i j = 1 := by
   classical
-  simp [averaging, size, eq_comm, B.size_ne_zero]
+  have hpos : 0 < (Finset.univ.filter fun i : Fin n => B.block i = B.block j).card := by
+    simpa [size] using B.size_pos (B.block j)
+  calc
+    (∑ i : Fin n, B.averaging i j) =
+        ∑ i : Fin n, if B.block i = B.block j then (B.size (B.block j) : ℝ)⁻¹ else 0 := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      by_cases h : B.block i = B.block j
+      · simp [averaging, h, h.symm]
+      · have h' : B.block j ≠ B.block i := fun e => h e.symm
+        simp [averaging, h, h']
+    _ = 1 := by
+      simpa [size] using
+        (sum_indicator_inv_card (p := fun i : Fin n => B.block i = B.block j) hpos)
 
 theorem averaging_isDS (B : BlockSystem n β) : IsDS B.averaging := by
-  rw [IsDS, mem_doublyStochastic_iff]
+  rw [IsDS, mem_doublyStochastic_iff_sum]
   exact ⟨B.averaging_nonneg, B.averaging_row_sum, B.averaging_col_sum⟩
 
 theorem uniformTransition_row_sum (B : BlockSystem n β) (i : Fin n) :
     ∑ j : Fin n, B.uniformTransition i j = 1 := by
   classical
   have hs : B.size (B.perm (B.block i)) = B.size (B.block i) := B.size_perm _
-  simp [uniformTransition, size] at hs ⊢
-  rw [hs]
-  field_simp [B.size_ne_zero (B.block i)]
+  have hpos :
+      0 < (Finset.univ.filter fun j : Fin n => B.block j = B.perm (B.block i)).card := by
+    simpa [size] using B.size_pos (B.perm (B.block i))
+  simpa [uniformTransition, size, hs] using
+    (sum_indicator_inv_card
+      (p := fun j : Fin n => B.block j = B.perm (B.block i)) hpos)
 
 theorem uniformTransition_col_sum (B : BlockSystem n β) (j : Fin n) :
     ∑ i : Fin n, B.uniformTransition i j = 1 := by
   classical
   let a : β := B.perm.symm (B.block j)
   have ha : B.perm a = B.block j := by simp [a]
-  have hs : B.size a = B.size (B.block j) := by
-    rw [← ha, B.size_perm]
-  have hiff (i : Fin n) : B.block j = B.perm (B.block i) ↔ B.block i = a := by
-    constructor
-    · intro h
-      apply B.perm.injective
-      simpa [ha] using h.symm
-    · intro h
-      simpa [h, ha]
-  simp only [uniformTransition]
-  simp_rw [if_congr (hiff _) rfl rfl]
-  simp [a, size, hs, B.size_ne_zero]
+  have hpos : 0 < (Finset.univ.filter fun i : Fin n => B.block i = a).card := by
+    simpa [size] using B.size_pos a
+  calc
+    (∑ i : Fin n, B.uniformTransition i j) =
+        ∑ i : Fin n, if B.block i = a then (B.size a : ℝ)⁻¹ else 0 := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      by_cases h : B.block i = a
+      · have ht : B.block j = B.perm (B.block i) := by simpa [h, ha]
+        simp [uniformTransition, h, ht]
+      · have ht : B.block j ≠ B.perm (B.block i) := by
+          intro e
+          apply h
+          apply B.perm.injective
+          simpa [ha] using e.symm
+        simp [uniformTransition, h, ht]
+    _ = 1 := by
+      simpa [size] using
+        (sum_indicator_inv_card (p := fun i : Fin n => B.block i = a) hpos)
 
 theorem uniformTransition_isDS (B : BlockSystem n β) : IsDS B.uniformTransition := by
-  rw [IsDS, mem_doublyStochastic_iff]
+  rw [IsDS, mem_doublyStochastic_iff_sum]
   exact ⟨B.uniformTransition_nonneg, B.uniformTransition_row_sum,
     B.uniformTransition_col_sum⟩
 
