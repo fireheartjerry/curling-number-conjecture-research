@@ -32,6 +32,45 @@ noncomputable def uniformPower (B : BlockSystem n β) (k : ℕ) : RMat n := fun 
   ext i j
   simp [uniformPower, uniformTransition]
 
+theorem uniformPower_nonneg (B : BlockSystem n β) (k : ℕ) (i j : Fin n) :
+    0 ≤ B.uniformPower k i j := by
+  classical
+  simp only [uniformPower]
+  split <;> positivity
+
+theorem uniformPower_row_sum (B : BlockSystem n β) (k : ℕ) (i : Fin n) :
+    ∑ j : Fin n, B.uniformPower k i j = 1 := by
+  classical
+  have hs : B.size ((B.perm ^ k) (B.block i)) = B.size (B.block i) :=
+    B.size_perm_pow k _
+  simp [uniformPower, size] at hs ⊢
+  rw [hs]
+  field_simp [B.size_ne_zero (B.block i)]
+
+theorem uniformPower_col_sum (B : BlockSystem n β) (k : ℕ) (j : Fin n) :
+    ∑ i : Fin n, B.uniformPower k i j = 1 := by
+  classical
+  let p : Equiv.Perm β := B.perm ^ k
+  let a : β := p.symm (B.block j)
+  have ha : p a = B.block j := by simp [a]
+  have hpSize : B.size (p a) = B.size a := by
+    simpa [p] using B.size_perm_pow k a
+  have hiff (i : Fin n) : B.block j = p (B.block i) ↔ B.block i = a := by
+    constructor
+    · intro h
+      apply p.injective
+      simpa [ha] using h.symm
+    · intro h
+      simpa [h, ha]
+  simp only [uniformPower, p]
+  simp_rw [show (B.block j = (B.perm ^ k) (B.block ·)) =
+      (fun i : Fin n => B.block i = a) by funext i; exact propext (hiff i)]
+  simp [size, p, a, hpSize, B.size_ne_zero]
+
+theorem uniformPower_isDS (B : BlockSystem n β) (k : ℕ) : IsDS (B.uniformPower k) := by
+  rw [IsDS, mem_doublyStochastic_iff]
+  exact ⟨B.uniformPower_nonneg k, B.uniformPower_row_sum k, B.uniformPower_col_sum k⟩
+
 theorem uniformPower_mul (B : BlockSystem n β) (a b : ℕ) :
     B.uniformPower a * B.uniformPower b = B.uniformPower (a + b) := by
   classical
@@ -40,12 +79,12 @@ theorem uniformPower_mul (B : BlockSystem n β) (a b : ℕ) :
   · have hs : B.size ((B.perm ^ a) (B.block i)) = B.size (B.block i) :=
       B.size_perm_pow a _
     simp [Matrix.mul_apply, uniformPower, h, pow_add, size, hs, B.size_ne_zero]
-  · have hk (k : Fin n) :
-        ¬ (B.block k = (B.perm ^ a) (B.block i) ∧
-            B.block j = (B.perm ^ b) (B.block k)) := by
-      rintro ⟨hki, hjk⟩
+  · have hk (x : Fin n) :
+        ¬ (B.block x = (B.perm ^ a) (B.block i) ∧
+            B.block j = (B.perm ^ b) (B.block x)) := by
+      rintro ⟨hxi, hjx⟩
       apply h
-      simpa [pow_add, hki] using hjk
+      simpa [pow_add, hxi] using hjx
     simp [Matrix.mul_apply, uniformPower, h, hk]
 
 theorem uniformTransition_pow_succ (B : BlockSystem n β) (k : ℕ) :
