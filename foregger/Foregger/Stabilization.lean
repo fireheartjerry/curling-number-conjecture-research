@@ -51,4 +51,69 @@ theorem exists_supportConst_plateau {n : ℕ} {A : RMat n} (hA : IsDS A) :
   apply Submodule.eq_of_le_of_finrank_le (supportConst_pow_succ_le hA k)
   simpa [f] using hdim.ge
 
+/-- If `x` preserves norm through `k+1` steps, then already the first application of `A`
+preserves its norm. -/
+theorem first_step_sqMass_eq_of_mem_pow_succ {n : ℕ} {A : RMat n} (hA : IsDS A)
+    (k : ℕ) {x : Fin n → ℝ}
+    (hx : x ∈ supportConstSubmodule (A ^ (k + 1))) :
+    sqMass (A *ᵥ x) = sqMass x := by
+  have hend : sqMass ((A ^ (k + 1)) *ᵥ x) = sqMass x :=
+    sqMass_eq_of_mem_supportConst (isDS_pow hA (k + 1)) hx
+  have hfirst : sqMass (A *ᵥ x) ≤ sqMass x := isDS_sqMass_mulVec_le hA x
+  have htail0 := isDS_sqMass_mulVec_le (isDS_pow hA k) (A *ᵥ x)
+  have htail : sqMass ((A ^ (k + 1)) *ᵥ x) ≤ sqMass (A *ᵥ x) := by
+    simpa only [Matrix.mulVec_mulVec, pow_succ] using htail0
+  linarith
+
+/-- The first image of a vector in the `(k+1)`-step equality space belongs to the `k`-step
+equality space. -/
+theorem mulVec_mem_supportConst_pow {n : ℕ} {A : RMat n} (hA : IsDS A)
+    (k : ℕ) {x : Fin n → ℝ}
+    (hx : x ∈ supportConstSubmodule (A ^ (k + 1))) :
+    A *ᵥ x ∈ supportConstSubmodule (A ^ k) := by
+  apply (sqMass_mulVec_eq_iff_mem_supportConst (isDS_pow hA k) (A *ᵥ x)).mp
+  have hend : sqMass ((A ^ (k + 1)) *ᵥ x) = sqMass x :=
+    sqMass_eq_of_mem_supportConst (isDS_pow hA (k + 1)) hx
+  have hfirst := first_step_sqMass_eq_of_mem_pow_succ hA k hx
+  calc
+    sqMass ((A ^ k) *ᵥ (A *ᵥ x)) = sqMass ((A ^ (k + 1)) *ᵥ x) := by
+      simp only [Matrix.mulVec_mulVec, pow_succ]
+    _ = sqMass x := hend
+    _ = sqMass (A *ᵥ x) := hfirst.symm
+
+/-- Once two consecutive equality spaces coincide, the next pair also coincides.  So a plateau is
+a true fixed point of the chain, not a temporary pause. -/
+theorem supportConst_plateau_succ {n : ℕ} {A : RMat n} (hA : IsDS A) (k : ℕ)
+    (hplateau : supportConstSubmodule (A ^ (k + 1)) = supportConstSubmodule (A ^ k)) :
+    supportConstSubmodule (A ^ (k + 2)) = supportConstSubmodule (A ^ (k + 1)) := by
+  apply le_antisymm
+  · simpa [Nat.add_assoc] using supportConst_pow_succ_le hA (k + 1)
+  · intro x hx
+    have hAx_k : A *ᵥ x ∈ supportConstSubmodule (A ^ k) :=
+      mulVec_mem_supportConst_pow hA k hx
+    have hAx_k1 : A *ᵥ x ∈ supportConstSubmodule (A ^ (k + 1)) := by
+      rw [hplateau]
+      exact hAx_k
+    apply (sqMass_mulVec_eq_iff_mem_supportConst (isDS_pow hA (k + 2)) x).mp
+    have hfirst := first_step_sqMass_eq_of_mem_pow_succ hA k hx
+    have hAxEq : sqMass ((A ^ (k + 1)) *ᵥ (A *ᵥ x)) = sqMass (A *ᵥ x) :=
+      sqMass_eq_of_mem_supportConst (isDS_pow hA (k + 1)) hAx_k1
+    calc
+      sqMass ((A ^ (k + 2)) *ᵥ x) = sqMass ((A ^ (k + 1)) *ᵥ (A *ᵥ x)) := by
+        simp only [Matrix.mulVec_mulVec, pow_succ]
+      _ = sqMass (A *ᵥ x) := hAxEq
+      _ = sqMass x := hfirst
+
+/-- A plateau propagates forever. -/
+theorem supportConst_plateau_add {n : ℕ} {A : RMat n} (hA : IsDS A) {k : ℕ}
+    (hplateau : supportConstSubmodule (A ^ (k + 1)) = supportConstSubmodule (A ^ k)) :
+    ∀ t : ℕ,
+      supportConstSubmodule (A ^ (k + t + 1)) = supportConstSubmodule (A ^ (k + t)) := by
+  intro t
+  induction t with
+  | zero => simpa using hplateau
+  | succ t ih =>
+      have hs := supportConst_plateau_succ hA (k + t) ih
+      simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hs
+
 end Foregger
