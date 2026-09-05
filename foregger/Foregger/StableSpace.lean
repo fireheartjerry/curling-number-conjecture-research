@@ -90,11 +90,11 @@ theorem row_sq_eq_of_mem_supportConst {n : ℕ} {A : RMat n} (hA : IsDS A)
     row_second_eq_of_mem_supportConst hA hx r hj₀]
 
 /-- Support-constant vectors are precisely norm-preserving vectors for a doubly stochastic
-matrix.  This gives a genuine linear subspace model for the equality locus. -/
+matrix. This gives a genuine linear subspace model for the equality locus. -/
 theorem sqMass_eq_of_mem_supportConst {n : ℕ} {A : RMat n} (hA : IsDS A)
     {x : Fin n → ℝ} (hx : x ∈ supportConstSubmodule A) :
     sqMass (A *ᵥ x) = sqMass x := by
-  unfold sqMass
+  change (∑ r, (A *ᵥ x) r ^ 2) = sqMass x
   calc
     (∑ r, (A *ᵥ x) r ^ 2) = ∑ r, ∑ j, A r j * x j ^ 2 := by
       apply Finset.sum_congr rfl
