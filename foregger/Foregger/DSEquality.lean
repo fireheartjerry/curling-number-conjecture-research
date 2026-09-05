@@ -59,6 +59,7 @@ theorem sum_rowDeficit {n : ℕ} {A : RMat n} (hA : IsDS A)
   unfold rowDeficit
   rw [Finset.sum_sub_distrib]
   rw [isDS_sum_weighted_sq hA x]
+  simp only [sqMass]
 
 /-- If a doubly stochastic matrix preserves squared mass on `x`, every individual row attains
 its Jensen equality case. -/
