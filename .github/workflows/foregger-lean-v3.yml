@@ -4,7 +4,7 @@ on:
   push:
     branches: [foregger-lean-proof]
     paths:
-      - 'foregger/**'
+      - 'foregger/CI_TRIGGER'
       - '.github/workflows/foregger-lean-v3.yml'
   workflow_dispatch:
 
