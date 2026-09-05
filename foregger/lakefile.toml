@@ -7,5 +7,11 @@ name = "mathlib"
 scope = "leanprover-community"
 rev = "v4.32.2"
 
+[[require]]
+name = "permanents"
+git = "https://github.com/DCPRevere/maths-pub.git"
+rev = "0a1cb0a14fefe85668365d448f9bbaf4dd89d458"
+subDir = "combinatorics/permanents/cheon-hwang/leanproj"
+
 [[lean_lib]]
 name = "Foregger"
