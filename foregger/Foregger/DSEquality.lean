@@ -56,7 +56,7 @@ theorem sum_rowDeficit {n : ℕ} {A : RMat n} (hA : IsDS A)
     (x : Fin n → ℝ) :
     ∑ i, rowDeficit A x i = sqMass x - sqMass (A *ᵥ x) := by
   classical
-  unfold rowDeficit sqMass
+  unfold rowDeficit
   rw [Finset.sum_sub_distrib]
   rw [isDS_sum_weighted_sq hA x]
 
