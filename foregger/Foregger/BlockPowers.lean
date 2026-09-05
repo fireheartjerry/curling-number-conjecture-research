@@ -68,7 +68,7 @@ theorem uniformPower_col_sum (B : BlockSystem n β) (k : ℕ) (j : Fin n) :
   simp [size, p, a, hpSize, B.size_ne_zero]
 
 theorem uniformPower_isDS (B : BlockSystem n β) (k : ℕ) : IsDS (B.uniformPower k) := by
-  rw [IsDS, mem_doublyStochastic_iff]
+  rw [IsDS, mem_doublyStochastic_iff_sum]
   exact ⟨B.uniformPower_nonneg k, B.uniformPower_row_sum k, B.uniformPower_col_sum k⟩
 
 theorem uniformPower_mul (B : BlockSystem n β) (a b : ℕ) :
