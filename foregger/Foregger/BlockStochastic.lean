@@ -46,9 +46,11 @@ theorem averaging_col_sum (B : BlockSystem n β) (j : Fin n) :
       intro i hi
       rw [averaging]
       by_cases h : B.block i = B.block j
-      · simp only [if_pos h]
+      · have h' : B.block j = B.block i := h.symm
+        simp only [if_pos h, if_pos h']
         rw [h]
-      · simp only [if_neg h]
+      · have h' : B.block j ≠ B.block i := fun e => h e.symm
+        simp only [if_neg h, if_neg h']
     _ = 1 := by
       simpa [size] using
         (sum_indicator_inv_card (p := fun i : Fin n => B.block i = B.block j) hpos)
