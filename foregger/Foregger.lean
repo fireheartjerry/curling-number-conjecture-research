@@ -1,5 +1,6 @@
 import Mathlib.Analysis.Convex.DoublyStochasticMatrix
 import Mathlib.LinearAlgebra.Matrix.Permanent
+import VanDerWaerden
 
 open scoped BigOperators Matrix
 open Matrix
@@ -29,5 +30,13 @@ lemma isDS_col_sum {n : ℕ} {A : RMat n} (hA : IsDS A) (j : Fin n) :
 
 lemma isDS_pow {n : ℕ} {A : RMat n} (hA : IsDS A) (k : ℕ) : IsDS (A ^ k) := by
   exact (doublyStochastic ℝ (Fin n)).pow_mem hA k
+
+/-- Brownfielded, kernel-checked van der Waerden lower bound. -/
+theorem vanDerWaerden {n : ℕ} {A : RMat n} (hA : IsDS A) :
+    (n.factorial : ℝ) / (n : ℝ) ^ n ≤ A.permanent := by
+  exact VanDerWaerden.egorychev_falikman
+    (fun i j => isDS_nonneg hA i j)
+    (fun i => isDS_row_sum hA i)
+    (fun j => isDS_col_sum hA j)
 
 end Foregger
