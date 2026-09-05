@@ -1,0 +1,21 @@
+name: Foregger Lean Kernel Check
+
+on:
+  push:
+    branches: [foregger-lean-proof]
+    paths:
+      - 'foregger/**'
+      - '.github/workflows/foregger-lean.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: foregger
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: foregger
